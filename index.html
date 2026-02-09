@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
+<title>台酒生技產品話術系統</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00897b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+<style>
+/* --- CORE VARIABLES --- */
+:root {
+  --primary: #00897b; 
+  --primary-light: #e0f2f1;
+  --bg-body: #f8f9fa; 
+  --text-main: #263238; 
+  --text-sub: #546e7a;
+  --card-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  --header-height: 120px; 
+  --highlight-color: #ffeb3b;
+  --highlight-text: #d81b60;
+  --sticky-offset: 185px; 
+  --promo-color: #ff9800;
+  --new-tag-color: #ff5252;
+  
+  --sz-p-img: 65px;
+  --sz-p-title: 14px;
+  --sz-p-price: 16px;
+  --sz-p-desc: 13px;
+  --sz-rank-img: 90px;
+}
+
+body.large-mode {
+  --sz-p-img: 100px;
+  --sz-p-title: 18px;
+  --sz-p-price: 20px;
+  --sz-p-desc: 16px;
+  --sz-rank-img: 110px;
+  --text-main: #000000;
+  --text-sub: #37474f;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Noto Sans TC', sans-serif; 
+  background: var(--bg-body); 
+  color: var(--text-main);
+  margin: 0; padding: 0; 
+  padding-bottom: 100px;
+  overscroll-behavior-y: contain;
+  transition: all 0.3s ease;
+}
+
+/* --- SPLASH SCREEN --- */
+#splash-screen {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ffffff;
+  z-index: 99999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: opacity 0.6s ease-out, visibility 0.6s;
+}
+#splash-screen.hidden {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.splash-logo {
+  width: 60%; max-width: 250px; height: auto; object-fit: contain;
+  animation: splashEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0; transform: scale(0.8);
+}
+.splash-brand {
+  margin-top: 20px; font-size: 14px; letter-spacing: 2px; color: #8d6e63;
+  font-weight: 500; opacity: 0;
+  animation: splashFadeIn 1s ease-out 0.5s forwards;
+}
+@keyframes splashEntrance { to { opacity: 1; transform: scale(1); } }
+@keyframes splashFadeIn { to { opacity: 1; } }
+
+/* --- STICKY WRAPPER --- */
+.sticky-header-group {
+  position: sticky; top: 0; z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+header {
+  position: relative; display: flex; flex-direction: column; align-items: center; padding: 12px 15px 5px;
+}
+.header-top { 
+  width: 100%; display: flex; justify-content: center; align-items: center; position: relative; margin-bottom: 10px;
+}
+h1 { margin: 0; font-size: 20px; color: var(--primary); font-weight: 900; line-height: 1.2; }
+.subtitle { font-size: 11px; color: var(--text-sub); display: block; text-align: center; }
+
+.btn-pdf {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  background: var(--primary-light); color: var(--primary);
+  border: 1px solid var(--primary); border-radius: 20px;
+  padding: 6px 12px; font-size: 13px; font-weight: 700;
+  text-decoration: none; display: flex; align-items: center; gap: 4px;
+  transition: all 0.2s;
+}
+.btn-pdf span.icon { font-size: 18px; }
+@media (max-width: 480px) {
+  .btn-pdf .txt { display: none; }
+  .btn-pdf { padding: 8px; border-radius: 50%; right: 0; }
+}
+
+.search-box { width: 100%; max-width: 600px; position: relative; margin-bottom: 5px; }
+.search-input {
+  width: 100%; padding: 10px 70px 10px 15px; border-radius: 25px; border: 1px solid #cfd8dc;
+  background: #f5f5f5; font-size: 14px; color: #37474f; transition: all 0.3s;
+}
+.search-input:focus {
+  background: #fff; border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
+}
+body.large-mode .search-input { font-size: 16px; padding-top: 12px; padding-bottom: 12px; }
+.search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #90a4ae; pointer-events: none; }
+.search-clear {
+  position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+  color: #b0bec5; cursor: pointer; display: none; font-size: 18px; background: #eceff1; border-radius: 50%; padding: 2px;
+}
+.search-clear:hover { color: #546e7a; background: #cfd8dc; }
+mark.highlight { background-color: var(--highlight-color); color: var(--highlight-text); border-radius: 2px; padding: 0 2px; font-weight: 900; }
+
+.quick-nav-wrap { width: 100%; padding: 5px 0 10px; background: #fff; border-top: 1px solid transparent; }
+.quick-nav { display: flex; justify-content: flex-start; gap: 6px; overflow-x: auto; padding: 0 12px; scrollbar-width: none; }
+.quick-nav::-webkit-scrollbar { display: none; }
+.nav-pill {
+  flex-shrink: 0; white-space: nowrap; padding: 6px 14px; border-radius: 20px;
+  font-size: 13px; font-weight: 500; color: var(--text-sub); background: #f5f5f5;
+  border: 1px solid #e0e0e0; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px;
+}
+body.large-mode .nav-pill { font-size: 15px; padding: 8px 16px; }
+.nav-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 700; box-shadow: 0 2px 6px rgba(0, 137, 123, 0.3); }
+
+#ranking-section { 
+  margin: 20px 15px 25px; background: #fff; padding: 15px; border-radius: 16px; 
+  border: 1px solid #f0f0f0; box-shadow: var(--card-shadow); display: none; scroll-margin-top: var(--sticky-offset);
+}
+.rank-head { margin-bottom: 12px; border-bottom: 1px solid #f5f5f5; padding-bottom: 8px; }
+.rank-title { font-size: 16px; font-weight: 900; color: #d81b60; display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+body.large-mode .rank-title { font-size: 20px; }
+.rank-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.r-tab { 
+  font-size: 12px; color: #78909c; background: #f5f5f5; padding: 4px 12px; border-radius: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: 0.2s; font-weight: 500;
+}
+body.large-mode .r-tab { font-size: 15px; padding: 6px 14px; }
+.r-tab.active { background: #d81b60; color: #fff; font-weight: 700; }
+.rank-list { 
+  display: flex; gap: 12px; overflow-x: auto; padding-top: 10px; padding-bottom: 5px; scroll-behavior: smooth; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+}
+.rank-list::-webkit-scrollbar { height: 4px; }
+.r-card { flex: 0 0 var(--sz-rank-img); display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; scroll-snap-align: start; }
+.r-img-wrap { width: var(--sz-rank-img); height: var(--sz-rank-img); border-radius: 12px; background: #fff; border: 1px solid #eee; position: relative; padding: 4px; overflow: hidden; }
+.r-img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.r-badge { position: absolute; top: 0; left: 0; width: 24px; height: 24px; border-bottom-right-radius: 8px; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+.r-card[data-rank="1"] .r-badge { background: #ffd700; color: #3e2723; }
+.r-card[data-rank="2"] .r-badge { background: #cfd8dc; color: #37474f; }
+.r-card[data-rank="3"] .r-badge { background: #d7ccc8; color: #3e2723; }
+.r-name { font-size: 11px; font-weight: 700; color: #37474f; text-align: center; line-height: 1.3; height: 2.6em; overflow: hidden; }
+body.large-mode .r-name { font-size: 13px; }
+
+main { max-width: 800px; margin: 0 auto; padding: 0 15px; }
+.cat-section { margin-bottom: 30px; scroll-margin-top: var(--sticky-offset); }
+.cat-title { font-size: 18px; font-weight: 900; color: #37474f; border-left: 5px solid var(--primary); padding-left: 10px; margin-bottom: 12px; }
+body.large-mode .cat-title { font-size: 22px; border-left-width: 8px; }
+.grid-layout { display: flex; flex-direction: column; gap: 12px; }
+.p-card { 
+  background: #fff; border-radius: 12px; box-shadow: var(--card-shadow); border: 1px solid #f0f0f0; overflow: hidden; cursor: pointer; transition: 0.2s; scroll-margin-top: var(--sticky-offset); position: relative; 
+}
+.p-card.active { border-color: var(--primary); box-shadow: 0 4px 20px rgba(0,137,123,0.2); }
+.new-badge {
+  position: absolute; top: 0; left: 0; background: var(--new-tag-color); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px 3px 6px; border-bottom-right-radius: 10px; z-index: 10; box-shadow: 2px 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 2px;
+}
+body.large-mode .new-badge { font-size: 12px; padding: 4px 10px 4px 8px; }
+.p-header { display: flex; align-items: center; padding: 10px; gap: 10px; position: relative; z-index: 2; background: #fff; }
+.p-img-box {
+  width: var(--sz-p-img); height: var(--sz-p-img); flex-shrink: 0; border-radius: 8px; background: #fcfcfc; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; cursor: zoom-in;
+}
+.p-img-box img { width: 90%; height: 90%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.p-card.active .p-img-box img { transform: scale(1.15); }
+.zoom-hint {
+  position: absolute; bottom: 2px; right: 2px; color: #fff; background: rgba(0,0,0,0.4); border-radius: 4px; padding: 2px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.zoom-hint span { font-size: 14px; }
+.p-card.active .zoom-hint { opacity: 0.6; }
+.p-basic-info { flex: 1; min-width: 0; }
+.p-code { font-size: 10px; color: #b0bec5; font-family: monospace; }
+.p-name { font-size: var(--sz-p-title); font-weight: 700; color: var(--text-main); margin-bottom: 2px; line-height: 1.3; }
+.p-spec { font-size: 11px; color: #78909c; }
+.p-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
+.p-price { font-size: var(--sz-p-price); font-weight: 800; color: #d81b60; }
+.p-price::before { content: '$'; font-size: 12px; }
+.p-arrow { color: #cfd8dc; font-size: 20px; transition: transform 0.3s; }
+.p-card.active .p-arrow { transform: rotate(180deg); color: var(--primary); }
+.p-detail { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #fafafa; border-top: 1px solid #f0f0f0; }
+.p-detail-inner { padding: 15px; }
+.pitch-title { font-size: 15px; font-weight: 900; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+body.large-mode .pitch-title { font-size: 18px; }
+.pitch-title::before { content: '★'; color: #ffd700; }
+.pitch-content { font-size: var(--sz-p-desc); color: #455a64; line-height: 1.6; margin-bottom: 10px; white-space: pre-line; }
+body.large-mode .pitch-content { color: #263238; }
+.pitch-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; }
+.tag { font-size: 10px; color: #546e7a; background: #eceff1; padding: 2px 8px; border-radius: 4px; }
+body.large-mode .tag { font-size: 12px; padding: 4px 10px; }
+.no-data { font-size: 12px; color: #b0bec5; text-align: center; padding: 10px; }
+.btn-share {
+  display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 15px; background: #eceff1; color: #546e7a; font-size: 12px; font-weight: 700; text-decoration: none; cursor: pointer; transition: 0.2s; border: 1px solid #cfd8dc; float: right;
+}
+body.large-mode .btn-share { font-size: 14px; padding: 6px 14px; }
+.btn-share:active { transform: scale(0.95); background: #cfd8dc; }
+
+#promo-container { max-width: 800px; margin: 0 auto; padding: 20px 15px; display: none; }
+.promo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+.promo-title-main { font-size: 20px; font-weight: 900; color: var(--promo-color); display: flex; align-items: center; gap:8px;}
+.btn-back-home { background: #eceff1; color: #546e7a; border: none; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 4px; cursor: pointer; }
+body.large-mode .btn-back-home { font-size: 16px; padding: 8px 16px; }
+.promo-filters { display: flex; gap: 8px; overflow-x: auto; padding: 0 5px 15px; scrollbar-width: none; }
+.promo-filters::-webkit-scrollbar { display: none; }
+.pf-tab { flex-shrink: 0; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; background: #fff; border: 1px solid #e0e0e0; color: #78909c; cursor: pointer; transition: 0.2s; }
+body.large-mode .pf-tab { font-size: 15px; padding: 8px 16px; }
+.pf-tab.active { background: var(--promo-color); color: #fff; border-color: var(--promo-color); font-weight: 700; }
+.promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+body.large-mode .promo-grid { grid-template-columns: 1fr; }
+.promo-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 2px solid transparent; display: flex; flex-direction: column; cursor: pointer; transition: 0.2s; }
+.promo-card:active { transform: scale(0.98); }
+.promo-img-box { width: 100%; aspect-ratio: 16/9; background: #f5f5f5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.promo-img { width: 100%; height: 100%; object-fit: cover; }
+.promo-body { padding: 10px; flex: 1; display: flex; flex-direction: column; }
+.promo-t { font-size: 14px; font-weight: 900; color: #37474f; margin-bottom: 6px; line-height: 1.3; }
+body.large-mode .promo-t { font-size: 18px; }
+.promo-d { font-size: 11px; color: #78909c; line-height: 1.4; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+body.large-mode .promo-d { font-size: 14px; color: #455a64; -webkit-line-clamp: 4; }
+.promo-date { font-size: 10px; color: var(--promo-color); margin-top: 8px; font-weight: 700; }
+body.large-mode .promo-date { font-size: 13px; }
+.promo-card.expired { background: #455a64 !important; border-color: #37474f; }
+.promo-card.expired .promo-t { color: #cfd8dc; text-decoration: line-through; }
+.promo-card.expired .promo-d { color: #b0bec5; }
+.promo-card.expired .promo-date { color: #ef5350; font-weight: bold; }
+.promo-card.expired .promo-img { filter: grayscale(100%); opacity: 0.6; }
+.promo-card.expired .promo-date::after { content: ' (已結束)'; margin-left: 4px; color: #ffcdd2; font-weight: normal; }
+@keyframes flashPromo { 0%,100% { border-color: transparent; } 50% { border-color: var(--promo-color); box-shadow: 0 0 0 4px rgba(255,152,0,0.3); } }
+.flash-promo { animation: flashPromo 1.5s ease-in-out infinite; }
+.promo-sticker { display: inline-flex; align-items: center; gap: 2px; background: #fff3e0; color: #e65100; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; border: 1px solid #ffe0b2; margin-left: 6px; cursor: pointer; vertical-align: middle; }
+body.large-mode .promo-sticker { font-size: 12px; padding: 4px 8px; }
+.promo-sticker:active { background: #ffe0b2; }
+
+#promo-modal { position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.95); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; padding: 20px; }
+#promo-modal.open { opacity: 1; pointer-events: auto; }
+.pm-content { background: #fff; width: 100%; max-width: 500px; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: relative; }
+.pm-img-wrap { background: #000; width: 100%; min-height: 200px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.pm-img { width: 100%; height: auto; max-height: 60vh; object-fit: contain; }
+.pm-info { padding: 20px; overflow-y: auto; background: #fff; flex: 1; }
+.pm-title { font-size: 20px; font-weight: 900; color: #d81b60; margin-bottom: 8px; line-height: 1.3; }
+body.large-mode .pm-title { font-size: 24px; }
+.pm-date { font-size: 12px; font-weight: 700; color: var(--promo-color); margin-bottom: 12px; display: flex; align-items: center; gap: 4px; }
+body.large-mode .pm-date { font-size: 15px; }
+.pm-desc { font-size: 14px; color: #455a64; line-height: 1.6; white-space: pre-line; }
+body.large-mode .pm-desc { font-size: 18px; color: #000; }
+.pm-close-btn { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; border: none; }
+body.large-mode .pm-close-btn { width: 44px; height: 44px; top: 15px; right: 15px; }
+
+#lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+#lightbox.open { opacity: 1; pointer-events: auto; }
+#lb-img { max-width: 90%; max-height: 80vh; object-fit: contain; transform: scale(0.9); transition: transform 0.3s; }
+#lightbox.open #lb-img { transform: scale(1); }
+.lb-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; background: rgba(255,255,255,0.2); border-radius: 50%; padding: 5px; }
+
+#exit-modal { position: fixed; inset: 0; z-index: 11000; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+#exit-modal.show { opacity: 1; pointer-events: auto; }
+.exit-card { background: #fff; width: 85%; max-width: 320px; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transform: scale(0.9); transition: transform 0.2s; }
+#exit-modal.show .exit-card { transform: scale(1); }
+.exit-icon { font-size: 48px; color: var(--text-sub); margin-bottom: 10px; }
+.exit-title { font-size: 18px; font-weight: 900; color: #37474f; margin-bottom: 8px; }
+.exit-desc { font-size: 14px; color: #78909c; margin-bottom: 20px; }
+.exit-actions { display: flex; gap: 10px; justify-content: center; }
+.btn-exit { flex: 1; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; position: relative; z-index: 1; }
+.btn-exit.cancel { background: #eceff1; color: #546e7a; }
+.btn-exit.confirm { background: #d32f2f; color: #fff; }
+
+.floating-nav { position: fixed; bottom: 20px; right: 15px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.float-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid #eceff1; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 18px; text-decoration: none; color: #455a64; position: relative; }
+.float-btn:active { transform: scale(0.9); background: #f5f5f5; }
+.float-btn.btn-large-mode { background: #37474f; color: #fff; border: 1px solid #263238; font-weight: 900; font-size: 16px; }
+body.large-mode .float-btn.btn-large-mode { background: #ffeb3b; color: #37474f; box-shadow: 0 0 15px rgba(255,235,59, 0.5); }
+.float-btn.btn-top { width: 45px; height: 45px; background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(0, 137, 123, 0.4); border: none; font-size: 24px; margin-top: 5px; }
+#btn-install { display: none; background: #263238; color: #ffeb3b; border-color: #263238; }
+.btn-promo-balloon { width: 45px; height: 45px; background: var(--promo-color); color: #fff; border: none; margin-bottom: 5px; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); } }
+
+/* 5-in-1 MENU */
+.fab-menu-group { position: relative; display: flex; flex-direction: column; align-items: center; }
+.fab-sub-btn { width: 35px; height: 35px; border-radius: 50%; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 8px; opacity: 0; transform: translateY(20px) scale(0.8); pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); position: absolute; bottom: 0; z-index: 1; }
+body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
+.fab-menu-group.open .fab-sub-btn { opacity: 1; pointer-events: auto; position: relative; bottom: auto; transform: none; }
+.fab-trigger { z-index: 2; }
+.fab-menu-group.open .fab-trigger { background: #37474f; color: #fff; transform: rotate(180deg); }
+.promo-floating-nav { position: fixed; bottom: 20px; right: 15px; z-index: 2000; display: none; }
+
+#toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(0,0,0,0.8); color: #fff; padding: 10px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; z-index: 3000; opacity: 0; transition: 0.3s; pointer-events: none; display: flex; align-items: center; gap: 6px; }
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+#update-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(50px); background: #37474f; color: #fff; padding: 12px 20px; border-radius: 50px; font-size: 14px; font-weight: 700; z-index: 3001; opacity: 0; pointer-events: none; transition: 0.3s; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+#update-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.btn-update { background: #ffeb3b; color: #37474f; border: none; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; cursor: pointer; }
+
+#loader { position: fixed; inset: 0; background: #fff; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; }
+.loader-spin { width: 40px; height: 40px; border: 4px solid #eceff1; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes flashHighlight { 50% { border-color: #ffd700; box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3); } }
+.flash-highlight { animation: flashHighlight 1.2s ease-in-out; }
+</style>
+</head>
+<body>
+
+<div id="splash-screen">
+  <img src="LOGO.png" class="splash-logo" alt="TTL Logo">
+  <div class="splash-brand">台酒生技 TTL BIO-TECH</div>
+</div>
+
+<div id="loader">
+  <div class="loader-spin"></div>
+  <div style="color:#546e7a;font-weight:700;font-size:12px">資料載入中...</div>
+</div>
+
+<div class="sticky-header-group">
+  <header>
+    <div class="header-top">
+      <div>
+        <h1 class="text-center">TTL Bio-tech 健康美學</h1>
+        <span class="subtitle">台酒生技 產品銷售輔助</span>
+      </div>
+      <a href="print.html" target="_blank" class="btn-pdf">
+        <span class="material-icons-round icon">print</span>
+        <span class="txt">列印目錄</span>
+      </a>
+    </div>
+    <div class="search-box">
+      <span class="material-icons-round search-icon">search</span>
+      <span class="material-icons-round search-clear" id="search-clear" onclick="clearSearch()">close</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜尋產品名稱、關鍵字..." oninput="handleSearch(this.value)">
+    </div>
+  </header>
+
+  <div class="quick-nav-wrap">
+    <nav class="quick-nav" id="topNav"></nav>
+  </div>
+</div>
+
+<main id="main-container">
+  <div id="ranking-section">
+    <div class="rank-head">
+      <div class="rank-title"><span class="material-icons-round" style="color:#d81b60">local_fire_department</span> 熱銷排行</div>
+    </div>
+    <div class="rank-tabs">
+      <div class="r-tab active" onclick="switchRank('all')">全站</div>
+      <div class="r-tab" onclick="switchRank('health')">保健</div>
+      <div class="r-tab" onclick="switchRank('drinks')">飲品</div>
+      <div class="r-tab" onclick="switchRank('beauty')">美容</div>
+      <div class="r-tab" onclick="switchRank('cleaning')">清潔</div>
+    </div>
+    <div class="rank-list" id="rankList"></div>
+  </div>
+  </main>
+
+<div id="promo-container">
+  <div class="promo-header">
+    <div class="promo-title-main">
+      <span class="material-icons-round">campaign</span> 最新活動
+    </div>
+    <button class="btn-back-home" onclick="showMainView()">
+      <span class="material-icons-round" style="font-size:16px">arrow_back</span> 回列表
+    </button>
+  </div>
+  <div class="promo-filters">
+    <div class="pf-tab active" onclick="filterPromos('all')">全部</div>
+    <div class="pf-tab" onclick="filterPromos('health')">保健</div>
+    <div class="pf-tab" onclick="filterPromos('drinks')">飲品</div>
+    <div class="pf-tab" onclick="filterPromos('beauty')">美容</div>
+    <div class="pf-tab" onclick="filterPromos('cleaning')">清潔</div>
+    <div class="pf-tab" onclick="filterPromos('active')">進行中</div>
+    <div class="pf-tab" onclick="filterPromos('expired')">已結束</div>
+  </div>
+
+  <div class="promo-grid" id="promo-grid">
+    </div>
+  
+  <div class="promo-floating-nav" id="promo-fab" style="display:block;">
+    <div class="float-btn btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      <span class="material-icons-round">arrow_upward</span>
+    </div>
+  </div>
+</div>
+
+<div id="promo-modal" onclick="closePromoModal()">
+  <div class="pm-content" onclick="event.stopPropagation()">
+    <button class="pm-close-btn" onclick="closePromoModal()">
+      <span class="material-icons-round">close</span>
+    </button>
+    <div class="pm-img-wrap">
+      <img id="pm-img" class="pm-img" src="">
+    </div>
+    <div class="pm-info">
+      <div class="pm-title" id="pm-title"></div>
+      <div class="pm-date">
+        <span class="material-icons-round" style="font-size:14px">event</span>
+        <span id="pm-date"></span>
+      </div>
+      <div class="pm-desc" id="pm-desc"></div>
+    </div>
+  </div>
+</div>
+
+<div class="floating-nav">
+  <div class="float-btn btn-large-mode" onclick="toggleLargeMode()" title="切換字體/圖片大小">A+</div>
+  
+  <div class="float-btn" id="btn-install" onclick="installApp()" title="安裝App">
+    <span class="material-icons-round">install_mobile</span>
+  </div>
+  
+  <div class="float-btn btn-promo-balloon" onclick="showPromoView()" title="促銷活動">
+    <span class="material-icons-round">campaign</span>
+  </div>
+  
+  <div class="fab-menu-group" id="fabMenu">
+    <div class="fab-sub-btn" onclick="window.location.reload()" title="重整資料" style="background:#ffeb3b;color:#37474f;">
+      <span class="material-icons-round" style="font-size:20px">refresh</span>
+    </div>
+    <div class="fab-sub-btn" onclick="scrollToId('sec-health')" title="保健">💊</div>
+    <div class="fab-sub-btn" onclick="scrollToId('sec-drinks')" title="飲品">🥤</div>
+    <div class="fab-sub-btn" onclick="scrollToId('sec-beauty')" title="美容">💄</div>
+    <div class="fab-sub-btn" onclick="scrollToId('sec-cleaning')" title="清潔">🧼</div>
+    
+    <div class="float-btn fab-trigger" onclick="toggleFabMenu()">
+      <span class="material-icons-round" id="fabIcon">menu</span>
+    </div>
+  </div>
+
+  <div class="float-btn btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <span class="material-icons-round">arrow_upward</span>
+  </div>
+</div>
+
+<div id="lightbox" onclick="uiCloseLightbox()">
+  <span class="material-icons-round lb-close">close</span>
+  <img id="lb-img" src="" onclick="event.stopPropagation()">
+</div>
+
+<div id="exit-modal">
+  <div class="exit-card">
+    <span class="material-icons-round exit-icon">exit_to_app</span>
+    <div class="exit-title">確定要離開嗎？</div>
+    <div class="exit-desc">您即將離開話術系統，<br>是否確定退出？</div>
+    <div class="exit-actions">
+      <button class="btn-exit cancel" onclick="stayOnPage()">留在此頁</button>
+      <button class="btn-exit confirm" onclick="confirmExit()">確認離開</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"><span class="material-icons-round">check_circle</span> 已複製銷售文案</div>
+
+<div id="update-toast">
+  <span class="material-icons-round" style="color:#ffeb3b">system_update</span>
+  <div>發現新版本</div>
+  <button class="btn-update" onclick="updateApp()">更新</button>
+</div>
+
+<script>
+// --- SPLASH LOGIC (2.3s Delay) ---
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const splash = document.getElementById('splash-screen');
+    if(splash) {
+      splash.classList.add('hidden');
+      setTimeout(() => { splash.style.display = 'none'; }, 600);
+    }
+  }, 2300);
+});
+
+const TS = Date.now();
+const SHEET_PRODUCTS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv&t=" + TS;
+const SHEET_PITCH = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv&t=" + TS;
+const SHEET_RANK = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv&t=" + TS;
+const SHEET_PROMO = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv&t=" + TS;
+
+// --- CSV FETCH ---
+const PROXY_PROVIDERS = [
+  { name: "direct", build: (u) => u },
+  { name: "corsproxy", build: (u) => "https://corsproxy.io/?" + encodeURIComponent(u) },
+  { name: "allorigins", build: (u) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u) }
+];
+
+function looksLikeHtml(t) {
+  if (!t) return false;
+  const s = t.trim().slice(0, 300).toLowerCase();
+  return (
+    s.startsWith("<!doctype") ||
+    s.startsWith("<html") ||
+    s.includes("<head") ||
+    s.includes("<body") ||
+    s.includes("</html>")
+  );
+}
+
+async function fetchTextWithTimeout(url, timeoutMs = 15000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function fetchCsvTextSmart(sourceUrl, { label = "csv", required = true, timeoutMs = 15000 } = {}) {
+  let lastErr = null;
+  for (const p of PROXY_PROVIDERS) {
+    const u = p.build(sourceUrl);
+    try {
+      const t = await fetchTextWithTimeout(u, timeoutMs);
+      if (!t || t.trim().length < 20) throw new Error("empty response");
+      if (looksLikeHtml(t)) throw new Error("html response");
+      return t;
+    } catch (e) {
+      lastErr = e;
+      console.warn(`[CSV] ${label} failed via ${p.name}:`, e);
+    }
+  }
+  if (required) throw (lastErr || new Error("fetch failed"));
+  return null;
+}
+
+const SECTIONS = {
+  health: { id: 'sec-health', title: "保健食品", icon: "health_and_safety", items: [] },
+  drinks: { id: 'sec-drinks', title: "保健飲品", icon: "emoji_food_beverage", items: [] },
+  beauty: { id: 'sec-beauty', title: "美容保養", icon: "face", items: [] },
+  cleaning: { id: 'sec-cleaning', title: "清潔&洗沐", icon: "cleaning_services", items: [] },
+  other: { id: 'sec-other', title: "其他精選", icon: "category", items: [] }
+};
+
+let PITCH_MAP = new Map();
+let PRODUCT_MAP = new Map();
+let PROMO_LIST = [];
+let PROMO_MAP = new Map();
+let PRODUCT_TO_PROMO_MAP = new Map();
+let RANKINGS = { all:[], health:[], drinks:[], beauty:[], cleaning:[] };
+
+// --- TOGGLE LARGE MODE ---
+function toggleLargeMode() {
+  document.body.classList.toggle('large-mode');
+  const isLarge = document.body.classList.contains('large-mode');
+  localStorage.setItem('ttl_large_mode', isLarge ? 'true' : 'false');
+}
+
+if (localStorage.getItem('ttl_large_mode') === 'true') {
+  document.body.classList.add('large-mode');
+}
+
+// --- TOGGLE FAB MENU ---
+function toggleFabMenu() {
+  const menu = document.getElementById('fabMenu');
+  const icon = document.getElementById('fabIcon');
+  menu.classList.toggle('open');
+  icon.innerText = menu.classList.contains('open') ? 'close' : 'menu';
+}
+
+window.addEventListener('click', function(e) {
+  const menu = document.getElementById('fabMenu');
+  if (!menu.contains(e.target) && menu.classList.contains('open')) {
+    toggleFabMenu();
+  }
+});
+
+// --- HISTORY & BACK LOGIC ---
+window.onload = function() {
+  history.replaceState({page: 'root'}, document.title);
+  history.pushState({page: 'home'}, document.title);
+  
+  window.addEventListener('popstate', function(event) {
+    const state = event.state;
+    const pm = document.getElementById("promo-modal");
+    if (pm.classList.contains("open") && (!state || state.modal !== 'promo-detail')) {
+      pm.classList.remove("open");
+      return;
+    }
+    const lb = document.getElementById("lightbox");
+    if (lb.classList.contains("open") && (!state || state.modal !== 'lightbox')) {
+      lb.classList.remove("open");
+      return;
+    }
+    const promoContainer = document.getElementById("promo-container");
+    if (promoContainer.style.display === "block" && (!state || state.page !== 'promo')) {
+      showMainView(false);
+      return;
+    }
+    const activeCard = document.querySelector('.p-card.active');
+    if (activeCard && (!state || state.cardId !== activeCard.id)) {
+      activeCard.classList.remove('active');
+      activeCard.querySelector('.p-detail').style.maxHeight = null;
+      return;
+    }
+    if (!state || state.page === 'root') {
+      showExitModal();
+    }
+  });
+};
+
+function showExitModal() { document.getElementById("exit-modal").classList.add("show"); }
+function stayOnPage() {
+  document.getElementById("exit-modal").classList.remove("show");
+  history.pushState({page: 'home'}, document.title);
+}
+function confirmExit() {
+  document.getElementById("exit-modal").classList.remove("show");
+  try { window.close(); } catch(e){}
+  history.back();
+  setTimeout(() => { window.location.href = 'about:blank'; }, 300);
+}
+
+// --- DATA ---
+function classifyProduct(name, originalCat) {
+  const n = name.toLowerCase();
+  const c = originalCat.toLowerCase();
+  if (n.includes("黑麥汁") || n.includes("甘益守禮盒") || n.includes("纖麥汁")) return "drinks";
+  if (n.includes("洗手") || n.includes("潔手")) return "cleaning";
+  if (n.includes("啤酒花") && (n.includes("洗面") || n.includes("沐浴") || n.includes("洗") || n.includes("皂"))) return "cleaning";
+  if (n.includes("易洗樂") || n.includes("洗潔") || n.includes("洗衣") || n.includes("洗碗") || n.includes("菜瓜布") || c.includes("清潔") || (n.includes("洗") && n.includes("精")) || n.includes("皂")) return "cleaning";
+  
+  const beautyKeywords = ["vinata", "面膜", "精華", "霜", "露", "乳液", "潔顏", "卸妝", "美白", "保濕", "抗皺", "潤", "透", "亮", "膚", "痘", "洗髮", "沐浴"];
+  if (c.includes("美容") || c.includes("保養") || beautyKeywords.some(kw => n.includes(kw))) return "beauty";
+  
+  const healthKeywords = ["安可健", "s11", "益生菌", "納豆", "紅麴", "魚油", "鈣", "葡萄糖胺", "葉黃素", "膠囊", "錠", "酵素", "滴雞精"];
+  if (c.includes("保健") || c.includes("健康") || healthKeywords.some(kw => n.includes(kw))) return "health";
+  return "other";
+}
+
+function isPromoActive(promo) {
+  if(!promo.end) return true;
+  const parts = promo.end.split('/');
+  if(parts.length !== 3) return true;
+  const endDate = new Date(parts[0], parts[1]-1, parts[2]);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  return endDate >= today;
+}
+
+function findProductsByKeyword(keyword) {
+  const k = keyword.trim();
+  const typeMap = {
+    '美容': 'beauty', '保養': 'beauty',
+    '清潔': 'cleaning', '洗沐': 'cleaning', '洗潔': 'cleaning',
+    '保健': 'health', '健康': 'health',
+    '飲品': 'drinks', '飲料': 'drinks'
+  };
+  const targetType = typeMap[k]; 
+
+  const matches = [];
+  PRODUCT_MAP.forEach(p => {
+    const pType = classifyProduct(p.name, p.category);
+    if(targetType && pType === targetType) {
+      matches.push(p.code);
+      return;
+    }
+    if(p.category.includes(k) || p.name.includes(k)) {
+      matches.push(p.code);
+      return;
+    }
+  });
+  return matches;
+}
+
+function addPromoToProduct(pCode, promoObj) {
+  if(!PRODUCT_TO_PROMO_MAP.has(pCode)) PRODUCT_TO_PROMO_MAP.set(pCode, []);
+  const list = PRODUCT_TO_PROMO_MAP.get(pCode);
+  if(!list.some(p => p.id === promoObj.id)) {
+    list.push(promoObj);
+  }
+}
+
+async function init() {
+  try {
+    const [resProd, resPitch, resRank, resPromo] = await Promise.all([
+      fetchCsvTextSmart(SHEET_PRODUCTS, { label: "products", required: true }),
+      fetchCsvTextSmart(SHEET_PITCH, { label: "pitch", required: true }),
+      fetchCsvTextSmart(SHEET_RANK, { label: "rank", required: false }),
+      fetchCsvTextSmart(SHEET_PROMO, { label: "promo", required: false })
+    ]);
+
+    Papa.parse(resPitch, { header: true, skipEmptyLines: true }).data.forEach(row => {
+      const code = (row['product_code'] || "").trim();
+      if(code) PITCH_MAP.set(code, {
+        title: row['pitch_title'] || "", 
+        content: row['pitch_content'] || "", 
+        tags: row['tags'] || "",
+        isNew: String(row['is_new'] || "").trim().toUpperCase() === 'TRUE' 
+      });
+    });
+
+    Papa.parse(resProd, { header: true, skipEmptyLines: true }).data.forEach((row, idx) => {
+      const pick = (k) => {
+        const key = Object.keys(row).find(x => x.trim().toLowerCase() === k.trim().toLowerCase());
+        return key ? row[key] : "";
+      };
+      
+      const code = String(pick("product_code")||"").trim();
+      let name = String(pick("product_name")||"").trim();
+      
+      const isHidden = String(pick("is_hidden_pp")||"").trim().toLowerCase().includes('true');
+      const isGift = String(pick("is_gift")||"").toLowerCase().includes('true') || String(pick("is_gift")||"").includes('是');
+      
+      if(!code || !name || isGift || isHidden) return;
+
+      if (name.includes("洗卸潔顏露3入組") || name.includes("甘益守禮盒")) return; 
+      const hiddenSets = ["Set-01", "Set-02", "Set-03"];
+      if (hiddenSets.some(s => code.includes(s))) return;
+
+      name = name.replace("【買就送體驗包1組(精華液+乳液)】", "").replace("面膜任選買一送一", "面膜系列").replace("保暢益生菌 1200/2盒(買一送一)", "保暢益生菌");
+
+      const p = {
+        id: `p-${idx}`, code: code, name: name, category: pick("category").trim(),
+        price: Number((pick("list_price")||"0").replace(/,/g,'')),
+        spec: pick("spec"), photo: pick("photos url"),
+        pitch: PITCH_MAP.get(code) || null
+      };
+
+      PRODUCT_MAP.set(code, p);
+      const group = classifyProduct(p.name, p.category);
+      if(SECTIONS[group]) SECTIONS[group].items.push(p);
+      else SECTIONS.other.items.push(p);
+    });
+
+    if (resPromo) {
+    Papa.parse(resPromo, { header: true, skipEmptyLines: true }).data.forEach(row => {
+      const id = (row['promo_id']||"").trim();
+      if(!id) return;
+      
+      const promo = {
+        id: id,
+        title: row['title'] || "未命名活動",
+        content: row['content'] || "",
+        img: row['img_url'] || "",
+        start: row['start_date'],
+        end: row['end_date'],
+        color: row['bg_color'] || "#fff",
+        relatedRaw: row['related_codes'] || "" 
+      };
+      
+      PROMO_LIST.push(promo);
+      PROMO_MAP.set(id, promo);
+
+      const tokens = promo.relatedRaw.split(/[\r\n,\s]+/).map(c => c.trim()).filter(c => c);
+      
+      tokens.forEach(token => {
+        if (PRODUCT_MAP.has(token)) {
+          addPromoToProduct(token, promo);
+        } else {
+          const matchedCodes = findProductsByKeyword(token);
+          if (matchedCodes.length > 0) {
+            matchedCodes.forEach(c => addPromoToProduct(c, promo));
+          }
+        }
+      });
+    });
+    }
+
+    if (resRank) processRankings(resRank);
+    renderPromotions();
+    renderUI();
+    document.getElementById("loader").style.opacity = 0;
+    setTimeout(() => document.getElementById("loader").remove(), 500);
+
+  } catch(e) {
+    alert("讀取資料失敗"); console.error(e);
+  }
+}
+
+function processRankings(csvText) {
+  let rawList = [];
+  let processedCodes = new Set();
+  Papa.parse(csvText, { header: false }).data.forEach(r => {
+    if(r.length < 6) return;
+    const code = r[0];
+    let qty = parseFloat((r[5] || "0").toString().replace(/,/g, ''));
+    if(!qty || qty <= 0) qty = parseFloat((r[4] || "0").toString().replace(/,/g, ''));
+
+    if(PRODUCT_MAP.has(code) && qty > 0 && !processedCodes.has(code)) {
+      const p = PRODUCT_MAP.get(code);
+      rawList.push({ ...p, sold: qty });
+      processedCodes.add(code);
+    }
+  });
+
+  rawList.sort((a,b) => b.sold - a.sold);
+  RANKINGS.all = rawList.slice(0, 10);
+  RANKINGS.health = rawList.filter(i => classifyProduct(i.name, i.category) === 'health').slice(0, 10);
+  RANKINGS.drinks = rawList.filter(i => classifyProduct(i.name, i.category) === 'drinks').slice(0, 10);
+  RANKINGS.beauty = rawList.filter(i => classifyProduct(i.name, i.category) === 'beauty').slice(0, 10);
+  RANKINGS.cleaning = rawList.filter(i => classifyProduct(i.name, i.category) === 'cleaning').slice(0, 10);
+
+  if(RANKINGS.all.length > 0) {
+    document.getElementById("ranking-section").style.display = "block";
+    renderRankingList("all");
+  }
+}
+
+function renderRankingList(type) {
+  const listEl = document.getElementById("rankList");
+  listEl.innerHTML = "";
+  const data = RANKINGS[type] || [];
+  data.forEach((p, idx) => {
+    const div = document.createElement("div");
+    div.className = "r-card";
+    div.dataset.rank = idx + 1;
+    div.onclick = () => jumpToProduct(p.id);
+    let img = p.photo && p.photo.length>5 ? `<img src="${p.photo}" class="r-img">` : `<div style="font-size:10px;color:#ccc">無圖</div>`;
+    div.innerHTML = `<div class="r-img-wrap"><div class="r-badge">${idx+1}</div>${img}</div><div class="r-name">${p.name}</div>`;
+    listEl.appendChild(div);
+  });
+}
+
+function switchRank(type) {
+  document.querySelectorAll(".r-tab").forEach(el => el.classList.remove("active"));
+  event.target.classList.add("active");
+  renderRankingList(type);
+}
+
+// --- PROMO RENDER & FILTER ---
+let currentPromoFilter = 'all';
+
+function filterPromos(type) {
+  currentPromoFilter = type;
+  document.querySelectorAll(".pf-tab").forEach(el => {
+    el.classList.toggle("active", el.innerText === event.target.innerText);
+  });
+  renderPromotions();
+}
+
+function renderPromotions() {
+  const grid = document.getElementById("promo-grid");
+  grid.innerHTML = "";
+  
+  PROMO_LIST.forEach(promo => {
+    const isActive = isPromoActive(promo);
+    
+    if(currentPromoFilter === 'active' && !isActive) return;
+    if(currentPromoFilter === 'expired' && isActive) return;
+    
+    if(['health', 'drinks', 'beauty', 'cleaning'].includes(currentPromoFilter)) {
+      const tokens = promo.relatedRaw.split(/[\r\n,\s]+/).map(c => c.trim()).filter(c => c);
+      let match = false;
+      for(let token of tokens) {
+        const typeMap = {'美容':'beauty', '保健':'health', '清潔':'cleaning', '飲品':'drinks'};
+        if(typeMap[token] === currentPromoFilter) { match = true; break; }
+        
+        let pCodes = [];
+        if(PRODUCT_MAP.has(token)) pCodes.push(token);
+        else pCodes = findProductsByKeyword(token);
+        
+        for(let pc of pCodes) {
+          const p = PRODUCT_MAP.get(pc);
+          if(p && classifyProduct(p.name, p.category) === currentPromoFilter) {
+            match = true; break;
+          }
+        }
+        if(match) break;
+      }
+      if(!match) return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "promo-card";
+    if(!isActive) card.classList.add('expired');
+    card.id = "promo-" + promo.id;
+    if(promo.color && promo.color !== '#fff' && isActive) card.style.background = promo.color;
+
+    const imgHtml = promo.img ? `<img src="${promo.img}" class="promo-img">` : `<span class="material-icons-round" style="color:#ccc">image</span>`;
+    card.onclick = () => openPromoModal(promo.id);
+
+    card.innerHTML = `
+      <div class="promo-img-box">${imgHtml}</div>
+      <div class="promo-body">
+        <div class="promo-t">${promo.title}</div>
+        <div class="promo-d">${promo.content}</div>
+        <div class="promo-date">${promo.start} ~ ${promo.end}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderUI(filterText = "") {
+  const container = document.getElementById("main-container");
+  const nav = document.getElementById("topNav");
+  container.querySelectorAll('.cat-section').forEach(e => e.remove());
+  if(!filterText) nav.innerHTML = ""; 
+
+  document.getElementById('search-clear').style.display = filterText ? 'block' : 'none';
+
+  const order = ['health', 'drinks', 'beauty', 'cleaning', 'other'];
+  const highlight = (text, term) => {
+    if(!term) return text;
+    const re = new RegExp(`(${term})`, 'gi');
+    return text.replace(re, '<mark class="highlight">$1</mark>');
+  };
+
+  order.forEach(key => {
+    const secData = SECTIONS[key];
+    if(secData.items.length === 0) return;
+
+    const filteredItems = secData.items.filter(p => {
+      if(!filterText) return true;
+      const term = filterText.toLowerCase();
+      return p.name.toLowerCase().includes(term) || p.code.toLowerCase().includes(term) ||
+             (p.pitch && (p.pitch.title.toLowerCase().includes(term) || p.pitch.tags.toLowerCase().includes(term)));
+    });
+
+    if(filteredItems.length === 0) return; 
+
+    if(!filterText) {
+      const pill = document.createElement("div");
+      pill.className = "nav-pill";
+      pill.innerHTML = `<span class="material-icons-round" style="font-size:14px">${secData.icon}</span> ${secData.title}`;
+      pill.onclick = () => scrollToId(secData.id);
+      nav.appendChild(pill);
+    }
+
+    const section = document.createElement("section");
+    section.className = "cat-section";
+    section.id = secData.id;
+    section.innerHTML = `<div class="cat-title">${secData.title} <span style="font-size:12px;color:#90a4ae;font-weight:normal">(${filteredItems.length})</span></div>`;
+
+    const grid = document.createElement("div");
+    grid.className = "grid-layout";
+
+    filteredItems.forEach(p => {
+      const displayName = highlight(p.name, filterText);
+      let detailContent = "", shareBtnHtml = "";
+      
+      let stickerHtml = "";
+      if (PRODUCT_TO_PROMO_MAP.has(p.code)) {
+        const promos = PRODUCT_TO_PROMO_MAP.get(p.code);
+        promos.forEach(pr => {
+          if(isPromoActive(pr)) {
+            stickerHtml += `<div class="promo-sticker" onclick="goToPromoDetail('${pr.id}')"><span class="material-icons-round" style="font-size:10px">local_offer</span>${pr.title}</div>`;
+          }
+        });
+      }
+      
+      if (p.pitch) {
+        let tagsHtml = "";
+        if(p.pitch.tags) tagsHtml = `<div class="pitch-tags">` + p.pitch.tags.split(/,|，/).map(t => `<span class="tag">#${highlight(t.trim(), filterText)}</span>`).join('') + `</div>`;
+        detailContent = `${p.pitch.title ? `<div class="pitch-title">${highlight(p.pitch.title, filterText)}</div>` : ''}${p.pitch.content ? `<div class="pitch-content">${p.pitch.content}</div>` : ''}${tagsHtml}`;
+        
+        const shareText = `【 ✨ 產品推薦 】\n🌿 ${p.name}\n-------------------\n💬 主打：${p.pitch.title || ''}\n📝 特色：${p.pitch.content || ''}\n💰 優惠價：$${p.price.toLocaleString()}\n${p.pitch.tags ? p.pitch.tags.split(',').map(t=>'#'+t.trim()).join(' ') : ''}\n-------------------\n(台酒生技)`;
+        shareBtnHtml = `<div class="btn-share" onclick="copyShare(this, \`${shareText.replace(/`/g, "\\`")}\`)"><span class="material-icons-round" style="font-size:16px">link</span> Share</div>`;
+      } else {
+        detailContent = `<div class="no-data">尚無詳細資料</div>`;
+      }
+
+      let imgHtml = `<div style="font-size:10px;color:#ccc">無圖</div>`;
+      if(p.photo && p.photo.length > 5) {
+        imgHtml = `
+          <img src="${p.photo}" loading="lazy">
+          <div class="zoom-hint"><span class="material-icons-round">zoom_in</span></div>
+        `;
+      }
+      
+      let newBadgeHtml = "";
+      if(p.pitch && p.pitch.isNew) {
+        newBadgeHtml = `<div class="new-badge"><span class="material-icons-round" style="font-size:12px">auto_awesome</span>NEW</div>`;
+      }
+
+      const card = document.createElement("div");
+      card.className = "p-card";
+      card.id = p.id; 
+      card.onclick = (e) => toggleAccordion(card);
+      
+      card.innerHTML = `
+        ${newBadgeHtml}
+        <div class="p-header">
+          <div class="p-img-box" onclick="openLightbox(event, '${p.photo}')">${imgHtml}</div>
+          <div class="p-basic-info">
+            <div class="p-code">${highlight(p.code, filterText)}</div>
+            <div class="p-name">${displayName}${stickerHtml}</div>
+            <div class="p-spec">${p.spec || ''}</div>
+            <div class="p-price-row"><div class="p-price">${p.price.toLocaleString()}</div><span class="material-icons-round p-arrow">expand_more</span></div>
+          </div>
+        </div>
+        <div class="p-detail"><div class="p-detail-inner">${detailContent}<div style="overflow:hidden">${shareBtnHtml}</div></div></div>
+      `;
+      grid.appendChild(card);
+    });
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+  
+  if(!filterText && nav.children.length > 0) nav.children[0].classList.add('active');
+  setupScrollSpy();
+}
+
+let searchTimeout;
+function handleSearch(val) {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    renderUI(val.trim());
+    document.getElementById("ranking-section").style.display = val ? 'none' : 'block';
+  }, 300);
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  handleSearch('');
+  document.getElementById('searchInput').focus(); // Keep focus or blur as needed
+}
+
+function openLightbox(e, src) {
+  if(!src || src.length < 5) return;
+  e.stopPropagation(); 
+  history.pushState({modal: 'lightbox'}, document.title);
+  const lb = document.getElementById("lightbox");
+  const img = document.getElementById("lb-img");
+  img.src = src;
+  lb.classList.add("open");
+}
+
+function uiCloseLightbox() { 
+  history.back();
+}
+
+function copyShare(btn, text) {
+  event.stopPropagation();
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById("toast");
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2000);
+  });
+}
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if(!el) return;
+  const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - 185;
+  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+}
+
+function jumpToProduct(elementId) {
+  const el = document.getElementById(elementId);
+  if(!el) return;
+  
+  document.querySelectorAll('.p-card.active').forEach(card => {
+    if(card !== el) { card.classList.remove('active'); card.querySelector('.p-detail').style.maxHeight = null; }
+  });
+  
+  if(!el.classList.contains('active')) {
+    toggleAccordion(el);
+  }
+  
+  el.classList.add("flash-highlight");
+  setTimeout(()=>el.classList.remove("flash-highlight"), 1200);
+  setTimeout(() => {
+    const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - 185;
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+  }, 300);
+}
+
+function toggleAccordion(clickedCard) {
+  if(event.target.classList.contains('promo-sticker') || event.target.parentElement.classList.contains('promo-sticker')) return;
+
+  const isActive = clickedCard.classList.contains('active');
+  
+  if(isActive) {
+    history.back();
+    return;
+  }
+
+  const currentActive = document.querySelector('.p-card.active');
+  if (currentActive) {
+    currentActive.classList.remove('active');
+    currentActive.querySelector('.p-detail').style.maxHeight = null;
+    if (history.state && history.state.cardId) {
+       history.replaceState({cardId: clickedCard.id}, document.title);
+    } else {
+       history.pushState({cardId: clickedCard.id}, document.title);
+    }
+  } else {
+    history.pushState({cardId: clickedCard.id}, document.title);
+  }
+
+  clickedCard.classList.add('active');
+  const panel = clickedCard.querySelector('.p-detail');
+  panel.style.maxHeight = panel.scrollHeight + "px";
+}
+
+function setupScrollSpy() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".nav-pill").forEach(pill => {
+          const isActive = pill.innerText.includes(entry.target.querySelector('.cat-title').innerText.split('(')[0].trim());
+          pill.classList.toggle("active", isActive);
+          if(isActive) pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+      }
+    });
+  }, { root: null, rootMargin: '-190px 0px -70% 0px', threshold: 0 });
+  document.querySelectorAll('.cat-section').forEach(section => { observer.observe(section); });
+}
+
+// --- PROMO VIEW LOGIC ---
+function showPromoView(targetId) {
+  if (history.state && history.state.page !== 'promo') {
+    history.pushState({page: 'promo'}, document.title);
+  }
+
+  document.getElementById("main-container").style.display = 'none';
+  document.querySelector('.sticky-header-group').style.display = 'none';
+  document.getElementById("promo-container").style.display = 'block';
+  document.querySelector('.floating-nav').style.display = 'none';
+  // Show Promo Float Nav
+  document.getElementById('promo-fab').style.display = 'block';
+  
+  window.scrollTo({top: 0});
+
+  if(targetId) {
+    const card = document.getElementById("promo-" + targetId);
+    if(card) {
+      setTimeout(() => {
+        card.scrollIntoView({behavior: "smooth", block: "center"});
+        card.classList.add("flash-promo");
+        setTimeout(() => card.classList.remove("flash-promo"), 3000);
+      }, 100);
+    }
+  }
+}
+
+function showMainView(pushHistory = true) {
+  if (pushHistory) history.back();
+  else {
+    document.getElementById("main-container").style.display = 'block';
+    document.querySelector('.sticky-header-group').style.display = 'block';
+    document.getElementById("promo-container").style.display = 'none';
+    document.querySelector('.floating-nav').style.display = 'flex';
+    document.getElementById('promo-fab').style.display = 'none';
+  }
+}
+
+// --- PROMO MODAL LOGIC ---
+function openPromoModal(promoId) {
+  event.stopPropagation();
+  const promo = PROMO_MAP.get(promoId);
+  if(!promo) return;
+
+  history.pushState({modal: 'promo-detail'}, document.title);
+
+  // Clear image first to avoid ghosting
+  const imgEl = document.getElementById('pm-img');
+  imgEl.src = ""; 
+  
+  imgEl.src = promo.img || "";
+  document.getElementById('pm-title').innerText = promo.title;
+  document.getElementById('pm-date').innerText = promo.start + " ~ " + promo.end;
+  document.getElementById('pm-desc').innerText = promo.content;
+
+  document.getElementById('promo-modal').classList.add('open');
+}
+
+function closePromoModal() {
+  history.back();
+}
+
+function goToPromoDetail(promoId) {
+  event.stopPropagation();
+  showPromoView(promoId);
+  setTimeout(() => openPromoModal(promoId), 500); 
+}
+
+// --- PWA LOGIC ---
+let deferredPrompt;
+let newWorker;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('btn-install').style.display = 'flex';
+});
+
+async function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('btn-install').style.display = 'none';
+  }
+}
+
+function updateApp() {
+  if (newWorker) {
+    newWorker.postMessage({ type: 'SKIP_WAITING' });
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      if (reg.waiting) {
+        newWorker = reg.waiting;
+        showUpdateToast();
+        return;
+      }
+      reg.addEventListener('updatefound', () => {
+        const installingWorker = reg.installing;
+        installingWorker.onstatechange = () => {
+          if (installingWorker.state === 'installed') {
+            if (navigator.serviceWorker.controller) {
+              newWorker = installingWorker;
+              showUpdateToast();
+            }
+          }
+        };
+      });
+    });
+
+    let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
+    });
+  });
+}
+
+function showUpdateToast() {
+  document.getElementById('update-toast').classList.add('show');
+}
+
+init();
+</script>
+</body>
+</html>
