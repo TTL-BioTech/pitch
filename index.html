@@ -31,7 +31,6 @@
   --promo-color: #ff9800;
   --new-tag-color: #ff5252;
   
-  /* Standard Sizes */
   --sz-p-img: 65px;
   --sz-p-title: 14px;
   --sz-p-price: 16px;
@@ -39,15 +38,14 @@
   --sz-rank-img: 90px;
 }
 
-/* --- LARGE MODE (Senior Friendly) --- */
 body.large-mode {
-  --sz-p-img: 100px;      /* Image +50% */
-  --sz-p-title: 18px;     /* Title +30% */
-  --sz-p-price: 20px;     /* Price Larger */
-  --sz-p-desc: 16px;      /* Content Readable */
+  --sz-p-img: 100px;
+  --sz-p-title: 18px;
+  --sz-p-price: 20px;
+  --sz-p-desc: 16px;
   --sz-rank-img: 110px;
-  --text-main: #000000;   /* High Contrast */
-  --text-sub: #37474f;    /* Darker Gray */
+  --text-main: #000000;
+  --text-sub: #37474f;
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -495,11 +493,11 @@ const SHEET_PITCH = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBP
 const SHEET_RANK = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv&t=" + TS;
 const SHEET_PROMO = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv&t=" + TS;
 
-// --- CSV FETCH ---
+// --- CSV FETCH (Double Cache-Busting) ---
 const PROXY_PROVIDERS = [
-  { name: "direct", build: (u) => u },
-  { name: "corsproxy", build: (u) => "https://corsproxy.io/?" + encodeURIComponent(u) },
-  { name: "allorigins", build: (u) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u) }
+  { name: "direct", build: (u) => u + "&_bust=" + Date.now() }, // Force new request
+  { name: "corsproxy", build: (u) => "https://corsproxy.io/?" + encodeURIComponent(u + "&_bust=" + Date.now()) },
+  { name: "allorigins", build: (u) => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u + "&_bust=" + Date.now()) }
 ];
 
 function looksLikeHtml(t) {
@@ -518,7 +516,11 @@ async function fetchTextWithTimeout(url, timeoutMs = 15000) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const res = await fetch(url, { signal: ctrl.signal, cache: "no-store" });
+    const res = await fetch(url, { 
+      signal: ctrl.signal, 
+      cache: "no-store", // Browser: Don't cache
+      headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' } // Proxy: Don't cache
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
     return await res.text();
   } finally {
@@ -552,7 +554,8 @@ const SECTIONS = {
   other: { id: 'sec-other', title: "其他精選", icon: "category", items: [] }
 };
 
-let PITCH_MAP = new Map();
+let PITCH_MAP = new Map(); 
+let PITCH_COUNTER = new Map(); // [NEW] Track count for sequential mapping
 let PRODUCT_MAP = new Map();
 let PROMO_LIST = [];
 let PROMO_MAP = new Map();
@@ -691,6 +694,13 @@ function addPromoToProduct(pCode, promoObj) {
   }
 }
 
+// [FIX] Robust Helper for Case-Insensitive Key Access
+const getVal = (row, targetKey) => {
+  if (!row) return "";
+  const foundKey = Object.keys(row).find(k => k.trim().toLowerCase() === targetKey.trim().toLowerCase());
+  return foundKey ? row[foundKey] : "";
+};
+
 async function init() {
   try {
     const [resProd, resPitch, resRank, resPromo] = await Promise.all([
@@ -700,41 +710,77 @@ async function init() {
       fetchCsvTextSmart(SHEET_PROMO, { label: "promo", required: false })
     ]);
 
+    // Parse PITCH Sheet -> Store as ARRAY to support duplicates
     Papa.parse(resPitch, { header: true, skipEmptyLines: true }).data.forEach(row => {
-      const code = (row['product_code'] || "").trim();
-      if(code) PITCH_MAP.set(code, {
-        title: row['pitch_title'] || "", 
-        content: row['pitch_content'] || "", 
-        tags: row['tags'] || "",
-        isNew: String(row['is_new'] || "").trim().toUpperCase() === 'TRUE' 
-      });
+      const code = getVal(row, 'product_code').trim().toUpperCase();
+      
+      const pitchName = getVal(row, 'product_name').trim(); 
+      const rawHidden = getVal(row, 'is_hidden_pp').trim().toUpperCase();
+      // Broad Hidden Logic: TRUE, YES, 1, Y
+      const isHidden = (rawHidden === 'TRUE' || rawHidden === 'YES' || rawHidden === '1' || rawHidden === 'Y'); 
+
+      if(code) {
+        if (!PITCH_MAP.has(code)) PITCH_MAP.set(code, []);
+        PITCH_MAP.get(code).push({
+          title: getVal(row, 'pitch_title').trim(), 
+          content: getVal(row, 'pitch_content').trim(), 
+          tags: getVal(row, 'tags').trim(),
+          isNew: getVal(row, 'is_new').trim().toUpperCase() === 'TRUE',
+          name: pitchName, 
+          isHidden: isHidden 
+        });
+      }
     });
 
     Papa.parse(resProd, { header: true, skipEmptyLines: true }).data.forEach((row, idx) => {
-      const pick = (k) => {
-        const key = Object.keys(row).find(x => x.trim().toLowerCase() === k.trim().toLowerCase());
-        return key ? row[key] : "";
-      };
+      const code = getVal(row, 'product_code').trim().toUpperCase();
+      let originalName = getVal(row, 'product_name').trim();
       
-      const code = String(pick("product_code")||"").trim();
-      let name = String(pick("product_name")||"").trim();
+      const isGift = getVal(row, 'is_gift').toLowerCase().includes('true') || getVal(row, 'is_gift').includes('是');
       
-      const isHidden = String(pick("is_hidden_pp")||"").trim().toLowerCase().includes('true');
-      const isGift = String(pick("is_gift")||"").toLowerCase().includes('true') || String(pick("is_gift")||"").includes('是');
-      
-      if(!code || !name || isGift || isHidden) return;
+      // [FIX] INDEX-BASED LOGIC (Safe Queue)
+      let pitchData = null;
+      if (PITCH_MAP.has(code)) {
+        const list = PITCH_MAP.get(code);
+        
+        // Initialize counter if not exists
+        if (!PITCH_COUNTER.has(code)) PITCH_COUNTER.set(code, 0);
+        const currentIndex = PITCH_COUNTER.get(code);
+        
+        // Get data if index exists
+        if (currentIndex < list.length) {
+          pitchData = list[currentIndex];
+          PITCH_COUNTER.set(code, currentIndex + 1); // Increment for next match
+        }
+      }
 
-      if (name.includes("洗卸潔顏露3入組") || name.includes("甘益守禮盒")) return; 
+      // [CHECK 1] Hidden Logic
+      if (pitchData && pitchData.isHidden) return; 
+      
+      // [CHECK 2] Basic Integrity
+      if(!code || !originalName || isGift) return;
+
+      if (originalName.includes("洗卸潔顏露3入組") || originalName.includes("甘益守禮盒")) return; 
       const hiddenSets = ["Set-01", "Set-02", "Set-03"];
       if (hiddenSets.some(s => code.includes(s))) return;
 
-      name = name.replace("【買就送體驗包1組(精華液+乳液)】", "").replace("面膜任選買一送一", "面膜系列").replace("保暢益生菌 1200/2盒(買一送一)", "保暢益生菌");
+      // [CHECK 3] Name Logic
+      let finalName = (pitchData && pitchData.name) ? pitchData.name : originalName;
+
+      if (!pitchData || !pitchData.name) {
+          finalName = finalName.replace("【買就送體驗包1組(精華液+乳液)】", "").replace("面膜任選買一送一", "面膜系列").replace("保暢益生菌 1200/2盒(買一送一)", "保暢益生菌");
+      }
+
+      const category = getVal(row, 'category').trim();
+      const listPrice = getVal(row, 'list_price') || "0";
+      const spec = getVal(row, 'spec');
+      const photo = getVal(row, 'photos url');
 
       const p = {
-        id: `p-${idx}`, code: code, name: name, category: pick("category").trim(),
-        price: Number((pick("list_price")||"0").replace(/,/g,'')),
-        spec: pick("spec"), photo: pick("photos url"),
-        pitch: PITCH_MAP.get(code) || null
+        id: `p-${idx}`, code: code, name: finalName, category: category,
+        price: Number(listPrice.replace(/,/g,'')),
+        spec: spec, photo: photo,
+        pitch: pitchData || null
       };
 
       PRODUCT_MAP.set(code, p);
@@ -745,18 +791,18 @@ async function init() {
 
     if (resPromo) {
     Papa.parse(resPromo, { header: true, skipEmptyLines: true }).data.forEach(row => {
-      const id = (row['promo_id']||"").trim();
+      const id = getVal(row, 'promo_id').trim();
       if(!id) return;
       
       const promo = {
         id: id,
-        title: row['title'] || "未命名活動",
-        content: row['content'] || "",
-        img: row['img_url'] || "",
-        start: row['start_date'],
-        end: row['end_date'],
-        color: row['bg_color'] || "#fff",
-        relatedRaw: row['related_codes'] || "" 
+        title: getVal(row, 'title') || "未命名活動",
+        content: getVal(row, 'content') || "",
+        img: getVal(row, 'img_url') || "",
+        start: getVal(row, 'start_date'),
+        end: getVal(row, 'end_date'),
+        color: getVal(row, 'bg_color') || "#fff",
+        relatedRaw: getVal(row, 'related_codes') || "" 
       };
       
       PROMO_LIST.push(promo);
