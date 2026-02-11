@@ -150,13 +150,14 @@ header {
 h1 { margin: 0; font-size: 20px; color: var(--primary); font-weight: 900; line-height: 1.2; }
 .subtitle { font-size: 11px; color: var(--text-sub); display: block; text-align: center; }
 
+/* PRINT BUTTON */
 .btn-pdf {
   position: absolute; right: 0; top: 50%; transform: translateY(-50%);
   background: var(--primary-light); color: var(--primary);
   border: 1px solid var(--primary); border-radius: 20px;
   padding: 6px 12px; font-size: 13px; font-weight: 700;
   text-decoration: none; display: flex; align-items: center; gap: 4px;
-  transition: all 0.2s;
+  transition: all 0.2s; cursor: pointer;
 }
 .btn-pdf span.icon { font-size: 18px; }
 @media (max-width: 480px) {
@@ -241,13 +242,12 @@ body.large-mode .new-badge { font-size: 12px; padding: 4px 10px 4px 8px; }
   position: relative; overflow: hidden; 
   cursor: pointer;
 }
-/* Show zoom hint only when active */
 .p-card.active .p-img-box { cursor: zoom-in; }
 
 .p-img-box img { width: 90%; height: 90%; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .p-card.active .p-img-box img { transform: scale(1.15); }
 
-/* V4.7 Fixed: Default zoom hint hidden, shown when active */
+/* Zoom Hint Logic */
 .zoom-hint {
   position: absolute; bottom: 2px; right: 2px; color: #fff; background: rgba(0,0,0,0.4); 
   border-radius: 4px; padding: 2px; display: flex; align-items: center; justify-content: center; 
@@ -330,7 +330,7 @@ body.large-mode .promo-t { font-size: 18px; }
 .promo-d { font-size: 11px; color: #78909c; line-height: 1.4; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 body.large-mode .promo-d { font-size: 14px; color: #455a64; -webkit-line-clamp: 4; }
 
-/* CHANNEL ICONS ROW (V4.7 - 2x2 GRID) */
+/* CHANNEL ICONS ROW */
 .promo-meta {
   display: flex; justify-content: space-between; align-items: center;
   margin-top: 8px; border-top: 1px solid #f5f5f5; padding-top: 6px;
@@ -338,10 +338,10 @@ body.large-mode .promo-d { font-size: 14px; color: #455a64; -webkit-line-clamp: 
 .promo-date { font-size: 10px; color: var(--promo-color); font-weight: 700; }
 body.large-mode .promo-date { font-size: 13px; }
 
-/* V4.7: Grid Layout for 2x2 */
+/* Grid Layout for 2x2 */
 .channel-icons { 
   display: grid; 
-  grid-template-columns: repeat(2, auto); /* Force 2 columns */
+  grid-template-columns: repeat(2, auto); 
   gap: 3px; 
 }
 .c-icon {
@@ -352,7 +352,6 @@ body.large-mode .promo-date { font-size: 13px; }
 }
 .c-icon:active { transform: scale(0.9); }
 
-/* V4.1 ICONS & COLORS */
 .c-icon.showroom { background: #795548; } 
 .c-icon.mart { background: #00bcd4; } 
 .c-icon.eshop { background: #e91e63; } 
@@ -553,7 +552,7 @@ body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
   display: none; /* Show only in promo view */
 }
 
-/* --- TOAST (V4.4 - RESPONSIVE FIX) --- */
+/* --- TOAST --- */
 #toast {
   position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
   background: rgba(0,0,0,0.9); color: #fff; 
@@ -565,12 +564,11 @@ body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
   opacity: 0; transition: 0.3s;
   pointer-events: none; display: flex; align-items: center; gap: 8px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-  /* V4.4 Changes Below */
-  white-space: normal; /* Allow wrapping */
-  max-width: 90%; /* Safety margin for small screens */
-  width: max-content; /* Shrink to fit, but cap at max-width */
-  justify-content: center; /* Center content */
-  line-height: 1.4; /* Better readability for multiline */
+  white-space: normal; 
+  max-width: 90%; 
+  width: max-content; 
+  justify-content: center;
+  line-height: 1.4; 
   text-align: center;
 }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -604,10 +602,56 @@ body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* PROMO CONTAINER HIDDEN BY DEFAULT (V4.3 FIX) */
+/* PROMO CONTAINER HIDDEN BY DEFAULT */
 #promo-container {
   display: none;
   max-width: 800px; margin: 0 auto; padding: 20px 15px;
+}
+
+/* V4.9 UPDATED PRINT STYLES */
+@media print {
+  /* Hide everything by default */
+  body > * { display: none !important; }
+  
+  /* Show only the print area */
+  #print-container { 
+    display: block !important; 
+    position: absolute; top: 0; left: 0; width: 100%; 
+    background: #fff; color: #000; padding: 20px;
+  }
+  
+  .print-header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+  .print-brand { font-size: 24px; font-weight: 900; margin-bottom: 5px; }
+  .print-sub { font-size: 14px; color: #555; }
+  
+  /* V4.9 Section Title with Note */
+  .print-sec-title { 
+    font-size: 16px; font-weight: 700; margin: 25px 0 10px; 
+    border-bottom: 1px solid #999; padding-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .print-note { font-size: 11px; font-weight: normal; color: #666; margin-left: 10px; }
+  
+  table.print-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 15px; }
+  table.print-table th, table.print-table td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; vertical-align: top; }
+  table.print-table th { background-color: #eee; font-weight: 700; }
+  
+  /* V4.9 Helper for Promo Boxes (Categories) */
+  .p-promo-box { 
+    border: 1px solid #ddd; padding: 8px 10px; margin-bottom: 8px; 
+    break-inside: avoid; border-radius: 4px; 
+    display: flex; flex-direction: column;
+  }
+  /* Color Coding for Print */
+  .p-cat-health { border-left: 5px solid #00897b; background: #e0f2f1; } /* Green */
+  .p-cat-drinks { border-left: 5px solid #ff9800; background: #fff3e0; } /* Orange */
+  .p-cat-beauty { border-left: 5px solid #e91e63; background: #fce4ec; } /* Pink */
+  .p-cat-cleaning { border-left: 5px solid #00bcd4; background: #e0f7fa; } /* Cyan */
+  .p-cat-other { border-left: 5px solid #9e9e9e; background: #f5f5f5; } /* Grey */
+
+  .p-promo-t { font-weight: 900; font-size: 14px; margin-bottom: 4px; color: #000; }
+  .p-promo-d { font-size: 12px; color: #333; white-space: pre-line; line-height: 1.4; }
+  .p-promo-time { font-size: 11px; color: #555; margin-top: 4px; font-style: italic; }
 }
 </style>
 </head>
@@ -642,7 +686,7 @@ body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
         <h1 class="text-center">TTL Bio-tech 健康美學</h1>
         <span class="subtitle">台酒生技 產品銷售輔助</span>
       </div>
-      <a href="print.html" target="_blank" class="btn-pdf">
+      <a href="#" onclick="printCatalog(); return false;" class="btn-pdf">
         <span class="material-icons-round icon">print</span>
         <span class="txt">列印目錄</span>
       </a>
@@ -784,6 +828,8 @@ body.large-mode .fab-sub-btn { width: 45px; height: 45px; font-size: 20px; }
   <div>發現新版本</div>
   <button class="btn-update" onclick="updateApp()">更新</button>
 </div>
+
+<div id="print-container" style="display:none;"></div>
 
 <script>
 // --- SPLASH & iOS PROMPT LOGIC ---
@@ -1654,6 +1700,97 @@ function goToPromoDetail(promoId) {
   event.stopPropagation();
   showPromoView(promoId);
   setTimeout(() => openPromoModal(promoId), 500); 
+}
+
+// --- V4.9 PRINT LOGIC (Optimized) ---
+function printCatalog() {
+  const container = document.getElementById('print-container');
+  const today = new Date().toLocaleDateString('zh-TW');
+  let html = `
+    <div class="print-header">
+      <div class="print-brand">TTL 台酒生技 - 產品快報</div>
+      <div class="print-sub">列印日期：${today}</div>
+    </div>
+  `;
+
+  // 1. Promo Section - Grouped by Category & Colored
+  const activePromos = PROMO_LIST.filter(p => isPromoActive(p));
+  if(activePromos.length > 0) {
+    html += `<div class="print-sec-title">🔥 本期熱門活動 <span class="print-note">(依列印當下資訊)</span></div>`;
+    
+    // Sort logic: Health > Drinks > Beauty > Cleaning > Other
+    // We reuse classifyProduct logic based on title or content
+    const sortOrder = { 'health': 1, 'drinks': 2, 'beauty': 3, 'cleaning': 4, 'other': 5 };
+    
+    // Helper to determine promo category
+    const getPromoCat = (p) => {
+      if(p.title.includes("保健") || p.title.includes("益生菌")) return 'health';
+      if(p.title.includes("飲品") || p.title.includes("黑麥汁")) return 'drinks';
+      if(p.title.includes("美容") || p.title.includes("保養")) return 'beauty';
+      if(p.title.includes("清潔") || p.title.includes("洗")) return 'cleaning';
+      
+      // Fallback: check related products
+      const codes = p.relatedRaw.split(/[\r\n,\s]+/).filter(Boolean);
+      if(codes.length > 0) {
+        const prod = PRODUCT_MAP.get(codes[0]);
+        if(prod) return classifyProduct(prod.name, prod.category);
+      }
+      return 'other';
+    };
+
+    activePromos.sort((a,b) => sortOrder[getPromoCat(a)] - sortOrder[getPromoCat(b)]);
+
+    activePromos.forEach(p => {
+      const cat = getPromoCat(p);
+      html += `
+        <div class="p-promo-box p-cat-${cat}">
+          <div class="p-promo-t">★ ${p.title}</div>
+          <div class="p-promo-d">${p.content}</div>
+          <div class="p-promo-time">期間：${p.start} ~ ${p.end}</div>
+        </div>
+      `;
+    });
+  }
+
+  // 2. Product Table - With Promo Content
+  html += `<div class="print-sec-title">📦 全產品價格表 <span class="print-note">(依列印當下資訊)</span></div>`;
+  html += `<table class="print-table">
+    <thead><tr><th style="width:15%">代號</th><th style="width:35%">品名</th><th style="width:30%">產品促銷活動內容</th><th style="width:20%">建議售價</th></tr></thead>
+    <tbody>`;
+  
+  const order = ['health', 'drinks', 'beauty', 'cleaning', 'other'];
+  order.forEach(key => {
+    const sec = SECTIONS[key];
+    if(sec.items.length > 0) {
+      html += `<tr><td colspan="4" style="background:#f0f0f0;font-weight:bold;text-align:center">${sec.title}</td></tr>`;
+      sec.items.forEach(p => {
+        let promoText = "";
+        let rowStyle = "";
+        
+        // Find active promos for this product
+        if (PRODUCT_TO_PROMO_MAP.has(p.code)) {
+          const promos = PRODUCT_TO_PROMO_MAP.get(p.code).filter(pr => isPromoActive(pr));
+          if (promos.length > 0) {
+            promoText = promos.map(pr => `• ${pr.content}`).join('<br>');
+            rowStyle = "font-weight:700; color:#d81b60;"; // Highlight row
+          }
+        }
+
+        html += `
+          <tr>
+            <td>${p.code}</td>
+            <td>${p.name}</td>
+            <td style="${rowStyle}">${promoText}</td>
+            <td style="text-align:right">$${p.price.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+    }
+  });
+  html += `</tbody></table>`;
+
+  container.innerHTML = html;
+  window.print();
 }
 
 // --- PWA LOGIC ---
