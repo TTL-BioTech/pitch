@@ -1,5 +1,5 @@
 // sw.js - React / PWA 版
-const CACHE_NAME = 'ttl-pwa-v85';
+const CACHE_NAME = 'ttl-pwa-v86';
 const IMAGE_CACHE_NAME = 'ttl-images-v3';
 const IMAGE_RETRY_PARAM = 'img_retry';
 const urlsToCache = [
