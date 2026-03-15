@@ -166,12 +166,35 @@ const PROMO_STATUS_META = {
   ended: { label: '已結束', className: 'border-slate-200 bg-slate-100 text-slate-600 line-through' },
 }
 
-function normalizeCategory(raw) {
-  const value = raw || ''
-  if (value.includes('清潔') || value.includes('洗沐')) return '清潔產品'
-  if (value.includes('美容') || value.includes('保養')) return '美容產品'
-  if (value.includes('飲品') || value.includes('黑麥汁')) return '保健飲品'
-  if (value.includes('保健食品') || value.includes('健康') || value.includes('買一送一')) return '保健食品'
+// 🚀 關鍵升級：移植 index.html 的智慧關鍵字分類法
+function normalizeCategory(nameRaw, catRaw) {
+  const n = (nameRaw || '').toLowerCase()
+  const c = (catRaw || '').toLowerCase()
+
+  // 1. 保健飲品優先攔截
+  if (n.includes('黑麥汁') || n.includes('甘益守禮盒') || n.includes('纖麥汁')) return '保健飲品'
+
+  // 2. 清潔產品 (強制收編所有 洗沐、肥皂 相關商品)
+  const cleaningKeywords = ['洗手', '潔手', '易洗樂', '洗潔', '洗衣', '洗碗', '菜瓜布', '皂', '沐浴', '洗髮', '洗面']
+  if (c.includes('清潔') || c.includes('洗沐') || cleaningKeywords.some(kw => n.includes(kw)) || (n.includes('洗') && n.includes('精'))) {
+    return '清潔產品'
+  }
+
+  // 3. 美容產品 (此時洗沐商品已被上方攔截，只剩純保養品)
+  const beautyKeywords = ['vinata', '面膜', '精華', '霜', '露', '乳液', '潔顏', '卸妝', '美白', '保濕', '抗皺', '潤', '透', '亮', '膚', '痘']
+  if (c.includes('美容') || c.includes('保養') || beautyKeywords.some(kw => n.includes(kw))) {
+    return '美容產品'
+  }
+
+  // 4. 保健食品
+  const healthKeywords = ['安可健', 's11', '益生菌', '納豆', '紅麴', '魚油', '鈣', '葡萄糖胺', '葉黃素', '膠囊', '錠', '酵素', '滴雞精']
+  if (c.includes('保健') || c.includes('健康') || c.includes('買一送一') || healthKeywords.some(kw => n.includes(kw))) {
+    return '保健食品'
+  }
+
+  // 5. 再次確認飲品
+  if (c.includes('飲品') || c.includes('飲料')) return '保健飲品'
+
   return '其他'
 }
 
@@ -1023,8 +1046,8 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
 }
 
 export default function App() {
-  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme,'ttl-rose')
-  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A+')
+  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, THEMES[0].key)
+  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A')
   const [products, setProducts] = useState([])
   const [promotions, setPromotions] = useState([])
   const [rankings, setRankings] = useState([])
@@ -1033,7 +1056,7 @@ export default function App() {
   const [stage, setStage] = useState('準備啟動系統...')
   const [inputValue, setInputValue] = useState('') 
   const [keyword, setKeyword] = useState('')       
-  // 移除多餘的 activeCategory 狀態，回歸純淨錨點設計
+  const [activeCategory, setActiveCategory] = useState('all')
   const [activeTag, setActiveTag] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [promoDrawer, setPromoDrawer] = useState(null)
@@ -1117,11 +1140,14 @@ export default function App() {
         const isHidden = pitch.is_hidden_pp === true || String(pitch.is_hidden_pp).toLowerCase() === 'true' || String(pitch.is_hidden_pp) === '1' ||
                          item.is_hidden_pp === true || String(item.is_hidden_pp).toLowerCase() === 'true' || String(item.is_hidden_pp) === '1'
 
+        // 決定最優先使用的名稱供分類引擎判斷
+        const pName = pitch.title || item.name;
+
         return {
           code: item.code,
           name: item.name,
           category: item.category,
-          group: normalizeCategory(item.category),
+          group: normalizeCategory(pName, item.category), // 🚀 將商品名稱與分類一併傳入智慧分類引擎
           price: Number(item.price || 0),
           photo: item.photo,
           title: pitch.title || '',
@@ -1200,7 +1226,6 @@ export default function App() {
     return keyword.split(/[\s\u3000,，、]+/).filter(Boolean)
   }, [keyword])
 
-  // 修復過濾邏輯：移除 activeCategory 的參與，回歸純粹的關鍵字與標籤搜尋
   const filteredProducts = useMemo(() => {
     return productsWithPromos.filter((item) => {
       const tagOk = !activeTag || item.tags.includes(activeTag)
@@ -1334,7 +1359,6 @@ export default function App() {
     }, 280) 
   }, [setExpandedCardId])
 
-  // 新增：從排行榜與活動點擊時，自動清除所有過濾條件，還原乾淨畫面的全域導航函式
   const handleOpenFromGlobal = useCallback((code) => {
     clearFilters();
     openProductByCode(code);
@@ -1351,7 +1375,7 @@ export default function App() {
     
     setPromoDrawer(null);
     setPromoCenterOpen(false);
-    clearFilters(); // 自動重置回「全部商品列表」
+    clearFilters(); 
     
     setTimeout(() => {
       openProductByCode(code);
