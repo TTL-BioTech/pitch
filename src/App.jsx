@@ -36,13 +36,13 @@ import {
 } from 'lucide-react'
 import { useAppStore } from './store/useAppStore'
 
-// 🚀 PWA 全域事件捕捉：解決 React 掛載太慢導致漏接安裝提示的問題
+// 🚀 PWA 全域事件捕捉：確保 React 載入前瀏覽器發出的安裝提示不會漏接
 let globalPwaPrompt = null;
 if (typeof window !== 'undefined') {
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     globalPwaPrompt = e;
-    window.dispatchEvent(new Event('pwa-ready')); // 通知 React 可以彈出安裝畫面了
+    window.dispatchEvent(new Event('pwa-ready')); 
   });
 }
 
@@ -247,43 +247,35 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-// 🚀 高精度 ScrollSpy：解決「保健飲品」因太短而被排擠的問題
+// 🚀 修正版 ScrollSpy：移除干擾版面的 CSS，透過加寬判定區域（Detection Zone）來捕捉較小的分類區塊
 function useScrollSpy(ids, layoutReady) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
   useEffect(() => {
     if (!layoutReady || !ids.length) return undefined
     
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean)
+    if (!elements.length) return undefined
     
-    // 將偵測精度提高到 20 個階層 (每 5% 判定一次)
-    const thresholds = Array.from({ length: 21 }, (_, i) => i * 0.05);
-
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting)
-        
-        if (visible.length > 0) {
-          visible.sort((a, b) => {
-            const ratioDiff = b.intersectionRatio - a.intersectionRatio;
-            // 如果面積佔比差異小於 10%，則誰的頂部最靠近畫面上方（Header下緣），誰就優先亮燈
-            if (Math.abs(ratioDiff) < 0.1) {
-              return Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top);
-            }
-            return ratioDiff;
-          });
-          setActiveSection(visible[0].target.id);
-        }
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+          
+        if (visible[0]) setActiveSection(visible[0].target.id)
       },
       { 
-        // 避開頂端 Header 的 150px 範圍，並忽略畫面最下方的內容
-        rootMargin: '-150px 0px -40% 0px', 
-        threshold: thresholds
+        // 判定區域：略過畫面上方 140px (Header高度)，並略過下方 40%
+        // 形成一個位於畫面上半部的判定帶，確保即便是高度很小的區塊滾過這帶狀區域時也會觸發。
+        rootMargin: '-140px 0px -40% 0px', 
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] 
       }
     )
 
+    // 延遲執行，確保 DOM 完全渲染、圖片載入撐開高度後再開始綁定
     const timer = setTimeout(() => {
       elements.forEach((element) => observer.observe(element))
-    }, 250) 
+    }, 300)
     
     return () => {
       clearTimeout(timer)
@@ -356,7 +348,7 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   )
 }
 
-// 🚀 完整修復版 InstallPrompt：接取全域變數，確保不漏接 Android/Chrome 提示
+// 🚀 安裝提示 (Android/iOS 通用版)
 function InstallPrompt() {
   const [showIos, setShowIos] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState(globalPwaPrompt)
@@ -374,7 +366,6 @@ function InstallPrompt() {
         return () => clearTimeout(timer)
       }
       
-      // 處理 Android / Chrome 端捕捉
       if (globalPwaPrompt) setDeferredPrompt(globalPwaPrompt);
       
       const handleReady = () => setDeferredPrompt(globalPwaPrompt)
@@ -405,7 +396,6 @@ function InstallPrompt() {
 
   return (
     <AnimatePresence>
-      {/* iOS 提示 */}
       {showIos && (
         <motion.div
           initial={{ opacity: 0, y: 20, x: '-50%' }}
@@ -422,7 +412,6 @@ function InstallPrompt() {
         </motion.div>
       )}
 
-      {/* Android / Chrome 通用按鈕式提示 */}
       {deferredPrompt && (
         <motion.div
           initial={{ opacity: 0, y: 50, x: '-50%' }}
@@ -1356,7 +1345,7 @@ export default function App() {
 
   const sectionIds = useMemo(() => ['promo', 'hot', ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => item.anchor)], [])
   
-  // 🚀 啟動優化版的滾動監聽
+  // 🚀 關鍵修復：乾淨的滾動監聽
   useScrollSpy(sectionIds, groupedProducts.length)
 
   useEffect(() => {
@@ -1480,9 +1469,6 @@ export default function App() {
         .promo-balloon { animation: pulseGlow 2s infinite; }
         @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.7); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
         *::-webkit-scrollbar { display: none; }
-        
-        /* 🚀 強制讓分類區塊有足夠判定高度，避免項目太少而被 Observer 忽略 */
-        [data-spy-section] { min-height: 50vh; padding-bottom: 2rem; } 
       `}</style>
 
       {loading && <LoaderOverlay progress={progress} stage={stage} />}
