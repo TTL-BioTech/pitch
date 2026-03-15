@@ -166,13 +166,36 @@ const PROMO_STATUS_META = {
   ended: { label: '已結束', className: 'border-slate-200 bg-slate-100 text-slate-600 line-through' },
 }
 
-function normalizeCategory(raw) {
-  const value = raw || ''
-  if (value.includes('清潔') || value.includes('洗沐')) return '清潔產品'
-  if (value.includes('美容') || value.includes('保養')) return '美容產品'
-  if (value.includes('飲品') || value.includes('黑麥汁')) return '保健飲品'
-  if (value.includes('保健食品') || value.includes('健康') || value.includes('買一送一')) return '保健食品'
-  return '其他'
+// 🚀 關鍵升級：精準對齊 CSV 內容與使用者期待的分類引擎
+function normalizeCategory(nameRaw, catRaw) {
+  const n = String(nameRaw || '').toLowerCase();
+  const c = String(catRaw || '').toLowerCase();
+
+  // 1. 保健飲品優先攔截
+  if (n.includes('黑麥汁') || n.includes('甘益守禮盒') || n.includes('纖麥汁')) return '保健飲品';
+
+  // 2. 清潔產品 (強制收編所有 洗面、沐浴、洗髮、皂、洗手 等相關商品)
+  const cleaningKeywords = ['洗手', '潔手', '易洗樂', '洗潔', '洗衣', '洗碗', '菜瓜布', '皂', '沐浴', '洗髮', '洗面', '洗沐'];
+  if (c.includes('清潔') || c.includes('洗沐') || cleaningKeywords.some(kw => n.includes(kw)) || (n.includes('洗') && n.includes('精'))) {
+    return '清潔產品';
+  }
+
+  // 3. 美容產品 (此時洗沐商品已被上方攔截，只剩純保養品)
+  const beautyKeywords = ['vinata', '面膜', '精華', '霜', '露', '乳液', '潔顏', '卸妝', '美白', '保濕', '抗皺', '潤', '透', '亮', '膚', '痘'];
+  if (c.includes('美容') || c.includes('保養') || beautyKeywords.some(kw => n.includes(kw))) {
+    return '美容產品';
+  }
+
+  // 4. 保健食品
+  const healthKeywords = ['安可健', 's11', '益生菌', '納豆', '紅麴', '魚油', '鈣', '葡萄糖胺', '葉黃素', '膠囊', '錠', '酵素', '滴雞精'];
+  if (c.includes('保健') || c.includes('健康') || c.includes('買一送一') || healthKeywords.some(kw => n.includes(kw))) {
+    return '保健食品';
+  }
+
+  // 5. 再次確認飲品
+  if (c.includes('飲品') || c.includes('飲料')) return '保健飲品';
+
+  return '其他';
 }
 
 function getPromoGroups(promo) {
@@ -225,11 +248,13 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-function useScrollSpy(ids) {
+// 🚀 關鍵升級：加入了 dep 參數，確保商品載入完畢後才會啟動 ScrollSpy 監聽，解決上色提示失效問題
+function useScrollSpy(ids, dep) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
   useEffect(() => {
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean)
     if (!elements.length) return undefined
+    
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
@@ -238,8 +263,9 @@ function useScrollSpy(ids) {
       { rootMargin: '-185px 0px -60% 0px', threshold: [0, 0.5, 1] }
     )
     elements.forEach((element) => observer.observe(element))
+    
     return () => observer.disconnect()
-  }, [ids, setActiveSection])
+  }, [ids.join(','), dep, setActiveSection])
 }
 
 function useBodyLock(locked) {
@@ -1023,8 +1049,8 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
 }
 
 export default function App() {
-  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme,'ttl-rose')
-  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A+')
+  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, THEMES[0].key)
+  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A')
   const [products, setProducts] = useState([])
   const [promotions, setPromotions] = useState([])
   const [rankings, setRankings] = useState([])
@@ -1033,7 +1059,7 @@ export default function App() {
   const [stage, setStage] = useState('準備啟動系統...')
   const [inputValue, setInputValue] = useState('') 
   const [keyword, setKeyword] = useState('')       
-  // 移除多餘的 activeCategory 狀態，回歸純淨錨點設計
+  const [activeCategory, setActiveCategory] = useState('all')
   const [activeTag, setActiveTag] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [promoDrawer, setPromoDrawer] = useState(null)
@@ -1121,7 +1147,7 @@ export default function App() {
           code: item.code,
           name: item.name,
           category: item.category,
-          group: normalizeCategory(item.category),
+          group: normalizeCategory(item.name, item.category), // 🚀 將商品名稱與分類一併傳入智慧分類引擎
           price: Number(item.price || 0),
           photo: item.photo,
           title: pitch.title || '',
@@ -1200,7 +1226,6 @@ export default function App() {
     return keyword.split(/[\s\u3000,，、]+/).filter(Boolean)
   }, [keyword])
 
-  // 修復過濾邏輯：移除 activeCategory 的參與，回歸純粹的關鍵字與標籤搜尋
   const filteredProducts = useMemo(() => {
     return productsWithPromos.filter((item) => {
       const tagOk = !activeTag || item.tags.includes(activeTag)
@@ -1248,7 +1273,9 @@ export default function App() {
   const promoItems = useMemo(() => enrichedPromotions.filter((promo) => promo.status !== 'ended').slice(0, 10), [enrichedPromotions])
 
   const sectionIds = useMemo(() => ['promo', 'hot', ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => item.anchor)], [])
-  useScrollSpy(sectionIds)
+  
+  // 🚀 關鍵升級：加入了 groupedProducts.length，保證畫面元素渲染後才啟動滾動監聽
+  useScrollSpy(sectionIds, groupedProducts.length)
 
   useEffect(() => {
     const button = navRef.current?.querySelector(`[data-anchor="${activeSection}"]`)
@@ -1334,7 +1361,6 @@ export default function App() {
     }, 280) 
   }, [setExpandedCardId])
 
-  // 新增：從排行榜與活動點擊時，自動清除所有過濾條件，還原乾淨畫面的全域導航函式
   const handleOpenFromGlobal = useCallback((code) => {
     clearFilters();
     openProductByCode(code);
@@ -1351,7 +1377,7 @@ export default function App() {
     
     setPromoDrawer(null);
     setPromoCenterOpen(false);
-    clearFilters(); // 自動重置回「全部商品列表」
+    clearFilters(); 
     
     setTimeout(() => {
       openProductByCode(code);
@@ -1401,7 +1427,7 @@ export default function App() {
           {activeTag ? <div className="mt-2 flex items-center gap-2 px-1"><span className="rounded-full px-3 py-1 text-[11px] font-bold" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>#{activeTag}</span><button onClick={clearFilters} className="text-[11px] font-bold text-[var(--muted)] underline underline-offset-2">返回全部</button></div> : null}
           <div ref={navRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {[{ label: '全部', anchor: 'promo' }, ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => ({ label: item.label, anchor: item.anchor, category: item.key }))].map((item) => {
-              const active = activeSection === item.anchor
+              const active = activeSection === item.anchor || (!activeSection && item.anchor === 'promo')
               return (
                 <button
                   key={item.anchor}
