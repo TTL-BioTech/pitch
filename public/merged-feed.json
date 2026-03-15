@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260315064911",
-  "generatedAt": "2026-03-15T06:49:11.113Z",
+  "buildId": "20260315151755",
+  "generatedAt": "2026-03-15T15:17:55.845Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 79,
+  "count": 82,
   "items": [
     {
       "code": "341371-12",
@@ -354,6 +354,63 @@
     },
     {
       "code": "37510003-12",
+      "name": "風淨益生菌",
+      "category": "保健食品",
+      "price": 1200,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%A2%A8%E6%B7%A8%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "益生菌．維生素B群",
+        "content": "添加魚肉濃縮粉、薑黃萃取物、幾丁聚糖、生薑萃取物與維生素 B 群，成分搭配完整。",
+        "tags": "益生菌,維生素B群,薑黃",
+        "isNew": false,
+        "name": "風淨益生菌"
+      }
+    },
+    {
+      "code": "37510002-12",
+      "name": "保蜜益生菌",
+      "category": "保健食品",
+      "price": 1200,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E8%9C%9C%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "益生菌．日常保養",
+        "content": "含益生菌等成分，適合忙碌生活中的日常補給。",
+        "tags": "益生菌,日常補給",
+        "isNew": false,
+        "name": "保蜜益生菌"
+      }
+    },
+    {
+      "code": "37110002-12",
+      "name": "保暢益生菌",
+      "category": "保健食品",
+      "price": 1200,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E6%9A%A2%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "益生菌．膳食纖維",
+        "content": "含消化性麥芽糊精及後生元（大豆發酵物），成分搭配完整，日常食用方便。",
+        "tags": "益生菌,膳食纖維,後生元",
+        "isNew": false,
+        "name": "保暢益生菌"
+      }
+    },
+    {
+      "code": "37510003-12",
       "name": "風淨益生菌 1200/2盒(買一送一)",
       "category": "保健食品-買一送一",
       "price": 1200,
@@ -361,7 +418,7 @@
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%A2%A8%E6%B7%A8%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
         "title": "益生菌．維生素B群",
@@ -380,7 +437,7 @@
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E8%9C%9C%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
         "title": "益生菌．日常保養",
@@ -399,7 +456,7 @@
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E6%9A%A2%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
         "title": "益生菌．膳食纖維",
