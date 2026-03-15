@@ -166,35 +166,24 @@ const PROMO_STATUS_META = {
   ended: { label: '已結束', className: 'border-slate-200 bg-slate-100 text-slate-600 line-through' },
 }
 
-// 🚀 關鍵升級：精準對齊 CSV 內容與使用者期待的分類引擎
+// 🚀 分類引擎
 function normalizeCategory(nameRaw, catRaw) {
   const n = String(nameRaw || '').toLowerCase();
   const c = String(catRaw || '').toLowerCase();
-
-  // 1. 保健飲品優先攔截
   if (n.includes('黑麥汁') || n.includes('甘益守禮盒') || n.includes('纖麥汁')) return '保健飲品';
-
-  // 2. 清潔產品 (強制收編所有 洗面、沐浴、洗髮、皂、洗手 等相關商品)
   const cleaningKeywords = ['洗手', '潔手', '易洗樂', '洗潔', '洗衣', '洗碗', '菜瓜布', '皂', '沐浴', '洗髮', '洗面', '洗沐'];
   if (c.includes('清潔') || c.includes('洗沐') || cleaningKeywords.some(kw => n.includes(kw)) || (n.includes('洗') && n.includes('精'))) {
     return '清潔產品';
   }
-
-  // 3. 美容產品 (此時洗沐商品已被上方攔截，只剩純保養品)
   const beautyKeywords = ['vinata', '面膜', '精華', '霜', '露', '乳液', '潔顏', '卸妝', '美白', '保濕', '抗皺', '潤', '透', '亮', '膚', '痘'];
   if (c.includes('美容') || c.includes('保養') || beautyKeywords.some(kw => n.includes(kw))) {
     return '美容產品';
   }
-
-  // 4. 保健食品
   const healthKeywords = ['安可健', 's11', '益生菌', '納豆', '紅麴', '魚油', '鈣', '葡萄糖胺', '葉黃素', '膠囊', '錠', '酵素', '滴雞精'];
   if (c.includes('保健') || c.includes('健康') || c.includes('買一送一') || healthKeywords.some(kw => n.includes(kw))) {
     return '保健食品';
   }
-
-  // 5. 再次確認飲品
   if (c.includes('飲品') || c.includes('飲料')) return '保健飲品';
-
   return '其他';
 }
 
@@ -248,24 +237,36 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-// 🚀 關鍵升級：加入了 dep 參數，確保商品載入完畢後才會啟動 ScrollSpy 監聽，解決上色提示失效問題
-function useScrollSpy(ids, dep) {
+// 🚀 優化後的 ScrollSpy：解決頂部標籤與首次載入上色失效問題
+function useScrollSpy(ids, layoutReady) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
   useEffect(() => {
+    if (!layoutReady || !ids.length) return undefined
+    
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean)
-    if (!elements.length) return undefined
     
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
         if (visible[0]) setActiveSection(visible[0].target.id)
       },
-      { rootMargin: '-185px 0px -60% 0px', threshold: [0, 0.5, 1] }
+      { 
+        // 將頂部偏移放寬，解決捲動到頂端時「全部」不亮燈的問題
+        rootMargin: '-100px 0px -70% 0px', 
+        threshold: [0, 0.2, 0.5, 0.8, 1] 
+      }
     )
-    elements.forEach((element) => observer.observe(element))
+
+    // 加入延遲機制，確保 DOM 渲染穩定後才開始觀察
+    const timer = setTimeout(() => {
+      elements.forEach((element) => observer.observe(element))
+    }, 150)
     
-    return () => observer.disconnect()
-  }, [ids.join(','), dep, setActiveSection])
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
+  }, [ids.join(','), layoutReady, setActiveSection])
 }
 
 function useBodyLock(locked) {
@@ -279,12 +280,10 @@ function useBodyLock(locked) {
 function HighlightText({ text, keyword }) {
   const keywords = Array.isArray(keyword) ? keyword : [keyword].filter(Boolean)
   if (!keywords.length || !text) return <>{text}</>
-  
   const escapeRegExp = (string) => String(string).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const sortedKeywords = [...keywords].sort((a, b) => b.length - a.length)
   const regex = new RegExp(`(${sortedKeywords.map(escapeRegExp).join('|')})`, 'gi')
   const parts = String(text).split(regex)
-  
   return (
     <>
       {parts.map((part, i) =>
@@ -462,7 +461,6 @@ function SettingsPanel({ open, onClose, theme, setTheme, scale, setScale }) {
 function PromoCarousel({ items, onOpenPromo, scale }) {
   if (!items.length) return null
   const preset = SCALE_PRESETS[scale]
-
   return (
     <section id="promo" data-spy-section className="scroll-mt-[185px]">
       <SectionTitle title="🔥 促銷焦點" subtitle="左右滑動檢視近期活動" />
@@ -485,7 +483,6 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
                 <div className="flex flex-1 flex-col p-3">
                   <h3 className={`line-clamp-2 font-black leading-tight text-[var(--text)] ${preset.promoTitle}`}>{promo.shortTitle || promo.title}</h3>
                   <p className={`mt-1.5 line-clamp-2 flex-1 leading-relaxed text-[var(--muted)] ${preset.promoBody}`}>{promo.content}</p>
-                  
                   <div className="mt-2 flex flex-wrap items-center gap-1.5">
                     {promo.channel && (
                       <span className={`flex items-center gap-0.5 rounded bg-slate-100 font-bold text-slate-500 ${preset.promoTag}`}>
@@ -510,14 +507,12 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
 
 function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory }) {
   if (!items.length && category === 'all') return null
-  
   const tabs = [
     { key: 'all', label: '全部' },
     { key: '保健食品', label: '保健' },
     { key: '美容產品', label: '美容' },
     { key: '清潔產品', label: '清潔' }
   ]
-
   return (
     <section id="hot" data-spy-section className="scroll-mt-[185px]">
       <div className="mb-3 flex items-end justify-between gap-3 border-l-4 border-[var(--primary)] pl-2">
@@ -537,7 +532,6 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
           ))}
         </div>
       </div>
-      
       <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-4 md:-mx-0 md:px-0">
         {items.length > 0 ? items.map((product) => (
           <div key={product.code} className="w-[110px] shrink-0 snap-start">
@@ -571,7 +565,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
   const cardRef = useRef(null)
   const isExpanded = expandedCardId === product.code
   const scalePreset = SCALE_PRESETS[scale]
-
   const toggle = () => {
     const willExpand = expandedCardId !== product.code
     setExpandedCardId(product.code)
@@ -589,7 +582,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
       if (window.history.state?.ui === 'card') window.history.back()
     }
   }
-
   const copyPitch = async () => {
     const payload = `【 ✨ 產品推薦 】\n🌿 ${product.name}\n-------------------\n💬 主打：${product.title}\n📝 特色：${product.content}\n💰 優惠價：$${product.price.toLocaleString()}\n${product.tags.map(t => '#' + t).join(' ')}\n-------------------\n(台酒生技)`
     try {
@@ -599,25 +591,19 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
       showToast('複製失敗，請稍後再試')
     }
   }
-
   const openVideoInline = () => {
     if (!product.videoUrl) return
     markVideoSeen(product.code, product.videoUrl)
-    
     const embedUrl = getYouTubeEmbed(product.videoUrl)
     const isMp4 = product.videoUrl.toLowerCase().endsWith('.mp4')
-    
     if (!embedUrl && !isMp4) {
       window.open(product.videoUrl, '_blank')
       return
     }
-
     openVideo({ title: product.name, url: product.videoUrl })
     if (typeof window !== 'undefined') window.history.pushState({ ui: 'video', code: product.code }, '')
   }
-
   const hasSeenVideo = Boolean(seenVideos[product.code])
-
   return (
     <div ref={cardRef} className={`relative overflow-hidden rounded-xl border bg-[var(--surface)] transition-all ${isExpanded ? 'border-[var(--primary)] shadow-lg shadow-[var(--primary)]/10' : 'border-[var(--border)] shadow-sm'}`}>
       {product.isNew && (
@@ -625,7 +611,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
           NEW
         </div>
       )}
-      
       <div onClick={toggle} className="relative flex w-full cursor-pointer items-center gap-3 p-3 text-left">
         <div className="relative shrink-0 overflow-hidden rounded-lg border border-slate-100 bg-[#fcfcfc]" style={{ width: scalePreset.rowImage, height: scalePreset.rowImage }} onClick={(event) => { if (isExpanded) { event.stopPropagation(); openLightbox({ src: product.photo || placeholderSvg(product.name), title: product.name }) } }}>
           <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-1" />
@@ -644,7 +629,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
               </h3>
               <p className={`mt-0.5 line-clamp-2 font-bold text-[var(--primary)] ${scalePreset.title}`}><HighlightText text={product.title || product.spec || ''} keyword={keyword} /></p>
               {product.spec && product.spec !== product.title ? <p className="mt-0.5 text-[11px] text-[var(--muted)] line-clamp-1">{product.spec}</p> : null}
-              
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {product.promos.map((promo) => (
                   <button 
@@ -667,7 +651,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
           </div>
         </div>
       </div>
-
       <AnimatePresence initial={false}>
         {isExpanded ? (
           <motion.div
@@ -685,7 +668,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
                 </div>
               )}
               <p className={`whitespace-pre-line leading-relaxed text-[#455a64] ${scalePreset.body}`}>{product.content || <span className="text-sm text-slate-400">尚無詳細資料</span>}</p>
-              
               {product.tags && product.tags.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {product.tags.map((tag) => (
@@ -695,7 +677,6 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
                   ))}
                 </div>
               )}
-
               <div className="mt-4 flex flex-wrap items-center justify-end gap-2">
                 {product.videoUrl && (
                   <button onClick={openVideoInline} className={`flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold transition active:scale-95 ${hasSeenVideo ? 'bg-slate-200 text-slate-600' : 'bg-[var(--promo)] text-white shadow-md'}`}>
@@ -724,7 +705,6 @@ function MediaSheet() {
   const mediaSheetProduct = useAppStore((state) => state.mediaSheetProduct)
   const closeModal = useAppStore((state) => state.closeModal)
   if (activeModal !== 'sheet' || !mediaSheetProduct) return null
-
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[75] bg-black/55 backdrop-blur-[3px]" onClick={closeModal}>
@@ -752,7 +732,6 @@ function MediaSheet() {
               else if (item.type === 'fb') { IconTag = Facebook; iconColor = 'bg-[#1877f2]'; }
               else if (item.type === 'ig') { IconTag = Instagram; iconColor = 'bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888]'; }
               else if (item.type === 'line') { IconTag = MessageCircle; iconColor = 'bg-[#00c300]'; }
-              
               return (
                 <a key={`${item.url}-${index}`} href={item.url} target="_blank" rel="noreferrer" className="flex items-center justify-between rounded-xl bg-slate-50 p-3 text-[14px] font-bold text-[var(--text)] active:bg-slate-100">
                   <div className="flex items-center gap-3">
@@ -777,10 +756,8 @@ function VideoModal() {
   const videoPayload = useAppStore((state) => state.videoPayload)
   const closeModal = useAppStore((state) => state.closeModal)
   if (activeModal !== 'video' || !videoPayload) return null
-  
   const embedUrl = getYouTubeEmbed(videoPayload.url)
   const isVertical = /shorts\//i.test(videoPayload.url)
-
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[76] bg-black/80 backdrop-blur-sm" onClick={closeModal}>
@@ -832,23 +809,19 @@ function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) 
   const fabOpen = useAppStore((state) => state.fabOpen)
   const toggleFab = useAppStore((state) => state.toggleFab)
   const closeFab = useAppStore((state) => state.closeFab)
-  
   const [navMode, setNavMode] = useState(false)
-
   useEffect(() => {
     if (!fabOpen) {
       const t = setTimeout(() => setNavMode(false), 300)
       return () => clearTimeout(t)
     }
   }, [fabOpen])
-
   const mainActions = [
     { key: 'refresh', label: '重新整理', icon: RefreshCw, onClick: () => { closeFab(); window.location.reload(); } },
     { key: 'settings', label: '顯示設定', icon: Settings2, onClick: () => { closeFab(); onToggleSettings(); } },
     { key: 'nav', label: '分類導航', icon: Compass, onClick: () => setNavMode(true) },
     { key: 'top', label: '回到最頂端', icon: ArrowUp, onClick: () => { closeFab(); onScrollTop(); } },
   ]
-
   const navActions = [
     { key: 'back', label: '返回', icon: ArrowLeft, onClick: () => setNavMode(false) },
     { key: 'sec-drinks', label: '保健飲品', icon: Coffee, onClick: () => { closeFab(); onGotoSection('sec-drinks'); } },
@@ -856,9 +829,7 @@ function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) 
     { key: 'sec-beauty', label: '美容產品', icon: Sparkles, onClick: () => { closeFab(); onGotoSection('sec-beauty'); } },
     { key: 'sec-cleaning', label: '清潔產品', icon: Droplets, onClick: () => { closeFab(); onGotoSection('sec-cleaning'); } },
   ]
-
   const actions = navMode ? navActions : mainActions
-
   return (
     <div className="fixed bottom-[calc(20px+env(safe-area-inset-bottom))] right-4 z-[72] flex flex-col items-end gap-3">
       <button onClick={onGotoPromo} className="promo-balloon flex h-[46px] w-[46px] items-center justify-center rounded-full text-white shadow-lg outline-none" style={{ background: 'var(--promo)' }}>
@@ -901,7 +872,6 @@ function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) 
 function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
   if (!promo) return null
   const preset = SCALE_PRESETS[scale]
-
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[74] bg-black/70 backdrop-blur-sm" onClick={onClose}>
@@ -923,7 +893,6 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
             {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-black"><img src={getPromoImage(promo)} className="w-full object-contain max-h-[40vh]" alt="活動" /></div>}
             <p className={`whitespace-pre-line leading-relaxed text-[var(--text)] ${preset.drawerBody}`}>{promo.content}</p>
-            
             {promo.relatedProducts && promo.relatedProducts.length > 0 && (
               <div className="mt-8 border-t border-slate-100 pt-5">
                 <h4 className={`mb-3 flex items-center gap-1.5 font-bold text-[var(--primary)] ${preset.drawerRelatedTitle}`}>
@@ -966,9 +935,7 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
     const groupOk = groupFilter === 'all' || getPromoGroups(promo).includes(groupFilter)
     return statusOk && groupOk
   })
-  
   const preset = SCALE_PRESETS[scale]
-
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[73] bg-black/60 backdrop-blur-sm" onClick={onClose}>
@@ -1023,7 +990,6 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
                         <span className={`shrink-0 font-bold text-[var(--muted)] ${preset.promoDate}`}>{promo.endDate || promo.startDate}</span>
                       </div>
                       <p className={`line-clamp-3 leading-relaxed text-[var(--muted)] ${preset.promoBody}`}>{promo.content}</p>
-                      
                       <div className="flex flex-wrap items-center gap-1.5">
                         {promo.channel && (
                           <span className={`flex items-center gap-0.5 rounded bg-slate-100 font-bold text-slate-500 ${preset.promoTag}`}>
@@ -1049,8 +1015,8 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
 }
 
 export default function App() {
-  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, 'ttl-rose')
-  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A+')
+  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, THEMES[0].key)
+  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A')
   const [products, setProducts] = useState([])
   const [promotions, setPromotions] = useState([])
   const [rankings, setRankings] = useState([])
@@ -1067,14 +1033,12 @@ export default function App() {
   const [promoStatusFilter, setPromoStatusFilter] = useState('active')
   const [promoGroupFilter, setPromoGroupFilter] = useState('all')
   const [tagReturnCode, setTagReturnCode] = useState(null)
-  
   const [rankCategory, setRankCategory] = useState('all')
-  
   const navRef = useRef(null)
-
   const expandedCardId = useAppStore((state) => state.expandedCardId)
   const closeExpandedCard = useAppStore((state) => state.closeExpandedCard)
   const activeSection = useAppStore((state) => state.activeSection)
+  const setActiveSection = useAppStore((state) => state.setActiveSection)
   const activeModal = useAppStore((state) => state.activeModal)
   const mediaSheetProduct = useAppStore((state) => state.mediaSheetProduct)
   const hydrateSeenVideos = useAppStore((state) => state.hydrateSeenVideos)
@@ -1084,18 +1048,14 @@ export default function App() {
   const setExpandedCardId = useAppStore((state) => state.setExpandedCardId)
 
   const themeConfig = THEMES.find((item) => item.key === theme) || THEMES[0]
-
   useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen))
-
   useEffect(() => { hydrateSeenVideos() }, [hydrateSeenVideos])
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setKeyword(inputValue)
     }, 300)
     return () => clearTimeout(timer)
   }, [inputValue])
-
   useEffect(() => {
     let cancelled = false
     async function load() {
@@ -1111,15 +1071,12 @@ export default function App() {
         ])
         if (cancelled) return
         setProgress(60)
-
         const mergedJson = mergedRes.status === 'fulfilled' ? await mergedRes.value.json().catch(()=>({})) : {}
         const promoJson = promoRes.status === 'fulfilled' ? await promoRes.value.json().catch(()=>({})) : {}
         const rankJson = rankRes.status === 'fulfilled' ? await rankRes.value.json().catch(()=>({})) : {}
-
         setProducts(Array.isArray(mergedJson.items) ? mergedJson.items : [])
         setPromotions(Array.isArray(promoJson.items) ? promoJson.items : [])
         setRankings(Array.isArray(rankJson.items) ? rankJson.items : [])
-        
         setProgress(100)
         setStage('完成載入')
         window.setTimeout(() => { if (!cancelled) setLoading(false) }, 300)
@@ -1139,15 +1096,13 @@ export default function App() {
       .map((item) => {
         const pitch = item.pitch || {}
         const rank = rankMap.get(item.code)
-        
         const isHidden = pitch.is_hidden_pp === true || String(pitch.is_hidden_pp).toLowerCase() === 'true' || String(pitch.is_hidden_pp) === '1' ||
                          item.is_hidden_pp === true || String(item.is_hidden_pp).toLowerCase() === 'true' || String(item.is_hidden_pp) === '1'
-
         return {
           code: item.code,
           name: item.name,
           category: item.category,
-          group: normalizeCategory(item.name, item.category), // 🚀 將商品名稱與分類一併傳入智慧分類引擎
+          group: normalizeCategory(item.name, item.category), 
           price: Number(item.price || 0),
           photo: item.photo,
           title: pitch.title || '',
@@ -1165,7 +1120,6 @@ export default function App() {
   }, [products, rankings])
 
   const productMap = useMemo(() => new Map(normalizedProducts.map((item) => [item.code, item])), [normalizedProducts])
-
   const enrichedPromotions = useMemo(() => {
     return promotions.map((promo) => {
       const chs = []
@@ -1175,14 +1129,9 @@ export default function App() {
         if (promo.ch.eshop) chs.push('購物網')
         if (promo.ch.office) chs.push('營業所')
       }
-      
-      let channelText = chs.length > 0 
-        ? chs.join('、') 
-        : (Array.isArray(promo.channelLabels) ? promo.channelLabels.join('、') : '')
-
+      let channelText = chs.length > 0 ? chs.join('、') : (Array.isArray(promo.channelLabels) ? promo.channelLabels.join('、') : '')
       const relatedSet = new Set()
       const rawRules = promo.relatedCodes || []
-      
       rawRules.forEach(rawRule => {
         const keywords = String(rawRule).split(/[\s\u3000,，、]+/).filter(Boolean)
         keywords.forEach(kw => {
@@ -1190,48 +1139,30 @@ export default function App() {
             relatedSet.add(productMap.get(kw))
           } else {
             normalizedProducts.forEach(p => {
-              if (
-                p.group.includes(kw) ||
-                (p.category && p.category.includes(kw)) ||
-                (p.name && p.name.includes(kw)) ||
-                (p.title && p.title.includes(kw)) ||
-                p.tags.some(t => t.includes(kw))
-              ) {
+              if (p.group.includes(kw) || (p.category && p.category.includes(kw)) || (p.name && p.name.includes(kw)) || (p.title && p.title.includes(kw)) || p.tags.some(t => t.includes(kw))) {
                 relatedSet.add(p)
               }
             })
           }
         })
       })
-
-      return {
-        ...promo,
-        channel: channelText,
-        img: getPromoImage(promo),
-        relatedProducts: Array.from(relatedSet),
-      }
+      return { ...promo, channel: channelText, img: getPromoImage(promo), relatedProducts: Array.from(relatedSet) }
     })
   }, [promotions, productMap, normalizedProducts])
 
   const productsWithPromos = useMemo(() => {
     return normalizedProducts.map((product) => ({
       ...product,
-      promos: enrichedPromotions.filter(
-        (promo) => promo.status !== 'ended' && promo.relatedProducts.some(rp => rp.code === product.code)
-      ),
+      promos: enrichedPromotions.filter((promo) => promo.status !== 'ended' && promo.relatedProducts.some(rp => rp.code === product.code)),
     }))
   }, [normalizedProducts, enrichedPromotions])
 
-  const parsedKeywords = useMemo(() => {
-    return keyword.split(/[\s\u3000,，、]+/).filter(Boolean)
-  }, [keyword])
-
+  const parsedKeywords = useMemo(() => keyword.split(/[\s\u3000,，、]+/).filter(Boolean), [keyword])
   const filteredProducts = useMemo(() => {
     return productsWithPromos.filter((item) => {
       const tagOk = !activeTag || item.tags.includes(activeTag)
       const haystack = [item.name, item.title, item.content, item.code, ...item.tags].join(' ').toLowerCase()
       const keywordOk = parsedKeywords.length === 0 || parsedKeywords.every(k => haystack.includes(k.toLowerCase()))
-      
       return tagOk && keywordOk
     })
   }, [productsWithPromos, parsedKeywords, activeTag])
@@ -1253,34 +1184,32 @@ export default function App() {
 
   const visibleHotProducts = useMemo(() => {
     let list = allRankedProducts;
-
     if (keyword || activeTag) {
       const codeSet = new Set(filteredProducts.map(item => item.code));
       const matched = list.filter(item => codeSet.has(item.code));
       if (matched.length > 0) list = matched;
     }
-    
-    if (rankCategory !== 'all') {
-      list = list.filter(item => item.group === rankCategory);
-    }
-    
-    return list.slice(0, 10).map((item, index) => ({
-      ...item,
-      displayRank: index + 1
-    }));
+    if (rankCategory !== 'all') list = list.filter(item => item.group === rankCategory);
+    return list.slice(0, 10).map((item, index) => ({ ...item, displayRank: index + 1 }));
   }, [allRankedProducts, filteredProducts, keyword, activeTag, rankCategory]);
 
   const promoItems = useMemo(() => enrichedPromotions.filter((promo) => promo.status !== 'ended').slice(0, 10), [enrichedPromotions])
-
   const sectionIds = useMemo(() => ['promo', 'hot', ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => item.anchor)], [])
   
-  // 🚀 關鍵升級：加入了 groupedProducts.length，保證畫面元素渲染後才啟動滾動監聽
-  useScrollSpy(sectionIds, groupedProducts.length)
+  // 🚀 關鍵升級：精準依賴與指標
+  useScrollSpy(sectionIds, !loading && products.length > 0)
 
   useEffect(() => {
     const button = navRef.current?.querySelector(`[data-anchor="${activeSection}"]`)
     button?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
   }, [activeSection])
+
+  // 🚀 初始化預設值
+  useEffect(() => {
+    if (!activeSection && !loading) {
+      setActiveSection('promo');
+    }
+  }, [loading, activeSection, setActiveSection]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -1322,20 +1251,11 @@ export default function App() {
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
   }, [])
-
   const clearFilters = useCallback(() => {
-    setInputValue('')
-    setKeyword('')
-    setActiveTag('')
-    setTagReturnCode(null)
+    setInputValue(''); setKeyword(''); setActiveTag(''); setTagReturnCode(null);
   }, [])
-
   const applyTagFilter = useCallback((code, tag) => {
-    setTagReturnCode(code)
-    setActiveTag(tag)
-    setInputValue('')
-    setKeyword('')
-    setExpandedCardId(code)
+    setTagReturnCode(code); setActiveTag(tag); setInputValue(''); setKeyword(''); setExpandedCardId(code);
     showToast(`已套用標籤：#${tag}`)
     if (typeof window !== 'undefined') window.history.pushState({ ui: 'tag-filter', code, tag }, '')
     window.setTimeout(() => {
@@ -1347,7 +1267,6 @@ export default function App() {
       }
     }, 120)
   }, [setExpandedCardId, showToast])
-
   const openProductByCode = useCallback((code) => {
     setExpandedCardId(code)
     if (typeof window !== 'undefined') window.history.pushState({ ui: 'card', code }, '')
@@ -1360,28 +1279,14 @@ export default function App() {
       }
     }, 280) 
   }, [setExpandedCardId])
-
-  const handleOpenFromGlobal = useCallback((code) => {
-    clearFilters();
-    openProductByCode(code);
-  }, [clearFilters, openProductByCode]);
-
+  const handleOpenFromGlobal = useCallback((code) => { clearFilters(); openProductByCode(code); }, [clearFilters, openProductByCode]);
   const navigateToProductFromPromo = useCallback((code) => {
     let steps = 0;
     if (promoDrawer) steps++;
     if (promoCenterOpen) steps++;
-    
-    if (steps > 0 && typeof window !== 'undefined') {
-      window.history.go(-steps);
-    }
-    
-    setPromoDrawer(null);
-    setPromoCenterOpen(false);
-    clearFilters(); 
-    
-    setTimeout(() => {
-      openProductByCode(code);
-    }, 350);
+    if (steps > 0 && typeof window !== 'undefined') window.history.go(-steps);
+    setPromoDrawer(null); setPromoCenterOpen(false); clearFilters(); 
+    setTimeout(() => { openProductByCode(code); }, 350);
   }, [promoDrawer, promoCenterOpen, clearFilters, openProductByCode]);
 
   return (
@@ -1408,31 +1313,23 @@ export default function App() {
               <Printer className="h-[18px] w-[18px]" />
             </button>
           </div>
-
           <div className="mx-auto mt-3 w-full max-w-[600px] relative">
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
             <input 
-              value={inputValue} 
-              onChange={(e) => setInputValue(e.target.value)} 
-              placeholder="搜尋產品名稱、關鍵字..." 
+              value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="搜尋產品名稱、關鍵字..." 
               className="h-[44px] w-full rounded-full border border-slate-200 bg-slate-50 pl-10 pr-10 text-[15px] font-bold text-slate-700 outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary-soft)] transition"
             />
             {(inputValue || activeTag) && (
-              <button onClick={clearFilters} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-200 p-1 text-slate-500 hover:bg-slate-300">
-                <X className="h-4 w-4" />
-              </button>
+              <button onClick={clearFilters} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-200 p-1 text-slate-500 hover:bg-slate-300"><X className="h-4 w-4" /></button>
             )}
           </div>
-
           {activeTag ? <div className="mt-2 flex items-center gap-2 px-1"><span className="rounded-full px-3 py-1 text-[11px] font-bold" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>#{activeTag}</span><button onClick={clearFilters} className="text-[11px] font-bold text-[var(--muted)] underline underline-offset-2">返回全部</button></div> : null}
           <div ref={navRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
             {[{ label: '全部', anchor: 'promo' }, ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => ({ label: item.label, anchor: item.anchor, category: item.key }))].map((item) => {
-              const active = activeSection === item.anchor || (!activeSection && item.anchor === 'promo')
+              const active = activeSection === item.anchor
               return (
                 <button
-                  key={item.anchor}
-                  data-anchor={item.anchor}
-                  onClick={() => scrollToId(item.anchor)}
+                  key={item.anchor} data-anchor={item.anchor} onClick={() => scrollToId(item.anchor)}
                   className={`whitespace-nowrap rounded-full px-4 py-1.5 text-[14px] font-bold transition ${active ? 'bg-[var(--primary)] text-white shadow-md shadow-[var(--primary)]/30' : 'bg-slate-100 text-slate-500'}`}
                 >
                   {item.label}
@@ -1444,15 +1341,11 @@ export default function App() {
 
         <main className="px-4 pt-4 space-y-6">
           <PromoCarousel items={promoItems} onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} scale={scale} />
-          
           <RankingCarousel 
-            items={visibleHotProducts} 
-            onOpenProduct={handleOpenFromGlobal} 
+            items={visibleHotProducts} onOpenProduct={handleOpenFromGlobal} 
             subtitle={keyword || activeTag ? '已依目前篩選條件保留相關熱銷品' : '依實際銷售數據更新'} 
-            category={rankCategory}
-            setCategory={setRankCategory}
+            category={rankCategory} setCategory={setRankCategory}
           />
-
           {groupedProducts.length > 0 ? groupedProducts.map((group) => (
             <section key={group.key} id={group.anchor} data-spy-section className={`scroll-mt-[185px]`}>
               <SectionTitle title={group.label} subtitle="" />
@@ -1460,11 +1353,7 @@ export default function App() {
                 {group.items.map((product) => (
                   <div id={`card-${product.code}`} key={product.code}>
                     <ProductRow 
-                      product={product} 
-                      scale={scale} 
-                      keyword={parsedKeywords} 
-                      onOpenProductByCode={openProductByCode} 
-                      onApplyTagFilter={applyTagFilter} 
+                      product={product} scale={scale} keyword={parsedKeywords} onOpenProductByCode={openProductByCode} onApplyTagFilter={applyTagFilter} 
                       onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
                     />
                   </div>
@@ -1472,38 +1361,25 @@ export default function App() {
               </div>
             </section>
           )) : (
-            <div className="py-20 text-center">
-              <Search className="mx-auto h-12 w-12 text-slate-300 mb-3" />
-              <p className="text-[16px] font-bold text-slate-500">沒有符合條件的商品</p>
-            </div>
+            <div className="py-20 text-center"><Search className="mx-auto h-12 w-12 text-slate-300 mb-3" /><p className="text-[16px] font-bold text-slate-500">沒有符合條件的商品</p></div>
           )}
         </main>
       </div>
 
       <SettingsPanel 
-        open={settingsOpen} 
-        onClose={() => { if (window.history.state?.ui === 'settings') window.history.back(); else setSettingsOpen(false); }} 
+        open={settingsOpen} onClose={() => { if (window.history.state?.ui === 'settings') window.history.back(); else setSettingsOpen(false); }} 
         theme={theme} setTheme={setTheme} scale={scale} setScale={setScale} 
       />
-      <MediaSheet />
-      <VideoModal />
-      <LightboxModal />
+      <MediaSheet /><VideoModal /><LightboxModal />
       <PromoCenterPanel 
-        open={promoCenterOpen} 
-        items={enrichedPromotions} 
-        statusFilter={promoStatusFilter} 
-        setStatusFilter={setPromoStatusFilter} 
-        groupFilter={promoGroupFilter} 
-        setGroupFilter={setPromoGroupFilter} 
+        open={promoCenterOpen} items={enrichedPromotions} statusFilter={promoStatusFilter} setStatusFilter={setPromoStatusFilter} 
+        groupFilter={promoGroupFilter} setGroupFilter={setPromoGroupFilter} 
         onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} 
-        onClose={() => { if (window.history.state?.ui === 'promo-center') window.history.back(); else setPromoCenterOpen(false); }} 
-        scale={scale}
+        onClose={() => { if (window.history.state?.ui === 'promo-center') window.history.back(); else setPromoCenterOpen(false); }} scale={scale}
       />
       <PromoDrawer 
-        promo={promoDrawer} 
-        onClose={() => { if (window.history.state?.ui === 'promo') window.history.back(); else setPromoDrawer(null); }} 
-        onNavigateToProduct={navigateToProductFromPromo}
-        scale={scale}
+        promo={promoDrawer} onClose={() => { if (window.history.state?.ui === 'promo') window.history.back(); else setPromoDrawer(null); }} 
+        onNavigateToProduct={navigateToProductFromPromo} scale={scale}
       />
       <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
       <ToastMessage />
