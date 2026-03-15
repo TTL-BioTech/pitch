@@ -37,8 +37,8 @@ import { useAppStore } from './store/useAppStore'
 
 const BASE_URL = import.meta.env.BASE_URL || '/'
 const STORAGE_KEYS = {
-  theme: 'ttl-react-theme-v7',
-  scale: 'ttl-react-scale-v7',
+  theme: 'ttl-react-theme-v8',
+  scale: 'ttl-react-scale-v8',
 }
 
 const CATEGORY_META = [
@@ -1023,8 +1023,8 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
 }
 
 export default function App() {
-  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, THEMES[0].key)
-  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A')
+  const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme,'ttl-rose')
+  const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A+')
   const [products, setProducts] = useState([])
   const [promotions, setPromotions] = useState([])
   const [rankings, setRankings] = useState([])
