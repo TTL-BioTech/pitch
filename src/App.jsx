@@ -31,7 +31,8 @@ import {
   ArrowLeft,
   Coffee,
   Activity,
-  Droplets
+  Droplets,
+  Download
 } from 'lucide-react'
 import { useAppStore } from './store/useAppStore'
 
@@ -166,7 +167,6 @@ const PROMO_STATUS_META = {
   ended: { label: '已結束', className: 'border-slate-200 bg-slate-100 text-slate-600 line-through' },
 }
 
-// 🚀 分類引擎
 function normalizeCategory(nameRaw, catRaw) {
   const n = String(nameRaw || '').toLowerCase();
   const c = String(catRaw || '').toLowerCase();
@@ -237,7 +237,7 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-// 🚀 優化後的 ScrollSpy：解決頂部標籤與首次載入上色失效問題
+// 🚀 優化後的 ScrollSpy：解決小項目分類(保健飲品)上色失效問題
 function useScrollSpy(ids, layoutReady) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
   useEffect(() => {
@@ -251,16 +251,15 @@ function useScrollSpy(ids, layoutReady) {
         if (visible[0]) setActiveSection(visible[0].target.id)
       },
       { 
-        // 將頂部偏移放寬，解決捲動到頂端時「全部」不亮燈的問題
-        rootMargin: '-100px 0px -70% 0px', 
-        threshold: [0, 0.2, 0.5, 0.8, 1] 
+        // rootMargin 頂部偏移放寬至 -100px，底部預留判斷空間
+        rootMargin: '-100px 0px -60% 0px', 
+        threshold: [0, 0.1, 0.3, 0.5, 0.8, 1] // 增加低比例 threshold，讓商品少的分類也能被觸發
       }
     )
 
-    // 加入延遲機制，確保 DOM 渲染穩定後才開始觀察
     const timer = setTimeout(() => {
       elements.forEach((element) => observer.observe(element))
-    }, 150)
+    }, 250) // 增加少許延遲確保高度計算正確
     
     return () => {
       clearTimeout(timer)
@@ -333,33 +332,87 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   )
 }
 
-function IosInstallPrompt() {
-  const [show, setShow] = useState(false)
+// 🚀 關鍵優化：整合通用 PWA 與 iOS 安裝提示
+function InstallPrompt() {
+  const [showIos, setShowIos] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
+  const showToast = useAppStore((state) => state.showToast)
+
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-    const isInStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches
-    if (isIos && !isInStandalone) {
-      const timer = setTimeout(() => setShow(true), 1500)
-      return () => clearTimeout(timer)
+
+    // 1. 處理 Android / Desktop Chrome 安裝事件
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
     }
+
+    // 2. 判斷是否已安裝或在 standalone 模式
+    const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches
+    
+    // 3. 處理 iOS 判斷
+    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+
+    if (!isStandalone) {
+      if (isIos) {
+        const timer = setTimeout(() => setShowIos(true), 2500)
+        return () => clearTimeout(timer)
+      }
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+    }
+
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
   }, [])
-  if (!show) return null
+
+  const handleWebInstall = async () => {
+    if (!deferredPrompt) return
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    if (outcome === 'accepted') {
+      showToast('感謝安裝！系統正在建立主畫面捷徑')
+    }
+    setDeferredPrompt(null)
+  }
+
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 20, x: '-50%' }}
-        animate={{ opacity: 1, y: 0, x: '-50%' }}
-        exit={{ opacity: 0, y: 20, x: '-50%' }}
-        className="fixed bottom-[calc(30px+env(safe-area-inset-bottom))] left-1/2 z-[100] flex w-[90%] max-w-[360px] flex-col items-center rounded-2xl bg-[#263238]/95 p-5 text-center text-white shadow-2xl backdrop-blur-md"
-      >
-        <button onClick={() => setShow(false)} className="absolute right-2 top-2 p-2 text-[#90a4ae] active:text-white"><X className="h-5 w-5" /></button>
-        <p className="text-[15px] leading-relaxed">
-          點擊工具列上的 <Share className="mx-1 mb-1 inline h-[22px] w-[22px] text-[#4fc3f7] drop-shadow-[0_0_5px_rgba(79,195,247,0.6)]" /> 分享按鈕<br />
-          並選擇 <b className="border-b border-white/30 font-bold text-white">「加入主畫面」</b>
-        </p>
-        <p className="mt-2 text-[12px] text-[#b0bec5]">以獲得最佳 Web App 操作體驗</p>
-      </motion.div>
+      {/* iOS 提示 */}
+      {showIos && (
+        <motion.div
+          initial={{ opacity: 0, y: 20, x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          exit={{ opacity: 0, y: 20, x: '-50%' }}
+          className="fixed bottom-[calc(30px+env(safe-area-inset-bottom))] left-1/2 z-[100] flex w-[90%] max-w-[360px] flex-col items-center rounded-2xl bg-[#263238]/95 p-5 text-center text-white shadow-2xl backdrop-blur-md"
+        >
+          <button onClick={() => setShowIos(false)} className="absolute right-2 top-2 p-2 text-[#90a4ae] active:text-white"><X className="h-5 w-5" /></button>
+          <p className="text-[15px] leading-relaxed">
+            點擊工具列上的 <Share className="mx-1 mb-1 inline h-[22px] w-[22px] text-[#4fc3f7] drop-shadow-[0_0_5px_rgba(79,195,247,0.6)]" /> 分享按鈕<br />
+            並選擇 <b className="border-b border-white/30 font-bold text-white">「加入主畫面」</b>
+          </p>
+          <p className="mt-2 text-[12px] text-[#b0bec5]">以獲得最佳 Web App 操作體驗</p>
+        </motion.div>
+      )}
+
+      {/* Android / Chrome 通用按鈕式提示 */}
+      {deferredPrompt && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          exit={{ opacity: 0, y: 50, x: '-50%' }}
+          className="fixed bottom-24 left-1/2 z-[100] w-[90%] max-w-[360px]"
+        >
+          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--primary)] p-4 text-white shadow-2xl ring-4 ring-white/10">
+            <div className="flex items-center gap-3">
+              <div className="rounded-xl bg-white/20 p-2"><Download className="h-6 w-6" /></div>
+              <div className="text-left">
+                <p className="text-sm font-black">安裝 TTL 生技助手</p>
+                <p className="text-[11px] opacity-80">一鍵啟動，離線也能查詢產品</p>
+              </div>
+            </div>
+            <button onClick={handleWebInstall} className="rounded-full bg-white px-4 py-2 text-xs font-black text-[var(--primary)] shadow-sm active:scale-95">立即安裝</button>
+          </div>
+        </motion.div>
+      )}
     </AnimatePresence>
   )
 }
@@ -1025,7 +1078,6 @@ export default function App() {
   const [stage, setStage] = useState('準備啟動系統...')
   const [inputValue, setInputValue] = useState('') 
   const [keyword, setKeyword] = useState('')       
-  const [activeCategory, setActiveCategory] = useState('all')
   const [activeTag, setActiveTag] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [promoDrawer, setPromoDrawer] = useState(null)
@@ -1196,7 +1248,6 @@ export default function App() {
   const promoItems = useMemo(() => enrichedPromotions.filter((promo) => promo.status !== 'ended').slice(0, 10), [enrichedPromotions])
   const sectionIds = useMemo(() => ['promo', 'hot', ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => item.anchor)], [])
   
-  // 🚀 關鍵升級：精準依賴與指標
   useScrollSpy(sectionIds, !loading && products.length > 0)
 
   useEffect(() => {
@@ -1204,7 +1255,6 @@ export default function App() {
     button?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
   }, [activeSection])
 
-  // 🚀 初始化預設值
   useEffect(() => {
     if (!activeSection && !loading) {
       setActiveSection('promo');
@@ -1297,10 +1347,12 @@ export default function App() {
         .promo-balloon { animation: pulseGlow 2s infinite; }
         @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.7); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
         *::-webkit-scrollbar { display: none; }
+        /* 🚀 強制讓分類區塊有足夠判定高度 */
+        [data-spy-section] { min-height: 35vh; } 
       `}</style>
 
       {loading && <LoaderOverlay progress={progress} stage={stage} />}
-      <IosInstallPrompt />
+      <InstallPrompt />
 
       <div className="mx-auto max-w-4xl pb-[calc(100px+env(safe-area-inset-bottom))]">
         <header className="sticky top-0 z-30 bg-white/90 px-4 pb-2 pt-[calc(1rem+env(safe-area-inset-top))] shadow-sm backdrop-blur-md">
