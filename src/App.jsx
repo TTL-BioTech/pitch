@@ -180,20 +180,26 @@ const PROMO_STATUS_META = {
 function normalizeCategory(nameRaw, catRaw) {
   const n = String(nameRaw || '').toLowerCase();
   const c = String(catRaw || '').toLowerCase();
+
   if (n.includes('黑麥汁') || n.includes('甘益守禮盒') || n.includes('纖麥汁')) return '保健飲品';
+
   const cleaningKeywords = ['洗手', '潔手', '易洗樂', '洗潔', '洗衣', '洗碗', '菜瓜布', '皂', '沐浴', '洗髮', '洗面', '洗沐'];
   if (c.includes('清潔') || c.includes('洗沐') || cleaningKeywords.some(kw => n.includes(kw)) || (n.includes('洗') && n.includes('精'))) {
     return '清潔產品';
   }
+
   const beautyKeywords = ['vinata', '面膜', '精華', '霜', '露', '乳液', '潔顏', '卸妝', '美白', '保濕', '抗皺', '潤', '透', '亮', '膚', '痘'];
   if (c.includes('美容') || c.includes('保養') || beautyKeywords.some(kw => n.includes(kw))) {
     return '美容產品';
   }
+
   const healthKeywords = ['安可健', 's11', '益生菌', '納豆', '紅麴', '魚油', '鈣', '葡萄糖胺', '葉黃素', '膠囊', '錠', '酵素', '滴雞精'];
   if (c.includes('保健') || c.includes('健康') || c.includes('買一送一') || healthKeywords.some(kw => n.includes(kw))) {
     return '保健食品';
   }
+
   if (c.includes('飲品') || c.includes('飲料')) return '保健飲品';
+
   return '其他';
 }
 
@@ -247,39 +253,58 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-// 🚀 修正版 ScrollSpy：移除干擾版面的 CSS，透過加寬判定區域（Detection Zone）來捕捉較小的分類區塊
+// 🚀 終極版精準 ScrollSpy：放棄 Intersection Ratio 誤差，改用絕對座標追蹤
 function useScrollSpy(ids, layoutReady) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
+
   useEffect(() => {
     if (!layoutReady || !ids.length) return undefined
-    
-    const elements = ids.map((id) => document.getElementById(id)).filter(Boolean)
-    if (!elements.length) return undefined
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-          
-        if (visible[0]) setActiveSection(visible[0].target.id)
-      },
-      { 
-        // 判定區域：略過畫面上方 140px (Header高度)，並略過下方 40%
-        // 形成一個位於畫面上半部的判定帶，確保即便是高度很小的區塊滾過這帶狀區域時也會觸發。
-        rootMargin: '-140px 0px -40% 0px', 
-        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] 
-      }
-    )
 
-    // 延遲執行，確保 DOM 完全渲染、圖片載入撐開高度後再開始綁定
-    const timer = setTimeout(() => {
-      elements.forEach((element) => observer.observe(element))
-    }, 300)
+    let ticking = false;
+
+    const updateActiveSection = () => {
+      // 取得 header 實際高度，並加上 20px 作為判定掃描線（與 scrollToId 的位置對齊）
+      const headerHeight = document.querySelector('header')?.offsetHeight || 140;
+      const triggerY = headerHeight + 20; 
+      
+      let currentId = ids[0]; // 預設第一項
+      
+      // 由上往下檢查，只要區塊的頂部越過判定線，就認定為啟動狀態
+      for (let i = 0; i < ids.length; i++) {
+        const el = document.getElementById(ids[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= triggerY) {
+            currentId = ids[i];
+          }
+        }
+      }
+
+      // 如果使用者滾動到了頁面最底端 (容許 10px 誤差)，強制亮起最後一個分類，解決短內容區塊無法置頂的問題
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+        currentId = ids[ids.length - 1];
+      }
+
+      setActiveSection(currentId);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
+    // 進入頁面或資料變動時立即檢查一次，並在延遲後確保圖片載入完畢再查一次
+    updateActiveSection();
+    const timer = setTimeout(updateActiveSection, 300);
+
     return () => {
-      clearTimeout(timer)
-      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
     }
   }, [ids.join(','), layoutReady, setActiveSection])
 }
@@ -295,10 +320,12 @@ function useBodyLock(locked) {
 function HighlightText({ text, keyword }) {
   const keywords = Array.isArray(keyword) ? keyword : [keyword].filter(Boolean)
   if (!keywords.length || !text) return <>{text}</>
+  
   const escapeRegExp = (string) => String(string).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const sortedKeywords = [...keywords].sort((a, b) => b.length - a.length)
   const regex = new RegExp(`(${sortedKeywords.map(escapeRegExp).join('|')})`, 'gi')
   const parts = String(text).split(regex)
+  
   return (
     <>
       {parts.map((part, i) =>
@@ -348,7 +375,6 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   )
 }
 
-// 🚀 安裝提示 (Android/iOS 通用版)
 function InstallPrompt() {
   const [showIos, setShowIos] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState(globalPwaPrompt)
@@ -1345,7 +1371,6 @@ export default function App() {
 
   const sectionIds = useMemo(() => ['promo', 'hot', ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => item.anchor)], [])
   
-  // 🚀 關鍵修復：乾淨的滾動監聽
   useScrollSpy(sectionIds, groupedProducts.length)
 
   useEffect(() => {
