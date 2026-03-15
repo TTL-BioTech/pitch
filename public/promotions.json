@@ -1,0 +1,728 @@
+{
+  "generatedAt": "2026-03-14T18:07:09.316Z",
+  "count": 29,
+  "items": [
+    {
+      "promoId": "2025_Q4_01",
+      "title": "纖麥汁員購活動",
+      "shortTitle": "纖麥汁員購活動",
+      "content": "纖麥汁，6罐/組，4組/箱，建議售價840元，員購價420元(限115年1月22日到期批次)",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34130014-12",
+        "34130013-12"
+      ],
+      "startDate": "2025/10/21",
+      "endDate": "2026/1/22",
+      "status": "ended",
+      "bgColor": "#fff6d5",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_02",
+      "title": "纖麥汁滿額贈",
+      "shortTitle": "纖麥汁滿額贈",
+      "content": "酒廠展售中心凡消費滿200元贈纖麥汁1瓶",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34130013-12"
+      ],
+      "startDate": "2025/11/21",
+      "endDate": "2026/1/22",
+      "status": "ended",
+      "bgColor": "#fff6d5",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_03",
+      "title": "水粉底新品",
+      "shortTitle": "水粉底新品",
+      "content": "高機能酒粕無瑕水粉底SPF50新品常態優惠價單件799元；五件2,970元",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E9%AB%98%E6%A9%9F%E8%83%BD%E9%85%92%E7%B2%95%E7%84%A1%E7%91%95%E6%B0%B4%E7%B2%89%E5%BA%95%20SPF50%20%E2%98%85%E2%98%85%E2%98%85%20%E6%96%B0%E5%93%81%E5%84%AA%E6%83%A0%E6%B4%BB%E5%8B%95.png",
+      "relatedCodes": [
+        "37130047-12"
+      ],
+      "startDate": "2025/10/21",
+      "endDate": "",
+      "status": "active",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_04",
+      "title": "搭贈試用包",
+      "shortTitle": "搭贈試用包",
+      "content": "搭贈試用包(保濕抗皺精華液)活動，購買美容或洗沐全系列，滿299滿額累贈試用包。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E4%BF%9D%E6%BF%95%E6%8A%97%E7%9A%BA%E7%B2%BE%E8%8F%AF%E6%B6%B2%E5%8A%A0%E8%B3%BC%E5%8F%8A%E9%AB%94%E9%A9%97%E5%8C%85%E5%84%AA%E6%83%A0%E6%B4%BB%E5%8B%95.png",
+      "relatedCodes": [
+        "美容 沐浴 洗髮 洗面 皂"
+      ],
+      "startDate": "2025/10/3",
+      "endDate": "2026/5/31",
+      "status": "active",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_05",
+      "title": "啤酒花潔淨 x 柑橘味清爽",
+      "shortTitle": "啤酒花潔淨 x 柑橘味清爽",
+      "content": "家用清潔滿3件，即贈3M百利細緻專用好握型海綿菜瓜布1個，可累贈；加碼優惠→2L洗衣精滿2件，贈啤酒花洗手露1瓶",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E5%95%A4%E9%85%92%E8%8A%B1%E6%BD%94%E6%B7%A8%20x%20%E6%9F%91%E6%A9%98%E5%91%B3%E6%B8%85%E7%88%BD_Amend.png",
+      "relatedCodes": [
+        "易洗樂"
+      ],
+      "startDate": "2025/11/4",
+      "endDate": "2025/12/7",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_06",
+      "title": "VINATA x 聖誕限定",
+      "shortTitle": "VINATA x 聖誕限定",
+      "content": "密集美白乳液(新)單件優惠69折；2件59折。滿2件，加贈1瓶3753C6-12 VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ml)。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E8%81%96%E8%AA%95%E5%B0%88%E6%A1%88.png",
+      "relatedCodes": [
+        "37530001-12"
+      ],
+      "startDate": "2025/12/12",
+      "endDate": "2025/12/31",
+      "status": "ended",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_07",
+      "title": "精華液大對決",
+      "shortTitle": "精華液大對決",
+      "content": "密集美白精華液&抗皺保溼精華液雙瓶組59折搭贈「密集美白體驗包」，滿兩組加碼贈「酒粕維他命亮白面膜」一盒。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E7%B2%BE%E8%8F%AF%E6%B6%B2%E5%A4%A7%E5%B0%8D%E6%B1%BA(%E7%9B%B4%E5%BC%8F).png",
+      "relatedCodes": [
+        "37530000-12",
+        "36130004-12"
+      ],
+      "startDate": "2025/12/19",
+      "endDate": "2026/1/26",
+      "status": "ended",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_01",
+      "title": "洗面乳上市",
+      "shortTitle": "洗面乳上市",
+      "content": "促銷優惠：嘗鮮價單件139元，凡購買一件，可另以每件99元加購，單筆發票最多加購3件為限。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E6%BA%AB%E5%92%8C%E8%AA%BF%E7%90%86%20x%20%E5%AB%A9%E7%99%BD%E7%B4%B0%E7%B7%BB.png",
+      "relatedCodes": [
+        "37370011-12"
+      ],
+      "startDate": "2026/1/9",
+      "endDate": "2026/3/2",
+      "status": "ended",
+      "bgColor": "#D8F3DC",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_02",
+      "title": "洗面乳員購",
+      "shortTitle": "洗面乳員購",
+      "content": "同步辦理員購優惠：員工價單件100元。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/20251107%E6%B4%97%E9%9D%A2%E4%B9%B3DM.jpg",
+      "relatedCodes": [
+        "37370011-12"
+      ],
+      "startDate": "2026/1/9",
+      "endDate": "2026/2/13",
+      "status": "ended",
+      "bgColor": "#D8F3DC",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_03",
+      "title": "護髮素員購",
+      "shortTitle": "護髮素員購",
+      "content": "配合新品啤酒花洗面乳員購方案，同步辦理「米植醇賦活護髮素」員購優惠：員工價單件150元。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E5%A5%B3%E7%A5%9E%E6%9F%94%E9%A0%86%20x%20%E5%93%A1%E8%B3%BC%E5%84%AA%E6%83%A0.png",
+      "relatedCodes": [
+        "37370012-12"
+      ],
+      "startDate": "2026/1/9",
+      "endDate": "2026/2/13",
+      "status": "ended",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_04",
+      "title": "璀璨一月．暖冬獻禮",
+      "shortTitle": "璀璨一月．暖冬獻禮",
+      "content": "早米晚心膠囊促銷：第二件5折搭贈「密集美白體驗包」，活動滿額1,490元加碼贈送「酒粕青春露」一瓶。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E7%92%80%E7%92%A8%E4%B8%80%E6%9C%88.png",
+      "relatedCodes": [
+        "375358-12",
+        "37530007-12"
+      ],
+      "startDate": "2026/1/5",
+      "endDate": "2026/1/31",
+      "status": "ended",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_05",
+      "title": "棒球賽品飲品促銷",
+      "shortTitle": "棒球賽品飲品促銷",
+      "content": "纖黑麥汁飲品 第二件6折",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1BGcIT82JygJoQt3-LFPK__THaMMYny6Y",
+      "relatedCodes": [
+        "341368-12",
+        "341372-12",
+        "341369-12",
+        "341371-12",
+        "34130014-12"
+      ],
+      "startDate": "2026/3/2",
+      "endDate": "2026/3/17",
+      "status": "active",
+      "bgColor": "#fff6d5",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_06",
+      "title": "密集美白乳液即期清倉促銷",
+      "shortTitle": "密集美白乳液即期清倉促銷",
+      "content": "＊密集美白乳液單件59折，搭贈密集美白系列體驗組（乳液/精華液體驗包各一）；滿2件加贈一瓶「37530000-12 VINATA密集美白精華液(新)」，以上皆可累贈，依其倍數類推。　＊即期批次席商品-效期至2026/12/12",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E4%B9%B3%E6%B6%B2%E5%8D%B3%E6%9C%9F%E5%8E%BB%E5%8C%96%E4%BF%83%E9%8A%B7.png",
+      "relatedCodes": [
+        "37530001-12"
+      ],
+      "startDate": "2026/2/6",
+      "endDate": "2026/12/12",
+      "status": "active",
+      "bgColor": "#fbe1e7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_08",
+      "title": "雙效膠囊員購活動",
+      "shortTitle": "雙效膠囊員購活動",
+      "content": "安可健納豆紅麴+鉻雙效膠囊，員購價690元（約58折），每人限購4盒。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%93%A1%E8%B3%BC_%E5%AE%89%E5%8F%AF%E5%81%A5%E7%B4%8D%E8%B1%86%E7%B4%85%E9%BA%B4+%E9%89%BB%E9%9B%99%E6%95%88%E8%86%A0%E5%9B%8A.png",
+      "relatedCodes": [
+        "37110009-12"
+      ],
+      "startDate": "2025/12/10",
+      "endDate": "2026/1/31",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_09",
+      "title": "益立捷員購活動",
+      "shortTitle": "益立捷員購活動",
+      "content": "益立捷，員購價990元（約59折），每人限購4盒。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%93%A1%E8%B3%BC_%E7%9B%8A%E7%AB%8B%E6%8D%B7.png",
+      "relatedCodes": [
+        "37110010-12"
+      ],
+      "startDate": "2025/12/10",
+      "endDate": "2026/1/31",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_10",
+      "title": "新品出擊 x 雙效升級",
+      "shortTitle": "新品出擊 x 雙效升級",
+      "content": "安可健納豆紅麴+鉻雙效膠囊3件組，優惠價2,490元（約69折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E4%BF%9D%E5%81%A5%E6%96%B0%E5%93%813%E5%85%A5%E5%84%AA%E6%83%A0%E7%B5%84%E5%BB%A3%E5%AE%A3_%E7%B4%8D%E7%B4%85%E9%89%BB.png",
+      "relatedCodes": [
+        "37110009-12"
+      ],
+      "startDate": "2025/12/17",
+      "endDate": "2026/3/1",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2025_Q4_11",
+      "title": "新品出擊 x 雙效升級",
+      "shortTitle": "新品出擊 x 雙效升級",
+      "content": "益立捷3件組，優惠價3,490元（約69折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E4%BF%9D%E5%81%A5%E6%96%B0%E5%93%813%E5%85%A5%E5%84%AA%E6%83%A0%E7%B5%84%E5%BB%A3%E5%AE%A3_%E7%9B%8A%E7%AB%8B%E6%8D%B7.png",
+      "relatedCodes": [
+        "37110010-12"
+      ],
+      "startDate": "2025/12/17",
+      "endDate": "2026/3/1",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_07",
+      "title": "鄉民Q1-Jan",
+      "shortTitle": "鄉民Q1-Jan",
+      "content": "關鍵營養組：葡萄糖胺複方錠3件搭贈375176-12台啤酵母錠(新包裝)1件，優惠價2,090元（約59折），售完為止。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E9%97%9C%E9%8D%B5%E7%87%9F%E9%A4%8A%E7%B5%84.png",
+      "relatedCodes": [
+        "385104-12",
+        "375176-12"
+      ],
+      "startDate": "2026/1/23",
+      "endDate": "2026/2/2",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_08",
+      "title": "鄉民Q1-Feb",
+      "shortTitle": "鄉民Q1-Feb",
+      "content": "關鍵營養組：葡萄糖胺複方錠3件搭贈375176-12台啤酵母錠(新包裝)1件，優惠價2,090元（約59折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E9%97%9C%E9%8D%B5%E7%87%9F%E9%A4%8A%E7%B5%84.png",
+      "relatedCodes": [
+        "385104-12",
+        "375176-12"
+      ],
+      "startDate": "2026/2/13",
+      "endDate": "2026/2/23",
+      "status": "ended",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_09",
+      "title": "鄉民Q1-Mar",
+      "shortTitle": "鄉民Q1-Mar",
+      "content": "關鍵營養組：葡萄糖胺複方錠3件搭贈375176-12台啤酵母錠(新包裝)1件，優惠價2,090元（約59折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E9%97%9C%E9%8D%B5%E7%87%9F%E9%A4%8A%E7%B5%84.png",
+      "relatedCodes": [
+        "385104-12",
+        "375176-12"
+      ],
+      "startDate": "2026/3/20",
+      "endDate": "2026/3/30",
+      "status": "upcoming",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_10",
+      "title": "鄉民Q1-Jan",
+      "shortTitle": "鄉民Q1-Jan",
+      "content": "調整體質組：安可健納豆紅麴膠囊3件搭贈保蜜益生菌或風淨益生菌任1件，優惠價3,150 元（約55折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E8%AA%BF%E6%95%B4%E9%AB%94%E8%B3%AA%E7%B5%84.png",
+      "relatedCodes": [
+        "375132-12",
+        "37510002-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/1/23",
+      "endDate": "2026/2/2",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_11",
+      "title": "鄉民Q1-Feb",
+      "shortTitle": "鄉民Q1-Feb",
+      "content": "調整體質組：安可健納豆紅麴膠囊3件搭贈保蜜益生菌或風淨益生菌任1件，優惠價3,150 元（約55折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E8%AA%BF%E6%95%B4%E9%AB%94%E8%B3%AA%E7%B5%84.png",
+      "relatedCodes": [
+        "375132-12",
+        "37510002-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/2/13",
+      "endDate": "2026/2/23",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_12",
+      "title": "鄉民Q1-Mar",
+      "shortTitle": "鄉民Q1-Mar",
+      "content": "調整體質組：安可健納豆紅麴膠囊3件搭贈保蜜益生菌或風淨益生菌任1件，優惠價3,150 元（約55折）。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/115%E5%B9%B4%E7%AC%AC1%E5%AD%A3%E9%84%89%E6%B0%91%E7%94%9F%E6%8A%80%E5%B0%88%E6%A1%88_%E8%AA%BF%E6%95%B4%E9%AB%94%E8%B3%AA%E7%B5%84.png",
+      "relatedCodes": [
+        "375132-12",
+        "37510002-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/3/20",
+      "endDate": "2026/3/30",
+      "status": "upcoming",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_13",
+      "title": "寵物保健食品滿額搭贈即期品去化",
+      "shortTitle": "寵物保健食品滿額搭贈即期品去化",
+      "content": "購買本公司產品全品項（排除菸品、米酒系列品項）任選滿2,000元，即隨機搭贈吃得比你好腸胃保健(犬用)或吃得比你好關節保健(犬用)任1盒，可累贈。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1EF11BHaQmRsdgDLmZ-V21toXxRr2_jy9",
+      "relatedCodes": [
+        "37100000-12",
+        "37100001-12"
+      ],
+      "startDate": "2026/1/9",
+      "endDate": "2026/4/24",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "2026_Q1_14",
+      "title": "S11益生菌買3送1",
+      "shortTitle": "S11益生菌買3送1",
+      "content": "S11益生菌 (新規格 )同商品買3送1，優惠價1,800元(原價75折)。",
+      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/S11%E8%B2%B73%E9%80%811.png",
+      "relatedCodes": [
+        "37110005-12"
+      ],
+      "startDate": "2026/2/2",
+      "endDate": "2026/2/22",
+      "status": "ended",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mm8nfp3q",
+      "title": "保蜜及風淨益生菌即期6折",
+      "shortTitle": "保蜜及風淨益生菌即期6折",
+      "content": "「37510002-12 保蜜益生菌」(效期至115年9月4日)及「37510003-12 風淨益生菌」(效期至115年9月3日)，單件6折(優惠價720元/盒)。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1VVybAdVwafwNn2gDOjWFviDe47gGysw5",
+      "relatedCodes": [
+        "37510002-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/3/4",
+      "endDate": "2026/4/30",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mmegu6jj",
+      "title": "保健特惠輕鬆換季-魚油",
+      "shortTitle": "保健特惠輕鬆換季-魚油",
+      "content": "魚油3入優惠組:3盒深海魚油軟膠囊(37110007-12)，組合優惠價為1,170元(78折)。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/11q5aiSWxY-_MQT_ErZ-AI68nqE9TPhzI",
+      "relatedCodes": [
+        "37110007-12"
+      ],
+      "startDate": "2026/3/5",
+      "endDate": "2026/3/26",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mmehb7vd",
+      "title": "保健特惠輕鬆換季-紅麴",
+      "shortTitle": "保健特惠輕鬆換季-紅麴",
+      "content": "紅麴膠囊3入優惠組:3盒安可健紅麴膠囊(60顆/盒)(375156-12)，組合優惠價為3,042元(78折)。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1KC_YwpbPF6bchnFXtr1PcQBIQuXR5TQ-",
+      "relatedCodes": [
+        "375156-12"
+      ],
+      "startDate": "2026/3/5",
+      "endDate": "2026/3/26",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mmehflni",
+      "title": "保健特惠輕鬆換季-S11",
+      "shortTitle": "保健特惠輕鬆換季-S11",
+      "content": "S11益生菌3入優惠組:3盒S11益生菌(30包/盒)(37110005-12)，組合優惠價為1,404元(原售價78折)。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1i7l83YmEm9MKSI8xsJMR4QecFWCtohAa",
+      "relatedCodes": [
+        "37110005-12"
+      ],
+      "startDate": "2026/3/5",
+      "endDate": "2026/3/26",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "購物網"
+      ]
+    }
+  ]
+}
