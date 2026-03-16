@@ -253,7 +253,6 @@ function usePersistentState(key, fallback) {
   return [value, setValue]
 }
 
-// 🚀 終極版精準 ScrollSpy：放棄 Intersection Ratio 誤差，改用絕對座標追蹤
 function useScrollSpy(ids, layoutReady) {
   const setActiveSection = useAppStore((state) => state.setActiveSection)
 
@@ -263,13 +262,11 @@ function useScrollSpy(ids, layoutReady) {
     let ticking = false;
 
     const updateActiveSection = () => {
-      // 取得 header 實際高度，並加上 20px 作為判定掃描線（與 scrollToId 的位置對齊）
       const headerHeight = document.querySelector('header')?.offsetHeight || 140;
       const triggerY = headerHeight + 20; 
       
-      let currentId = ids[0]; // 預設第一項
+      let currentId = ids[0]; 
       
-      // 由上往下檢查，只要區塊的頂部越過判定線，就認定為啟動狀態
       for (let i = 0; i < ids.length; i++) {
         const el = document.getElementById(ids[i]);
         if (el) {
@@ -280,7 +277,6 @@ function useScrollSpy(ids, layoutReady) {
         }
       }
 
-      // 如果使用者滾動到了頁面最底端 (容許 10px 誤差)，強制亮起最後一個分類，解決短內容區塊無法置頂的問題
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
         currentId = ids[ids.length - 1];
       }
@@ -298,7 +294,6 @@ function useScrollSpy(ids, layoutReady) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // 進入頁面或資料變動時立即檢查一次，並在延遲後確保圖片載入完畢再查一次
     updateActiveSection();
     const timer = setTimeout(updateActiveSection, 300);
 
@@ -375,13 +370,11 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   )
 }
 
-// 🚀 加入 SessionStorage 記憶與手勢滑動退場機制的 InstallPrompt
 function InstallPrompt() {
   const [showIos, setShowIos] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState(null)
   const showToast = useAppStore((state) => state.showToast)
   
-  // 檢查目前 Session 是否已經關閉過提示
   const [isDismissed, setIsDismissed] = useState(() => {
     if (typeof window !== 'undefined') {
       return sessionStorage.getItem('ttl-pwa-prompt-dismissed') === 'true'
@@ -419,7 +412,6 @@ function InstallPrompt() {
     }
   }, [isDismissed])
 
-  // 關閉並記錄狀態
   const handleDismiss = useCallback(() => {
     sessionStorage.setItem('ttl-pwa-prompt-dismissed', 'true')
     setIsDismissed(true)
@@ -435,17 +427,15 @@ function InstallPrompt() {
       showToast('感謝安裝！系統正在建立主畫面捷徑')
       handleDismiss()
     } else {
-      handleDismiss() // 拒絕安裝也視為略過
+      handleDismiss()
     }
   }
 
-  // 共用的滑動手勢屬性
   const dragProps = {
     drag: "x",
     dragConstraints: { left: 0, right: 0 },
     dragElastic: 0.7,
     onDragEnd: (e, { offset, velocity }) => {
-      // 只要水平滑動超過 80px，或是滑動速度夠快，就觸發退場
       if (Math.abs(offset.x) > 80 || Math.abs(velocity.x) > 500) {
         handleDismiss();
       }
@@ -469,8 +459,6 @@ function InstallPrompt() {
               並選擇 <b className="border-b border-white/30 font-bold text-white">「加入主畫面」</b>
             </p>
             <p className="mt-2 text-[12px] text-[#b0bec5] pointer-events-none">以獲得最佳 Web App 操作體驗</p>
-            
-            {/* 極小視覺提示 */}
             <div className="mt-3 h-[3px] w-12 rounded-full bg-white/20 pointer-events-none"></div>
             <p className="mt-1 text-[9px] text-white/40 tracking-wider pointer-events-none">⟷ 左右滑動隱藏</p>
           </motion.div>
@@ -1189,6 +1177,112 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
   )
 }
 
+// 🚀 全新的報表列印專屬視圖組件
+function PrintCatalogView({ products, promotions, timestamp }) {
+  // 1. 取得現行有效活動
+  const activePromos = useMemo(() => promotions.filter(p => p.status !== 'ended'), [promotions])
+  
+  // 2. 將所有有活動的商品重新依照 CATEGORY_META 排序與分組
+  const allGrouped = useMemo(() => {
+    const groups = new Map()
+    CATEGORY_META.filter(m => m.key !== 'all' && m.key !== '其他').forEach(m => groups.set(m.key, { ...m, items: [] }))
+    groups.set('其他', { key: '其他', label: '其他', items: [] })
+    
+    products.forEach(p => {
+      if (groups.has(p.group)) groups.get(p.group).items.push(p)
+      else groups.get('其他').items.push(p)
+    })
+    return Array.from(groups.values()).filter(g => g.items.length > 0)
+  }, [products])
+
+  // 3. 格式化列印觸發當下的時間
+  const printDateStr = useMemo(() => {
+    const d = timestamp ? new Date(timestamp) : new Date();
+    return d.toLocaleString('zh-TW', { 
+      year: 'numeric', month: '2-digit', day: '2-digit', 
+      hour: '2-digit', minute: '2-digit', second: '2-digit' 
+    });
+  }, [timestamp]);
+
+  return (
+    <div className="print-view bg-white text-black p-4 max-w-none">
+      {/* 報表標題與時間 */}
+      <div className="text-center mb-6 border-b-2 border-black pb-4">
+        <h1 className="text-[28px] font-black mb-1">TTL 台酒生技 - 產品銷售快報</h1>
+        <p className="text-[13px] text-gray-600">列印時間：{printDateStr}</p>
+      </div>
+
+      {/* 進行中活動區塊 */}
+      {activePromos.length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-[18px] font-bold mb-3 border-b border-gray-400 pb-1 flex justify-between items-end">
+            🔥 本期熱門活動 <span className="text-[12px] font-normal text-gray-500">(依列印當下資訊)</span>
+          </h2>
+          <div className="grid grid-cols-2 gap-4">
+            {activePromos.map(promo => (
+              <div key={promo.promoId} className="border border-gray-300 p-3 rounded bg-gray-50 break-inside-avoid">
+                <div className="font-black text-[15px] mb-1">★ {promo.title}</div>
+                <div className="text-[13px] text-gray-800 whitespace-pre-line leading-relaxed mb-2">{promo.content}</div>
+                <div className="text-[11px] text-gray-500 italic">期間：{promo.startDate} ~ {promo.endDate}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 全商品表格清單區塊 */}
+      <div>
+        <h2 className="text-[18px] font-bold mb-3 border-b border-gray-400 pb-1 flex justify-between items-end">
+          📦 全產品銷售支援清單 <span className="text-[12px] font-normal text-gray-500">(包含商品話術與對應活動)</span>
+        </h2>
+        <table className="w-full text-[13px] border-collapse border border-gray-400">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-400 p-2 text-left w-[10%]">代號</th>
+              <th className="border border-gray-400 p-2 text-left w-[18%]">品名</th>
+              <th className="border border-gray-400 p-2 text-left w-[42%]">商品主打 / 特色簡介</th>
+              <th className="border border-gray-400 p-2 text-left w-[20%]">適用促銷活動</th>
+              <th className="border border-gray-400 p-2 text-right w-[10%]">建議售價</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allGrouped.map(group => (
+              <React.Fragment key={group.key}>
+                {/* 分類群組標題列 */}
+                <tr>
+                  <td colSpan="5" className="bg-gray-100 font-black text-center p-2 border border-gray-400 text-[15px]">
+                    {group.label}
+                  </td>
+                </tr>
+                {/* 分類內的商品資料列 */}
+                {group.items.map(p => {
+                  const promoText = p.promos?.map(pr => `• ${pr.title}`).join('\n') || '';
+                  return (
+                    <tr key={p.code} className="break-inside-avoid">
+                      <td className="border border-gray-400 p-2 align-top font-mono text-[12px]">{p.code}</td>
+                      <td className="border border-gray-400 p-2 align-top font-bold">{p.name}</td>
+                      <td className="border border-gray-400 p-2 align-top text-gray-700 whitespace-pre-line leading-relaxed">
+                        {p.title ? <div className="font-bold text-[14px] text-[var(--primary-strong)] mb-1">【{p.title}】</div> : null}
+                        {p.content || <span className="text-gray-400 italic">無簡介資料</span>}
+                      </td>
+                      <td className="border border-gray-400 p-2 align-top text-[#d81b60] font-bold whitespace-pre-line leading-relaxed">
+                        {promoText}
+                      </td>
+                      <td className="border border-gray-400 p-2 align-top text-right font-black text-[15px]">
+                        ${p.price.toLocaleString()}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = usePersistentState(STORAGE_KEYS.theme, THEMES[0].key)
   const [scale, setScale] = usePersistentState(STORAGE_KEYS.scale, 'A')
@@ -1224,6 +1318,9 @@ export default function App() {
   const closeFab = useAppStore((state) => state.closeFab)
   const showToast = useAppStore((state) => state.showToast)
   const setExpandedCardId = useAppStore((state) => state.setExpandedCardId)
+
+  // 🚀 列印觸發的 Timestamp (用以更新報表上的時間)
+  const [printTriggerStamp, setPrintTriggerStamp] = useState(null);
 
   const themeConfig = THEMES.find((item) => item.key === theme) || THEMES[0]
 
@@ -1531,6 +1628,14 @@ export default function App() {
     }, 350);
   }, [promoDrawer, promoCenterOpen, clearFilters, openProductByCode]);
 
+  // 🚀 觸發列印功能：寫入時間戳並呼叫 print
+  const handlePrintClick = useCallback(() => {
+    setPrintTriggerStamp(Date.now());
+    setTimeout(() => {
+      window.print();
+    }, 150); // 給 React 一點時間完成時間戳的 Render
+  }, []);
+
   return (
     <div style={themeConfig.colors} className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans antialiased">
       <style>{`
@@ -1539,121 +1644,141 @@ export default function App() {
         .promo-balloon { animation: pulseGlow 2s infinite; }
         @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.7); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
         *::-webkit-scrollbar { display: none; }
+        
+        /* 🚀 專門給報表列印用的 CSS 隔離設定 */
+        .print-view { display: none; }
+        @media print {
+          body, html { background: #ffffff !important; color: #000000 !important; margin: 0 !important; padding: 0 !important; }
+          .screen-view { display: none !important; }
+          .print-view { display: block !important; width: 100% !important; max-width: 100% !important; }
+          @page { margin: 1cm; size: A4 portrait; }
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
       `}</style>
 
-      {loading && <LoaderOverlay progress={progress} stage={stage} />}
-      <InstallPrompt />
+      {/* 🚀 一般螢幕顯示區塊：加上 .screen-view 確保列印時被隱藏 */}
+      <div className="screen-view">
+        {loading && <LoaderOverlay progress={progress} stage={stage} />}
+        <InstallPrompt />
 
-      <div className="mx-auto max-w-4xl pb-[calc(100px+env(safe-area-inset-bottom))]">
-        <header className="sticky top-0 z-30 bg-white/90 px-4 pb-2 pt-[calc(1rem+env(safe-area-inset-top))] shadow-sm backdrop-blur-md">
-          <div className="flex items-center justify-between">
-            <div className="text-center w-full flex-1">
-              <h1 className="text-[20px] font-black leading-none text-[var(--primary)]">TTL Bio-tech 健康美學</h1>
-              <p className="mt-1 text-[11px] font-bold text-[var(--muted)]">台酒生技 產品銷售輔助</p>
-            </div>
-            <button onClick={() => window.print()} className="absolute right-4 flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)] transition active:scale-95 shadow-sm">
-              <Printer className="h-[18px] w-[18px]" />
-            </button>
-          </div>
-
-          <div className="mx-auto mt-3 w-full max-w-[600px] relative">
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-            <input 
-              value={inputValue} 
-              onChange={(e) => setInputValue(e.target.value)} 
-              placeholder="搜尋產品名稱、關鍵字..." 
-              className="h-[44px] w-full rounded-full border border-slate-200 bg-slate-50 pl-10 pr-10 text-[15px] font-bold text-slate-700 outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary-soft)] transition"
-            />
-            {(inputValue || activeTag) && (
-              <button onClick={clearFilters} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-200 p-1 text-slate-500 hover:bg-slate-300">
-                <X className="h-4 w-4" />
-              </button>
-            )}
-          </div>
-
-          {activeTag ? <div className="mt-2 flex items-center gap-2 px-1"><span className="rounded-full px-3 py-1 text-[11px] font-bold" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>#{activeTag}</span><button onClick={clearFilters} className="text-[11px] font-bold text-[var(--muted)] underline underline-offset-2">返回全部</button></div> : null}
-          <div ref={navRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
-            {[{ label: '全部', anchor: 'promo' }, ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => ({ label: item.label, anchor: item.anchor, category: item.key }))].map((item) => {
-              const active = activeSection === item.anchor || (!activeSection && item.anchor === 'promo')
-              return (
-                <button
-                  key={item.anchor}
-                  data-anchor={item.anchor}
-                  onClick={() => scrollToId(item.anchor)}
-                  className={`whitespace-nowrap rounded-full px-4 py-1.5 text-[14px] font-bold transition ${active ? 'bg-[var(--primary)] text-white shadow-md shadow-[var(--primary)]/30' : 'bg-slate-100 text-slate-500'}`}
-                >
-                  {item.label}
-                </button>
-              )
-            })}
-          </div>
-        </header>
-
-        <main className="px-4 pt-4 space-y-6">
-          <PromoCarousel items={promoItems} onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} scale={scale} />
-          
-          <RankingCarousel 
-            items={visibleHotProducts} 
-            onOpenProduct={handleOpenFromGlobal} 
-            subtitle={keyword || activeTag ? '已依目前篩選條件保留相關熱銷品' : '依實際銷售數據更新'} 
-            category={rankCategory}
-            setCategory={setRankCategory}
-          />
-
-          {groupedProducts.length > 0 ? groupedProducts.map((group) => (
-            <section key={group.key} id={group.anchor} data-spy-section className={`scroll-mt-[185px]`}>
-              <SectionTitle title={group.label} subtitle="" />
-              <div className="space-y-3">
-                {group.items.map((product) => (
-                  <div id={`card-${product.code}`} key={product.code}>
-                    <ProductRow 
-                      product={product} 
-                      scale={scale} 
-                      keyword={parsedKeywords} 
-                      onOpenProductByCode={openProductByCode} 
-                      onApplyTagFilter={applyTagFilter} 
-                      onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
-                    />
-                  </div>
-                ))}
+        <div className="mx-auto max-w-4xl pb-[calc(100px+env(safe-area-inset-bottom))]">
+          <header className="sticky top-0 z-30 bg-white/90 px-4 pb-2 pt-[calc(1rem+env(safe-area-inset-top))] shadow-sm backdrop-blur-md">
+            <div className="flex items-center justify-between">
+              <div className="text-center w-full flex-1">
+                <h1 className="text-[20px] font-black leading-none text-[var(--primary)]">TTL Bio-tech 健康美學</h1>
+                <p className="mt-1 text-[11px] font-bold text-[var(--muted)]">台酒生技 產品銷售輔助</p>
               </div>
-            </section>
-          )) : (
-            <div className="py-20 text-center">
-              <Search className="mx-auto h-12 w-12 text-slate-300 mb-3" />
-              <p className="text-[16px] font-bold text-slate-500">沒有符合條件的商品</p>
+              <button onClick={handlePrintClick} className="absolute right-4 flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)] transition active:scale-95 shadow-sm">
+                <Printer className="h-[18px] w-[18px]" />
+              </button>
             </div>
-          )}
-        </main>
+
+            <div className="mx-auto mt-3 w-full max-w-[600px] relative">
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <input 
+                value={inputValue} 
+                onChange={(e) => setInputValue(e.target.value)} 
+                placeholder="搜尋產品名稱、關鍵字..." 
+                className="h-[44px] w-full rounded-full border border-slate-200 bg-slate-50 pl-10 pr-10 text-[15px] font-bold text-slate-700 outline-none focus:border-[var(--primary)] focus:bg-white focus:ring-2 focus:ring-[var(--primary-soft)] transition"
+              />
+              {(inputValue || activeTag) && (
+                <button onClick={clearFilters} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-200 p-1 text-slate-500 hover:bg-slate-300">
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+
+            {activeTag ? <div className="mt-2 flex items-center gap-2 px-1"><span className="rounded-full px-3 py-1 text-[11px] font-bold" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>#{activeTag}</span><button onClick={clearFilters} className="text-[11px] font-bold text-[var(--muted)] underline underline-offset-2">返回全部</button></div> : null}
+            <div ref={navRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {[{ label: '全部', anchor: 'promo' }, ...CATEGORY_META.filter((item) => item.key !== 'all').map((item) => ({ label: item.label, anchor: item.anchor, category: item.key }))].map((item) => {
+                const active = activeSection === item.anchor || (!activeSection && item.anchor === 'promo')
+                return (
+                  <button
+                    key={item.anchor}
+                    data-anchor={item.anchor}
+                    onClick={() => scrollToId(item.anchor)}
+                    className={`whitespace-nowrap rounded-full px-4 py-1.5 text-[14px] font-bold transition ${active ? 'bg-[var(--primary)] text-white shadow-md shadow-[var(--primary)]/30' : 'bg-slate-100 text-slate-500'}`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
+            </div>
+          </header>
+
+          <main className="px-4 pt-4 space-y-6">
+            <PromoCarousel items={promoItems} onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} scale={scale} />
+            
+            <RankingCarousel 
+              items={visibleHotProducts} 
+              onOpenProduct={handleOpenFromGlobal} 
+              subtitle={keyword || activeTag ? '已依目前篩選條件保留相關熱銷品' : '依實際銷售數據更新'} 
+              category={rankCategory}
+              setCategory={setRankCategory}
+            />
+
+            {groupedProducts.length > 0 ? groupedProducts.map((group) => (
+              <section key={group.key} id={group.anchor} data-spy-section className={`scroll-mt-[185px]`}>
+                <SectionTitle title={group.label} subtitle="" />
+                <div className="space-y-3">
+                  {group.items.map((product) => (
+                    <div id={`card-${product.code}`} key={product.code}>
+                      <ProductRow 
+                        product={product} 
+                        scale={scale} 
+                        keyword={parsedKeywords} 
+                        onOpenProductByCode={openProductByCode} 
+                        onApplyTagFilter={applyTagFilter} 
+                        onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )) : (
+              <div className="py-20 text-center">
+                <Search className="mx-auto h-12 w-12 text-slate-300 mb-3" />
+                <p className="text-[16px] font-bold text-slate-500">沒有符合條件的商品</p>
+              </div>
+            )}
+          </main>
+        </div>
+
+        <SettingsPanel 
+          open={settingsOpen} 
+          onClose={() => { if (window.history.state?.ui === 'settings') window.history.back(); else setSettingsOpen(false); }} 
+          theme={theme} setTheme={setTheme} scale={scale} setScale={setScale} 
+        />
+        <MediaSheet />
+        <VideoModal />
+        <LightboxModal />
+        <PromoCenterPanel 
+          open={promoCenterOpen} 
+          items={enrichedPromotions} 
+          statusFilter={promoStatusFilter} 
+          setStatusFilter={setPromoStatusFilter} 
+          groupFilter={promoGroupFilter} 
+          setGroupFilter={setPromoGroupFilter} 
+          onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} 
+          onClose={() => { if (window.history.state?.ui === 'promo-center') window.history.back(); else setPromoCenterOpen(false); }} 
+          scale={scale}
+        />
+        <PromoDrawer 
+          promo={promoDrawer} 
+          onClose={() => { if (window.history.state?.ui === 'promo') window.history.back(); else setPromoDrawer(null); }} 
+          onNavigateToProduct={navigateToProductFromPromo}
+          scale={scale}
+        />
+        <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
+        <ToastMessage />
       </div>
 
-      <SettingsPanel 
-        open={settingsOpen} 
-        onClose={() => { if (window.history.state?.ui === 'settings') window.history.back(); else setSettingsOpen(false); }} 
-        theme={theme} setTheme={setTheme} scale={scale} setScale={setScale} 
+      {/* 🚀 隱藏的列印報表視圖 */}
+      <PrintCatalogView 
+        products={productsWithPromos} 
+        promotions={enrichedPromotions} 
+        timestamp={printTriggerStamp} 
       />
-      <MediaSheet />
-      <VideoModal />
-      <LightboxModal />
-      <PromoCenterPanel 
-        open={promoCenterOpen} 
-        items={enrichedPromotions} 
-        statusFilter={promoStatusFilter} 
-        setStatusFilter={setPromoStatusFilter} 
-        groupFilter={promoGroupFilter} 
-        setGroupFilter={setPromoGroupFilter} 
-        onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} 
-        onClose={() => { if (window.history.state?.ui === 'promo-center') window.history.back(); else setPromoCenterOpen(false); }} 
-        scale={scale}
-      />
-      <PromoDrawer 
-        promo={promoDrawer} 
-        onClose={() => { if (window.history.state?.ui === 'promo') window.history.back(); else setPromoDrawer(null); }} 
-        onNavigateToProduct={navigateToProductFromPromo}
-        scale={scale}
-      />
-      <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
-      <ToastMessage />
     </div>
   )
 }
