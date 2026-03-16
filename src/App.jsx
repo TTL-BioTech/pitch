@@ -375,13 +375,22 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   )
 }
 
+// 🚀 加入 SessionStorage 記憶與手勢滑動退場機制的 InstallPrompt
 function InstallPrompt() {
   const [showIos, setShowIos] = useState(false)
-  const [deferredPrompt, setDeferredPrompt] = useState(globalPwaPrompt)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
   const showToast = useAppStore((state) => state.showToast)
+  
+  // 檢查目前 Session 是否已經關閉過提示
+  const [isDismissed, setIsDismissed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('ttl-pwa-prompt-dismissed') === 'true'
+    }
+    return false
+  })
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || isDismissed) return
 
     const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches
     const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
@@ -408,6 +417,14 @@ function InstallPrompt() {
         window.removeEventListener('beforeinstallprompt', handleBefore)
       }
     }
+  }, [isDismissed])
+
+  // 關閉並記錄狀態
+  const handleDismiss = useCallback(() => {
+    sessionStorage.setItem('ttl-pwa-prompt-dismissed', 'true')
+    setIsDismissed(true)
+    setShowIos(false)
+    setDeferredPrompt(null)
   }, [])
 
   const handleWebInstall = async () => {
@@ -416,46 +433,74 @@ function InstallPrompt() {
     const { outcome } = await deferredPrompt.userChoice
     if (outcome === 'accepted') {
       showToast('感謝安裝！系統正在建立主畫面捷徑')
+      handleDismiss()
+    } else {
+      handleDismiss() // 拒絕安裝也視為略過
     }
-    setDeferredPrompt(null)
+  }
+
+  // 共用的滑動手勢屬性
+  const dragProps = {
+    drag: "x",
+    dragConstraints: { left: 0, right: 0 },
+    dragElastic: 0.7,
+    onDragEnd: (e, { offset, velocity }) => {
+      // 只要水平滑動超過 80px，或是滑動速度夠快，就觸發退場
+      if (Math.abs(offset.x) > 80 || Math.abs(velocity.x) > 500) {
+        handleDismiss();
+      }
+    }
   }
 
   return (
     <AnimatePresence>
       {showIos && (
-        <motion.div
-          initial={{ opacity: 0, y: 20, x: '-50%' }}
-          animate={{ opacity: 1, y: 0, x: '-50%' }}
-          exit={{ opacity: 0, y: 20, x: '-50%' }}
-          className="fixed bottom-[calc(30px+env(safe-area-inset-bottom))] left-1/2 z-[100] flex w-[90%] max-w-[360px] flex-col items-center rounded-2xl bg-[#263238]/95 p-5 text-center text-white shadow-2xl backdrop-blur-md"
-        >
-          <button onClick={() => setShowIos(false)} className="absolute right-2 top-2 p-2 text-[#90a4ae] active:text-white"><X className="h-5 w-5" /></button>
-          <p className="text-[15px] leading-relaxed">
-            點擊工具列上的 <Share className="mx-1 mb-1 inline h-[22px] w-[22px] text-[#4fc3f7] drop-shadow-[0_0_5px_rgba(79,195,247,0.6)]" /> 分享按鈕<br />
-            並選擇 <b className="border-b border-white/30 font-bold text-white">「加入主畫面」</b>
-          </p>
-          <p className="mt-2 text-[12px] text-[#b0bec5]">以獲得最佳 Web App 操作體驗</p>
-        </motion.div>
+        <div className="fixed bottom-[calc(30px+env(safe-area-inset-bottom))] inset-x-0 z-[100] flex justify-center pointer-events-none">
+          <motion.div
+            {...dragProps}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="flex w-[90%] max-w-[360px] flex-col items-center rounded-2xl bg-[#263238]/95 p-5 text-center text-white shadow-2xl backdrop-blur-md cursor-grab active:cursor-grabbing pointer-events-auto"
+          >
+            <button onClick={handleDismiss} className="absolute right-2 top-2 p-2 text-[#90a4ae] active:text-white"><X className="h-5 w-5" /></button>
+            <p className="text-[15px] leading-relaxed pointer-events-none">
+              點擊工具列上的 <Share className="mx-1 mb-1 inline h-[22px] w-[22px] text-[#4fc3f7] drop-shadow-[0_0_5px_rgba(79,195,247,0.6)]" /> 分享按鈕<br />
+              並選擇 <b className="border-b border-white/30 font-bold text-white">「加入主畫面」</b>
+            </p>
+            <p className="mt-2 text-[12px] text-[#b0bec5] pointer-events-none">以獲得最佳 Web App 操作體驗</p>
+            
+            {/* 極小視覺提示 */}
+            <div className="mt-3 h-[3px] w-12 rounded-full bg-white/20 pointer-events-none"></div>
+            <p className="mt-1 text-[9px] text-white/40 tracking-wider pointer-events-none">⟷ 左右滑動隱藏</p>
+          </motion.div>
+        </div>
       )}
 
       {deferredPrompt && (
-        <motion.div
-          initial={{ opacity: 0, y: 50, x: '-50%' }}
-          animate={{ opacity: 1, y: 0, x: '-50%' }}
-          exit={{ opacity: 0, y: 50, x: '-50%' }}
-          className="fixed bottom-24 left-1/2 z-[100] w-[90%] max-w-[360px]"
-        >
-          <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--primary)] p-4 text-white shadow-2xl ring-4 ring-white/10">
-            <div className="flex items-center gap-3">
-              <div className="rounded-xl bg-white/20 p-2"><Download className="h-6 w-6" /></div>
-              <div className="text-left">
-                <p className="text-sm font-black">安裝 TTL 生技助手</p>
-                <p className="text-[11px] opacity-80">一鍵啟動，離線也能查詢產品</p>
+        <div className="fixed bottom-24 inset-x-0 z-[100] flex justify-center pointer-events-none">
+          <motion.div
+            {...dragProps}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="w-[90%] max-w-[360px] cursor-grab active:cursor-grabbing pointer-events-auto"
+          >
+            <div className="flex items-center justify-between gap-4 rounded-2xl bg-[var(--primary)] p-4 text-white shadow-2xl ring-4 ring-white/10">
+              <div className="flex items-center gap-3 pointer-events-none">
+                <div className="rounded-xl bg-white/20 p-2"><Download className="h-6 w-6" /></div>
+                <div className="text-left">
+                  <p className="text-sm font-black">安裝 TTL 生技助手</p>
+                  <p className="text-[11px] opacity-80">一鍵啟動，離線也能查詢</p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center shrink-0">
+                  <button onClick={handleWebInstall} className="rounded-full bg-white px-4 py-2 text-xs font-black text-[var(--primary)] shadow-sm active:scale-95">立即安裝</button>
+                  <p className="mt-1.5 text-[9px] font-bold text-white/50 tracking-wider pointer-events-none">⟷ 滑動隱藏</p>
               </div>
             </div>
-            <button onClick={handleWebInstall} className="rounded-full bg-white px-4 py-2 text-xs font-black text-[var(--primary)] shadow-sm active:scale-95">立即安裝</button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   )
@@ -1244,7 +1289,7 @@ export default function App() {
           code: item.code,
           name: item.name,
           category: item.category,
-          group: normalizeCategory(item.name, item.category), // 🚀 將商品名稱與分類一併傳入智慧分類引擎
+          group: normalizeCategory(item.name, item.category), 
           price: Number(item.price || 0),
           photo: item.photo,
           title: pitch.title || '',
