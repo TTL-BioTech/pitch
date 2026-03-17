@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T06:07:58.583Z",
-  "count": 35,
+  "generatedAt": "2026-03-17T06:12:57.308Z",
+  "count": 45,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -836,7 +836,7 @@
       "title": "母親節 保濕抗皺精華液 惜福價",
       "shortTitle": "母親節 保濕抗皺精華液 惜福價",
       "content": "保濕抗皺精華液 即期優惠599元 (效期2027/1/5)。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/1fUINioMLhBOfPA04rs3EN4HKfn0jn42T",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1GiLZ5yUmh5WWWSW0ZowIbqJxWze6Go7K",
       "relatedCodes": [
         "36130004-12"
       ],
@@ -857,13 +857,266 @@
       ]
     },
     {
-      "promoId": "P_mmu6guxm",
+      "promoId": "P_mmu7tm8k",
       "title": "母親節 密集美白乳液 惜福價",
       "shortTitle": "母親節 密集美白乳液 惜福價",
       "content": "VINATA密集美白乳液 即期優惠399元 (效期2026/12/21)。",
       "imgUrl": "",
       "relatedCodes": [
         "37530001-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7o17g",
+      "title": "母親節 特青春亮白組",
+      "shortTitle": "母親節 特青春亮白組",
+      "content": "酒粕精粹逆齡活膚青春露(金裝版)3件+VINATA酒粕維他命亮白面膜(8片/盒)1盒，檔期特惠1,390元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37130028-12",
+        "3753AD-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7o7o4",
+      "title": "母親節 洗沐護膚組",
+      "shortTitle": "母親節 洗沐護膚組",
+      "content": "VINATA啤酒花沐浴露(500ML) 、VINATA酵母賦活精華輕潤身體乳-常規瓶(500ML)、VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ML)；三項各一件，檔期特惠1,390元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36530000-12",
+        "3753BX-12",
+        "3753C6-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7of9q",
+      "title": "母親節 護髮素3入組",
+      "shortTitle": "母親節 護髮素3入組",
+      "content": "米植醇賦活護髮素3件，檔期特惠520元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370012-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7on43",
+      "title": "母親節 啤酒花洗沐旅行組",
+      "shortTitle": "母親節 啤酒花洗沐旅行組",
+      "content": "啤酒花洗沐旅行組，檔期特惠135元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370004-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7ou86",
+      "title": "母親節 啤酒花沐禮盒",
+      "shortTitle": "母親節 啤酒花沐禮盒",
+      "content": "啤酒花沐禮盒，檔期特惠480元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370005-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7p926",
+      "title": "母親節 保養-任選兩入79折",
+      "shortTitle": "母親節 保養-任選兩入79折",
+      "content": "保養類指定品項，任選兩入79折。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375337-12",
+        "36330000-12",
+        "375367-12",
+        "37530000-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7pgrt",
+      "title": "母親節 洗沐-任選3件499元",
+      "shortTitle": "母親節 洗沐-任選3件499元",
+      "content": "洗沐類指定品項，任選3件499元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36530001-12",
+        "36130001-12",
+        "36370010-12",
+        "37170008-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7pn3c",
+      "title": "母親節 皂類-同品項第二件5折",
+      "shortTitle": "母親節 皂類-同品項第二件5折",
+      "content": "皂類指定品項，同品項第二件5折。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "351646-12",
+        "37170002-12",
+        "37170003-12",
+        "37170004-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7pwi5",
+      "title": "母親節 加價購單件99元",
+      "shortTitle": "母親節 加價購單件99元",
+      "content": "加價購單件99元 (一單限購兩瓶；購買母親節活動任一品項即享加購資格)。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370011-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu7q4io",
+      "title": "母親節 滿額贈活動",
+      "shortTitle": "母親節 滿額贈活動",
+      "content": "1.購買活動品項，單筆消費滿1元贈送「37130030-12 VINATA保濕抗皺精華液(2g)(建議售價35元)」1件。\n2.購買活動品項，單筆消費滿1,500元贈送「37800017-12、37500008-12收納包」1件或「37530011-12飄帶麻布包」1件 (隨機出貨：化妝包優先，送完即贈麻布包）\n3.贈品不累贈，各門檻限贈送1次。數量有限，送完為止。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "3753AD-12",
+        "3753AE-12",
+        "3753BM-12",
+        "37130047-12",
+        "375367-12",
+        "375358-12",
+        "37530002-12",
+        "37530003-12",
+        "37130000-12",
+        "37530002-12",
+        "37530003-12",
+        "36130004-12",
+        "37530001-12",
+        "37130028-12",
+        "36530000-12",
+        "3753BX-12",
+        "3753C6-12",
+        "37370012-12",
+        "37370004-12",
+        "37370005-12",
+        "375337-12",
+        "36330000-12",
+        "375367-12",
+        "37530000-12",
+        "36530001-12",
+        "36130001-12",
+        "36370010-12",
+        "37170008-12",
+        "351646-12",
+        "37170002-12",
+        "37170003-12",
+        "37170004-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
