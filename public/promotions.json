@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T05:22:59.949Z",
-  "count": 32,
+  "generatedAt": "2026-03-17T05:27:57.873Z",
+  "count": 34,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -773,12 +773,56 @@
       "promoId": "P_mmu5wc6g",
       "title": "母親節 活膚膠囊組 (贈美白體驗包)",
       "shortTitle": "母親節 活膚膠囊組 (贈美白體驗包)",
-      "content": "緊緻活膚膠囊2件，贈密集美白體驗組",
+      "content": "緊緻活膚膠囊2件，贈密集美白體驗組。",
       "imgUrl": "",
       "relatedCodes": [
         "375358-12",
         "37530002-12",
         "37530003-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu5xypl",
+      "title": "母親節 特潤膠囊組 (贈美白體驗包)",
+      "shortTitle": "母親節 特潤膠囊組 (贈美白體驗包)",
+      "content": "激透光米植醇特潤膠囊(15顆)2件，贈密集美白體驗組。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37130000-12",
+        "37530002-12",
+        "37530003-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu60rlh",
+      "title": "母親節 保濕抗皺精華液 惜福價(效期2027/1/5)",
+      "shortTitle": "母親節 保濕抗皺精華液 惜福價(效期2027/1/5)",
+      "content": "保濕抗皺精華液特價599元( (效期2027/1/5)。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36130004-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
