@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T05:18:01.956Z",
-  "count": 31,
+  "generatedAt": "2026-03-17T05:22:59.949Z",
+  "count": 32,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -756,6 +756,29 @@
       "relatedCodes": [
         "37130047-12",
         "375367-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu5wc6g",
+      "title": "母親節 活膚膠囊組 (贈美白體驗包)",
+      "shortTitle": "母親節 活膚膠囊組 (贈美白體驗包)",
+      "content": "緊緻活膚膠囊2件，贈密集美白體驗組",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375358-12",
+        "37530002-12",
+        "37530003-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
