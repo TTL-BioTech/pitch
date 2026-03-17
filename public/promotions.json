@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-17T08:07:54.685Z",
+  "generatedAt": "2026-03-17T08:13:00.158Z",
   "count": 47,
   "items": [
     {
@@ -182,7 +182,7 @@
       "title": "洗面乳上市優惠",
       "shortTitle": "洗面乳上市優惠",
       "content": "嘗鮮價單件139元，凡購買一件，可另以每件99元加購，單筆發票最多加購3件為限。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/1ANBKrICotUu7VbQawmBPfTE3iCJEQB8l",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1uguT8Cc8QLKBK0oDdP1NndlIe3Z-T1fQ",
       "relatedCodes": [
         "37370011-12"
       ],
@@ -1179,11 +1179,11 @@
       ]
     },
     {
-      "promoId": "P_mmublom2",
+      "promoId": "P_mmubuh75",
       "title": "洗衣球上市優惠",
       "shortTitle": "洗衣球上市優惠",
-      "content": "嘗鮮價，單件：\n易洗樂香氛洗衣球30入／5入：219／59元。\n\n※買兩件（30入）再加贈5入組ｘ1。",
-      "imgUrl": "",
+      "content": "嘗鮮價，單件：\n易洗樂香氛洗衣球30入／5入：219／59元。\n※買兩件（30入）再加贈5入組ｘ1。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1tpQ0UwWKGEMYIdbyv8DfSV6DGODItq5u",
       "relatedCodes": [
         "37370013-12",
         "37370014-12"
@@ -1191,14 +1191,19 @@
       "startDate": "2026/3/17",
       "endDate": "2026/6/21",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_mmubly3v",
