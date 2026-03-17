@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-17T06:12:57.308Z",
+  "generatedAt": "2026-03-17T06:17:56.160Z",
   "count": 45,
   "items": [
     {
@@ -836,7 +836,7 @@
       "title": "母親節 保濕抗皺精華液 惜福價",
       "shortTitle": "母親節 保濕抗皺精華液 惜福價",
       "content": "保濕抗皺精華液 即期優惠599元 (效期2027/1/5)。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/1GiLZ5yUmh5WWWSW0ZowIbqJxWze6Go7K",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1qSUOZDrz97DYmsA_DN_GlqxWwxzb9bue",
       "relatedCodes": [
         "36130004-12"
       ],
@@ -861,28 +861,32 @@
       "title": "母親節 密集美白乳液 惜福價",
       "shortTitle": "母親節 密集美白乳液 惜福價",
       "content": "VINATA密集美白乳液 即期優惠399元 (效期2026/12/21)。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1bv1HYPw4nHr_fCjlNCMMk93Qc89Gv-4A",
       "relatedCodes": [
         "37530001-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
-      "promoId": "P_mmu7o17g",
-      "title": "母親節 特青春亮白組",
-      "shortTitle": "母親節 特青春亮白組",
+      "promoId": "P_mmu7whx7",
+      "title": "母親節 青春亮白組",
+      "shortTitle": "母親節 青春亮白組",
       "content": "酒粕精粹逆齡活膚青春露(金裝版)3件+VINATA酒粕維他命亮白面膜(8片/盒)1盒，檔期特惠1,390元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1OWN-AAmWbqoP6X-nkdqiC-kLvcAGtqgT",
       "relatedCodes": [
         "37130028-12",
         "3753AD-12"
@@ -890,21 +894,25 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mmu7o7o4",
       "title": "母親節 洗沐護膚組",
       "shortTitle": "母親節 洗沐護膚組",
       "content": "VINATA啤酒花沐浴露(500ML) 、VINATA酵母賦活精華輕潤身體乳-常規瓶(500ML)、VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ML)；三項各一件，檔期特惠1,390元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/137kAPvl54DsKb2VLNzDRFqbzcOmEBb03",
       "relatedCodes": [
         "36530000-12",
         "3753BX-12",
@@ -913,84 +921,102 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fff3e0",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_mmu7of9q",
       "title": "母親節 護髮素3入組",
       "shortTitle": "母親節 護髮素3入組",
       "content": "米植醇賦活護髮素3件，檔期特惠520元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1Mw2R0G5JISMuKOrtDy4gI6i1NKY12LDG",
       "relatedCodes": [
         "37370012-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_mmu7on43",
       "title": "母親節 啤酒花洗沐旅行組",
       "shortTitle": "母親節 啤酒花洗沐旅行組",
       "content": "啤酒花洗沐旅行組，檔期特惠135元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1yBIThVnPwuRH5pdxAi9WVpq2DFhgPg8R",
       "relatedCodes": [
         "37370004-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mmu7ou86",
       "title": "母親節 啤酒花沐禮盒",
       "shortTitle": "母親節 啤酒花沐禮盒",
       "content": "啤酒花沐禮盒，檔期特惠480元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1oAOaSkpApRLNrHHA-ixutnz57GV--BwR",
       "relatedCodes": [
         "37370005-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mmu7p926",
       "title": "母親節 保養-任選兩入79折",
       "shortTitle": "母親節 保養-任選兩入79折",
       "content": "保養類指定品項，任選兩入79折。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1jLPyJFcfbOBE6WGDSc1Nf4pXdIEC86n0",
       "relatedCodes": [
         "375337-12",
         "36330000-12",
@@ -1000,14 +1026,18 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mmu7pgrt",
