@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260317074756",
-  "generatedAt": "2026-03-17T07:47:56.211Z",
+  "buildId": "20260317075258",
+  "generatedAt": "2026-03-17T07:52:58.038Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -586,7 +586,7 @@
       "category": "清潔",
       "price": 268,
       "spec": "",
-      "photo": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E6%98%93%E6%B4%97%E6%A8%82%E9%A6%99%E6%B0%9B%E6%B4%97%E8%A1%A3%E7%90%83.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "is_hidden_pp": false,
@@ -605,7 +605,7 @@
       "category": "清潔",
       "price": 70,
       "spec": "",
-      "photo": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E6%98%93%E6%B4%97%E6%A8%82%E9%A6%99%E6%B0%9B%E6%B4%97%E8%A1%A3%E7%90%83-5%E5%85%A5.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "is_hidden_pp": false,
