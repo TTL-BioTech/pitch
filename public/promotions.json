@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T05:37:57.509Z",
-  "count": 40,
+  "generatedAt": "2026-03-17T05:48:00.302Z",
+  "count": 44,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -952,6 +952,99 @@
       "imgUrl": "",
       "relatedCodes": [
         "37370005-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu6wzgb",
+      "title": "母親節 保養-任選兩入79折",
+      "shortTitle": "母親節 保養-任選兩入79折",
+      "content": "保養類指定品項，任選兩入79折。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375337-12",
+        "36330000-12",
+        "375367-12",
+        "37530000-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu6wzgd",
+      "title": "母親節 洗沐-任選3件499元",
+      "shortTitle": "母親節 洗沐-任選3件499元",
+      "content": "洗沐類指定品項，任選3件499元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36530001-12",
+        "36130001-12",
+        "36370010-12",
+        "37170008-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu6wzgd",
+      "title": "母親節 皂類-同品項第二件5折",
+      "shortTitle": "母親節 皂類-同品項第二件5折",
+      "content": "皂類指定品項，同品項第二件5折。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "351646-12",
+        "37170002-12",
+        "37170003-12",
+        "37170004-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu6xwdn",
+      "title": "母親節 加價購單件99元",
+      "shortTitle": "母親節 加價購單件99元",
+      "content": "加價購單件99元 (一單限購兩瓶；購買母親節活動任一品項即享加購資格)。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370011-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
