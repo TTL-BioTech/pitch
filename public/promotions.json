@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T00:02:56.791Z",
-  "count": 29,
+  "generatedAt": "2026-03-17T05:12:54.494Z",
+  "count": 30,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -723,6 +723,29 @@
       "channelLabels": [
         "購物網"
       ]
+    },
+    {
+      "promoId": "P_mmu5k3if",
+      "title": "母親節 【限時八天】面膜買一送一",
+      "shortTitle": "母親節 【限時八天】面膜買一送一",
+      "content": "VINATA面膜系列任選兩件399元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "3753AD-12",
+        "3753AE-12",
+        "3753BM-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/4/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
