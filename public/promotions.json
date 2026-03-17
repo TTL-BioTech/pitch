@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T05:12:54.494Z",
-  "count": 30,
+  "generatedAt": "2026-03-17T05:18:01.956Z",
+  "count": 31,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -737,6 +737,28 @@
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/4/15",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmu5qp48",
+      "title": "母親節 無暇潔淨組",
+      "shortTitle": "母親節 無暇潔淨組",
+      "content": "水粉底2件+洗卸潔顏露3件共1390元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37130047-12",
+        "375367-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
       "status": "upcoming",
       "bgColor": "#FFFFFF",
       "ch": {
