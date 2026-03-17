@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-17T06:23:01.070Z",
-  "count": 45,
+  "generatedAt": "2026-03-17T08:07:54.685Z",
+  "count": 47,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -178,34 +178,36 @@
       ]
     },
     {
-      "promoId": "2026_Q1_01",
-      "title": "洗面乳上市",
-      "shortTitle": "洗面乳上市",
-      "content": "促銷優惠：嘗鮮價單件139元，凡購買一件，可另以每件99元加購，單筆發票最多加購3件為限。",
-      "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/%E5%BB%A3%E5%AE%A3%E5%9C%96%E7%A4%BA%20-%20%E6%BA%AB%E5%92%8C%E8%AA%BF%E7%90%86%20x%20%E5%AB%A9%E7%99%BD%E7%B4%B0%E7%B7%BB.png",
+      "promoId": "P_mmublom2",
+      "title": "洗面乳上市優惠",
+      "shortTitle": "洗面乳上市優惠",
+      "content": "嘗鮮價單件139元，凡購買一件，可另以每件99元加購，單筆發票最多加購3件為限。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1ANBKrICotUu7VbQawmBPfTE3iCJEQB8l",
       "relatedCodes": [
         "37370011-12"
       ],
       "startDate": "2026/1/9",
       "endDate": "2026/3/2",
       "status": "ended",
-      "bgColor": "#D8F3DC",
+      "bgColor": "#d8f3dc",
       "ch": {
         "show": true,
         "mart": true,
-        "eshop": false,
-        "office": false
+        "eshop": true,
+        "office": true
       },
       "channelLabels": [
         "展售中心",
-        "便利店"
+        "便利店",
+        "購物網",
+        "營業所"
       ]
     },
     {
       "promoId": "2026_Q1_02",
       "title": "洗面乳員購",
       "shortTitle": "洗面乳員購",
-      "content": "同步辦理員購優惠：員工價單件100元。",
+      "content": "台酒員工限定優惠：單件100元。",
       "imgUrl": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/-TTL-Bio-Tech-Promotions/main/20251107%E6%B4%97%E9%9D%A2%E4%B9%B3DM.jpg",
       "relatedCodes": [
         "37370011-12"
@@ -1174,6 +1176,55 @@
         "展售中心",
         "便利店",
         "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mmublom2",
+      "title": "洗衣球上市優惠",
+      "shortTitle": "洗衣球上市優惠",
+      "content": "嘗鮮價，單件：\n易洗樂香氛洗衣球30入／5入：219／59元。\n\n※買兩件（30入）再加贈5入組ｘ1。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370013-12",
+        "37370014-12"
+      ],
+      "startDate": "2026/3/17",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mmubly3v",
+      "title": "洗衣球員購優惠",
+      "shortTitle": "洗衣球員購優惠",
+      "content": "台酒員工限定優惠：單件200元\n再加贈洗衣球5入組ｘ1。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1z9dFQh7frAbG8H055jxW2AxzDesGjTV0",
+      "relatedCodes": [
+        "37370013-12",
+        "37370014-12"
+      ],
+      "startDate": "2026/3/17",
+      "endDate": "2026/4/24",
+      "status": "active",
+      "bgColor": "#d8f3dc",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
       ]
     }
   ]
