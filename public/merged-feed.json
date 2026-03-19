@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260317194756",
-  "generatedAt": "2026-03-17T19:47:56.290Z",
+  "buildId": "20260319135756",
+  "generatedAt": "2026-03-19T13:57:56.903Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -640,7 +640,7 @@
     {
       "code": "37170002-12",
       "name": "酒好皂(松炭)",
-      "category": "清潔用品 單件85折、2件(含)以上8折",
+      "category": "清潔用品 皂類任選買2送1",
       "price": 100,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%85%92%E5%A5%BD%E7%9A%82(%E6%9D%BE%E7%82%AD).png",
@@ -659,7 +659,7 @@
     {
       "code": "37170003-12",
       "name": "酒好皂(清酒粕)",
-      "category": "清潔用品 單件85折、2件(含)以上8折",
+      "category": "清潔用品 皂類任選買2送1",
       "price": 100,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%85%92%E5%A5%BD%E7%9A%82(%E6%B8%85%E9%85%92%E7%B2%95).png",
@@ -678,7 +678,7 @@
     {
       "code": "37170004-12",
       "name": "酒好皂(紅酒泥)",
-      "category": "清潔用品 單件85折、2件(含)以上8折",
+      "category": "清潔用品 皂類任選買2送1",
       "price": 100,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%85%92%E5%A5%BD%E7%9A%82(%E7%B4%85%E9%85%92%E6%B3%A5).png",
@@ -697,14 +697,14 @@
     {
       "code": "36170002-12",
       "name": "酒好皂禮盒",
-      "category": "清潔用品 單件85折、2件(含)以上8折",
+      "category": "清潔用品 皂類任選買2送1",
       "price": 320,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%85%92%E5%A5%BD%E7%9A%82%E7%A6%AE%E7%9B%92.png",
       "videoUrl": "https://youtube.com/shorts/uIYQsUnT2fs?si=ed2Y22xNfqQ8jRT5",
       "moreLinksRaw": "",
       "is_hidden_pp": false,
-      "is_hidden": false,
+      "is_hidden": true,
       "pitch": {
         "title": "清潔．香氛．禮盒",
         "content": "包含松炭皂與紅酒泥皂，搭配沐浴手皂套，起泡更快速細緻。",
