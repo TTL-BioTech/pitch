@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260319143259",
-  "generatedAt": "2026-03-19T14:32:59.325Z",
+  "buildId": "20260319145256",
+  "generatedAt": "2026-03-19T14:52:56.586Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -628,7 +628,7 @@
       "videoUrl": "",
       "moreLinksRaw": "",
       "is_hidden_pp": false,
-      "is_hidden": false,
+      "is_hidden": true,
       "pitch": {
         "title": "",
         "content": "",
