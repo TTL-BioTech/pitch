@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T08:07:54.515Z",
+  "generatedAt": "2026-03-24T08:12:59.274Z",
   "count": 48,
   "items": [
     {
@@ -1237,7 +1237,7 @@
       "title": "春暖花開飲",
       "shortTitle": "春暖花開飲",
       "content": "台酒麥汁系列特價160元/組，單筆麥汁系列滿299元送台酒生技環保小麥杯。\n全品項消費滿2000元贈纖麥汁一組。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1dN3rxi9ilx2Xx3s5vyN30SbBJjD_GK1g",
       "relatedCodes": [
         "341368-12",
         "341372-12",
@@ -1247,14 +1247,19 @@
       "startDate": "2026/3/19",
       "endDate": "2026/4/19",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#ffffff",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     }
   ]
 }
