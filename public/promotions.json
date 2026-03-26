@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-24T08:12:59.274Z",
+  "generatedAt": "2026-03-26T00:02:53.592Z",
   "count": 48,
   "items": [
     {
@@ -668,7 +668,7 @@
       ],
       "startDate": "2026/3/5",
       "endDate": "2026/3/26",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#e3f2fd",
       "ch": {
         "show": false,
@@ -691,7 +691,7 @@
       ],
       "startDate": "2026/3/5",
       "endDate": "2026/3/26",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#e3f2fd",
       "ch": {
         "show": false,
@@ -714,7 +714,7 @@
       ],
       "startDate": "2026/3/5",
       "endDate": "2026/3/26",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#e3f2fd",
       "ch": {
         "show": false,
