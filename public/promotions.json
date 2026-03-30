@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-26T00:02:53.592Z",
+  "generatedAt": "2026-03-30T00:02:51.939Z",
   "count": 48,
   "items": [
     {
@@ -495,7 +495,7 @@
       ],
       "startDate": "2026/3/20",
       "endDate": "2026/3/30",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#E3F2FD",
       "ch": {
         "show": true,
@@ -570,7 +570,7 @@
       ],
       "startDate": "2026/3/20",
       "endDate": "2026/3/30",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#E3F2FD",
       "ch": {
         "show": true,
