@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331012255",
-  "generatedAt": "2026-03-31T01:22:55.434Z",
+  "buildId": "20260331012815",
+  "generatedAt": "2026-03-31T01:28:15.078Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -118,7 +118,7 @@
       "is_hidden": false,
       "pitch": {
         "title": "紅麴．納豆．Q10",
-        "content": "選用 MIT 紅麴、納豆激酶、天然來源 Q10 與鉻配方，成分組合完整，日常補給更方便。",
+        "content": "30入裝，選用 MIT 紅麴、納豆激酶、天然來源 Q10 與鉻配方，成分組合完整，日常補給更方便。",
         "tags": "紅麴,納豆,Q10,鉻,膠囊",
         "isNew": true,
         "name": "安可健納豆紅麴+鉻雙效膠囊"
