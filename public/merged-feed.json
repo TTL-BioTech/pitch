@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331012815",
-  "generatedAt": "2026-03-31T01:28:15.078Z",
+  "buildId": "20260331013301",
+  "generatedAt": "2026-03-31T01:33:01.419Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 86,
+  "count": 87,
   "items": [
     {
       "code": "341371-12",
@@ -122,6 +122,25 @@
         "tags": "紅麴,納豆,Q10,鉻,膠囊",
         "isNew": true,
         "name": "安可健納豆紅麴+鉻雙效膠囊"
+      }
+    },
+    {
+      "code": "37110011-12",
+      "name": "安可健納豆紅麴+鉻雙效膠囊體驗盒",
+      "category": "保健食品\n單件9折、3件(含)以上7折",
+      "price": 429,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%AE%89%E5%8F%AF%E5%81%A5%E7%B4%8D%E8%B1%86%E7%B4%85%E9%BA%B4+%E9%89%BB%E9%9B%99%E6%95%88%E8%86%A0%E5%9B%8A%20%E9%AB%94%E9%A9%97%E7%9B%92.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "紅麴．納豆．Q10．體驗",
+        "content": "10入裝，選用 MIT 紅麴、納豆激酶、天然來源 Q10 與鉻配方，成分組合完整，日常補給更方便。",
+        "tags": "紅麴,納豆,Q10,鉻,膠囊,輕巧體驗",
+        "isNew": true,
+        "name": "安可健納豆紅麴+鉻雙效膠囊體驗盒"
       }
     },
     {
@@ -744,8 +763,8 @@
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
+        "title": "眼周潤澤保養．細緻呵護",
+        "content": "以乳木果油為基底，搭配紅酒多酚精華 Winphenol®、酵母賦活精華 Sapitide®、海茴香萃取、金黃洋甘菊萃取、複合海藻類提取物與維生素E乙酸酯，質地柔潤細緻，適合日常眼周保養使用，為肌膚補充潤澤，展現柔嫩明亮感。",
         "tags": "紅酒多酚,酵母精華,Sapitide,眼霜,潤澤",
         "isNew": false,
         "name": "VINATA緊緻抗皺眼霜"
