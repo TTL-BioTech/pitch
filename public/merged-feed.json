@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331003255",
-  "generatedAt": "2026-03-31T00:32:55.623Z",
+  "buildId": "20260331003752",
+  "generatedAt": "2026-03-31T00:37:52.245Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -554,7 +554,7 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "好沖洗．成分來源天然",
+        "title": "大包裝．好沖洗．成分來源天然",
         "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△歐盟無添加一星。\n\n成分來源天然，對環境友善，好沖好洗。\n啤酒花獨家配方，驚奇的洗淨能力，讓碗盤多一層防護，廣受主婦的好評。\n潔淨、不易殘留特性，不傷手配方不再擔心「咬手」問題。\n絕不含環境荷爾蒙。",
         "tags": "啤酒花,天然,好沖洗,認證",
         "isNew": false,
@@ -594,7 +594,7 @@
       "pitch": {
         "title": "潔淨．低泡．柑橘香氛",
         "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△歐盟無添加一星。\n\n「橘子精油」與「啤酒花萃取物」植萃成分\n抗菌防蟎，具防止細菌孳生及抑制塵蟎功效，潔淨去污、低泡省水，散發柑橘香氛。\n絕不含環境荷爾蒙。",
-        "tags": "啤酒花,洗衣精,香氛,低泡,認證",
+        "tags": "啤酒花,洗衣精,香氛,低泡,認證,補充包",
         "isNew": false,
         "name": "1.6公升易洗樂抗菌防蟎洗衣精補充包"
       }
@@ -734,7 +734,7 @@
     },
     {
       "code": "375337-12",
-      "name": "VINATA\n緊緻抗皺眼霜",
+      "name": "VINATA緊緻抗皺眼霜",
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
       "price": 800,
       "spec": "",
@@ -746,9 +746,9 @@
       "pitch": {
         "title": "",
         "content": "",
-        "tags": "",
+        "tags": "紅酒多酚,酵母精華,Sapitide,霜,潤澤",
         "isNew": false,
-        "name": ""
+        "name": "VINATA緊緻抗皺眼霜"
       }
     },
     {
