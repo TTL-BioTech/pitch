@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331085756",
-  "generatedAt": "2026-03-31T08:57:56.712Z",
+  "buildId": "20260331090253",
+  "generatedAt": "2026-03-31T09:02:53.278Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1145,7 +1145,7 @@
       "pitch": {
         "title": "",
         "content": "",
-        "tags": "",
+        "tags": "Sapitide",
         "isNew": false,
         "name": "酒粕精粹逆齡活膚青春露金裝版(自)"
       }
