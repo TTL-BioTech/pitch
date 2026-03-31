@@ -119,9 +119,9 @@ const THEMES = [
       '--border': '#dbe6ee',
       '--text': '#2c3e50',
       '--muted': '#647a8f',
-      '--primary': '#3f75a8',
+      '--primary': '#326fa8',
       '--primary-strong': '#396691',
-      '--primary-soft': '#c2dff5',
+      '--primary-soft': '#daeaf6',
       '--promo': '#f1b44a',         
       '--promo-soft': '#fef3c7',
       '--chip': '#eaf1f6',
@@ -142,9 +142,9 @@ const THEMES = [
       '--border': '#e2dcf2',
       '--text': '#352b47',
       '--muted': '#6b5e84',
-      '--primary': '#7254aa',
+      '--primary': '#6e4dab',
       '--primary-strong': '#5f4197',
-      '--primary-soft': '#eee8f9',
+      '--primary-soft': '#f1edf7',
       '--promo': '#f43f5e',         
       '--promo-soft': '#ffe4e6',
       '--chip': '#f0ebf8',
@@ -1324,6 +1324,15 @@ export default function App() {
 
   const themeConfig = THEMES.find((item) => item.key === theme) || THEMES[0]
 
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor && themeConfig) {
+        metaThemeColor.setAttribute('content', themeConfig.colors['--primary']);
+      }
+    }
+  }, [themeConfig]);
+  
   useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen))
 
   useEffect(() => { hydrateSeenVideos() }, [hydrateSeenVideos])
