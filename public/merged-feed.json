@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331013301",
-  "generatedAt": "2026-03-31T01:33:01.419Z",
+  "buildId": "20260331085756",
+  "generatedAt": "2026-03-31T08:57:56.712Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 87,
+  "count": 88,
   "items": [
     {
       "code": "341371-12",
@@ -1129,6 +1129,25 @@
         "tags": "粉底,防曬,Sapitide,神經醯胺",
         "isNew": true,
         "name": "高機能酒粕無瑕水粉底SPF50★★★(自售)"
+      }
+    },
+    {
+      "code": "37130028-12",
+      "name": "酒粕精粹逆齡活膚青春露金裝版(自)",
+      "category": "美容自由配_單件9折_2件85折_3件以上79折",
+      "price": 699,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%85%92%E7%B2%95%E7%B2%BE%E8%90%83%E9%80%86%E9%BD%A1%E6%B4%BB%E8%86%9A%E9%9D%92%E6%98%A5%E9%9C%B2.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "酒粕精粹逆齡活膚青春露金裝版(自)"
       }
     },
     {
