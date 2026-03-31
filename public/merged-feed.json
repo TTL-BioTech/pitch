@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331011255",
-  "generatedAt": "2026-03-31T01:12:55.588Z",
+  "buildId": "20260331011759",
+  "generatedAt": "2026-03-31T01:17:59.856Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -613,7 +613,7 @@
       "pitch": {
         "title": "香氛．洗衣球．精準定量",
         "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n\n採用啤酒花萃取物植萃成分，搭配再生界面活性劑，單顆定量、使用方便，不沾手且無添加螢光劑。以前中後調香氛設計，讓日常洗衣多一分清新愉悅。",
-        "tags": "",
+        "tags": "啤酒花,洗衣球,香氛,定量,不沾手,無螢光劑",
         "isNew": true,
         "name": "易洗樂香氛洗衣球"
       }
@@ -632,7 +632,7 @@
       "pitch": {
         "title": "香氛．洗衣球．精準定量．輕巧包",
         "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n\n採用啤酒花萃取物植萃成分，搭配再生界面活性劑，精準定量、簡單好用，不沾手且無添加螢光劑。5入輕巧包設計，適合日常備用與輕鬆體驗香氛洗衣。",
-        "tags": "",
+        "tags": "啤酒花,洗衣球,香氛,定量,不沾手,無螢光劑",
         "isNew": true,
         "name": "易洗樂香氛洗衣球-5入"
       }
