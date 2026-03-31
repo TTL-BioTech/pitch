@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331003752",
-  "generatedAt": "2026-03-31T00:37:52.245Z",
+  "buildId": "20260331004255",
+  "generatedAt": "2026-03-31T00:42:55.822Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -746,7 +746,7 @@
       "pitch": {
         "title": "",
         "content": "",
-        "tags": "紅酒多酚,酵母精華,Sapitide,霜,潤澤",
+        "tags": "紅酒多酚,酵母精華,Sapitide,眼霜,潤澤",
         "isNew": false,
         "name": "VINATA緊緻抗皺眼霜"
       }
