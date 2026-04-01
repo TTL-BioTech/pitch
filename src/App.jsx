@@ -362,18 +362,15 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
 
   useEffect(() => {
     setCurrentSrc(src || placeholderSvg(fallbackLabel))
-    setErrorCount(0) // 當外部傳入新圖片時，重置錯誤次數
+    setErrorCount(0)
   }, [src, fallbackLabel])
 
   const handleError = () => {
     if (errorCount === 0 && src && !src.startsWith('data:')) {
-      // 第一次失敗：可能是 Safari 快取卡死。
-      // 加上時間戳記 (Cache-Busting) 強制瀏覽器重新發送網路請求，不拿舊快取！
       const separator = src.includes('?') ? '&' : '?'
-      setCurrentSrc(`${src}${separator}retry_ts=${Date.now()}`)
+      setCurrentSrc(`${src}${separator}img_retry=${Date.now()}`)
       setErrorCount(1)
     } else {
-      // 第二次失敗，或是根本沒 src：判定為圖片真的不存在或格式不支援 (如舊 iOS 遇到 WebP)，退回 SVG 佔位圖
       setCurrentSrc(placeholderSvg(fallbackLabel))
     }
   }
