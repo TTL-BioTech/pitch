@@ -355,17 +355,36 @@ function CarouselCard({ children }) {
   )
 }
 
+// 🚀 升級版 SafeImage：解決舊版 iOS 破圖死鎖與快取污染問題
 function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
   const [currentSrc, setCurrentSrc] = useState(src || placeholderSvg(fallbackLabel))
-  useEffect(() => { setCurrentSrc(src || placeholderSvg(fallbackLabel)) }, [src, fallbackLabel])
+  const [errorCount, setErrorCount] = useState(0)
+
+  useEffect(() => {
+    setCurrentSrc(src || placeholderSvg(fallbackLabel))
+    setErrorCount(0) // 當外部傳入新圖片時，重置錯誤次數
+  }, [src, fallbackLabel])
+
+  const handleError = () => {
+    if (errorCount === 0 && src && !src.startsWith('data:')) {
+      // 第一次失敗：可能是 Safari 快取卡死。
+      // 加上時間戳記 (Cache-Busting) 強制瀏覽器重新發送網路請求，不拿舊快取！
+      const separator = src.includes('?') ? '&' : '?'
+      setCurrentSrc(`${src}${separator}retry_ts=${Date.now()}`)
+      setErrorCount(1)
+    } else {
+      // 第二次失敗，或是根本沒 src：判定為圖片真的不存在或格式不支援 (如舊 iOS 遇到 WebP)，退回 SVG 佔位圖
+      setCurrentSrc(placeholderSvg(fallbackLabel))
+    }
+  }
+
   return (
     <img
       src={currentSrc}
       alt={alt}
       className={`${className} ${contain ? 'object-contain mix-blend-multiply' : 'object-cover'}`}
-      onError={() => setCurrentSrc(placeholderSvg(fallbackLabel))}
-      loading="lazy"
-      decoding="async"
+      onError={handleError}
+      // ⚠️ 刻意移除 loading="lazy" 與 decoding="async" 以相容舊版 iOS WebKit 引擎
     />
   )
 }
