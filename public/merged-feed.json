@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260331090756",
-  "generatedAt": "2026-03-31T09:07:56.702Z",
+  "buildId": "20260401010757",
+  "generatedAt": "2026-04-01T01:07:57.574Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 88,
+  "count": 90,
   "items": [
     {
       "code": "341371-12",
@@ -1034,6 +1034,44 @@
         "tags": "柔嫩,啤酒花,洗手露,洗手,清潔",
         "isNew": true,
         "name": "VINATA啤酒花洗手露"
+      }
+    },
+    {
+      "code": "37370004-12",
+      "name": "VINATA啤酒花洗沐旅行組(新版)",
+      "category": "美容自由配_單件9折_2件85折_3件以上79折",
+      "price": 150,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%B2%90%E7%A6%AE%E7%9B%92.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "香氛．舒適洗感．蓬鬆柔順",
+        "content": "品牌束口袋*1\nVINATA 啤酒花洗髮精50g*1\nVINATA 啤酒花沐浴露50g*1\n\n包裝形式：附說明紙卡＋透明opp外袋\n~經典暢銷款~\n添加獨特啤酒花萃取精華\n★沐浴露：\n滋潤嫩白肌膚\n淨化毛孔透亮光澤\n淡淡高雅白樺木薰衣草香氣\n★洗髮精：\n強化滋養髮質\n頭髮柔順富彈性呈現透亮光澤\n晚夏茉莉般迷人香氣",
+        "tags": "沐浴,洗髮,啤酒花,香氛,輕巧體驗",
+        "isNew": false,
+        "name": "VINATA啤酒花洗沐旅行組(新版)"
+      }
+    },
+    {
+      "code": "37370005-12",
+      "name": "VINATA啤酒花洗沐禮盒(新版)",
+      "category": "美容自由配_單件9折_2件85折_3件以上79折",
+      "price": 608,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%20%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%B2%90%E6%97%85%E8%A1%8C%E7%B5%84.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "香氛．舒適洗感．蓬鬆柔順",
+        "content": "VINATA 啤酒花洗髮精500g*1\nVINATA 啤酒花沐浴露500g*1\nVINATA 啤酒花洗沐旅行組50g*1\n不織布束口袋*1\n\n~經典暢銷款~\n添加獨特啤酒花萃取精華\n★沐浴露：\n滋潤嫩白肌膚\n淨化毛孔透亮光澤\n淡淡高雅白樺木薰衣草香氣\n★洗髮精：\n強化滋養髮質\n頭髮柔順富彈性呈現透亮光澤\n晚夏茉莉般迷人香氣",
+        "tags": "沐浴,洗髮,啤酒花,香氛,禮盒組",
+        "isNew": false,
+        "name": "VINATA啤酒花洗沐禮盒(新版)"
       }
     },
     {
