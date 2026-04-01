@@ -1,16 +1,16 @@
-// sw.js - React / PWA 版
-const CACHE_NAME = 'ttl-pwa-v86';
-const IMAGE_CACHE_NAME = 'ttl-images-v3';
+// sw.js - React / PWA 終極防禦版 (修復全有全無安裝與寫入崩潰)
+const CACHE_NAME = 'ttl-pwa-v88';       // 🚀 升級快取版本
+const IMAGE_CACHE_NAME = 'ttl-images-v5'; // 🚀 升級圖片快取版本
 const IMAGE_RETRY_PARAM = 'img_retry';
+
+// 🚀 修正 1：只保留絕對安全的同源檔案，徹底移除 Google Fonts 等外部跨域資源
 const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
   './LOGO.png',
   './icon-192.png',
-  './icon-512.png',
-  'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap',
-  'https://fonts.googleapis.com/icon?family=Material+Icons+Round'
+  './icon-512.png'
 ];
 
 function isImageRequest(request, url) {
@@ -27,8 +27,8 @@ function isAppShellRequest(request, url) {
   return isSameOrigin && isGet && acceptsHtml;
 }
 
-function getImageCacheKey(url) {
-  const normalized = new URL(url);
+function getImageCacheKey(input) {
+  const normalized = new URL(typeof input === 'string' ? input : input.url);
   normalized.searchParams.delete(IMAGE_RETRY_PARAM);
   return normalized.toString();
 }
@@ -36,59 +36,77 @@ function getImageCacheKey(url) {
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then(cache => {
+      // 因為我們移除了不穩定的外部字型，這裡的 addAll() 成功率將逼近 100%
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => Promise.all(
-      cacheNames.map(cacheName => {
-        if (cacheName !== CACHE_NAME && cacheName !== IMAGE_CACHE_NAME) {
-          return caches.delete(cacheName);
-        }
-      })
-    ))
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME && cacheName !== IMAGE_CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
 
+  if (request.method !== 'GET' || url.protocol === 'chrome-extension:') {
+    return;
+  }
+
+  // 🖼️ 圖片請求處理
   if (isImageRequest(request, url)) {
     event.respondWith((async () => {
+      const cacheKey = getImageCacheKey(request);
       const cache = await caches.open(IMAGE_CACHE_NAME);
-      const cacheKey = getImageCacheKey(request.url);
-      const isRetryRequest = url.searchParams.has(IMAGE_RETRY_PARAM);
-      const cachedResponse = isRetryRequest ? null : await cache.match(cacheKey);
-
-      const fetchPromise = fetch(request, { cache: 'no-store' }).then(networkResponse => {
-        if (networkResponse && (networkResponse.ok || networkResponse.type === 'opaque')) {
-          cache.put(cacheKey, networkResponse.clone());
+      
+      try {
+        const networkResponse = await fetch(request);
+        
+        if (networkResponse.ok && networkResponse.type !== 'opaque') {
+          // 🚀 修正 2：為 cache.put 加上 try/catch。
+          // 就算手機容量滿了 (QuotaExceededError)，也不會崩潰，依舊能把 networkResponse 回傳給畫面顯示！
+          try {
+            await cache.put(cacheKey, networkResponse.clone());
+          } catch (putError) {
+            console.warn('圖片快取寫入失敗 (可能是儲存空間不足或 iOS 異常):', putError);
+          }
         }
         return networkResponse;
-      });
-
-      if (cachedResponse) {
-        event.waitUntil(fetchPromise.catch(() => null));
-        return cachedResponse;
+      } catch (networkError) {
+        try {
+          const cachedResponse = await cache.match(cacheKey);
+          if (cachedResponse) return cachedResponse;
+        } catch (cacheReadError) {
+          console.warn('圖片快取讀取失敗:', cacheReadError);
+        }
+        return Response.error();
       }
-
-      return fetchPromise.catch(async () => {
-        return (await cache.match(cacheKey)) || Response.error();
-      });
     })());
     return;
   }
 
+  // 📄 HTML 核心外殼請求處理
   if (isAppShellRequest(request, url)) {
     event.respondWith(
       fetch(request)
         .then(response => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          // 🚀 修正 2：加上 catch 防護裸奔的 put
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, copy).catch(err => console.warn('AppShell 快取寫入失敗:', err));
+          });
           return response;
         })
         .catch(async () => {
@@ -98,6 +116,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // 📦 其他靜態資源處理 (JS, CSS)
   event.respondWith(
     caches.match(request).then(response => {
       if (response) return response;
@@ -110,10 +129,13 @@ self.addEventListener('fetch', event => {
           (url.pathname.includes('/assets/') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))
         ) {
           const copy = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          // 🚀 修正 2：加上 catch 防護裸奔的 put
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, copy).catch(err => console.warn('靜態資源快取寫入失敗:', err));
+          });
         }
         return networkResponse;
-      });
+      }).catch(() => Response.error());
     })
   );
 });
