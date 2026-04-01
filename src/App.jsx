@@ -355,32 +355,63 @@ function CarouselCard({ children }) {
   )
 }
 
-// 🚀 升級版 SafeImage：解決舊版 iOS 破圖死鎖與快取污染問題
+// 🚀 冷啟動韌性版 SafeImage：避免舊版 iOS PWA 在首次載入時過早宣判失敗
 function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
-  const [currentSrc, setCurrentSrc] = useState(src || placeholderSvg(fallbackLabel))
-  const [errorCount, setErrorCount] = useState(0)
+  const retryTimerRef = useRef(null)
+  const retryCountRef = useRef(0)
+  const retryDelays = [1500, 4000, 8000]
+  const fallbackSrc = placeholderSvg(fallbackLabel)
+  const [currentSrc, setCurrentSrc] = useState(src || fallbackSrc)
+
+  const clearRetryTimer = useCallback(() => {
+    if (retryTimerRef.current) {
+      window.clearTimeout(retryTimerRef.current)
+      retryTimerRef.current = null
+    }
+  }, [])
 
   useEffect(() => {
-    setCurrentSrc(src || placeholderSvg(fallbackLabel))
-    setErrorCount(0)
-  }, [src, fallbackLabel])
+    clearRetryTimer()
+    retryCountRef.current = 0
+    setCurrentSrc(src || fallbackSrc)
 
-  const handleError = () => {
-    if (errorCount === 0 && src && !src.startsWith('data:')) {
+    return () => clearRetryTimer()
+  }, [src, fallbackSrc, clearRetryTimer])
+
+  const queueRetry = useCallback(() => {
+    if (!src || src.startsWith('data:')) {
+      setCurrentSrc(fallbackSrc)
+      return
+    }
+
+    const currentRetry = retryCountRef.current
+    if (currentRetry >= retryDelays.length) {
+      setCurrentSrc(fallbackSrc)
+      return
+    }
+
+    retryCountRef.current += 1
+    setCurrentSrc(fallbackSrc)
+    clearRetryTimer()
+
+    const delay = retryDelays[currentRetry]
+    retryTimerRef.current = window.setTimeout(() => {
       const separator = src.includes('?') ? '&' : '?'
       setCurrentSrc(`${src}${separator}img_retry=${Date.now()}`)
-      setErrorCount(1)
-    } else {
-      setCurrentSrc(placeholderSvg(fallbackLabel))
-    }
-  }
+    }, delay)
+  }, [src, fallbackSrc, clearRetryTimer])
+
+  const handleLoad = useCallback(() => {
+    clearRetryTimer()
+  }, [clearRetryTimer])
 
   return (
     <img
       src={currentSrc}
       alt={alt}
       className={`${className} ${contain ? 'object-contain mix-blend-multiply' : 'object-cover'}`}
-      onError={handleError}
+      onError={queueRetry}
+      onLoad={handleLoad}
       // ⚠️ 刻意移除 loading="lazy" 與 decoding="async" 以相容舊版 iOS WebKit 引擎
     />
   )
