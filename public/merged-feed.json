@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260401134301",
-  "generatedAt": "2026-04-01T13:43:01.049Z",
+  "buildId": "20260401134756",
+  "generatedAt": "2026-04-01T13:47:56.656Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -136,10 +136,10 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "紅麴．納豆．Q10．體驗",
+        "content": "10入裝，選用 MIT 紅麴、納豆激酶、天然來源 Q10 與鉻配方，成分組合完整，日常補給更方便。",
+        "tags": "紅麴,納豆,Q10,鉻,膠囊,輕巧體驗",
+        "isNew": true,
         "name": "安可健納豆紅麴+鉻雙效膠囊體驗盒"
       }
     },
@@ -763,9 +763,9 @@
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "潤澤保養．細緻呵護",
+        "content": "以乳木果油為基底，搭配紅酒多酚精華 Winphenol®、酵母賦活精華 Sapitide®、海茴香萃取、金黃洋甘菊萃取、複合海藻類提取物與維生素E乙酸酯，質地柔潤細緻，適合日常眼周保養使用，為肌膚補充潤澤，展現柔嫩明亮感。",
+        "tags": "紅酒多酚,酵母精華,Sapitide,眼霜,潤澤",
         "isNew": false,
         "name": "VINATA緊緻抗皺眼霜"
       }
@@ -1048,9 +1048,9 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "香氛．舒適洗感．蓬鬆柔順",
+        "content": "品牌束口袋*1\nVINATA 啤酒花洗髮精50g*1\nVINATA 啤酒花沐浴露50g*1\n\n包裝形式：附說明紙卡＋透明opp外袋\n~經典暢銷款~\n添加獨特啤酒花萃取精華\n★沐浴露：\n滋潤嫩白肌膚\n淨化毛孔透亮光澤\n淡淡高雅白樺木薰衣草香氣\n★洗髮精：\n強化滋養髮質\n頭髮柔順富彈性呈現透亮光澤\n晚夏茉莉般迷人香氣",
+        "tags": "沐浴,洗髮,啤酒花,香氛,輕巧體驗",
         "isNew": false,
         "name": "VINATA啤酒花洗沐旅行組(新版)"
       }
@@ -1067,9 +1067,9 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "香氛．舒適洗感．蓬鬆柔順",
+        "content": "VINATA 啤酒花洗髮精500g*1\nVINATA 啤酒花沐浴露500g*1\nVINATA 啤酒花洗沐旅行組50g*1\n不織布束口袋*1\n\n~經典暢銷款~\n添加獨特啤酒花萃取精華\n★沐浴露：\n滋潤嫩白肌膚\n淨化毛孔透亮光澤\n淡淡高雅白樺木薰衣草香氣\n★洗髮精：\n強化滋養髮質\n頭髮柔順富彈性呈現透亮光澤\n晚夏茉莉般迷人香氣",
+        "tags": "沐浴,洗髮,啤酒花,香氛,禮盒組",
         "isNew": false,
         "name": "VINATA啤酒花洗沐禮盒(新版)"
       }
@@ -1183,7 +1183,7 @@
       "pitch": {
         "title": "",
         "content": "",
-        "tags": "",
+        "tags": "Sapitide",
         "isNew": false,
         "name": "酒粕精粹逆齡活膚青春露金裝版(自)"
       }
