@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T03:37:58.695Z",
+  "generatedAt": "2026-04-01T03:42:58.322Z",
   "count": 53,
   "items": [
     {
@@ -1266,7 +1266,7 @@
       "title": "地球日活動-易洗樂系列",
       "shortTitle": "地球日活動-易洗樂系列",
       "content": "易洗樂系列，任選2入組享88折優惠，地球日活動品項：滿349加贈易洗樂杯刷1個（可累贈，送完為止）",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1I6nf2nxqdns8EQUKyU5kwJyUA04JHfcm",
       "relatedCodes": [
         "36370004-12",
         "36370003-12",
@@ -1277,21 +1277,25 @@
       "startDate": "2026/4/1",
       "endDate": "2026/4/30",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mnfhv6eh",
       "title": "地球日活動-VINATA洗沐系列",
       "shortTitle": "地球日活動-VINATA洗沐系列",
       "content": "三項洗沐用品任選第2件5折（兩入340元），地球日活動品項：滿349加贈易洗樂杯刷1個（可累贈，送完為止）",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1-yM76nHSTK6uURyVs-auS-lZkQ5QXdI0",
       "relatedCodes": [
         "36530001-12",
         "36530000-12",
@@ -1300,21 +1304,25 @@
       "startDate": "2026/4/1",
       "endDate": "2026/4/30",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mnfhvknh",
       "title": "地球日活動-洗手露",
       "shortTitle": "地球日活動-洗手露",
       "content": "洗手露同品項第2件5折（兩入340元），地球日活動品項：滿349加贈易洗樂杯刷1個（可累贈，送完為止）",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1sSP34VSrZDtSpzarHdRaw4Y701TJNkzR",
       "relatedCodes": [
         "36370010-12",
         "37170008-12"
@@ -1322,42 +1330,50 @@
       "startDate": "2026/4/4",
       "endDate": "2026/4/30",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mnfhvsy7",
       "title": "地球日活動-護髮素",
       "shortTitle": "地球日活動-護髮素",
       "content": "護髮素同品項第2件5折（兩入375元），地球日活動品項：滿349加贈易洗樂杯刷1個（可累贈，送完為止）",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1aP7CN22zTiCd2JLvqoHuHOsjyxcYnah7",
       "relatedCodes": [
         "37370012-12"
       ],
       "startDate": "2026/4/4",
       "endDate": "2026/4/30",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mnfhwd8x",
       "title": "地球日活動-買一送一",
       "shortTitle": "地球日活動-買一送一",
       "content": "買一送一(限時3天)，地球日活動品項：滿349加贈易洗樂杯刷1個（可累贈，送完為止）",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/10hARm-mG1U9OUFF68kC2wktsHWZXY5qg",
       "relatedCodes": [
         "36370010-12",
         "37170008-12",
@@ -1369,14 +1385,18 @@
       "startDate": "2026/4/1",
       "endDate": "2026/4/3",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#d8f3dc",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     }
   ]
 }
