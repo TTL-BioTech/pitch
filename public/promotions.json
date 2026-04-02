@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-02T07:58:00.741Z",
+  "generatedAt": "2026-04-02T08:42:53.983Z",
   "count": 52,
   "items": [
     {
@@ -784,7 +784,7 @@
       "title": "母親節 膠囊2入組 (贈美白體驗包)",
       "shortTitle": "母親節 膠囊2入組 (贈美白體驗包)",
       "content": "1.緊緻活膚膠囊2件，檔期特惠1,680元。\n2.激透光米植醇特潤膠囊(15顆)買一送一，檔期特惠790元。\n\n<<購買上述任一項皆搭贈密集美白體驗組>>",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1cppptPKUWW3H6kXlb1-kJ_2VSU1CGd0g",
       "relatedCodes": [
         "375358-12",
         "37130000-12",
@@ -794,14 +794,18 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     },
     {
       "promoId": "P_mmu6guxm",
