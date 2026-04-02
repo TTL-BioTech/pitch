@@ -826,10 +826,11 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
                   <button 
                     key={promo.promoId} 
                     onClick={(e) => { e.stopPropagation(); onOpenPromo(promo); }}
-                    className={`flex items-center gap-0.5 rounded border ${scalePreset.promoTag} font-bold transition active:scale-95`} 
+                    className={`flex items-start text-left gap-1 rounded border ${scalePreset.promoTag} font-bold transition active:scale-95`} 
                     style={{ borderColor: 'var(--primary)', background: 'var(--primary-soft)', color: 'var(--primary)' }}
                   >
-                    <Gift className={scalePreset.icon} />{promo.shortTitle || promo.title}
+                    <Gift className={`${scalePreset.icon} shrink-0 mt-[2px]`} />
+                    <span>{promo.shortTitle || promo.title}</span>
                   </button>
                 ))}
               </div>
