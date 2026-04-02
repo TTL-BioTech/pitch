@@ -258,8 +258,44 @@ function getPromoGroups(promo) {
   return groups.length ? groups : ['其他']
 }
 
+function normalizeAssetUrl(raw) {
+  const value = String(raw || '').trim()
+  if (!value) return ''
+
+  try {
+    const parsed = new URL(value)
+    const host = parsed.hostname.toLowerCase()
+    const pathname = parsed.pathname
+
+    if (host === 'github.com') {
+      const parts = pathname.split('/').filter(Boolean)
+      const blobIndex = parts.indexOf('blob')
+      if (parts.length >= 5 && blobIndex === 2) {
+        const owner = parts[0]
+        const repo = parts[1]
+        const branch = parts[3]
+        const filePath = parts.slice(4).map((segment) => encodeURIComponent(decodeURIComponent(segment))).join('/')
+        return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filePath}`
+      }
+    }
+
+    if (host === 'drive.google.com') {
+      const fileMatch = pathname.match(/\/file\/d\/([^/]+)/)
+      const openId = parsed.searchParams.get('id')
+      const fileId = fileMatch?.[1] || openId
+      if (fileId) {
+        return `https://drive.google.com/uc?export=view&id=${encodeURIComponent(fileId)}`
+      }
+    }
+
+    return parsed.toString()
+  } catch {
+    return value
+  }
+}
+
 function getPromoImage(promo) {
-  return promo.imgUrl || promo.img || ''
+  return normalizeAssetUrl(promo.imgUrl || promo.img || '')
 }
 
 function parseTags(raw) {
@@ -275,7 +311,7 @@ function parseMoreLinks(raw) {
     const type = parts[0] || ''
     const label = parts.length >= 3 ? parts[1] : (type || '更多素材')
     const url = parts.length >= 3 ? parts.slice(2).join('|') : (parts[1] || line)
-    return { type, label, url }
+    return { type, label, url: normalizeAssetUrl(url) }
   }).filter((item) => item.url)
 }
 
@@ -468,7 +504,9 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
   const retryCountRef = useRef(0)
   const retryDelays = [1500, 4000, 8000]
   const fallbackSrc = placeholderSvg(fallbackLabel)
-  const [currentSrc, setCurrentSrc] = useState(src || fallbackSrc)
+  const normalizedSrc = useMemo(() => normalizeAssetUrl(src), [src])
+  const [currentSrc, setCurrentSrc] = useState(normalizedSrc || fallbackSrc)
+  const [hasLoaded, setHasLoaded] = useState(false)
 
   const clearRetryTimer = useCallback(() => {
     if (retryTimerRef.current) {
@@ -477,24 +515,16 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
     }
   }, [])
 
-  useEffect(() => {
-    clearRetryTimer()
-    retryCountRef.current = 0
-    setCurrentSrc(src || fallbackSrc)
-
-    return () => clearRetryTimer()
-  }, [src, fallbackSrc, clearRetryTimer])
-
-  const queueRetry = useCallback(() => {
-    if (!src || src.startsWith('data:')) {
+  const scheduleRetry = useCallback(() => {
+    if (!normalizedSrc || normalizedSrc.startsWith('data:')) {
       setCurrentSrc(fallbackSrc)
-      return
+      return false
     }
 
     const currentRetry = retryCountRef.current
     if (currentRetry >= retryDelays.length) {
       setCurrentSrc(fallbackSrc)
-      return
+      return false
     }
 
     retryCountRef.current += 1
@@ -503,13 +533,47 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
 
     const delay = retryDelays[currentRetry]
     retryTimerRef.current = window.setTimeout(() => {
-      const separator = src.includes('?') ? '&' : '?'
-      setCurrentSrc(`${src}${separator}img_retry=${Date.now()}`)
+      const separator = normalizedSrc.includes('?') ? '&' : '?'
+      setCurrentSrc(`${normalizedSrc}${separator}img_retry=${Date.now()}`)
     }, delay)
-  }, [src, fallbackSrc, clearRetryTimer])
+    return true
+  }, [normalizedSrc, fallbackSrc, clearRetryTimer])
+
+  useEffect(() => {
+    clearRetryTimer()
+    retryCountRef.current = 0
+    setHasLoaded(false)
+    setCurrentSrc(normalizedSrc || fallbackSrc)
+
+    return () => clearRetryTimer()
+  }, [normalizedSrc, fallbackSrc, clearRetryTimer])
+
+  useEffect(() => {
+    if (!normalizedSrc || normalizedSrc.startsWith('data:')) return undefined
+
+    const retryWhenForeground = () => {
+      if (document.visibilityState === 'visible' && !hasLoaded && currentSrc === fallbackSrc) {
+        scheduleRetry()
+      }
+    }
+
+    const retryWhenOnline = () => {
+      if (!hasLoaded && currentSrc === fallbackSrc) {
+        scheduleRetry()
+      }
+    }
+
+    document.addEventListener('visibilitychange', retryWhenForeground)
+    window.addEventListener('online', retryWhenOnline)
+    return () => {
+      document.removeEventListener('visibilitychange', retryWhenForeground)
+      window.removeEventListener('online', retryWhenOnline)
+    }
+  }, [normalizedSrc, hasLoaded, currentSrc, fallbackSrc, scheduleRetry])
 
   const handleLoad = useCallback(() => {
     clearRetryTimer()
+    setHasLoaded(true)
   }, [clearRetryTimer])
 
   return (
@@ -517,9 +581,11 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
       src={currentSrc}
       alt={alt}
       className={`${className} ${contain ? `object-contain ${blend ? 'mix-blend-multiply' : ''}`.trim() : 'object-cover'}`}
-      onError={queueRetry}
+      onError={scheduleRetry}
       onLoad={handleLoad}
-      // ⚠️ 刻意移除 loading="lazy" 與 decoding="async" 以相容舊版 iOS WebKit 引擎
+      loading={needsConservativeMode ? undefined : 'lazy'}
+      decoding={needsConservativeMode ? undefined : 'async'}
+      draggable={false}
     />
   )
 }
@@ -1553,14 +1619,14 @@ export default function App() {
           category: item.category,
           group: normalizeCategory(item.name, item.category), 
           price: Number(item.price || 0),
-          photo: item.photo,
+          photo: normalizeAssetUrl(item.photo),
           title: pitch.title || '',
           content: pitch.content || '',
           tags: parseTags(pitch.tags),
           isNew: Boolean(pitch.isNew),
           isHidden: isHidden,
           spec: item.spec || '',
-          videoUrl: item.videoUrl || '',
+          videoUrl: normalizeAssetUrl(item.videoUrl || ''),
           moreLinks: parseMoreLinks(item.moreLinksRaw),
           rank: rank?.rank || null,
         }
