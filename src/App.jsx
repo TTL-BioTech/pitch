@@ -258,44 +258,8 @@ function getPromoGroups(promo) {
   return groups.length ? groups : ['其他']
 }
 
-function normalizeAssetUrl(raw) {
-  const value = String(raw || '').trim()
-  if (!value) return ''
-
-  try {
-    const parsed = new URL(value)
-    const host = parsed.hostname.toLowerCase()
-    const pathname = parsed.pathname
-
-    if (host === 'github.com') {
-      const parts = pathname.split('/').filter(Boolean)
-      const blobIndex = parts.indexOf('blob')
-      if (parts.length >= 5 && blobIndex === 2) {
-        const owner = parts[0]
-        const repo = parts[1]
-        const branch = parts[3]
-        const filePath = parts.slice(4).map((segment) => encodeURIComponent(decodeURIComponent(segment))).join('/')
-        return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filePath}`
-      }
-    }
-
-    if (host === 'drive.google.com') {
-      const fileMatch = pathname.match(/\/file\/d\/([^/]+)/)
-      const openId = parsed.searchParams.get('id')
-      const fileId = fileMatch?.[1] || openId
-      if (fileId) {
-        return `https://drive.google.com/uc?export=view&id=${encodeURIComponent(fileId)}`
-      }
-    }
-
-    return parsed.toString()
-  } catch {
-    return value
-  }
-}
-
 function getPromoImage(promo) {
-  return normalizeAssetUrl(promo.imgUrl || promo.img || '')
+  return promo.imgUrl || promo.img || ''
 }
 
 function parseTags(raw) {
@@ -311,7 +275,7 @@ function parseMoreLinks(raw) {
     const type = parts[0] || ''
     const label = parts.length >= 3 ? parts[1] : (type || '更多素材')
     const url = parts.length >= 3 ? parts.slice(2).join('|') : (parts[1] || line)
-    return { type, label, url: normalizeAssetUrl(url) }
+    return { type, label, url }
   }).filter((item) => item.url)
 }
 
@@ -433,24 +397,22 @@ function useViewportCssVar() {
     if (typeof document === 'undefined' || typeof window === 'undefined') return undefined
 
     const root = document.documentElement
-    let lastHeight = 0
     const updateHeight = () => {
-      const nextHeight = Math.round(window.visualViewport?.height || window.innerHeight || 0)
-      if (!nextHeight) return
-      if (Math.abs(nextHeight - lastHeight) < 6) return
-      lastHeight = nextHeight
-      root.style.setProperty('--app-height', `${nextHeight}px`)
+      const nextHeight = window.visualViewport?.height || window.innerHeight
+      root.style.setProperty('--app-height', `${Math.round(nextHeight)}px`)
     }
 
     updateHeight()
     window.addEventListener('resize', updateHeight, { passive: true })
     window.addEventListener('orientationchange', updateHeight)
     window.visualViewport?.addEventListener('resize', updateHeight)
+    window.visualViewport?.addEventListener('scroll', updateHeight)
 
     return () => {
       window.removeEventListener('resize', updateHeight)
       window.removeEventListener('orientationchange', updateHeight)
       window.visualViewport?.removeEventListener('resize', updateHeight)
+      window.visualViewport?.removeEventListener('scroll', updateHeight)
     }
   }, [])
 }
@@ -498,15 +460,51 @@ function CarouselCard({ children }) {
   )
 }
 
+function normalizeAssetUrl(url) {
+  const raw = String(url || '').trim()
+  if (!raw || raw.startsWith('data:')) return raw
+
+  try {
+    const parsed = new URL(raw, typeof window !== 'undefined' ? window.location.href : 'https://example.com')
+    const hostname = parsed.hostname.toLowerCase()
+
+    if ((hostname === 'github.com' || hostname.endsWith('.github.com')) && parsed.pathname.includes('/blob/')) {
+      const parts = parsed.pathname.replace(/^\/+/, '').split('/')
+      if (parts.length >= 5 && parts[2] === 'blob') {
+        const [owner, repo, , branch, ...rest] = parts
+        return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${rest.join('/')}`
+      }
+    }
+
+    if (hostname === 'drive.google.com') {
+      let fileId = ''
+      const segments = parsed.pathname.split('/').filter(Boolean)
+      const dIndex = segments.indexOf('d')
+      if (dIndex >= 0 && segments[dIndex + 1]) {
+        fileId = segments[dIndex + 1]
+      }
+      if (!fileId) {
+        fileId = parsed.searchParams.get('id') || ''
+      }
+      if (fileId) {
+        return `https://lh3.googleusercontent.com/d/${fileId}=w1200`
+      }
+    }
+
+    return parsed.toString()
+  } catch (error) {
+    return raw
+  }
+}
+
 // 🚀 冷啟動韌性版 SafeImage：避免舊版 iOS PWA 在首次載入時過早宣判失敗
-function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend = false }) {
+function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend = false, priority = false }) {
   const retryTimerRef = useRef(null)
   const retryCountRef = useRef(0)
   const retryDelays = [1500, 4000, 8000]
   const fallbackSrc = placeholderSvg(fallbackLabel)
   const normalizedSrc = useMemo(() => normalizeAssetUrl(src), [src])
   const [currentSrc, setCurrentSrc] = useState(normalizedSrc || fallbackSrc)
-  const [hasLoaded, setHasLoaded] = useState(false)
 
   const clearRetryTimer = useCallback(() => {
     if (retryTimerRef.current) {
@@ -515,16 +513,24 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
     }
   }, [])
 
-  const scheduleRetry = useCallback(() => {
+  useEffect(() => {
+    clearRetryTimer()
+    retryCountRef.current = 0
+    setCurrentSrc(normalizedSrc || fallbackSrc)
+
+    return () => clearRetryTimer()
+  }, [normalizedSrc, fallbackSrc, clearRetryTimer])
+
+  const queueRetry = useCallback(() => {
     if (!normalizedSrc || normalizedSrc.startsWith('data:')) {
       setCurrentSrc(fallbackSrc)
-      return false
+      return
     }
 
     const currentRetry = retryCountRef.current
     if (currentRetry >= retryDelays.length) {
       setCurrentSrc(fallbackSrc)
-      return false
+      return
     }
 
     retryCountRef.current += 1
@@ -536,56 +542,26 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
       const separator = normalizedSrc.includes('?') ? '&' : '?'
       setCurrentSrc(`${normalizedSrc}${separator}img_retry=${Date.now()}`)
     }, delay)
-    return true
   }, [normalizedSrc, fallbackSrc, clearRetryTimer])
-
-  useEffect(() => {
-    clearRetryTimer()
-    retryCountRef.current = 0
-    setHasLoaded(false)
-    setCurrentSrc(normalizedSrc || fallbackSrc)
-
-    return () => clearRetryTimer()
-  }, [normalizedSrc, fallbackSrc, clearRetryTimer])
-
-  useEffect(() => {
-    if (!normalizedSrc || normalizedSrc.startsWith('data:')) return undefined
-
-    const retryWhenForeground = () => {
-      if (document.visibilityState === 'visible' && !hasLoaded && currentSrc === fallbackSrc) {
-        scheduleRetry()
-      }
-    }
-
-    const retryWhenOnline = () => {
-      if (!hasLoaded && currentSrc === fallbackSrc) {
-        scheduleRetry()
-      }
-    }
-
-    document.addEventListener('visibilitychange', retryWhenForeground)
-    window.addEventListener('online', retryWhenOnline)
-    return () => {
-      document.removeEventListener('visibilitychange', retryWhenForeground)
-      window.removeEventListener('online', retryWhenOnline)
-    }
-  }, [normalizedSrc, hasLoaded, currentSrc, fallbackSrc, scheduleRetry])
 
   const handleLoad = useCallback(() => {
     clearRetryTimer()
-    setHasLoaded(true)
   }, [clearRetryTimer])
+
+  const imageHints = priority
+    ? { loading: 'eager', decoding: 'auto', fetchPriority: 'high' }
+    : needsConservativeMode
+      ? {}
+      : { loading: 'lazy', decoding: 'async', fetchPriority: 'auto' }
 
   return (
     <img
       src={currentSrc}
       alt={alt}
       className={`${className} ${contain ? `object-contain ${blend ? 'mix-blend-multiply' : ''}`.trim() : 'object-cover'}`}
-      onError={scheduleRetry}
+      onError={queueRetry}
       onLoad={handleLoad}
-      loading={needsConservativeMode ? undefined : 'lazy'}
-      decoding={needsConservativeMode ? undefined : 'async'}
-      draggable={false}
+      {...imageHints}
     />
   )
 }
@@ -816,14 +792,14 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
     <section id="promo" data-spy-section className="scroll-mt-[185px]">
       <SectionTitle title="🔥 促銷焦點" subtitle="左右滑動檢視近期活動" />
       <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 md:-mx-0 md:px-0">
-        {items.map((promo) => {
+        {items.map((promo, promoIndex) => {
           const statusMeta = PROMO_STATUS_META[promo.status] || PROMO_STATUS_META.active
           const promoImage = getPromoImage(promo)
           return (
             <CarouselCard key={promo.promoId}>
               <button onClick={() => onOpenPromo(promo)} className="flex h-full w-full flex-col text-left">
                 <div className="relative h-[120px] w-full shrink-0 bg-slate-100 overflow-hidden">
-                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
+                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
                   <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                     {statusMeta.label}
                   </div>
@@ -888,11 +864,11 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
       </div>
       
       <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-4 md:-mx-0 md:px-0">
-        {items.length > 0 ? items.map((product) => (
+        {items.length > 0 ? items.map((product, productIndex) => (
           <div key={product.code} className="w-[110px] shrink-0 snap-start">
             <button onClick={() => onOpenProduct(product.code)} className="flex w-full flex-col items-center gap-2 text-center transition-transform active:scale-95">
               <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-2 shadow-sm">
-                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full" />
+                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" priority={productIndex < 4} />
                 <div className={`absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-br-lg text-[12px] font-black text-white shadow-sm ${product.displayRank === 1 ? 'bg-[#ffd700] text-[#3e2723]' : product.displayRank === 2 ? 'bg-[#cfd8dc] text-[#37474f]' : product.displayRank === 3 ? 'bg-[#d7ccc8] text-[#3e2723]' : 'bg-black/60'}`}>
                   {product.displayRank}
                 </div>
@@ -908,7 +884,7 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
   )
 }
 
-function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFilter, onOpenPromo }) {
+function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFilter, onOpenPromo, priority = false }) {
   const expandedCardId = useAppStore((state) => state.expandedCardId)
   const setExpandedCardId = useAppStore((state) => state.setExpandedCardId)
   const openLightbox = useAppStore((state) => state.openLightbox)
@@ -977,7 +953,7 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
       
       <div onClick={toggle} className="relative flex w-full cursor-pointer items-center gap-3 p-3 text-left">
         <div className="relative shrink-0 overflow-hidden rounded-lg border border-slate-100 bg-[#fcfcfc]" style={{ width: scalePreset.rowImage, height: scalePreset.rowImage }} onClick={(event) => { if (isExpanded) { event.stopPropagation(); openLightbox({ src: product.photo || placeholderSvg(product.name), title: product.name }) } }}>
-          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full p-1" />
+          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-1" blend priority={priority} />
           {product.videoUrl && (
             <div className={`absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 text-white backdrop-blur-sm shadow-sm ${hasSeenVideo ? 'bg-black/40' : 'bg-[var(--promo)] ring-2 ring-[var(--promo)]/35'}`}>
               <PlayCircle className="h-3.5 w-3.5" />
@@ -1271,7 +1247,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
             <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500 shrink-0"><X className="h-5 w-5" /></button>
           </div>
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
-            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-[var(--surface-soft)]"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain blend={false} className="block w-full max-h-[40vh]" /></div>}
+            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-black"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain className="w-full max-h-[40vh]" /></div>}
             <p className={`whitespace-pre-line leading-relaxed text-[var(--text)] ${preset.drawerBody}`}>{promo.content}</p>
             
             {promo.relatedProducts && promo.relatedProducts.length > 0 && (
@@ -1288,7 +1264,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[#fcfcfc]">
-                          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full p-0.5" />
+                          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-0.5" />
                         </div>
                         <div className="text-left min-w-0">
                           <p className={`line-clamp-1 font-bold text-[var(--text)] ${preset.drawerRelatedName}`}>{product.name}</p>
@@ -1356,13 +1332,13 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
           </div>
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
             <div className="grid gap-3 md:grid-cols-2">
-              {filtered.length ? filtered.map((promo) => {
+              {filtered.length ? filtered.map((promo, promoIndex) => {
                 const statusMeta = PROMO_STATUS_META[promo.status] || PROMO_STATUS_META.active
                 const promoImage = getPromoImage(promo)
                 return (
                   <button key={promo.promoId} onClick={() => onOpenPromo(promo)} className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white text-left shadow-sm">
                     <div className="relative h-[130px] bg-slate-100 overflow-hidden">
-                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
+                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
                       <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                         {statusMeta.label}
                       </div>
@@ -1619,14 +1595,14 @@ export default function App() {
           category: item.category,
           group: normalizeCategory(item.name, item.category), 
           price: Number(item.price || 0),
-          photo: normalizeAssetUrl(item.photo),
+          photo: item.photo,
           title: pitch.title || '',
           content: pitch.content || '',
           tags: parseTags(pitch.tags),
           isNew: Boolean(pitch.isNew),
           isHidden: isHidden,
           spec: item.spec || '',
-          videoUrl: normalizeAssetUrl(item.videoUrl || ''),
+          videoUrl: item.videoUrl || '',
           moreLinks: parseMoreLinks(item.moreLinksRaw),
           rank: rank?.rank || null,
         }
@@ -1747,18 +1723,8 @@ export default function App() {
   useScrollSpy(sectionIds, groupedProducts.length)
 
   useEffect(() => {
-    const container = navRef.current
-    const button = container?.querySelector(`[data-anchor="${activeSection}"]`)
-    if (!container || !button) return
-
-    const containerRect = container.getBoundingClientRect()
-    const buttonRect = button.getBoundingClientRect()
-    const targetLeft = container.scrollLeft + (buttonRect.left - containerRect.left) - (containerRect.width / 2) + (buttonRect.width / 2)
-
-    container.scrollTo({
-      left: Math.max(0, targetLeft),
-      behavior: SCROLL_BEHAVIOR,
-    })
+    const button = navRef.current?.querySelector(`[data-anchor="${activeSection}"]`)
+    button?.scrollIntoView({ behavior: SCROLL_BEHAVIOR, inline: 'center', block: 'nearest' })
   }, [activeSection])
 
   useEffect(() => {
@@ -1960,11 +1926,11 @@ export default function App() {
               setCategory={setRankCategory}
             />
 
-            {groupedProducts.length > 0 ? groupedProducts.map((group) => (
+            {groupedProducts.length > 0 ? groupedProducts.map((group, groupIndex) => (
               <section key={group.key} id={group.anchor} data-spy-section className={`scroll-mt-[185px]`}>
                 <SectionTitle title={group.label} subtitle="" />
                 <div className="space-y-3">
-                  {group.items.map((product) => (
+                  {group.items.map((product, productIndex) => (
                     <div id={`card-${product.code}`} key={product.code}>
                       <ProductRow 
                         product={product} 
@@ -1973,6 +1939,7 @@ export default function App() {
                         onOpenProductByCode={openProductByCode} 
                         onApplyTagFilter={applyTagFilter} 
                         onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
+                        priority={groupIndex === 0 && productIndex < 3}
                       />
                     </div>
                   ))}
