@@ -497,14 +497,20 @@ function normalizeAssetUrl(url) {
   }
 }
 
-// 🚀 冷啟動韌性版 SafeImage：避免舊版 iOS PWA 在首次載入時過早宣判失敗
+// 🚀 自癒版 SafeImage：先做快速重試，失敗後進入低頻續試，不會過早永久放棄
 function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend = false, priority = false }) {
+  const imgRef = useRef(null)
   const retryTimerRef = useRef(null)
   const retryCountRef = useRef(0)
-  const retryDelays = [1500, 4000, 8000]
+  const recoveryCountRef = useRef(0)
+  const lastAttemptAtRef = useRef(0)
+  const isInViewportRef = useRef(true)
+  const quickRetryDelays = [1500, 4000, 8000]
+  const recoveryRetryDelays = [12000, 25000, 45000, 60000, 90000]
   const fallbackSrc = placeholderSvg(fallbackLabel)
   const normalizedSrc = useMemo(() => normalizeAssetUrl(src), [src])
   const [currentSrc, setCurrentSrc] = useState(normalizedSrc || fallbackSrc)
+  const [isRecoverable, setIsRecoverable] = useState(false)
 
   const clearRetryTimer = useCallback(() => {
     if (retryTimerRef.current) {
@@ -513,39 +519,132 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
     }
   }, [])
 
+  const buildRetryUrl = useCallback(() => {
+    const separator = normalizedSrc.includes('?') ? '&' : '?'
+    return `${normalizedSrc}${separator}img_retry=${Date.now()}`
+  }, [normalizedSrc])
+
+  const scheduleRecoveryRetry = useCallback(() => {
+    if (!normalizedSrc || normalizedSrc.startsWith('data:')) return
+    if (!isRecoverable) return
+
+    clearRetryTimer()
+    const idx = Math.min(recoveryCountRef.current, recoveryRetryDelays.length - 1)
+    const delay = recoveryRetryDelays[idx]
+
+    retryTimerRef.current = window.setTimeout(() => {
+      const isPageVisible = typeof document === 'undefined' ? true : document.visibilityState === 'visible'
+      const shouldAttempt = !needsConservativeMode || isPageVisible || isInViewportRef.current
+
+      if (!shouldAttempt) {
+        scheduleRecoveryRetry()
+        return
+      }
+
+      recoveryCountRef.current += 1
+      lastAttemptAtRef.current = Date.now()
+      setCurrentSrc(buildRetryUrl())
+    }, delay)
+  }, [normalizedSrc, isRecoverable, clearRetryTimer, buildRetryUrl])
+
+  const triggerRecoveryNow = useCallback((force = false) => {
+    if (!normalizedSrc || normalizedSrc.startsWith('data:')) return
+    if (!isRecoverable) return
+
+    const now = Date.now()
+    const cooldown = force ? 1500 : 6000
+    if (now - lastAttemptAtRef.current < cooldown) return
+
+    clearRetryTimer()
+    lastAttemptAtRef.current = now
+    recoveryCountRef.current += 1
+    setCurrentSrc(buildRetryUrl())
+  }, [normalizedSrc, isRecoverable, clearRetryTimer, buildRetryUrl])
+
   useEffect(() => {
     clearRetryTimer()
     retryCountRef.current = 0
+    recoveryCountRef.current = 0
+    lastAttemptAtRef.current = 0
+    setIsRecoverable(false)
     setCurrentSrc(normalizedSrc || fallbackSrc)
 
     return () => clearRetryTimer()
   }, [normalizedSrc, fallbackSrc, clearRetryTimer])
 
+  useEffect(() => {
+    if (!isRecoverable || typeof window === 'undefined') return
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') triggerRecoveryNow(true)
+    }
+    const handleOnline = () => triggerRecoveryNow(true)
+    const handleFocus = () => triggerRecoveryNow(false)
+
+    window.addEventListener('online', handleOnline)
+    window.addEventListener('focus', handleFocus)
+    document.addEventListener('visibilitychange', handleVisibility)
+
+    return () => {
+      window.removeEventListener('online', handleOnline)
+      window.removeEventListener('focus', handleFocus)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
+  }, [isRecoverable, triggerRecoveryNow])
+
+  useEffect(() => {
+    if (!imgRef.current || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewportRef.current = !!entry?.isIntersecting
+        if (entry?.isIntersecting && isRecoverable) {
+          triggerRecoveryNow(false)
+        }
+      },
+      { root: null, rootMargin: '240px 0px', threshold: 0.01 }
+    )
+
+    observer.observe(imgRef.current)
+    return () => observer.disconnect()
+  }, [isRecoverable, triggerRecoveryNow])
+
+  useEffect(() => {
+    if (isRecoverable) scheduleRecoveryRetry()
+    return () => clearRetryTimer()
+  }, [isRecoverable, scheduleRecoveryRetry, clearRetryTimer])
+
   const queueRetry = useCallback(() => {
     if (!normalizedSrc || normalizedSrc.startsWith('data:')) {
       setCurrentSrc(fallbackSrc)
+      setIsRecoverable(false)
       return
     }
 
     const currentRetry = retryCountRef.current
-    if (currentRetry >= retryDelays.length) {
+    if (currentRetry >= quickRetryDelays.length) {
       setCurrentSrc(fallbackSrc)
+      setIsRecoverable(true)
       return
     }
 
     retryCountRef.current += 1
+    lastAttemptAtRef.current = Date.now()
     setCurrentSrc(fallbackSrc)
     clearRetryTimer()
 
-    const delay = retryDelays[currentRetry]
+    const delay = quickRetryDelays[currentRetry]
     retryTimerRef.current = window.setTimeout(() => {
-      const separator = normalizedSrc.includes('?') ? '&' : '?'
-      setCurrentSrc(`${normalizedSrc}${separator}img_retry=${Date.now()}`)
+      setCurrentSrc(buildRetryUrl())
     }, delay)
-  }, [normalizedSrc, fallbackSrc, clearRetryTimer])
+  }, [normalizedSrc, fallbackSrc, clearRetryTimer, buildRetryUrl])
 
   const handleLoad = useCallback(() => {
     clearRetryTimer()
+    retryCountRef.current = 0
+    recoveryCountRef.current = 0
+    lastAttemptAtRef.current = 0
+    setIsRecoverable(false)
   }, [clearRetryTimer])
 
   const imageHints = priority
@@ -556,6 +655,7 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend 
 
   return (
     <img
+      ref={imgRef}
       src={currentSrc}
       alt={alt}
       className={`${className} ${contain ? `object-contain ${blend ? 'mix-blend-multiply' : ''}`.trim() : 'object-cover'}`}
@@ -799,7 +899,7 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
             <CarouselCard key={promo.promoId}>
               <button onClick={() => onOpenPromo(promo)} className="flex h-full w-full flex-col text-left">
                 <div className="relative h-[120px] w-full shrink-0 bg-slate-100 overflow-hidden">
-                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex === 0} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
+                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
                   <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                     {statusMeta.label}
                   </div>
@@ -868,7 +968,7 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
           <div key={product.code} className="w-[110px] shrink-0 snap-start">
             <button onClick={() => onOpenProduct(product.code)} className="flex w-full flex-col items-center gap-2 text-center transition-transform active:scale-95">
               <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-2 shadow-sm">
-                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" priority={productIndex < 2} />
+                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" priority={productIndex < 4} />
                 <div className={`absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-br-lg text-[12px] font-black text-white shadow-sm ${product.displayRank === 1 ? 'bg-[#ffd700] text-[#3e2723]' : product.displayRank === 2 ? 'bg-[#cfd8dc] text-[#37474f]' : product.displayRank === 3 ? 'bg-[#d7ccc8] text-[#3e2723]' : 'bg-black/60'}`}>
                   {product.displayRank}
                 </div>
@@ -1338,7 +1438,7 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
                 return (
                   <button key={promo.promoId} onClick={() => onOpenPromo(promo)} className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white text-left shadow-sm">
                     <div className="relative h-[130px] bg-slate-100 overflow-hidden">
-                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex === 0} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
+                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
                       <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                         {statusMeta.label}
                       </div>
@@ -1939,7 +2039,7 @@ export default function App() {
                         onOpenProductByCode={openProductByCode} 
                         onApplyTagFilter={applyTagFilter} 
                         onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
-                        priority={groupIndex === 0 && productIndex === 0}
+                        priority={groupIndex === 0 && productIndex < 3}
                       />
                     </div>
                   ))}
