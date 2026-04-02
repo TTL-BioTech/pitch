@@ -46,6 +46,55 @@ if (typeof window !== 'undefined') {
   });
 }
 
+function cssSupports(property, value) {
+  return typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports(property, value)
+}
+
+const isAppleTouchDevice = typeof navigator !== 'undefined' && (
+  /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent)
+) && (
+  navigator.maxTouchPoints > 1 || /iPod|iPhone|iPad/.test(navigator.userAgent)
+)
+
+const needsConservativeMode = isAppleTouchDevice && (
+  !cssSupports('height', '100dvh') ||
+  !cssSupports('overscroll-behavior', 'contain')
+)
+
+const SCROLL_BEHAVIOR = needsConservativeMode ? 'auto' : 'smooth'
+const SHEET_TRANSITION = needsConservativeMode
+  ? { type: 'tween', duration: 0.18, ease: 'easeOut' }
+  : { type: 'spring', stiffness: 260, damping: 24 }
+const MODAL_TRANSITION = needsConservativeMode
+  ? { type: 'tween', duration: 0.16, ease: 'easeOut' }
+  : { type: 'spring', stiffness: 320, damping: 28 }
+const FAB_ITEM_VARIANTS = needsConservativeMode
+  ? {
+      hidden: { opacity: 0, y: 10 },
+      show: { opacity: 1, y: 0, transition: { type: 'tween', duration: 0.14, ease: 'easeOut' } },
+    }
+  : {
+      hidden: { opacity: 0, y: 20, scale: 0.8 },
+      show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 20 } },
+    }
+
+const BOTTOM_SHEET_MAX_HEIGHT_STYLE = {
+  maxHeight: 'calc(var(--app-height, 100vh) - env(safe-area-inset-top) - 8px)',
+}
+
+const CENTER_MODAL_MAX_HEIGHT_STYLE = {
+  maxHeight: 'calc(var(--app-height, 100vh) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px)',
+}
+
+const LIGHTBOX_IMAGE_MAX_STYLE = {
+  maxHeight: 'calc(var(--app-height, 100vh) - 40px)',
+  maxWidth: '95vw',
+}
+
+const MEDIA_SHEET_BODY_MAX_HEIGHT_STYLE = {
+  maxHeight: 'calc(var(--app-height, 100vh) * 0.6)',
+}
+
 const BASE_URL = import.meta.env.BASE_URL || '/'
 const STORAGE_KEYS = {
   theme: 'ttl-react-theme-v8',
@@ -306,10 +355,66 @@ function useScrollSpy(ids, layoutReady) {
 
 function useBodyLock(locked) {
   useEffect(() => {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return undefined
     if (!locked) return undefined
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
+
+    const body = document.body
+    const html = document.documentElement
+    const scrollY = window.scrollY
+    const previous = {
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyLeft: body.style.left,
+      bodyRight: body.style.right,
+      bodyWidth: body.style.width,
+      bodyOverflow: body.style.overflow,
+      htmlOverflow: html.style.overflow,
+    }
+
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    body.style.width = '100%'
+    body.style.overflow = 'hidden'
+    html.style.overflow = 'hidden'
+
+    return () => {
+      body.style.position = previous.bodyPosition
+      body.style.top = previous.bodyTop
+      body.style.left = previous.bodyLeft
+      body.style.right = previous.bodyRight
+      body.style.width = previous.bodyWidth
+      body.style.overflow = previous.bodyOverflow
+      html.style.overflow = previous.htmlOverflow
+      window.scrollTo(0, scrollY)
+    }
   }, [locked])
+}
+
+function useViewportCssVar() {
+  useEffect(() => {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return undefined
+
+    const root = document.documentElement
+    const updateHeight = () => {
+      const nextHeight = window.visualViewport?.height || window.innerHeight
+      root.style.setProperty('--app-height', `${Math.round(nextHeight)}px`)
+    }
+
+    updateHeight()
+    window.addEventListener('resize', updateHeight, { passive: true })
+    window.addEventListener('orientationchange', updateHeight)
+    window.visualViewport?.addEventListener('resize', updateHeight)
+    window.visualViewport?.addEventListener('scroll', updateHeight)
+
+    return () => {
+      window.removeEventListener('resize', updateHeight)
+      window.removeEventListener('orientationchange', updateHeight)
+      window.visualViewport?.removeEventListener('resize', updateHeight)
+      window.visualViewport?.removeEventListener('scroll', updateHeight)
+    }
+  }, [])
 }
 
 function HighlightText({ text, keyword }) {
@@ -593,9 +698,9 @@ function SettingsPanel({ open, onClose, theme, setTheme, scale, setScale }) {
             initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
-            transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+            transition={SHEET_TRANSITION}
             onClick={(event) => event.stopPropagation()}
-            className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-2xl rounded-t-[24px] bg-[var(--surface)] px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-2xl"
+            style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-2xl overflow-y-auto rounded-t-[24px] bg-[var(--surface)] px-5 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-2xl"
           >
             <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-slate-200" />
             <div className="flex items-center justify-between">
@@ -650,7 +755,7 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
             <CarouselCard key={promo.promoId}>
               <button onClick={() => onOpenPromo(promo)} className="flex h-full w-full flex-col text-left">
                 <div className="relative h-[120px] w-full shrink-0 bg-slate-100 overflow-hidden">
-                  {promoImage ? <img src={promoImage} alt={promo.title} className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
+                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
                   <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                     {statusMeta.label}
                   </div>
@@ -758,7 +863,7 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
         if (el) {
           const headerHeight = document.querySelector('header')?.offsetHeight || 140
           const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - 10
-          window.scrollTo({ top: y, behavior: 'smooth' })
+          window.scrollTo({ top: y, behavior: SCROLL_BEHAVIOR })
         }
       }, 280)
     } else {
@@ -909,9 +1014,9 @@ function MediaSheet() {
           initial={{ y: '100%' }}
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
-          transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+          transition={SHEET_TRANSITION}
           onClick={(event) => event.stopPropagation()}
-          className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-lg rounded-t-[24px] bg-white px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-2xl"
+          style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-lg overflow-y-auto rounded-t-[24px] bg-white px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-4 shadow-2xl"
         >
           <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-slate-200" />
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -921,7 +1026,7 @@ function MediaSheet() {
             </div>
             <button onClick={closeModal} className="rounded-full bg-slate-100 p-2 text-slate-500"><X className="h-5 w-5" /></button>
           </div>
-          <div className="mt-3 max-h-[60vh] overflow-y-auto space-y-2 pb-4">
+          <div style={MEDIA_SHEET_BODY_MAX_HEIGHT_STYLE} className="mt-3 overflow-y-auto space-y-2 pb-4">
             {mediaSheetProduct.moreLinks.length ? mediaSheetProduct.moreLinks.map((item, index) => {
               let IconTag = Globe;
               let iconColor = 'bg-slate-500';
@@ -961,7 +1066,7 @@ function VideoModal() {
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[76] bg-black/80 backdrop-blur-sm" onClick={closeModal}>
-        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.96 }} onClick={(event) => event.stopPropagation()} className="absolute inset-x-4 top-1/2 mx-auto w-[min(100%,760px)] -translate-y-1/2 overflow-hidden rounded-[20px] bg-white shadow-2xl flex flex-col">
+        <motion.div initial={needsConservativeMode ? { opacity: 0, y: 16 } : { opacity: 0, scale: 0.96 }} animate={needsConservativeMode ? { opacity: 1, y: 0 } : { opacity: 1, scale: 1 }} exit={needsConservativeMode ? { opacity: 0, y: 12 } : { opacity: 0, scale: 0.96 }} transition={MODAL_TRANSITION} onClick={(event) => event.stopPropagation()} style={CENTER_MODAL_MAX_HEIGHT_STYLE} className="absolute inset-x-4 top-1/2 mx-auto flex w-[min(100%,760px)] max-w-[calc(100vw-2rem)] -translate-y-1/2 flex-col overflow-hidden rounded-[20px] bg-white shadow-2xl">
           <div className="flex shrink-0 items-start justify-between border-b border-slate-100 p-3">
             <div className="min-w-0 pr-3">
               <h3 className="flex items-center gap-1.5 text-[15px] font-black text-[var(--text)]"><PlayCircle className="h-4 w-4 text-[var(--muted)]"/>商品影片</h3>
@@ -999,7 +1104,7 @@ function LightboxModal() {
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[77] flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeModal}>
         <button onClick={closeModal} className="absolute right-4 top-4 rounded-full bg-white/20 p-2 text-white backdrop-blur-md"><X className="h-6 w-6" /></button>
-        <motion.img initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} src={lightbox.src} alt={lightbox.title} className="max-h-[85vh] max-w-[95vw] object-contain" onClick={(e) => e.stopPropagation()} />
+        <motion.div initial={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.9 }} animate={needsConservativeMode ? { opacity: 1, y: 0 } : { scale: 1 }} exit={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.9 }} transition={MODAL_TRANSITION} onClick={(e) => e.stopPropagation()} style={LIGHTBOX_IMAGE_MAX_STYLE} className="w-full"><SafeImage src={lightbox.src} alt={lightbox.title} fallbackLabel={lightbox.title} contain className="h-full w-full" /></motion.div>
       </motion.div>
     </AnimatePresence>
   )
@@ -1056,7 +1161,7 @@ function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) 
               return (
                 <motion.button
                   key={action.key}
-                  variants={{ hidden: { opacity: 0, y: 20, scale: 0.8 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 20 } } }}
+                  variants={FAB_ITEM_VARIANTS}
                   onClick={action.onClick}
                   className="flex h-[40px] items-center gap-2 whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 text-[13px] font-bold text-slate-700 shadow-md"
                 >
@@ -1082,7 +1187,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[74] bg-black/70 backdrop-blur-sm" onClick={onClose}>
-        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'spring', stiffness: 260, damping: 24 }} onClick={(event) => event.stopPropagation()} className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[90vh] w-full max-w-lg flex-col rounded-t-[24px] bg-white shadow-2xl">
+        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={SHEET_TRANSITION} onClick={(event) => event.stopPropagation()} style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto flex w-full max-w-lg flex-col rounded-t-[24px] bg-white shadow-2xl">
           <div className="flex shrink-0 items-start justify-between border-b border-slate-100 p-4 pb-3">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1">
@@ -1098,7 +1203,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
             <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500 shrink-0"><X className="h-5 w-5" /></button>
           </div>
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
-            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-black"><img src={getPromoImage(promo)} className="w-full object-contain max-h-[40vh]" alt="活動" /></div>}
+            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-black"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain className="w-full max-h-[40vh]" /></div>}
             <p className={`whitespace-pre-line leading-relaxed text-[var(--text)] ${preset.drawerBody}`}>{promo.content}</p>
             
             {promo.relatedProducts && promo.relatedProducts.length > 0 && (
@@ -1149,7 +1254,7 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[73] bg-black/60 backdrop-blur-sm" onClick={onClose}>
-        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={{ type: 'spring', stiffness: 260, damping: 24 }} onClick={(event) => event.stopPropagation()} className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-3xl flex-col rounded-t-[24px] bg-[var(--surface)] shadow-2xl">
+        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={SHEET_TRANSITION} onClick={(event) => event.stopPropagation()} style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto flex w-full max-w-3xl flex-col rounded-t-[24px] bg-[var(--surface)] shadow-2xl">
           <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] p-4">
             <div>
               <p className="text-[12px] font-bold" style={{ color: 'var(--promo)' }}>促銷專區</p>
@@ -1189,7 +1294,7 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
                 return (
                   <button key={promo.promoId} onClick={() => onOpenPromo(promo)} className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white text-left shadow-sm">
                     <div className="relative h-[130px] bg-slate-100 overflow-hidden">
-                      {promoImage ? <img src={promoImage} alt={promo.title} className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
+                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
                       <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                         {statusMeta.label}
                       </div>
@@ -1381,6 +1486,7 @@ export default function App() {
     }
   }, [themeConfig]);
   
+  useViewportCssVar()
   useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen))
 
   useEffect(() => { hydrateSeenVideos() }, [hydrateSeenVideos])
@@ -1574,7 +1680,7 @@ export default function App() {
 
   useEffect(() => {
     const button = navRef.current?.querySelector(`[data-anchor="${activeSection}"]`)
-    button?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+    button?.scrollIntoView({ behavior: SCROLL_BEHAVIOR, inline: 'center', block: 'nearest' })
   }, [activeSection])
 
   useEffect(() => {
@@ -1601,7 +1707,7 @@ export default function App() {
             if (el) {
               const headerHeight = document.querySelector('header')?.offsetHeight || 140
               const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - 10
-              window.scrollTo({ top: y, behavior: 'smooth' })
+              window.scrollTo({ top: y, behavior: SCROLL_BEHAVIOR })
             }
           }, 120)
           setTagReturnCode(null)
@@ -1620,7 +1726,7 @@ export default function App() {
     if (el) {
       const headerHeight = document.querySelector('header')?.offsetHeight || 140
       const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - 10
-      window.scrollTo({ top: y, behavior: 'smooth' })
+      window.scrollTo({ top: y, behavior: SCROLL_BEHAVIOR })
     }
   }, [])
 
@@ -1644,7 +1750,7 @@ export default function App() {
       if (el) {
         const headerHeight = document.querySelector('header')?.offsetHeight || 140
         const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - 10
-        window.scrollTo({ top: y, behavior: 'smooth' })
+        window.scrollTo({ top: y, behavior: SCROLL_BEHAVIOR })
       }
     }, 120)
   }, [setExpandedCardId, showToast])
@@ -1657,7 +1763,7 @@ export default function App() {
       if (el) {
         const headerHeight = document.querySelector('header')?.offsetHeight || 140
         const y = el.getBoundingClientRect().top + window.scrollY - headerHeight - 10
-        window.scrollTo({ top: y, behavior: 'smooth' })
+        window.scrollTo({ top: y, behavior: SCROLL_BEHAVIOR })
       }
     }, 280) 
   }, [setExpandedCardId])
@@ -1696,8 +1802,10 @@ export default function App() {
   return (
     <div style={themeConfig.colors} className="min-h-screen bg-[var(--bg)] text-[var(--text)] font-sans antialiased">
       <style>{`
-        html, body { min-height: 100%; background: var(--bg); }
-        body { margin: 0; padding: 0; overscroll-behavior-y: contain; transition: background-color 0.3s ease; }
+        html, body, #root { min-height: 100%; background: var(--bg); }
+        html { height: 100%; }
+        body { margin: 0; padding: 0; min-height: var(--app-height, 100vh); overscroll-behavior-y: contain; transition: background-color 0.3s ease; }
+        ${needsConservativeMode ? 'html, body { scroll-behavior: auto !important; }' : ''}
         .promo-balloon { animation: pulseGlow 2s infinite; }
         @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.7); } 70% { box-shadow: 0 0 0 10px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
         *::-webkit-scrollbar { display: none; }
@@ -1826,7 +1934,7 @@ export default function App() {
           onNavigateToProduct={navigateToProductFromPromo}
           scale={scale}
         />
-        <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
+        <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: SCROLL_BEHAVIOR })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
         <ToastMessage />
       </div>
 
