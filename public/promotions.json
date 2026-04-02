@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-01T03:42:58.322Z",
-  "count": 53,
+  "generatedAt": "2026-04-02T07:58:00.741Z",
+  "count": 52,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -780,39 +780,13 @@
       ]
     },
     {
-      "promoId": "P_mmu5wc6g",
-      "title": "母親節 活膚膠囊組 (贈美白體驗包)",
-      "shortTitle": "母親節 活膚膠囊組 (贈美白體驗包)",
-      "content": "緊緻活膚膠囊2件，贈密集美白體驗組，檔期特惠1,680元。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/1FivLcpVYDjP8mVK4kEUTABdtCgYBlsw9",
+      "promoId": "P_mnh6jw5b",
+      "title": "母親節 膠囊2入組 (贈美白體驗包)",
+      "shortTitle": "母親節 膠囊2入組 (贈美白體驗包)",
+      "content": "1.緊緻活膚膠囊2件，檔期特惠1,680元。\n2.激透光米植醇特潤膠囊(15顆)買一送一，檔期特惠790元。\n\n<<購買上述任一項皆搭贈密集美白體驗組>>",
+      "imgUrl": "",
       "relatedCodes": [
         "375358-12",
-        "37530002-12",
-        "37530003-12"
-      ],
-      "startDate": "2026/4/8",
-      "endDate": "2026/5/15",
-      "status": "upcoming",
-      "bgColor": "#fbe1e7",
-      "ch": {
-        "show": true,
-        "mart": true,
-        "eshop": true,
-        "office": false
-      },
-      "channelLabels": [
-        "展售中心",
-        "便利店",
-        "購物網"
-      ]
-    },
-    {
-      "promoId": "P_mmu5xypl",
-      "title": "母親節 特潤膠囊組 (贈美白體驗包)",
-      "shortTitle": "母親節 特潤膠囊組 (贈美白體驗包)",
-      "content": "激透光米植醇特潤膠囊(15顆)2件，贈密集美白體驗組，檔期特惠990元。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/16StabgZUD1NgNxTPSIWdj55K_l67ILSk",
-      "relatedCodes": [
         "37130000-12",
         "37530002-12",
         "37530003-12"
@@ -820,18 +794,14 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "upcoming",
-      "bgColor": "#fbe1e7",
+      "bgColor": "#FFFFFF",
       "ch": {
-        "show": true,
-        "mart": true,
-        "eshop": true,
+        "show": false,
+        "mart": false,
+        "eshop": false,
         "office": false
       },
-      "channelLabels": [
-        "展售中心",
-        "便利店",
-        "購物網"
-      ]
+      "channelLabels": []
     },
     {
       "promoId": "P_mmu6guxm",
