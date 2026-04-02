@@ -799,7 +799,7 @@ function PromoCarousel({ items, onOpenPromo, scale }) {
             <CarouselCard key={promo.promoId}>
               <button onClick={() => onOpenPromo(promo)} className="flex h-full w-full flex-col text-left">
                 <div className="relative h-[120px] w-full shrink-0 bg-slate-100 overflow-hidden">
-                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
+                  {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex === 0} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-10 w-10" /></div>}
                   <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                     {statusMeta.label}
                   </div>
@@ -868,7 +868,7 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
           <div key={product.code} className="w-[110px] shrink-0 snap-start">
             <button onClick={() => onOpenProduct(product.code)} className="flex w-full flex-col items-center gap-2 text-center transition-transform active:scale-95">
               <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-2 shadow-sm">
-                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" priority={productIndex < 4} />
+                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" priority={productIndex < 2} />
                 <div className={`absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-br-lg text-[12px] font-black text-white shadow-sm ${product.displayRank === 1 ? 'bg-[#ffd700] text-[#3e2723]' : product.displayRank === 2 ? 'bg-[#cfd8dc] text-[#37474f]' : product.displayRank === 3 ? 'bg-[#d7ccc8] text-[#3e2723]' : 'bg-black/60'}`}>
                   {product.displayRank}
                 </div>
@@ -1338,7 +1338,7 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
                 return (
                   <button key={promo.promoId} onClick={() => onOpenPromo(promo)} className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white text-left shadow-sm">
                     <div className="relative h-[130px] bg-slate-100 overflow-hidden">
-                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex < 2} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
+                      {promoImage ? <SafeImage src={promoImage} alt={promo.title} fallbackLabel={promo.title} className="h-full w-full" priority={promoIndex === 0} /> : <div className="flex h-full items-center justify-center text-slate-400"><BadgePercent className="h-9 w-9" /></div>}
                       <div className={`absolute left-2 top-2 rounded-full border font-bold shadow-sm backdrop-blur-sm ${statusMeta.className} ${preset.promoStatus}`}>
                         {statusMeta.label}
                       </div>
@@ -1939,7 +1939,7 @@ export default function App() {
                         onOpenProductByCode={openProductByCode} 
                         onApplyTagFilter={applyTagFilter} 
                         onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
-                        priority={groupIndex === 0 && productIndex < 3}
+                        priority={groupIndex === 0 && productIndex === 0}
                       />
                     </div>
                   ))}
