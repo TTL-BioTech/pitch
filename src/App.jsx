@@ -397,22 +397,24 @@ function useViewportCssVar() {
     if (typeof document === 'undefined' || typeof window === 'undefined') return undefined
 
     const root = document.documentElement
+    let lastHeight = 0
     const updateHeight = () => {
-      const nextHeight = window.visualViewport?.height || window.innerHeight
-      root.style.setProperty('--app-height', `${Math.round(nextHeight)}px`)
+      const nextHeight = Math.round(window.visualViewport?.height || window.innerHeight || 0)
+      if (!nextHeight) return
+      if (Math.abs(nextHeight - lastHeight) < 6) return
+      lastHeight = nextHeight
+      root.style.setProperty('--app-height', `${nextHeight}px`)
     }
 
     updateHeight()
     window.addEventListener('resize', updateHeight, { passive: true })
     window.addEventListener('orientationchange', updateHeight)
     window.visualViewport?.addEventListener('resize', updateHeight)
-    window.visualViewport?.addEventListener('scroll', updateHeight)
 
     return () => {
       window.removeEventListener('resize', updateHeight)
       window.removeEventListener('orientationchange', updateHeight)
       window.visualViewport?.removeEventListener('resize', updateHeight)
-      window.visualViewport?.removeEventListener('scroll', updateHeight)
     }
   }, [])
 }
@@ -461,7 +463,7 @@ function CarouselCard({ children }) {
 }
 
 // 🚀 冷啟動韌性版 SafeImage：避免舊版 iOS PWA 在首次載入時過早宣判失敗
-function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
+function SafeImage({ src, alt, className, fallbackLabel, contain = false, blend = false }) {
   const retryTimerRef = useRef(null)
   const retryCountRef = useRef(0)
   const retryDelays = [1500, 4000, 8000]
@@ -514,7 +516,7 @@ function SafeImage({ src, alt, className, fallbackLabel, contain = false }) {
     <img
       src={currentSrc}
       alt={alt}
-      className={`${className} ${contain ? 'object-contain mix-blend-multiply' : 'object-cover'}`}
+      className={`${className} ${contain ? `object-contain ${blend ? 'mix-blend-multiply' : ''}`.trim() : 'object-cover'}`}
       onError={queueRetry}
       onLoad={handleLoad}
       // ⚠️ 刻意移除 loading="lazy" 與 decoding="async" 以相容舊版 iOS WebKit 引擎
@@ -824,7 +826,7 @@ function RankingCarousel({ items, onOpenProduct, subtitle, category, setCategory
           <div key={product.code} className="w-[110px] shrink-0 snap-start">
             <button onClick={() => onOpenProduct(product.code)} className="flex w-full flex-col items-center gap-2 text-center transition-transform active:scale-95">
               <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-2 shadow-sm">
-                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full" />
+                <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full" />
                 <div className={`absolute left-0 top-0 flex h-6 w-6 items-center justify-center rounded-br-lg text-[12px] font-black text-white shadow-sm ${product.displayRank === 1 ? 'bg-[#ffd700] text-[#3e2723]' : product.displayRank === 2 ? 'bg-[#cfd8dc] text-[#37474f]' : product.displayRank === 3 ? 'bg-[#d7ccc8] text-[#3e2723]' : 'bg-black/60'}`}>
                   {product.displayRank}
                 </div>
@@ -909,7 +911,7 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
       
       <div onClick={toggle} className="relative flex w-full cursor-pointer items-center gap-3 p-3 text-left">
         <div className="relative shrink-0 overflow-hidden rounded-lg border border-slate-100 bg-[#fcfcfc]" style={{ width: scalePreset.rowImage, height: scalePreset.rowImage }} onClick={(event) => { if (isExpanded) { event.stopPropagation(); openLightbox({ src: product.photo || placeholderSvg(product.name), title: product.name }) } }}>
-          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-1" />
+          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full p-1" />
           {product.videoUrl && (
             <div className={`absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 text-white backdrop-blur-sm shadow-sm ${hasSeenVideo ? 'bg-black/40' : 'bg-[var(--promo)] ring-2 ring-[var(--promo)]/35'}`}>
               <PlayCircle className="h-3.5 w-3.5" />
@@ -1203,7 +1205,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
             <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500 shrink-0"><X className="h-5 w-5" /></button>
           </div>
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
-            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-black"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain className="w-full max-h-[40vh]" /></div>}
+            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-[var(--surface-soft)]"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain blend={false} className="block w-full max-h-[40vh]" /></div>}
             <p className={`whitespace-pre-line leading-relaxed text-[var(--text)] ${preset.drawerBody}`}>{promo.content}</p>
             
             {promo.relatedProducts && promo.relatedProducts.length > 0 && (
@@ -1220,7 +1222,7 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[#fcfcfc]">
-                          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-0.5" />
+                          <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain blend className="h-full w-full p-0.5" />
                         </div>
                         <div className="text-left min-w-0">
                           <p className={`line-clamp-1 font-bold text-[var(--text)] ${preset.drawerRelatedName}`}>{product.name}</p>
@@ -1679,8 +1681,18 @@ export default function App() {
   useScrollSpy(sectionIds, groupedProducts.length)
 
   useEffect(() => {
-    const button = navRef.current?.querySelector(`[data-anchor="${activeSection}"]`)
-    button?.scrollIntoView({ behavior: SCROLL_BEHAVIOR, inline: 'center', block: 'nearest' })
+    const container = navRef.current
+    const button = container?.querySelector(`[data-anchor="${activeSection}"]`)
+    if (!container || !button) return
+
+    const containerRect = container.getBoundingClientRect()
+    const buttonRect = button.getBoundingClientRect()
+    const targetLeft = container.scrollLeft + (buttonRect.left - containerRect.left) - (containerRect.width / 2) + (buttonRect.width / 2)
+
+    container.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: SCROLL_BEHAVIOR,
+    })
   }, [activeSection])
 
   useEffect(() => {
