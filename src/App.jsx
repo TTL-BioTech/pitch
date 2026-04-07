@@ -2015,7 +2015,7 @@ export default function App() {
           <header className="sticky top-0 z-30 bg-white/90 px-4 pb-2 pt-[calc(1rem+env(safe-area-inset-top))] shadow-sm backdrop-blur-md">
             <div className="flex items-center justify-between">
               <div className="text-center w-full flex-1">
-                <h1 className="text-[20px] font-black leading-none text-[var(--primary)]">TTL Bio-tech 健康美學</h1>
+                <h1 className="text-[20px] font-black leading-none text-[var(--primary)]">TTL Bio-Tech 健康美學</h1>
                 <p className="mt-1 text-[11px] font-bold text-[var(--muted)]">台酒生技 產品銷售輔助</p>
               </div>
               <button onClick={handlePrintClick} className="absolute right-4 flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--primary)] bg-[var(--primary-soft)] text-[var(--primary)] transition active:scale-95 shadow-sm">
