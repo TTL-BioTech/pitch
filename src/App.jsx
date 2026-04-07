@@ -2093,6 +2093,10 @@ export default function App() {
               </div>
             )}
           </main>
+
+          <p className="px-4 pb-2 pt-4 text-center text-xs text-slate-500">
+            本系統內容供內部業務支援參考，實際資訊仍以正式公告資料為準。
+          </p>
         </div>
 
         <SettingsPanel 
