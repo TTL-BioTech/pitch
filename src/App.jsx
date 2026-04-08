@@ -816,7 +816,7 @@ function InstallPrompt() {
                 <div className="rounded-xl bg-white/20 p-2"><Download className="h-6 w-6" /></div>
                 <div className="text-left">
                   <p className="text-sm font-black">安裝 TTL 生技助手</p>
-                  <p className="text-[11px] opacity-80">一鍵啟動，離線也能查詢</p>
+                  <p className="text-[11px] opacity-80">一鍵啟動，快速查閱商品資訊</p>
                 </div>
               </div>
               <div className="flex flex-col items-center shrink-0">
