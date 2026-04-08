@@ -285,6 +285,14 @@ function getYouTubeEmbed(url) {
   return match ? `https://www.youtube.com/embed/${match[1]}?autoplay=1&rel=0&modestbranding=1&playsinline=1` : ''
 }
 
+function getPromoDateValue(raw, fallback = Number.POSITIVE_INFINITY) {
+  if (!raw) return fallback
+  const normalized = String(raw).trim().replace(/[.]/g, '/').replace(/-/g, '/')
+  const parsed = new Date(normalized)
+  const time = parsed.getTime()
+  return Number.isNaN(time) ? fallback : time
+}
+
 function placeholderSvg(label = 'TTL Bio-Tech') {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#f0f4f8"/><stop offset="1" stop-color="#cfd8dc"/></linearGradient></defs><rect width="480" height="360" fill="url(#g)" rx="28"/><text x="50%" y="46%" font-size="20" text-anchor="middle" fill="#546e7a" font-family="Arial, sans-serif">${label}</text><text x="50%" y="58%" font-size="13" text-anchor="middle" fill="#90a4ae" font-family="Arial, sans-serif">無圖片</text></svg>`)}`
 }
@@ -1754,50 +1762,60 @@ export default function App() {
   const productMap = useMemo(() => new Map(normalizedProducts.map((item) => [item.code, item])), [normalizedProducts])
 
   const enrichedPromotions = useMemo(() => {
-    return promotions.map((promo) => {
-      const chs = []
-      if (promo.ch) {
-        if (promo.ch.show) chs.push('展售中心')
-        if (promo.ch.mart) chs.push('便利店')
-        if (promo.ch.eshop) chs.push('購物網')
-        if (promo.ch.office) chs.push('營業所')
-      }
-      
-      let channelText = chs.length > 0 
-        ? chs.join('、') 
-        : (Array.isArray(promo.channelLabels) ? promo.channelLabels.join('、') : '')
+    return promotions
+      .map((promo) => {
+        const chs = []
+        if (promo.ch) {
+          if (promo.ch.show) chs.push('展售中心')
+          if (promo.ch.mart) chs.push('便利店')
+          if (promo.ch.eshop) chs.push('購物網')
+          if (promo.ch.office) chs.push('營業所')
+        }
+        
+        let channelText = chs.length > 0 
+          ? chs.join('、') 
+          : (Array.isArray(promo.channelLabels) ? promo.channelLabels.join('、') : '')
 
-      const relatedSet = new Set()
-      const rawRules = promo.relatedCodes || []
-      
-      rawRules.forEach(rawRule => {
-        const keywords = String(rawRule).split(/[\s\u3000,，、]+/).filter(Boolean)
-        keywords.forEach(kw => {
-          if (productMap.has(kw)) {
-            relatedSet.add(productMap.get(kw))
-          } else {
-            normalizedProducts.forEach(p => {
-              if (
-                p.group.includes(kw) ||
-                (p.category && p.category.includes(kw)) ||
-                (p.name && p.name.includes(kw)) ||
-                (p.title && p.title.includes(kw)) ||
-                p.tags.some(t => t.includes(kw))
-              ) {
-                relatedSet.add(p)
-              }
-            })
-          }
+        const relatedSet = new Set()
+        const rawRules = promo.relatedCodes || []
+        
+        rawRules.forEach(rawRule => {
+          const keywords = String(rawRule).split(/[\s\u3000,，、]+/).filter(Boolean)
+          keywords.forEach(kw => {
+            if (productMap.has(kw)) {
+              relatedSet.add(productMap.get(kw))
+            } else {
+              normalizedProducts.forEach(p => {
+                if (
+                  p.group.includes(kw) ||
+                  (p.category && p.category.includes(kw)) ||
+                  (p.name && p.name.includes(kw)) ||
+                  (p.title && p.title.includes(kw)) ||
+                  p.tags.some(t => t.includes(kw))
+                ) {
+                  relatedSet.add(p)
+                }
+              })
+            }
+          })
         })
-      })
 
-      return {
-        ...promo,
-        channel: channelText,
-        img: getPromoImage(promo),
-        relatedProducts: Array.from(relatedSet),
-      }
-    })
+        return {
+          ...promo,
+          channel: channelText,
+          img: getPromoImage(promo),
+          relatedProducts: Array.from(relatedSet),
+        }
+      })
+      .sort((a, b) => {
+        const aEnd = getPromoDateValue(a.endDate, getPromoDateValue(a.startDate))
+        const bEnd = getPromoDateValue(b.endDate, getPromoDateValue(b.startDate))
+        if (aEnd !== bEnd) return aEnd - bEnd
+
+        const aStart = getPromoDateValue(a.startDate)
+        const bStart = getPromoDateValue(b.startDate)
+        return aStart - bStart
+      })
   }, [promotions, productMap, normalizedProducts])
 
   const productsWithPromos = useMemo(() => {
