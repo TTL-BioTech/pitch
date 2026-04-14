@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T04:02:52.916Z",
-  "count": 57,
+  "generatedAt": "2026-04-14T05:38:02.981Z",
+  "count": 58,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1499,6 +1499,30 @@
         "展售中心",
         "便利店",
         "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mny6rbx3",
+      "title": "鄉民Q2-Apr 提升免疫組",
+      "shortTitle": "鄉民Q2-Apr 提升免疫組",
+      "content": "β-聚葡萄糖膠囊2件搭配纖麥汁6罐，再送環保小麥杯1只，優惠價1,169元（約65折）。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/16qetuP38kQ2Ey44SlUM0FncLRQvO7vXN",
+      "relatedCodes": [
+        "375175-12",
+        "34130014-12"
+      ],
+      "startDate": "2026/4/17",
+      "endDate": "2026/4/27",
+      "status": "upcoming",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
       ]
     }
   ]
