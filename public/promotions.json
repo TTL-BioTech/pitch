@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T05:57:58.506Z",
+  "generatedAt": "2026-04-14T06:03:01.771Z",
   "count": 62,
   "items": [
     {
@@ -1607,7 +1607,7 @@
       "title": "鄉民Q2-Jun 保暢魚油組",
       "shortTitle": "鄉民Q2-Jun 保暢魚油組",
       "content": "保暢益生菌2件及搭配深海魚油軟膠囊1件，優惠價1,790元（約62折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1Iedpi1nYExffEPpRUBEf7sIufpZhbLl5",
       "relatedCodes": [
         "37110002-12",
         "37110007-12"
@@ -1615,14 +1615,16 @@
       "startDate": "2026/6/19",
       "endDate": "2026/6/29",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#e3f2fd",
       "ch": {
-        "show": false,
+        "show": true,
         "mart": false,
         "eshop": false,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心"
+      ]
     }
   ]
 }
