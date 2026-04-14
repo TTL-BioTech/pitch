@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T05:47:57.933Z",
-  "count": 60,
+  "generatedAt": "2026-04-14T05:52:55.028Z",
+  "count": 61,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1566,6 +1566,30 @@
       ],
       "startDate": "2026/5/15",
       "endDate": "2026/5/25",
+      "status": "upcoming",
+      "bgColor": "#d8f3dc",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "P_mny7f2g6",
+      "title": "鄉民Q2-Jun 雙效益生組",
+      "shortTitle": "鄉民Q2-Jun 雙效益生組",
+      "content": "安可健納豆紅麴+鉻雙效膠囊2件搭配S11益生菌1件，優惠價1,790元（約6折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37110009-12",
+        "37110005-12"
+      ],
+      "startDate": "2026/6/19",
+      "endDate": "2026/6/29",
       "status": "upcoming",
       "bgColor": "#FFFFFF",
       "ch": {
