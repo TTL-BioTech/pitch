@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T03:22:58.525Z",
+  "generatedAt": "2026-04-14T03:27:51.581Z",
   "count": 53,
   "items": [
     {
@@ -1377,7 +1377,7 @@
       "title": "母親節 五項保健商品任選3件75折",
       "shortTitle": "母親節 五項保健商品任選3件75折",
       "content": "五項保健商品任選3件75折",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1CntCJz1jIdbhkLcE6b1QeME_FFw1Vb5R",
       "relatedCodes": [
         "375156-12",
         "375132-12",
@@ -1388,14 +1388,18 @@
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#e3f2fd",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     }
   ]
 }
