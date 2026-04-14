@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T05:52:55.028Z",
-  "count": 61,
+  "generatedAt": "2026-04-14T05:57:58.506Z",
+  "count": 62,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1583,10 +1583,34 @@
       "title": "鄉民Q2-Jun 雙效益生組",
       "shortTitle": "鄉民Q2-Jun 雙效益生組",
       "content": "安可健納豆紅麴+鉻雙效膠囊2件搭配S11益生菌1件，優惠價1,790元（約6折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1yNAeaxJ8BJtTY0hWUiyrf4ki6hjt-j1C",
       "relatedCodes": [
         "37110009-12",
         "37110005-12"
+      ],
+      "startDate": "2026/6/19",
+      "endDate": "2026/6/29",
+      "status": "upcoming",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "P_mny7klkj",
+      "title": "鄉民Q2-Jun 保暢魚油組",
+      "shortTitle": "鄉民Q2-Jun 保暢魚油組",
+      "content": "保暢益生菌2件及搭配深海魚油軟膠囊1件，優惠價1,790元（約62折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37110002-12",
+        "37110007-12"
       ],
       "startDate": "2026/6/19",
       "endDate": "2026/6/29",
