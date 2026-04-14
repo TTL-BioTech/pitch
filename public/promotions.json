@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T03:53:00.581Z",
-  "count": 55,
+  "generatedAt": "2026-04-14T03:58:00.283Z",
+  "count": 57,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -587,7 +587,7 @@
       "title": "寵物保健食品滿額搭贈即期品去化",
       "shortTitle": "寵物保健食品滿額搭贈即期品去化",
       "content": "購買本公司產品全品項（排除菸品、米酒系列品項）任選滿2,000元，即隨機搭贈吃得比你好腸胃保健(犬用)或吃得比你好關節保健(犬用)任1盒，可累贈。",
-      "imgUrl": "https://lh3.googleusercontent.com/d/1EF11BHaQmRsdgDLmZ-V21toXxRr2_jy9",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1eChRLuRXzLAs34DBgXv2XjcBGy-ubRbF",
       "relatedCodes": [
         "37100000-12",
         "37100001-12"
@@ -1450,6 +1450,52 @@
         "便利店",
         "購物網"
       ]
+    },
+    {
+      "promoId": "P_mny351yp",
+      "title": "母親節 深海健康組",
+      "shortTitle": "母親節 深海健康組",
+      "content": "深海健康組:深海魚油軟膠囊4件，優惠價1,499元。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1pNexew9TIdlLExAzyAAbE_rFfDNAE91M",
+      "relatedCodes": [
+        "37110007-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mny3amc8",
+      "title": "母親節 益生守護組",
+      "shortTitle": "母親節 益生守護組",
+      "content": "益生守護組:S11益生菌6件，優惠價2,599元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37110005-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
