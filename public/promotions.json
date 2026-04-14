@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T03:27:51.581Z",
-  "count": 53,
+  "generatedAt": "2026-04-14T03:37:52.946Z",
+  "count": 54,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1384,6 +1384,31 @@
         "375165-12",
         "375175-12",
         "37110002-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mny2hbet",
+      "title": "母親節 雙效守護組",
+      "shortTitle": "母親節 雙效守護組",
+      "content": "雙效守護組(安可健納豆紅麴+鉻雙效膠囊X2)1680元。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1dpSQMN76QlGHP5pWCSjof6ltwrta8_rf",
+      "relatedCodes": [
+        "37110009-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
