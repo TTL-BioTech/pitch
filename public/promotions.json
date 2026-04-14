@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T05:42:55.341Z",
-  "count": 59,
+  "generatedAt": "2026-04-14T05:47:57.933Z",
+  "count": 60,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1548,6 +1548,33 @@
       "channelLabels": [
         "展售中心"
       ]
+    },
+    {
+      "promoId": "P_mny78uz4",
+      "title": "鄉民Q2-May",
+      "shortTitle": "鄉民Q2-May",
+      "content": "益立捷1件搭配VINATA啤酒花沐浴露、VINATA啤酒花洗髮精、VINATA啤酒花洗髮精(夏薰花果香)、VINATA啤酒花洗手露或啤酒花洗面乳任1件，優惠價1,190元（約62~64折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37110010-12",
+        "36530000-12",
+        "36530001-12",
+        "36130001-12",
+        "36370010-12",
+        "37170008-12",
+        "37370011-12"
+      ],
+      "startDate": "2026/5/15",
+      "endDate": "2026/5/25",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
