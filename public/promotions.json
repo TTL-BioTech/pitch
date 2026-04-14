@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-14T03:42:56.158Z",
-  "count": 54,
+  "generatedAt": "2026-04-14T03:53:00.581Z",
+  "count": 55,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1409,6 +1409,31 @@
       "imgUrl": "https://lh3.googleusercontent.com/d/1dpSQMN76QlGHP5pWCSjof6ltwrta8_rf",
       "relatedCodes": [
         "37110009-12"
+      ],
+      "startDate": "2026/4/8",
+      "endDate": "2026/5/15",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mny2vqnm",
+      "title": "母親節 健康循環組",
+      "shortTitle": "母親節 健康循環組",
+      "content": "健康循環組:益立捷2件，優惠價2,366元。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1hzCPJzdr0URM31oRNfzIkvVuu8GPdoGX",
+      "relatedCodes": [
+        "37110010-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
