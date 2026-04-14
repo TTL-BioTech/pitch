@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T03:58:00.283Z",
+  "generatedAt": "2026-04-14T04:02:52.916Z",
   "count": 57,
   "items": [
     {
@@ -1481,21 +1481,25 @@
       "title": "母親節 益生守護組",
       "shortTitle": "母親節 益生守護組",
       "content": "益生守護組:S11益生菌6件，優惠價2,599元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/19QvQVOUGgDZTvd0wmPYrIzje-TKvbumB",
       "relatedCodes": [
         "37110005-12"
       ],
       "startDate": "2026/4/8",
       "endDate": "2026/5/15",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#e3f2fd",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     }
   ]
 }
