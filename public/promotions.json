@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-17T00:03:00.456Z",
-  "count": 62,
+  "generatedAt": "2026-04-17T01:32:59.205Z",
+  "count": 63,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1625,6 +1625,28 @@
       "channelLabels": [
         "展售中心"
       ]
+    },
+    {
+      "promoId": "P_mo28cz0j",
+      "title": "纖麥汁即期去化",
+      "shortTitle": "纖麥汁即期去化",
+      "content": "纖麥汁(效期2026/5/22) ，新臺幣18元/瓶；新臺幣105元/組",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34130013-12",
+        "34130014-12"
+      ],
+      "startDate": "2026/4/16",
+      "endDate": "2026/5/22",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
