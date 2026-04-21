@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260421085754",
-  "generatedAt": "2026-04-21T08:57:54.314Z",
+  "buildId": "20260421090257",
+  "generatedAt": "2026-04-21T09:02:57.914Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1067,11 +1067,11 @@
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "清潔．洗手",
+        "content": "清潔手部肌膚。用法：雙手淋濕後，取適量搓揉再以清水沖淨。",
+        "tags": "柔嫩,啤酒花,洗手露,洗手,清潔",
         "isNew": true,
-        "name": ""
+        "name": "VINATA啤酒花洗手露(委製)"
       }
     },
     {
@@ -1322,8 +1322,8 @@
       }
     },
     {
-      "code": "36370010-12",
-      "name": "VINATA啤酒花洗手露",
+      "code": "37170008-12",
+      "name": "VINATA啤酒花洗手露(委製)",
       "category": "美容加價購",
       "price": 229,
       "spec": "",
@@ -1337,7 +1337,7 @@
         "content": "清潔手部肌膚。用法：雙手淋濕後，取適量搓揉再以清水沖淨。",
         "tags": "柔嫩,啤酒花,洗手露,洗手,清潔",
         "isNew": true,
-        "name": "VINATA啤酒花洗手露"
+        "name": "VINATA啤酒花洗手露(委製)"
       }
     },
     {
