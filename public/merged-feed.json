@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260421090257",
-  "generatedAt": "2026-04-21T09:02:57.914Z",
+  "buildId": "20260421090757",
+  "generatedAt": "2026-04-21T09:07:57.793Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1402,7 +1402,7 @@
       "name": "小金心2入組",
       "category": "美容超值組",
       "price": 3440,
-      "spec": "37530007-12 激透光米植醇特潤膠囊(40顆)",
+      "spec": "36130006-12 VINATA激透光米植醇特潤膠囊(40顆)(自製)",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E5%B0%8F%E9%87%91%E5%BF%832%E5%85%A5%E7%B5%84.png",
       "videoUrl": "",
       "moreLinksRaw": "",
