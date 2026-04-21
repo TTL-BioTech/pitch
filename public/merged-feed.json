@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260421085254",
-  "generatedAt": "2026-04-21T08:52:54.021Z",
+  "buildId": "20260421085754",
+  "generatedAt": "2026-04-21T08:57:54.314Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 91,
+  "count": 92,
   "items": [
     {
       "code": "341371-12",
@@ -1045,14 +1045,33 @@
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%89%8B%E9%9C%B2.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "is_hidden_pp": false,
-      "is_hidden": false,
+      "is_hidden_pp": true,
+      "is_hidden": true,
       "pitch": {
         "title": "清潔．洗手",
         "content": "清潔手部肌膚。用法：雙手淋濕後，取適量搓揉再以清水沖淨。",
         "tags": "柔嫩,啤酒花,洗手露,洗手,清潔",
         "isNew": true,
         "name": "VINATA啤酒花洗手露"
+      }
+    },
+    {
+      "code": "37170008-12",
+      "name": "VINATA啤酒花洗手露(委製)",
+      "category": "美容自由配_單件9折_2件85折_3件以上79折",
+      "price": 229,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%89%8B%E9%9C%B2.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "is_hidden_pp": false,
+      "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": true,
+        "name": ""
       }
     },
     {
