@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260416134759",
-  "generatedAt": "2026-04-16T13:47:59.895Z",
+  "buildId": "20260421084757",
+  "generatedAt": "2026-04-21T08:47:57.839Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 90,
+  "count": 91,
   "items": [
     {
       "code": "341371-12",
@@ -828,8 +828,8 @@
       }
     },
     {
-      "code": "37530007-12",
-      "name": "激透光米植醇特潤膠囊(40顆)",
+      "code": "36130006-12",
+      "name": "VINATA激透光米植醇特潤膠囊(40顆)(自製)",
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
       "price": 1720,
       "spec": "",
@@ -838,6 +838,25 @@
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
       "is_hidden_pp": false,
       "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "VINATA激透光米植醇特潤膠囊(40顆)(自製)"
+      }
+    },
+    {
+      "code": "37530007-12",
+      "name": "激透光米植醇特潤膠囊(40顆)",
+      "category": "美容自由配_單件9折_2件85折_3件以上79折",
+      "price": 1720,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/VINATA%20%E6%BF%80%E9%80%8F%E5%85%89%E7%B1%B3%E6%A4%8D%E9%86%87%E7%89%B9%E6%BD%A4%E8%86%A0%E5%9B%8A.png",
+      "videoUrl": "https://youtu.be/6UM71EybWbw?si=CHWw-JT25vSQITe5&t=31",
+      "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
+      "is_hidden_pp": true,
+      "is_hidden": true,
       "pitch": {
         "title": "早米晚心．夜間保養",
         "content": "專利超臨界米植醇技術，添加植物固醇，夜間保養使用方便，帶來彈潤感。\n\n1.清潔臉部後均勻塗抹，尤其易生細紋及眼袋處，至完全吸收。\n2.如有其他保養程序，建議於化妝水、精華液及乳液後使用。\n3.搭配小米粒日間加強保養。早晚分工，保養步驟更完整。",
