@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260421084757",
-  "generatedAt": "2026-04-21T08:47:57.839Z",
+  "buildId": "20260421085254",
+  "generatedAt": "2026-04-21T08:52:54.021Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -839,9 +839,9 @@
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "早米晚心．夜間保養",
+        "content": "專利超臨界米植醇技術，添加植物固醇，夜間保養使用方便，帶來彈潤感。\n\n1.清潔臉部後均勻塗抹，尤其易生細紋及眼袋處，至完全吸收。\n2.如有其他保養程序，建議於化妝水、精華液及乳液後使用。\n3.搭配小米粒日間加強保養。早晚分工，保養步驟更完整。",
+        "tags": "超臨界,米植醇,膠囊,夜間保養",
         "isNew": false,
         "name": "VINATA激透光米植醇特潤膠囊(40顆)(自製)"
       }
