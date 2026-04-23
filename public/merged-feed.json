@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260421090757",
-  "generatedAt": "2026-04-21T09:07:57.793Z",
+  "buildId": "20260423071755",
+  "generatedAt": "2026-04-23T07:17:55.742Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1219,9 +1219,9 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "Sapitide",
+        "title": "撫平細紋．改善暗沉",
+        "content": "防止肌膚老化，撫平皺紋，亮白，改善暗沉，修護肌膚，保濕",
+        "tags": "VINATA、青春露、酒粕精華、玻尿酸、胜肽、保濕",
         "isNew": false,
         "name": "酒粕精粹逆齡活膚青春露金裝版(自)"
       }
