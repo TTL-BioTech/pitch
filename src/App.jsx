@@ -32,7 +32,8 @@ import {
   Coffee,
   Activity,
   Droplets,
-  Download
+  Download,
+  SlidersHorizontal
 } from 'lucide-react'
 import { useAppStore } from './store/useAppStore'
 
@@ -218,6 +219,81 @@ const SCALE_PRESETS = {
     rowImage: 120, detailImage: 130, name: 'text-[20px]', title: 'text-[18px]', price: 'text-[22px]', body: 'text-[18px]', tag: 'text-[15px] px-3 py-1.5', promoTag: 'text-[14px] px-2.5 py-1.5', icon: 'h-4 w-4',
     promoTitle: 'text-[19px]', promoBody: 'text-[16px]', promoDate: 'text-[14px] px-3 py-1', promoStatus: 'text-[14px] px-3 py-1', promoFilter: 'text-[16px] px-4 py-2', drawerTitle: 'text-[24px]', drawerDate: 'text-[16px]', drawerBody: 'text-[19px]', drawerRelatedTitle: 'text-[18px]', drawerRelatedName: 'text-[17px]', drawerRelatedPrice: 'text-[15px]'
   },
+}
+
+
+const PROMO_CHANNEL_OPTIONS = [
+  { key: 'show', label: '展售中心' },
+  { key: 'mart', label: '便利店' },
+  { key: 'eshop', label: '購物網' },
+  { key: 'office', label: '營業所' },
+]
+
+const PROMO_TITLE_TAG_RULES = [
+  { label: '母親節', patterns: ['母親節'] },
+  { label: '地球日', patterns: ['地球日'] },
+  { label: '員購', patterns: ['員購'] },
+  { label: '鄉民Q1', patterns: ['鄉民Q1'] },
+  { label: '鄉民Q2', patterns: ['鄉民Q2'] },
+  { label: '聖誕限定', patterns: ['聖誕'] },
+  { label: '暖冬獻禮', patterns: ['暖冬'] },
+  { label: '春季檔', patterns: ['春暖', '花開'] },
+  { label: '棒球賽', patterns: ['棒球'] },
+  { label: '新品上市', patterns: ['新品', '上市'] },
+  { label: '即期去化', patterns: ['即期', '清倉', '惜福', '去化'] },
+  { label: '滿額贈', patterns: ['滿額贈'] },
+  { label: '買一送一', patterns: ['買一送一'] },
+  { label: '買N送1', patterns: ['買3送1', '買2送1'] },
+  { label: '任選優惠', patterns: ['任選'] },
+  { label: '加價購', patterns: ['加價購'] },
+  { label: '第二件優惠', patterns: ['第二件'] },
+  { label: '搭贈', patterns: ['搭贈', '試用包'] },
+  { label: '折扣', patterns: ['折', '優惠價'] },
+  { label: '禮盒', patterns: ['禮盒'] },
+  { label: '組合', patterns: ['組'] },
+  { label: '洗沐', patterns: ['洗沐', '沐浴', '洗髮', '護髮', '洗面'] },
+  { label: '美容保養', patterns: ['面膜', '精華', '乳液', '美白', '保濕', '抗皺', '青春'] },
+  { label: '清潔用品', patterns: ['洗衣', '易洗樂', '洗手', '皂'] },
+  { label: '保健食品', patterns: ['保健', '益生菌', '魚油', '紅麴', '膠囊', '雙效', 'S11'] },
+  { label: '飲品', patterns: ['纖麥汁', '黑麥汁', '飲'] },
+]
+
+function getPromoChannelLabels(promo) {
+  if (!promo) return []
+  const labels = []
+  if (promo.ch) {
+    PROMO_CHANNEL_OPTIONS.forEach((option) => {
+      if (promo.ch?.[option.key]) labels.push(option.label)
+    })
+  }
+  if (Array.isArray(promo.channelLabels)) {
+    promo.channelLabels.forEach((label) => { if (label) labels.push(label) })
+  }
+  if (!labels.length && promo.channel) {
+    String(promo.channel).split(/[、,，/／\s]+/).forEach((label) => { if (label) labels.push(label) })
+  }
+  return [...new Set(labels)].filter((label) => PROMO_CHANNEL_OPTIONS.some((option) => option.label === label))
+}
+
+function extractPromoTitleTags(promo) {
+  const title = String(promo?.title || promo?.shortTitle || '')
+    .replace(/[【】\[\]（）()]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  if (!title) return []
+  const tags = []
+  PROMO_TITLE_TAG_RULES.forEach((rule) => {
+    if (rule.patterns.some((pattern) => title.includes(pattern))) tags.push(rule.label)
+  })
+  return [...new Set(tags)].slice(0, 5)
+}
+
+function countOccurrences(items, getter) {
+  const counts = new Map()
+  items.forEach((item) => {
+    getter(item).forEach((value) => counts.set(value, (counts.get(value) || 0) + 1))
+  })
+  return counts
 }
 
 const PROMO_STATUS_META = {
@@ -933,13 +1009,21 @@ function SettingsPanel({ open, onClose, theme, setTheme, scale, setScale }) {
   )
 }
 
-function PromoCarousel({ items, onOpenPromo, scale }) {
+function PromoCarousel({ items, onOpenPromo, onOpenCenter, scale }) {
   if (!items.length) return null
   const preset = SCALE_PRESETS[scale]
 
   return (
     <section id="promo" data-spy-section className="scroll-mt-[185px]">
-      <SectionTitle title="🔥 促銷焦點" subtitle="左右滑動檢視近期活動" />
+      <div className="mb-3 flex items-end justify-between gap-3 border-l-4 border-[var(--primary)] pl-2">
+        <div>
+          <h2 className="text-[18px] font-black text-[var(--text)]">🔥 促銷焦點</h2>
+          <p className="mt-1 text-xs text-[var(--muted)]">左右滑動檢視近期活動</p>
+        </div>
+        <button onClick={onOpenCenter} className="flex shrink-0 items-center gap-1 rounded-full border border-[var(--promo)] bg-[var(--promo-soft)] px-3 py-1.5 text-[12px] font-black text-[var(--promo)] shadow-sm active:scale-95">
+          <Compass className="h-3.5 w-3.5" /> 檔期檢視
+        </button>
+      </div>
       <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 md:-mx-0 md:px-0">
         {items.map((promo, promoIndex) => {
           const statusMeta = PROMO_STATUS_META[promo.status] || PROMO_STATUS_META.active
@@ -1433,16 +1517,94 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
   )
 }
 
-function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFilter, setGroupFilter, onOpenPromo, onClose, scale }) {
+function PromoCenterPanel({
+  open,
+  items,
+  statusFilter,
+  setStatusFilter,
+  groupFilter,
+  setGroupFilter,
+  titleTagFilter,
+  setTitleTagFilter,
+  channelFilter,
+  setChannelFilter,
+  onOpenPromo,
+  onClose,
+  scale,
+}) {
+  const [filterSheetOpen, setFilterSheetOpen] = useState(false)
+
+  useEffect(() => {
+    if (!open) setFilterSheetOpen(false)
+  }, [open])
+
+  const openFilterSheet = useCallback(() => {
+    setFilterSheetOpen(true)
+    if (typeof window !== 'undefined') window.history.pushState({ ui: 'promo-filter' }, '')
+  }, [])
+
+  const closeFilterSheet = useCallback(() => {
+    if (typeof window !== 'undefined' && window.history.state?.ui === 'promo-filter') {
+      window.history.back()
+    } else {
+      setFilterSheetOpen(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleFilterPopState = (event) => {
+      if (filterSheetOpen && event.state?.ui !== 'promo-filter') {
+        setFilterSheetOpen(false)
+      }
+    }
+    window.addEventListener('popstate', handleFilterPopState)
+    return () => window.removeEventListener('popstate', handleFilterPopState)
+  }, [filterSheetOpen])
+
   if (!open) return null
+
   const availableGroups = ['all', ...CATEGORY_META.filter((item) => item.key !== 'all' && item.key !== '其他').map((item) => item.key)]
+  const titleTagCounts = countOccurrences(items, extractPromoTitleTags)
+  const availableTitleTags = [
+    'all',
+    ...Array.from(titleTagCounts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh-Hant'))
+      .map(([tag]) => tag),
+  ]
+  const channelCounts = countOccurrences(items, getPromoChannelLabels)
+  const availableChannels = [
+    'all',
+    ...PROMO_CHANNEL_OPTIONS.filter((option) => channelCounts.has(option.label)).map((option) => option.label),
+  ]
+
   const filtered = items.filter((promo) => {
+    const titleTags = extractPromoTitleTags(promo)
+    const channelLabels = getPromoChannelLabels(promo)
     const statusOk = statusFilter === 'all' || promo.status === statusFilter
     const groupOk = groupFilter === 'all' || getPromoGroups(promo).includes(groupFilter)
-    return statusOk && groupOk
+    const titleTagOk = titleTagFilter === 'all' || titleTags.includes(titleTagFilter)
+    const channelOk = channelFilter === 'all' || channelLabels.includes(channelFilter)
+    return statusOk && groupOk && titleTagOk && channelOk
   })
   
   const preset = SCALE_PRESETS[scale]
+  const activeAdvancedFilters = [
+    titleTagFilter !== 'all' ? { key: 'titleTag', label: `#${titleTagFilter}` } : null,
+    channelFilter !== 'all' ? { key: 'channel', label: channelFilter } : null,
+    groupFilter !== 'all' ? { key: 'group', label: groupFilter } : null,
+  ].filter(Boolean)
+  const hasAnyFilter = statusFilter !== 'active' || activeAdvancedFilters.length > 0
+  const resetAllFilters = () => {
+    setStatusFilter('active')
+    setGroupFilter('all')
+    setTitleTagFilter('all')
+    setChannelFilter('all')
+  }
+  const clearAdvancedFilters = () => {
+    setGroupFilter('all')
+    setTitleTagFilter('all')
+    setChannelFilter('all')
+  }
 
   return (
     <AnimatePresence>
@@ -1451,39 +1613,68 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
           <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] p-4">
             <div>
               <p className="text-[12px] font-bold" style={{ color: 'var(--promo)' }}>促銷專區</p>
-              <h3 className="mt-0.5 text-[20px] font-black text-[var(--text)]">全部活動與篩選</h3>
+              <h3 className="mt-0.5 text-[20px] font-black text-[var(--text)]">促銷檔期檢視</h3>
+              <p className="mt-1 text-[12px] font-bold text-[var(--muted)]">狀態外顯，檔期、通路與品類收進篩選器</p>
             </div>
             <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500"><X className="h-5 w-5" /></button>
           </div>
-          <div className="shrink-0 space-y-3 border-b border-[var(--border)] p-4">
-            <div className="flex flex-wrap gap-2">
+
+          <div className="shrink-0 border-b border-[var(--border)] p-3">
+            <div className="flex gap-2 overflow-x-auto pb-1">
               {['all','active','upcoming','ended'].map((status) => {
                 const active = statusFilter === status
                 const label = status === 'all' ? '全部' : (PROMO_STATUS_META[status]?.label || status)
                 return (
-                  <button key={status} onClick={() => setStatusFilter(status)} className={`rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: 'var(--promo)', borderColor: 'var(--promo)' } : { borderColor: 'var(--border)' }}>
+                  <button key={status} onClick={() => setStatusFilter(status)} className={`shrink-0 rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: 'var(--promo)', borderColor: 'var(--promo)' } : { borderColor: 'var(--border)' }}>
                     {label}
                   </button>
                 )
               })}
             </div>
-            <div className="flex flex-wrap gap-2">
-              {availableGroups.map((group) => {
-                const active = groupFilter === group
-                const label = group === 'all' ? '全部品類' : group
-                return (
-                  <button key={group} onClick={() => setGroupFilter(group)} className={`rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: 'var(--primary)', borderColor: 'var(--primary)' } : { borderColor: 'var(--border)' }}>
-                    {label}
-                  </button>
-                )
-              })}
+
+            <div className="mt-2 flex items-center gap-2 rounded-2xl bg-[var(--bg-soft)] p-2">
+              <button onClick={openFilterSheet} className="relative flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-2 text-[12px] font-black text-[var(--text)] shadow-sm active:scale-95">
+                <SlidersHorizontal className="h-3.5 w-3.5" /> 篩選
+                {activeAdvancedFilters.length > 0 && (
+                  <span className="ml-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--promo)] px-1.5 text-[10px] text-white">
+                    {activeAdvancedFilters.length}
+                  </span>
+                )}
+              </button>
+
+              <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto">
+                {activeAdvancedFilters.length ? activeAdvancedFilters.map((filter) => (
+                  <span key={filter.key} className="shrink-0 rounded-full bg-white px-2.5 py-1.5 text-[11px] font-black text-[var(--muted)] shadow-sm">
+                    {filter.label}
+                  </span>
+                )) : (
+                  <span className="truncate px-1 text-[11px] font-bold text-[var(--muted)]">可依檔期標籤、促銷通路與品類縮小範圍</span>
+                )}
+              </div>
+
+              {hasAnyFilter && (
+                <button onClick={resetAllFilters} className="shrink-0 rounded-full bg-white px-2.5 py-1.5 text-[11px] font-black text-slate-500 shadow-sm active:scale-95">
+                  重設
+                </button>
+              )}
             </div>
           </div>
+
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
+            <div className="mb-3 flex items-center justify-between text-[12px] font-bold text-[var(--muted)]">
+              <span>目前顯示 {filtered.length} / {items.length} 筆活動</span>
+              {activeAdvancedFilters.length > 0 && (
+                <button onClick={clearAdvancedFilters} className="rounded-full bg-slate-100 px-3 py-1 text-slate-500">
+                  清除細項
+                </button>
+              )}
+            </div>
             <div className="grid gap-3 md:grid-cols-2">
               {filtered.length ? filtered.map((promo, promoIndex) => {
                 const statusMeta = PROMO_STATUS_META[promo.status] || PROMO_STATUS_META.active
                 const promoImage = getPromoImage(promo)
+                const titleTags = extractPromoTitleTags(promo)
+                const channelLabels = getPromoChannelLabels(promo)
                 return (
                   <button key={promo.promoId} onClick={() => onOpenPromo(promo)} className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white text-left shadow-sm">
                     <div className="relative h-[130px] bg-slate-100 overflow-hidden">
@@ -1500,11 +1691,16 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
                       <p className={`line-clamp-3 leading-relaxed text-[var(--muted)] ${preset.promoBody}`}>{promo.content}</p>
                       
                       <div className="flex flex-wrap items-center gap-1.5">
-                        {promo.channel && (
-                          <span className={`flex items-center gap-0.5 rounded bg-slate-100 font-bold text-slate-500 ${preset.promoTag}`}>
-                            <Store className={preset.icon} /> {promo.channel}
+                        {channelLabels.map((channel) => (
+                          <span key={channel} className={`flex items-center gap-0.5 rounded bg-slate-100 font-bold text-slate-500 ${preset.promoTag}`}>
+                            <Store className={preset.icon} /> {channel}
                           </span>
-                        )}
+                        ))}
+                        {titleTags.map((tag) => (
+                          <span key={tag} className={`rounded-full font-bold ${preset.promoTag}`} style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>
+                            #{tag}
+                          </span>
+                        ))}
                         {getPromoGroups(promo).map((group) => (
                           <span key={group} className={`rounded-full font-bold ${preset.promoTag}`} style={{ background: 'var(--promo-soft)', color: 'var(--promo)' }}>
                             {group}
@@ -1517,11 +1713,173 @@ function PromoCenterPanel({ open, items, statusFilter, setStatusFilter, groupFil
               }) : <div className="col-span-full py-10 text-center text-sm text-[var(--muted)]">沒有符合條件的促銷活動</div>}
             </div>
           </div>
+
+          <AnimatePresence>
+            {filterSheetOpen && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[76] bg-black/35 backdrop-blur-[2px]" onClick={closeFilterSheet}>
+                <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={SHEET_TRANSITION} onClick={(event) => event.stopPropagation()} className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[82vh] w-full max-w-3xl flex-col rounded-t-[24px] bg-white shadow-2xl">
+                  <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] p-4">
+                    <div>
+                      <h4 className="text-[18px] font-black text-[var(--text)]">進階篩選</h4>
+                      <p className="mt-1 text-[12px] font-bold text-[var(--muted)]">檔期標籤由活動標題自動判讀；通路獨立判斷</p>
+                    </div>
+                    <button onClick={closeFilterSheet} className="rounded-full bg-slate-100 p-2 text-slate-500"><X className="h-5 w-5" /></button>
+                  </div>
+
+                  <div className="flex-1 space-y-5 overflow-y-auto p-4 pb-4">
+                    <div>
+                      <p className="mb-2 text-[12px] font-black text-[var(--muted)]">檔期標籤</p>
+                      <div className="flex flex-wrap gap-2">
+                        {availableTitleTags.map((tag) => {
+                          const active = titleTagFilter === tag
+                          const label = tag === 'all' ? '全部檔期' : tag
+                          const count = tag === 'all' ? items.length : (titleTagCounts.get(tag) || 0)
+                          return (
+                            <button key={tag} onClick={() => setTitleTagFilter(tag)} className={`rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: 'var(--primary)', borderColor: 'var(--primary)' } : { borderColor: 'var(--border)' }}>
+                              {label}<span className="ml-1 opacity-70">{count}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-2 text-[12px] font-black text-[var(--muted)]">促銷通路</p>
+                      <div className="flex flex-wrap gap-2">
+                        {availableChannels.map((channel) => {
+                          const active = channelFilter === channel
+                          const label = channel === 'all' ? '全部通路' : channel
+                          const count = channel === 'all' ? items.length : (channelCounts.get(channel) || 0)
+                          return (
+                            <button key={channel} onClick={() => setChannelFilter(channel)} className={`rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: '#334155', borderColor: '#334155' } : { borderColor: 'var(--border)' }}>
+                              {label}<span className="ml-1 opacity-70">{count}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-2 text-[12px] font-black text-[var(--muted)]">品類範圍</p>
+                      <div className="flex flex-wrap gap-2">
+                        {availableGroups.map((group) => {
+                          const active = groupFilter === group
+                          const label = group === 'all' ? '全部品類' : group
+                          return (
+                            <button key={group} onClick={() => setGroupFilter(group)} className={`rounded-full border font-bold transition ${active ? 'text-white shadow-sm' : 'bg-white text-[var(--muted)]'} ${preset.promoFilter}`} style={active ? { background: 'var(--promo)', borderColor: 'var(--promo)' } : { borderColor: 'var(--border)' }}>
+                              {label}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid shrink-0 grid-cols-2 gap-2 border-t border-[var(--border)] p-4 pb-[calc(16px+env(safe-area-inset-bottom))]">
+                    <button onClick={clearAdvancedFilters} className="rounded-2xl border border-[var(--border)] bg-white py-3 text-[13px] font-black text-[var(--muted)] active:scale-95">
+                      清除細項
+                    </button>
+                    <button onClick={closeFilterSheet} className="rounded-2xl py-3 text-[13px] font-black text-white shadow-sm active:scale-95" style={{ background: 'var(--promo)' }}>
+                      套用篩選（{filtered.length}）
+                    </button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </motion.div>
     </AnimatePresence>
   )
 }
+function DataHealthPanel({ open, report, onClose, scale }) {
+  if (!open) return null
+  const preset = SCALE_PRESETS[scale]
+  const statusMeta = report?.status === 'ok'
+    ? { label: 'OK', className: 'bg-emerald-50 text-emerald-700 border-emerald-200' }
+    : report?.status === 'error'
+      ? { label: '需處理', className: 'bg-rose-50 text-rose-700 border-rose-200' }
+      : { label: '可檢查', className: 'bg-amber-50 text-amber-700 border-amber-200' }
+  const issues = report?.issues || []
+
+  return (
+    <AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[74] bg-black/60 backdrop-blur-sm" onClick={onClose}>
+        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={SHEET_TRANSITION} onClick={(event) => event.stopPropagation()} style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto flex w-full max-w-3xl flex-col rounded-t-[24px] bg-[var(--surface)] shadow-2xl">
+          <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] p-4">
+            <div>
+              <p className="text-[12px] font-bold" style={{ color: 'var(--primary)' }}>資料健康檢查</p>
+              <h3 className="mt-0.5 text-[20px] font-black text-[var(--text)]">Data Health Report</h3>
+              <p className="mt-1 text-[12px] font-bold text-[var(--muted)]">此報告由 build 流程產生，僅在 ?diag=1 時讀取。</p>
+            </div>
+            <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500"><X className="h-5 w-5" /></button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
+            {!report ? (
+              <div className="flex items-center justify-center gap-2 py-12 text-[var(--muted)]">
+                <RefreshCw className="h-5 w-5 animate-spin" /> 讀取檢查報告中...
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+                  <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[var(--muted)]">狀態</p>
+                    <p className={`mt-1 inline-flex rounded-full border px-2 py-0.5 text-[12px] font-black ${statusMeta.className}`}>{statusMeta.label}</p>
+                  </div>
+                  <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[var(--muted)]">分數</p>
+                    <p className="mt-1 text-[22px] font-black text-[var(--primary)]">{report.score}</p>
+                  </div>
+                  <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[var(--muted)]">可見商品</p>
+                    <p className="mt-1 text-[22px] font-black text-[var(--text)]">{report.summary?.visibleProducts}</p>
+                  </div>
+                  <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[var(--muted)]">促銷活動</p>
+                    <p className="mt-1 text-[22px] font-black text-[var(--text)]">{report.summary?.promotions}</p>
+                  </div>
+                  <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                    <p className="text-[11px] font-bold text-[var(--muted)]">警示</p>
+                    <p className="mt-1 text-[22px] font-black text-amber-600">{report.summary?.severityCounts?.warning || 0}</p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-[var(--border)] bg-white p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-[13px] font-black text-[var(--text)]">檢查項目</p>
+                    <p className="text-[11px] font-bold text-[var(--muted)]">generatedAt: {report.generatedAt}</p>
+                  </div>
+                  <div className="mt-3 space-y-2">
+                    {issues.length ? issues.map((issue, index) => {
+                      const issueClass = issue.severity === 'error'
+                        ? 'border-rose-200 bg-rose-50 text-rose-700'
+                        : issue.severity === 'warning'
+                          ? 'border-amber-200 bg-amber-50 text-amber-700'
+                          : 'border-slate-200 bg-slate-50 text-slate-600'
+                      return (
+                        <details key={`${issue.area}-${index}`} className={`rounded-xl border p-3 ${issueClass}`}>
+                          <summary className={`cursor-pointer font-black ${preset.promoBody}`}>{issue.message} <span className="opacity-70">({issue.count})</span></summary>
+                          {issue.samples?.length ? (
+                            <ul className="mt-2 list-disc space-y-1 pl-5 text-[12px] leading-relaxed">
+                              {issue.samples.map((sample) => <li key={sample}>{sample}</li>)}
+                            </ul>
+                          ) : null}
+                        </details>
+                      )
+                    }) : (
+                      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-700">目前沒有需要處理的資料異常。</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+
 
 // 🚀 全新的報表列印專屬視圖組件
 function PrintCatalogView({ products, promotions, timestamp }) {
@@ -1647,6 +2005,10 @@ export default function App() {
   const [promoCenterOpen, setPromoCenterOpen] = useState(false)
   const [promoStatusFilter, setPromoStatusFilter] = useState('active')
   const [promoGroupFilter, setPromoGroupFilter] = useState('all')
+  const [promoTitleTagFilter, setPromoTitleTagFilter] = useState('all')
+  const [promoChannelFilter, setPromoChannelFilter] = useState('all')
+  const [dataHealthOpen, setDataHealthOpen] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('diag') === '1')
+  const [dataHealthReport, setDataHealthReport] = useState(null)
   const [tagReturnCode, setTagReturnCode] = useState(null)
   
   const [rankCategory, setRankCategory] = useState('all')
@@ -1680,10 +2042,19 @@ export default function App() {
   }, [themeConfig]);
   
   useViewportCssVar()
-  useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen))
+  useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen || dataHealthOpen))
 
   useEffect(() => { hydrateSeenVideos() }, [hydrateSeenVideos])
 
+  useEffect(() => {
+    if (!dataHealthOpen || dataHealthReport) return undefined
+    let cancelled = false
+    fetch(`${BASE_URL}data-health-report.json`, { cache: 'no-store' })
+      .then((res) => res.ok ? res.json() : null)
+      .then((report) => { if (!cancelled) setDataHealthReport(report) })
+      .catch(() => { if (!cancelled) setDataHealthReport({ status: 'error', score: 0, summary: {}, issues: [{ severity: 'error', area: 'system', message: '無法讀取 data-health-report.json', count: 1, samples: [] }] }) })
+    return () => { cancelled = true }
+  }, [dataHealthOpen, dataHealthReport])
   useEffect(() => {
     const timer = setTimeout(() => {
       setKeyword(inputValue)
@@ -1893,10 +2264,15 @@ export default function App() {
   }, [loading, activeSection, setActiveSection]);
 
   useEffect(() => {
-    const handlePopState = () => {
+    const handlePopState = (event) => {
+      const nextUi = event.state?.ui
       if (activeModal || mediaSheetProduct) { closeModal(); return }
       if (promoDrawer) { setPromoDrawer(null); return }
-      if (promoCenterOpen) { setPromoCenterOpen(false); return }
+      if (promoCenterOpen) {
+        if (nextUi === 'promo-center') return
+        setPromoCenterOpen(false)
+        return
+      }
       if (settingsOpen) { setSettingsOpen(false); return }
       if (activeTag || keyword) {
         const restoreCode = tagReturnCode
@@ -2075,7 +2451,12 @@ export default function App() {
           </header>
 
           <main className="px-4 pt-4 space-y-6">
-            <PromoCarousel items={promoItems} onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} scale={scale} />
+            <PromoCarousel
+              items={promoItems}
+              onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }}
+              onOpenCenter={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }}
+              scale={scale}
+            />
             
             <RankingCarousel 
               items={visibleHotProducts} 
@@ -2132,6 +2513,10 @@ export default function App() {
           setStatusFilter={setPromoStatusFilter} 
           groupFilter={promoGroupFilter} 
           setGroupFilter={setPromoGroupFilter} 
+          titleTagFilter={promoTitleTagFilter} 
+          setTitleTagFilter={setPromoTitleTagFilter} 
+          channelFilter={promoChannelFilter} 
+          setChannelFilter={setPromoChannelFilter} 
           onOpenPromo={(promo) => { setPromoDrawer(promo); window.history.pushState({ ui: 'promo', promoId: promo.promoId }, '') }} 
           onClose={() => { if (window.history.state?.ui === 'promo-center') window.history.back(); else setPromoCenterOpen(false); }} 
           scale={scale}
@@ -2143,6 +2528,7 @@ export default function App() {
           scale={scale}
         />
         <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: SCROLL_BEHAVIOR })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
+        <DataHealthPanel open={dataHealthOpen} report={dataHealthReport} onClose={() => setDataHealthOpen(false)} scale={scale} />
         <ToastMessage />
       </div>
 
