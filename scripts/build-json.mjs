@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { createHash } from 'node:crypto'
 
 const OUTPUT_DIR = path.resolve(process.cwd(), 'public')
 
@@ -417,13 +418,157 @@ function buildRankingsFromMatrix(matrix, mergedFeed) {
   return { generatedAt: nowIso, count: items.length, items }
 }
 
+function getProductVisibleFlag(item) {
+  // 前台商品清單目前以 is_hidden_pp 控制顯示，健康檢查需與前台一致。
+  return !(item?.is_hidden_pp === true)
+}
+
+function isUrlLike(value) {
+  return /^https?:\/\//i.test(String(value || '').trim())
+}
+
+function parseMoreLinkRows(raw) {
+  if (!raw) return []
+  return String(raw)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const parts = line.split('|')
+      const url = parts.length >= 3 ? parts.slice(2).join('|') : (parts[1] || line)
+      return { line, url: String(url || '').trim() }
+    })
+}
+
+function productMatchesRule(product, rule) {
+  const kw = String(rule || '').trim()
+  if (!kw) return false
+  const pitch = product.pitch || {}
+  const fields = [
+    product.code,
+    product.name,
+    product.category,
+    pitch.title,
+    pitch.content,
+    pitch.tags,
+  ]
+  return fields.some((field) => String(field || '').includes(kw))
+}
+
+function buildDataHealthReport(mergedFeed, promotions, rankings) {
+  const allProducts = mergedFeed.items || []
+  const visibleProducts = allProducts.filter(getProductVisibleFlag)
+  const promoItems = promotions.items || []
+  const rankingItems = rankings.items || []
+  const productByCode = new Map(allProducts.map((item) => [item.code, item]))
+  const visibleProductByCode = new Map(visibleProducts.map((item) => [item.code, item]))
+  const issues = []
+
+  const addIssue = (severity, area, message, samples = []) => {
+    const normalizedSamples = samples
+      .filter(Boolean)
+      .slice(0, 20)
+      .map((sample) => String(sample))
+    issues.push({ severity, area, message, count: samples.length, samples: normalizedSamples })
+  }
+
+  const duplicateMap = new Map()
+  allProducts.forEach((item) => {
+    if (!item.code) return
+    duplicateMap.set(item.code, (duplicateMap.get(item.code) || 0) + 1)
+  })
+  const duplicateCodes = Array.from(duplicateMap.entries()).filter(([, count]) => count > 1).map(([code, count]) => `${code} ×${count}`)
+  if (duplicateCodes.length) addIssue('info', 'products', '商品主檔存在重複品號，請確認是否為組合或隱藏品項造成。', duplicateCodes)
+
+  addIssue('error', 'products', '可見商品缺少品號。', visibleProducts.filter((item) => !item.code).map((item) => item.name || '(未命名商品)'))
+  addIssue('error', 'products', '可見商品缺少商品名稱。', visibleProducts.filter((item) => !item.name).map((item) => item.code || '(無品號)'))
+  addIssue('warning', 'products', '可見商品缺少圖片。', visibleProducts.filter((item) => !item.photo).map((item) => `${item.code} ${item.name}`))
+  addIssue('warning', 'products', '可見商品缺少主訴求。', visibleProducts.filter((item) => !item.pitch?.title).map((item) => `${item.code} ${item.name}`))
+  addIssue('warning', 'products', '可見商品缺少商品文案。', visibleProducts.filter((item) => !item.pitch?.content).map((item) => `${item.code} ${item.name}`))
+  addIssue('warning', 'products', '可見商品缺少標籤。', visibleProducts.filter((item) => !item.pitch?.tags).map((item) => `${item.code} ${item.name}`))
+  addIssue('warning', 'products', '商品影片連結格式不像 URL。', visibleProducts.filter((item) => item.videoUrl && !isUrlLike(item.videoUrl)).map((item) => `${item.code} ${item.name}: ${item.videoUrl}`))
+
+  const invalidMoreLinks = []
+  visibleProducts.forEach((item) => {
+    parseMoreLinkRows(item.moreLinksRaw).forEach((link) => {
+      if (!isUrlLike(link.url)) invalidMoreLinks.push(`${item.code} ${item.name}: ${link.line}`)
+    })
+  })
+  addIssue('warning', 'products', '更多素材格式可能異常，建議使用「類型|標籤|URL」。', invalidMoreLinks)
+
+  addIssue('warning', 'promotions', '促銷活動缺少開始日期。', promoItems.filter((item) => !item.startDate).map((item) => item.title || item.promoId))
+  addIssue('warning', 'promotions', '促銷活動缺少結束日期。', promoItems.filter((item) => !item.endDate).map((item) => item.title || item.promoId))
+  addIssue('warning', 'promotions', '促銷活動未設定通路。', promoItems.filter((item) => !item.channelLabels?.length).map((item) => item.title || item.promoId))
+  addIssue('warning', 'promotions', '促銷圖片連結格式不像 URL。', promoItems.filter((item) => item.imgUrl && !isUrlLike(item.imgUrl)).map((item) => `${item.title}: ${item.imgUrl}`))
+  addIssue('warning', 'promotions', '促銷活動沒有設定關聯條件。', promoItems.filter((item) => !item.relatedCodes?.length).map((item) => item.title || item.promoId))
+
+  const unmatchedRules = []
+  promoItems.forEach((promo) => {
+    ;(promo.relatedCodes || []).forEach((rule) => {
+      const matched = allProducts.some((product) => productMatchesRule(product, rule))
+      if (!matched) unmatchedRules.push(`${promo.title}: ${rule}`)
+    })
+  })
+  addIssue('warning', 'promotions', '促銷關聯條件目前找不到對應商品。', unmatchedRules)
+
+  addIssue('warning', 'rankings', '排行資料品號不存在於商品主檔。', rankingItems.filter((item) => !productByCode.has(item.code)).map((item) => `${item.code} ${item.name}`))
+  addIssue('info', 'rankings', '排行資料對應到目前前台隱藏商品。', rankingItems.filter((item) => productByCode.has(item.code) && !visibleProductByCode.has(item.code)).map((item) => `${item.code} ${item.name}`))
+
+  const compactIssues = issues.filter((issue) => issue.count > 0)
+  const severityCounts = compactIssues.reduce((acc, issue) => {
+    acc[issue.severity] = (acc[issue.severity] || 0) + issue.count
+    return acc
+  }, { error: 0, warning: 0, info: 0 })
+  const issueTypeCounts = compactIssues.reduce((acc, issue) => {
+    acc[issue.severity] = (acc[issue.severity] || 0) + 1
+    return acc
+  }, { error: 0, warning: 0, info: 0 })
+  const score = Math.max(0, 100 - issueTypeCounts.error * 20 - issueTypeCounts.warning * 8 - issueTypeCounts.info * 2)
+  const status = severityCounts.error > 0 ? 'error' : severityCounts.warning > 0 ? 'warning' : 'ok'
+  const fingerprintSource = JSON.stringify({
+    summary: {
+      products: allProducts.length,
+      visibleProducts: visibleProducts.length,
+      promotions: promoItems.length,
+      rankings: rankingItems.length,
+      severityCounts,
+      issueTypeCounts,
+      score,
+      status,
+    },
+    issues: compactIssues,
+  })
+  const fingerprint = createHash('sha256').update(fingerprintSource).digest('hex').slice(0, 16)
+
+  return {
+    schemaVersion: 1,
+    buildId,
+    generatedAt: nowIso,
+    fingerprint,
+    status,
+    score,
+    summary: {
+      products: allProducts.length,
+      visibleProducts: visibleProducts.length,
+      hiddenProducts: allProducts.length - visibleProducts.length,
+      promotions: promoItems.length,
+      rankings: rankingItems.length,
+      severityCounts,
+      issueTypeCounts,
+    },
+    issues: compactIssues,
+  }
+}
+
 async function writeJson(filename, payload) {
   const outputPath = path.join(OUTPUT_DIR, filename)
 
   try {
     const oldContent = await fs.readFile(outputPath, 'utf8')
     const oldData = JSON.parse(oldContent)
-    const isDataSame = JSON.stringify(oldData.items) === JSON.stringify(payload.items)
+    const oldComparable = payload.fingerprint ? oldData.fingerprint : oldData.items
+    const newComparable = payload.fingerprint ? payload.fingerprint : payload.items
+    const isDataSame = JSON.stringify(oldComparable) === JSON.stringify(newComparable)
 
     if (isDataSame) {
       console.log(`⏩ [跳過] ${filename} 資料無變動，保留原檔案以避免觸發 Git Commit`)
@@ -456,6 +601,7 @@ async function main() {
   const mergedFeed = buildMergedFeed(productRows, pitchRows)
   const promotions = buildPromotions(promotionRows)
   const rankings = buildRankingsFromMatrix(rankMatrix, mergedFeed)
+  const dataHealthReport = buildDataHealthReport(mergedFeed, promotions, rankings)
 
   assertNonEmpty(mergedFeed, 'merged-feed.json')
   assertNonEmpty(rankings, 'rankings.json')
@@ -464,6 +610,7 @@ async function main() {
     writeJson('merged-feed.json', mergedFeed),
     writeJson('promotions.json', promotions),
     writeJson('rankings.json', rankings),
+    writeJson('data-health-report.json', dataHealthReport),
   ])
 }
 
