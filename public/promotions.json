@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-30T00:03:00.464Z",
-  "count": 63,
+  "generatedAt": "2026-05-04T08:13:02.366Z",
+  "count": 64,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1639,6 +1639,29 @@
       "startDate": "2026/4/16",
       "endDate": "2026/5/22",
       "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_moqx8gr1",
+      "title": "滿額搭贈即期品去化",
+      "shortTitle": "滿額搭贈即期品去化",
+      "content": "購買本公司產品全品項（排除菸品、米酒系列品項）:\n1.單筆消費滿1,500元，贈34130014-12 0.33公升*6 纖麥汁一組(效期至115.5.22)。\n2.單筆消費滿2,500元，贈34130014-12 0.33公升*6 纖麥汁一組(效期至115.5.22)，以及「37510002-12 保蜜益生菌(效期至115.9.4)」或 「37510003-12 風淨益生菌(效期至115.9.3)」任1盒。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34130014-12",
+        "37510002-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/5/5",
+      "endDate": "2026/6/30",
+      "status": "upcoming",
       "bgColor": "#FFFFFF",
       "ch": {
         "show": false,
