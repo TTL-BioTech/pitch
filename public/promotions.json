@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-05T00:02:54.355Z",
-  "count": 64,
+  "generatedAt": "2026-05-06T01:22:51.301Z",
+  "count": 65,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1674,6 +1674,27 @@
         "便利店",
         "購物網"
       ]
+    },
+    {
+      "promoId": "P_motdhor5",
+      "title": "精力湯即期惜福優惠",
+      "shortTitle": "精力湯即期惜福優惠",
+      "content": "「酒粕植粹精力湯EX(台酒)」(效期至115年11月14日)，同品項買2送1，原價1,050元，優惠價700元（原價67折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37320001-12"
+      ],
+      "startDate": "2026/5/8",
+      "endDate": "2026/6/22",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
