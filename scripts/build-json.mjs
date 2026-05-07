@@ -78,6 +78,17 @@ function parseCsvMatrix(text) {
     .filter((r) => r.some((v) => v !== ''))
 }
 
+function excelColumnName(index) {
+  let n = index + 1
+  let name = ''
+  while (n > 0) {
+    const rem = (n - 1) % 26
+    name = String.fromCharCode(65 + rem) + name
+    n = Math.floor((n - 1) / 26)
+  }
+  return name
+}
+
 function matrixToObjects(matrix, headerRowIndex = 0) {
   if (!matrix.length || !matrix[headerRowIndex]) return []
   const headers = matrix[headerRowIndex].map((h) => String(h || '').replace(/^\uFEFF/, '').trim())
@@ -87,7 +98,9 @@ function matrixToObjects(matrix, headerRowIndex = 0) {
     .map((r) => {
       const obj = {}
       headers.forEach((header, idx) => {
-        obj[header] = String(r[idx] ?? '').trim()
+        const value = String(r[idx] ?? '').trim()
+        obj[header] = value
+        obj[`__col_${excelColumnName(idx)}`] = value
       })
       return obj
     })
@@ -133,6 +146,22 @@ function splitList(value) {
     .split(/[\n\r,，;；、|]+/)
     .map((v) => v.trim())
     .filter(Boolean)
+}
+
+function normalizeBarcodeValue(value) {
+  return String(value || '')
+    .trim()
+    .replace(/[\s\u3000]+/g, '')
+    .replace(/[^0-9A-Za-z]/g, '')
+}
+
+function splitBarcodeList(value) {
+  return Array.from(new Set(splitList(value).map(normalizeBarcodeValue).filter(Boolean)))
+}
+
+function isBarcodeLike(value) {
+  const raw = normalizeBarcodeValue(value)
+  return raw.length >= 6 && raw.length <= 32
 }
 
 function normalizeDateString(value) {
@@ -187,20 +216,32 @@ function looksLikeHtml(text) {
 }
 
 async function fetchText(url, label) {
-  const res = await fetch(url, {
-    headers: {
-      'cache-control': 'no-cache',
-      pragma: 'no-cache',
-    },
-  })
+  const timeoutMs = Number(process.env.CSV_FETCH_TIMEOUT_MS || 20000)
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), timeoutMs)
 
-  if (!res.ok) throw new Error(`${label} CSV 下載失敗：${res.status} ${res.statusText}`)
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        'cache-control': 'no-cache',
+        pragma: 'no-cache',
+      },
+    })
 
-  const text = await res.text()
-  if (looksLikeHtml(text)) {
-    throw new Error(`${label} 不是 CSV，而是 HTML 頁面。通常代表網址錯了、試算表未發布、或權限未開放。`)
+    if (!res.ok) throw new Error(`${label} CSV 下載失敗：${res.status} ${res.statusText}`)
+
+    const text = await res.text()
+    if (looksLikeHtml(text)) {
+      throw new Error(`${label} 不是 CSV，而是 HTML 頁面。通常代表網址錯了、試算表未發布、或權限未開放。`)
+    }
+    return text
+  } catch (error) {
+    const reason = error?.name === 'AbortError' ? `超過 ${timeoutMs}ms 未回應` : error?.message || String(error)
+    throw new Error(`${label} CSV 讀取失敗：${reason}`)
+  } finally {
+    clearTimeout(timeout)
   }
-  return text
 }
 
 async function fetchCsvRows(url, label) {
@@ -269,6 +310,9 @@ function readPitchFields(row) {
     getExact('code', 'product_code', '商品編號', '商品代號', 'item_code', '品號') ||
     getRegex(/(^|.*)(product)?code$/, /商品(編號|代號)/, /品號/, /sku/)
   const name = getExact('name', 'product_name', '商品名稱', '品名') || getRegex(/(^|.*)name$/, /商品名稱/, /品名/, /名稱/)
+  const barcodeRaw =
+    getExact('barcode', 'barcodes', 'barcode_aliases', '商品條碼', '條碼', '國際條碼', 'ean', 'ean13', 'gtin', 'upc', '__col_H') ||
+    getRegex(/barcode/, /barcodes/, /條碼/, /ean/, /gtin/, /upc/)
   return {
     code,
     name,
@@ -278,6 +322,8 @@ function readPitchFields(row) {
       getRegex(/content/, /話術/, /文案/),
     tags: getExact('tags', 'pitch_tags', '標籤', '關鍵字') || getRegex(/tags?/, /標籤/, /關鍵字/),
     isNew: toBool(getExact('isNew', 'is_new', '新品', 'new') || getRegex(/isnew/, /新品/, /new/)),
+    barcodeRaw,
+    barcodeAliases: splitBarcodeList(barcodeRaw),
   }
 }
 
@@ -293,6 +339,8 @@ function buildMergedFeed(productRows, pitchRows) {
       tags: entry.tags,
       isNew: entry.isNew,
       name: entry.name,
+      barcodeRaw: entry.barcodeRaw,
+      barcodeAliases: entry.barcodeAliases,
     }
     if (entry.code) pitchByCode.set(entry.code, pitch)
     if (entry.name) pitchByName.set(entry.name.trim().toLowerCase(), pitch)
@@ -309,6 +357,8 @@ function buildMergedFeed(productRows, pitchRows) {
         tags: '',
         isNew: false,
         name: entry.name,
+        barcodeRaw: '',
+        barcodeAliases: [],
       }
 
       return {
@@ -320,6 +370,8 @@ function buildMergedFeed(productRows, pitchRows) {
         photo: entry.photo,
         videoUrl: entry.videoUrl,
         moreLinksRaw: entry.moreLinksRaw,
+        barcode: pitch.barcodeAliases?.[0] || '',
+        barcodeAliases: pitch.barcodeAliases || [],
         is_hidden_pp: entry.isHiddenPP,
         is_hidden: entry.isHidden,
         pitch,
@@ -480,6 +532,24 @@ function buildDataHealthReport(mergedFeed, promotions, rankings) {
   const duplicateCodes = Array.from(duplicateMap.entries()).filter(([, count]) => count > 1).map(([code, count]) => `${code} ×${count}`)
   if (duplicateCodes.length) addIssue('info', 'products', '商品主檔存在重複品號，請確認是否為組合或隱藏品項造成。', duplicateCodes)
 
+  const barcodeOwnerMap = new Map()
+  const invalidBarcodes = []
+  const duplicateBarcodes = []
+  visibleProducts.forEach((item) => {
+    const aliases = Array.isArray(item.barcodeAliases) ? item.barcodeAliases : splitBarcodeList(item.barcode || item.pitch?.barcodeRaw || '')
+    aliases.forEach((barcode) => {
+      if (!isBarcodeLike(barcode)) invalidBarcodes.push(`${item.code} ${item.name}: ${barcode}`)
+      if (barcodeOwnerMap.has(barcode) && barcodeOwnerMap.get(barcode) !== item.code) {
+        duplicateBarcodes.push(`${barcode}: ${barcodeOwnerMap.get(barcode)} / ${item.code}`)
+      } else {
+        barcodeOwnerMap.set(barcode, item.code)
+      }
+    })
+  })
+  addIssue('info', 'products', '可見商品尚未建立條碼資料，掃碼功能將無法直接對應。', visibleProducts.filter((item) => !(item.barcodeAliases || []).length).map((item) => `${item.code} ${item.name}`))
+  addIssue('warning', 'products', '商品條碼格式可能異常。', invalidBarcodes)
+  addIssue('warning', 'products', '商品條碼重複對應到不同商品。', duplicateBarcodes)
+
   addIssue('error', 'products', '可見商品缺少品號。', visibleProducts.filter((item) => !item.code).map((item) => item.name || '(未命名商品)'))
   addIssue('error', 'products', '可見商品缺少商品名稱。', visibleProducts.filter((item) => !item.name).map((item) => item.code || '(無品號)'))
   addIssue('warning', 'products', '可見商品缺少圖片。', visibleProducts.filter((item) => !item.photo).map((item) => `${item.code} ${item.name}`))
@@ -588,9 +658,17 @@ function assertNonEmpty(payload, label) {
   }
 }
 
-async function main() {
-  await fs.mkdir(OUTPUT_DIR, { recursive: true })
+async function assertExistingJsonFiles() {
+  const requiredFiles = ['merged-feed.json', 'promotions.json', 'rankings.json', 'data-health-report.json']
 
+  for (const filename of requiredFiles) {
+    const filePath = path.join(OUTPUT_DIR, filename)
+    const content = await fs.readFile(filePath, 'utf8')
+    JSON.parse(content)
+  }
+}
+
+async function buildDataFilesFromCsv() {
   const [productRows, pitchRows, promotionRows, rankMatrix] = await Promise.all([
     fetchCsvRows(SOURCE_URLS.products, 'products'),
     fetchCsvRows(SOURCE_URLS.pitch, 'pitch'),
@@ -612,6 +690,23 @@ async function main() {
     writeJson('rankings.json', rankings),
     writeJson('data-health-report.json', dataHealthReport),
   ])
+}
+
+async function main() {
+  await fs.mkdir(OUTPUT_DIR, { recursive: true })
+
+  try {
+    await buildDataFilesFromCsv()
+  } catch (error) {
+    if (process.env.DATA_BUILD_ALLOW_FALLBACK === 'true') {
+      console.warn('⚠️ build:data 無法即時更新 CSV，改用 repo 內既有 public JSON 繼續部署。')
+      console.warn(error?.message || error)
+      await assertExistingJsonFiles()
+      console.warn('✅ 已確認既有 public JSON 可用，Build 繼續執行。')
+      return
+    }
+    throw error
+  }
 }
 
 main().catch((error) => {

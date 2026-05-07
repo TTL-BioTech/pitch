@@ -15,6 +15,8 @@ import {
   Printer,
   RefreshCw,
   Search,
+  ScanBarcode,
+  Keyboard,
   Settings2,
   Share2,
   Sparkles,
@@ -353,6 +355,24 @@ function parseMoreLinks(raw) {
     const url = parts.length >= 3 ? parts.slice(2).join('|') : (parts[1] || line)
     return { type, label, url }
   }).filter((item) => item.url)
+}
+
+
+function normalizeBarcodeValue(value) {
+  return String(value || '')
+    .trim()
+    .replace(/[\s\u3000]+/g, '')
+    .replace(/[^0-9A-Za-z]/g, '')
+}
+
+function normalizeBarcodeList(value) {
+  if (Array.isArray(value)) {
+    return Array.from(new Set(value.map(normalizeBarcodeValue).filter(Boolean)))
+  }
+  return Array.from(new Set(String(value || '')
+    .split(/[\n\r,，;；、|]+/)
+    .map(normalizeBarcodeValue)
+    .filter(Boolean)))
 }
 
 function getYouTubeEmbed(url) {
@@ -1387,7 +1407,28 @@ function LightboxModal() {
   )
 }
 
-function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) {
+function FloatingScrollTopButton({ show, onClick, className = '' }) {
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.button
+          initial={{ opacity: 0, y: 10, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.92 }}
+          transition={needsConservativeMode ? { type: 'tween', duration: 0.14 } : { type: 'spring', stiffness: 320, damping: 24 }}
+          onClick={onClick}
+          className={`flex h-[42px] w-[42px] items-center justify-center rounded-full border border-slate-200 bg-white/95 text-[var(--primary)] shadow-lg backdrop-blur-md active:scale-95 ${className}`}
+          aria-label="回到最頂端"
+          title="回到最頂端"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  )
+}
+
+function FabMenu({ onGotoPromo, onToggleSettings, onGotoSection, onOpenScanner }) {
   const fabOpen = useAppStore((state) => state.fabOpen)
   const toggleFab = useAppStore((state) => state.toggleFab)
   const closeFab = useAppStore((state) => state.closeFab)
@@ -1405,7 +1446,7 @@ function FabMenu({ onScrollTop, onGotoPromo, onToggleSettings, onGotoSection }) 
     { key: 'refresh', label: '重新整理', icon: RefreshCw, onClick: () => { closeFab(); window.location.reload(); } },
     { key: 'settings', label: '顯示設定', icon: Settings2, onClick: () => { closeFab(); onToggleSettings(); } },
     { key: 'nav', label: '分類導航', icon: Compass, onClick: () => setNavMode(true) },
-    { key: 'top', label: '回到最頂端', icon: ArrowUp, onClick: () => { closeFab(); onScrollTop(); } },
+    { key: 'scanner', label: '掃描條碼', icon: ScanBarcode, onClick: () => { closeFab(); onOpenScanner(); } },
   ]
 
   const navActions = [
@@ -1533,6 +1574,8 @@ function PromoCenterPanel({
   scale,
 }) {
   const [filterSheetOpen, setFilterSheetOpen] = useState(false)
+  const [showPromoScrollTop, setShowPromoScrollTop] = useState(false)
+  const promoScrollRef = useRef(null)
 
   useEffect(() => {
     if (!open) setFilterSheetOpen(false)
@@ -1560,6 +1603,24 @@ function PromoCenterPanel({
     window.addEventListener('popstate', handleFilterPopState)
     return () => window.removeEventListener('popstate', handleFilterPopState)
   }, [filterSheetOpen])
+
+  useEffect(() => {
+    if (!open) return undefined
+    const el = promoScrollRef.current
+    if (!el) return undefined
+    const handleScroll = () => setShowPromoScrollTop(el.scrollTop > 240)
+    handleScroll()
+    el.addEventListener('scroll', handleScroll, { passive: true })
+    return () => el.removeEventListener('scroll', handleScroll)
+  }, [open])
+
+  useEffect(() => {
+    if (!open) setShowPromoScrollTop(false)
+  }, [open])
+
+  const scrollPromoToTop = useCallback(() => {
+    promoScrollRef.current?.scrollTo({ top: 0, behavior: SCROLL_BEHAVIOR })
+  }, [])
 
   if (!open) return null
 
@@ -1660,7 +1721,7 @@ function PromoCenterPanel({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
+          <div ref={promoScrollRef} className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
             <div className="mb-3 flex items-center justify-between text-[12px] font-bold text-[var(--muted)]">
               <span>目前顯示 {filtered.length} / {items.length} 筆活動</span>
               {activeAdvancedFilters.length > 0 && (
@@ -1713,6 +1774,12 @@ function PromoCenterPanel({
               }) : <div className="col-span-full py-10 text-center text-sm text-[var(--muted)]">沒有符合條件的促銷活動</div>}
             </div>
           </div>
+
+          <FloatingScrollTopButton
+            show={showPromoScrollTop && !filterSheetOpen}
+            onClick={scrollPromoToTop}
+            className="absolute bottom-[calc(86px+env(safe-area-inset-bottom))] right-4 z-20"
+          />
 
           <AnimatePresence>
             {filterSheetOpen && (
@@ -1787,6 +1854,279 @@ function PromoCenterPanel({
               </motion.div>
             )}
           </AnimatePresence>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+function BarcodeScannerModal({ open, onClose, onDetected, scale }) {
+  const videoRef = useRef(null)
+  const controlsRef = useRef(null)
+  const detectorTimerRef = useRef(null)
+  const slowHintTimerRef = useRef(null)
+  const lastDetectedRef = useRef('')
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
+  const [manualValue, setManualValue] = useState('')
+  const [torchAvailable, setTorchAvailable] = useState(false)
+  const [torchOn, setTorchOn] = useState(false)
+  const [restartKey, setRestartKey] = useState(0)
+  const [lastValue, setLastValue] = useState('')
+
+  const clearScannerTimers = useCallback(() => {
+    if (detectorTimerRef.current) {
+      window.clearInterval(detectorTimerRef.current)
+      detectorTimerRef.current = null
+    }
+    if (slowHintTimerRef.current) {
+      window.clearTimeout(slowHintTimerRef.current)
+      slowHintTimerRef.current = null
+    }
+  }, [])
+
+  const stopScanner = useCallback(() => {
+    clearScannerTimers()
+    try { controlsRef.current?.stop?.() } catch (e) {}
+    controlsRef.current = null
+    const stream = videoRef.current?.srcObject
+    if (stream && typeof stream.getTracks === 'function') {
+      stream.getTracks().forEach((track) => track.stop())
+    }
+    if (videoRef.current) videoRef.current.srcObject = null
+    setTorchAvailable(false)
+    setTorchOn(false)
+  }, [clearScannerTimers])
+
+  const handleCandidate = useCallback((rawValue) => {
+    const barcode = normalizeBarcodeValue(rawValue)
+    if (!barcode || barcode.length < 6 || barcode === lastDetectedRef.current) return
+    lastDetectedRef.current = barcode
+    setLastValue(barcode)
+    const matched = onDetected(barcode)
+    if (matched) {
+      stopScanner()
+      return
+    }
+    setError(`找不到對應商品：${barcode}`)
+    window.setTimeout(() => { lastDetectedRef.current = '' }, 900)
+  }, [onDetected, stopScanner])
+
+  const updateTorchCapability = useCallback(() => {
+    const controls = controlsRef.current
+    if (typeof controls?.switchTorch === 'function') {
+      setTorchAvailable(true)
+      return
+    }
+    const stream = videoRef.current?.srcObject
+    const track = stream?.getVideoTracks?.()[0]
+    const capabilities = track?.getCapabilities?.()
+    setTorchAvailable(Boolean(capabilities?.torch))
+  }, [])
+
+  const toggleTorch = useCallback(async () => {
+    try {
+      const controls = controlsRef.current
+      if (typeof controls?.switchTorch === 'function') {
+        await controls.switchTorch()
+        setTorchOn((value) => !value)
+        return
+      }
+      const stream = videoRef.current?.srcObject
+      const track = stream?.getVideoTracks?.()[0]
+      const capabilities = track?.getCapabilities?.()
+      if (capabilities?.torch) {
+        await track.applyConstraints({ advanced: [{ torch: !torchOn }] })
+        setTorchOn((value) => !value)
+        return
+      }
+      setError('目前裝置或瀏覽器不支援補光控制。')
+    } catch (err) {
+      setError('補光切換失敗，請改用現場光源或稍微調整角度。')
+    }
+  }, [torchOn])
+
+  const restartScanner = useCallback(() => {
+    stopScanner()
+    setRestartKey((value) => value + 1)
+  }, [stopScanner])
+
+  useEffect(() => {
+    if (!open) return undefined
+    let cancelled = false
+    lastDetectedRef.current = ''
+    setStatus('loading')
+    setError('')
+    setManualValue('')
+    setLastValue('')
+    setTorchAvailable(false)
+    setTorchOn(false)
+
+    const scanFormats = ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128', 'code_39']
+    const videoConstraints = {
+      video: {
+        facingMode: { ideal: 'environment' },
+        width: { ideal: 1920 },
+        height: { ideal: 1080 },
+        aspectRatio: { ideal: 1.7777777778 },
+        advanced: [
+          { focusMode: 'continuous' },
+          { exposureMode: 'continuous' },
+        ],
+      },
+      audio: false,
+    }
+
+    function startNativeBarcodeDetector() {
+      if (!window?.BarcodeDetector || !videoRef.current) return
+      let detector = null
+      try {
+        detector = new window.BarcodeDetector({ formats: scanFormats })
+      } catch (err) {
+        return
+      }
+      detectorTimerRef.current = window.setInterval(async () => {
+        if (cancelled || !videoRef.current || videoRef.current.readyState < 2) return
+        try {
+          const results = await detector.detect(videoRef.current)
+          const first = results?.[0]
+          if (first?.rawValue) handleCandidate(first.rawValue)
+        } catch (err) {
+          // 原生偵測失敗時保持 ZXing 掃描，不中斷流程
+        }
+      }, 520)
+    }
+
+    async function startScanner() {
+      if (!navigator?.mediaDevices?.getUserMedia) {
+        setStatus('manual')
+        setError('此瀏覽器無法開啟相機，請改用手動輸入條碼或以 Safari / Chrome 開啟。')
+        return
+      }
+      try {
+        const zxing = await import('@zxing/browser')
+        if (cancelled || !videoRef.current) return
+
+        const ReaderClass = zxing.BrowserMultiFormatOneDReader || zxing.BrowserMultiFormatReader
+        const reader = new ReaderClass()
+        const onScan = (result) => {
+          if (!result) return
+          handleCandidate(result.getText ? result.getText() : result.text)
+        }
+
+        let controls = null
+        if (typeof reader.decodeFromConstraints === 'function') {
+          controls = await reader.decodeFromConstraints(videoConstraints, videoRef.current, onScan)
+        } else {
+          controls = await reader.decodeFromVideoDevice(undefined, videoRef.current, onScan)
+        }
+
+        if (cancelled) {
+          try { controls?.stop?.() } catch (e) {}
+          return
+        }
+        controlsRef.current = controls
+        setStatus('scanning')
+        updateTorchCapability()
+        startNativeBarcodeDetector()
+        slowHintTimerRef.current = window.setTimeout(() => {
+          if (!cancelled) setError('掃描不順時，請讓條碼完整落在框線內、保持水平，距離約 10～20 公分；也可點「重啟鏡頭」。')
+        }, 8500)
+      } catch (err) {
+        if (cancelled) return
+        setStatus('manual')
+        setError('無法啟動相機掃描，請確認相機權限，或改用手動輸入條碼。')
+      }
+    }
+
+    startScanner()
+    return () => {
+      cancelled = true
+      stopScanner()
+    }
+  }, [open, restartKey, handleCandidate, stopScanner, updateTorchCapability])
+
+  const handleClose = useCallback(() => {
+    stopScanner()
+    onClose()
+  }, [onClose, stopScanner])
+
+  const submitManual = useCallback((event) => {
+    event?.preventDefault?.()
+    const barcode = normalizeBarcodeValue(manualValue)
+    if (!barcode) {
+      setError('請輸入條碼數字。')
+      return
+    }
+    const matched = onDetected(barcode)
+    if (!matched) setError(`找不到對應商品：${barcode}`)
+  }, [manualValue, onDetected])
+
+  if (!open) return null
+  const preset = SCALE_PRESETS[scale]
+
+  return (
+    <AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[78] bg-black/80 backdrop-blur-sm" onClick={handleClose}>
+        <motion.div initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }} transition={SHEET_TRANSITION} onClick={(event) => event.stopPropagation()} style={BOTTOM_SHEET_MAX_HEIGHT_STYLE} className="absolute inset-x-0 bottom-0 mx-auto flex w-full max-w-lg flex-col rounded-t-[24px] bg-[var(--surface)] shadow-2xl">
+          <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] p-4">
+            <div>
+              <p className="text-[12px] font-bold text-[var(--primary)]">商品快速查找</p>
+              <h3 className="mt-0.5 text-[20px] font-black text-[var(--text)]">掃描商品條碼</h3>
+              <p className="mt-1 text-[12px] font-bold text-[var(--muted)]">後鏡頭高解析掃描，對準後會自動開啟商品卡片。</p>
+            </div>
+            <button onClick={handleClose} className="rounded-full bg-slate-100 p-2 text-slate-500"><X className="h-5 w-5" /></button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 shadow-inner">
+              <video ref={videoRef} className="aspect-[4/3] w-full object-cover" muted playsInline autoPlay />
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                <div className="relative h-[32%] w-[86%] rounded-2xl border-2 border-white/95 shadow-[0_0_0_9999px_rgba(0,0,0,0.32)]">
+                  <div className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 bg-white/90 shadow-[0_0_16px_rgba(255,255,255,0.95)]" />
+                  <div className="absolute -left-0.5 -top-0.5 h-5 w-5 rounded-tl-2xl border-l-4 border-t-4 border-[var(--primary)]" />
+                  <div className="absolute -right-0.5 -top-0.5 h-5 w-5 rounded-tr-2xl border-r-4 border-t-4 border-[var(--primary)]" />
+                  <div className="absolute -bottom-0.5 -left-0.5 h-5 w-5 rounded-bl-2xl border-b-4 border-l-4 border-[var(--primary)]" />
+                  <div className="absolute -bottom-0.5 -right-0.5 h-5 w-5 rounded-br-2xl border-b-4 border-r-4 border-[var(--primary)]" />
+                </div>
+              </div>
+              <div className="absolute left-3 top-3 rounded-full bg-black/45 px-3 py-1 text-[11px] font-black text-white backdrop-blur">
+                {status === 'loading' ? '正在開啟後鏡頭...' : status === 'scanning' ? '一維條碼掃描中' : '手動備援'}
+              </div>
+              <div className="absolute bottom-3 left-3 right-3 rounded-2xl bg-black/45 px-3 py-2 text-center text-[12px] font-black leading-relaxed text-white backdrop-blur">
+                條碼完整入框、保持水平，距離約 10～20 公分
+              </div>
+            </div>
+
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button onClick={restartScanner} type="button" className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-[12px] font-black text-slate-700 shadow-sm active:scale-95">
+                <RefreshCw className="h-4 w-4" />
+                重啟鏡頭
+              </button>
+              <button onClick={toggleTorch} type="button" disabled={!torchAvailable} className={`flex items-center justify-center gap-2 rounded-2xl border px-3 py-2.5 text-[12px] font-black shadow-sm active:scale-95 ${torchAvailable ? 'border-slate-200 bg-white text-slate-700' : 'border-slate-100 bg-slate-50 text-slate-300'}`}>
+                <Sparkles className="h-4 w-4" />
+                {torchOn ? '關閉補光' : '開啟補光'}
+              </button>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-3">
+              <p className={`font-bold leading-relaxed text-[var(--muted)] ${preset.promoBody}`}>優先辨識商品一維條碼（EAN / UPC / Code 128）。若掃不到，請避免反光、稍微拉遠，或使用手動輸入。</p>
+              {lastValue && <p className="mt-2 rounded-xl bg-slate-100 px-3 py-2 text-[12px] font-bold text-slate-600">最近辨識：{lastValue}</p>}
+              {error && <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-[12px] font-bold text-amber-700">{error}</p>}
+              <form onSubmit={submitManual} className="mt-3 flex gap-2">
+                <div className="relative min-w-0 flex-1">
+                  <Keyboard className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  <input
+                    value={manualValue}
+                    onChange={(event) => setManualValue(event.target.value)}
+                    placeholder="手動輸入條碼"
+                    inputMode="numeric"
+                    className="h-[42px] w-full rounded-full border border-slate-200 bg-white pl-9 pr-3 text-[14px] font-bold text-slate-700 outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary-soft)]"
+                  />
+                </div>
+                <button type="submit" className="rounded-full bg-[var(--primary)] px-4 text-[13px] font-black text-white shadow-sm active:scale-95">查找</button>
+              </form>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>
@@ -2009,6 +2349,8 @@ export default function App() {
   const [promoChannelFilter, setPromoChannelFilter] = useState('all')
   const [dataHealthOpen, setDataHealthOpen] = useState(() => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('diag') === '1')
   const [dataHealthReport, setDataHealthReport] = useState(null)
+  const [barcodeScannerOpen, setBarcodeScannerOpen] = useState(false)
+  const [showGlobalScrollTop, setShowGlobalScrollTop] = useState(false)
   const [tagReturnCode, setTagReturnCode] = useState(null)
   
   const [rankCategory, setRankCategory] = useState('all')
@@ -2042,7 +2384,7 @@ export default function App() {
   }, [themeConfig]);
   
   useViewportCssVar()
-  useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen || dataHealthOpen))
+  useBodyLock(Boolean(activeModal || promoDrawer || promoCenterOpen || settingsOpen || dataHealthOpen || barcodeScannerOpen))
 
   useEffect(() => { hydrateSeenVideos() }, [hydrateSeenVideos])
 
@@ -2055,6 +2397,13 @@ export default function App() {
       .catch(() => { if (!cancelled) setDataHealthReport({ status: 'error', score: 0, summary: {}, issues: [{ severity: 'error', area: 'system', message: '無法讀取 data-health-report.json', count: 1, samples: [] }] }) })
     return () => { cancelled = true }
   }, [dataHealthOpen, dataHealthReport])
+  useEffect(() => {
+    const handleScroll = () => setShowGlobalScrollTop(window.scrollY > 360)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setKeyword(inputValue)
@@ -2119,6 +2468,7 @@ export default function App() {
           title: pitch.title || '',
           content: pitch.content || '',
           tags: parseTags(pitch.tags),
+          barcodeAliases: normalizeBarcodeList(item.barcodeAliases || item.barcode || pitch.barcodeAliases || pitch.barcodeRaw || ''),
           isNew: Boolean(pitch.isNew),
           isHidden: isHidden,
           spec: item.spec || '',
@@ -2131,6 +2481,15 @@ export default function App() {
   }, [products, rankings])
 
   const productMap = useMemo(() => new Map(normalizedProducts.map((item) => [item.code, item])), [normalizedProducts])
+  const barcodeIndex = useMemo(() => {
+    const map = new Map()
+    normalizedProducts.forEach((product) => {
+      ;(product.barcodeAliases || []).forEach((barcode) => {
+        if (barcode && !map.has(barcode)) map.set(barcode, product)
+      })
+    })
+    return map
+  }, [normalizedProducts])
 
   const enrichedPromotions = useMemo(() => {
     return promotions
@@ -2266,6 +2625,7 @@ export default function App() {
   useEffect(() => {
     const handlePopState = (event) => {
       const nextUi = event.state?.ui
+      if (barcodeScannerOpen) { setBarcodeScannerOpen(false); return }
       if (activeModal || mediaSheetProduct) { closeModal(); return }
       if (promoDrawer) { setPromoDrawer(null); return }
       if (promoCenterOpen) {
@@ -2298,7 +2658,7 @@ export default function App() {
     }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [activeModal, mediaSheetProduct, promoDrawer, promoCenterOpen, settingsOpen, expandedCardId, activeTag, keyword, tagReturnCode, closeExpandedCard, closeFab, closeModal, setExpandedCardId])
+  }, [barcodeScannerOpen, activeModal, mediaSheetProduct, promoDrawer, promoCenterOpen, settingsOpen, expandedCardId, activeTag, keyword, tagReturnCode, closeExpandedCard, closeFab, closeModal, setExpandedCardId])
 
   const scrollToId = useCallback((id) => {
     const el = document.getElementById(id)
@@ -2369,6 +2729,34 @@ export default function App() {
       openProductByCode(code);
     }, 350);
   }, [promoDrawer, promoCenterOpen, clearFilters, openProductByCode]);
+
+  const openBarcodeScanner = useCallback(() => {
+    setBarcodeScannerOpen(true)
+    if (typeof window !== 'undefined') window.history.pushState({ ui: 'barcode-scanner' }, '')
+  }, [])
+
+  const closeBarcodeScanner = useCallback(() => {
+    if (typeof window !== 'undefined' && window.history.state?.ui === 'barcode-scanner') {
+      window.history.back()
+    } else {
+      setBarcodeScannerOpen(false)
+    }
+  }, [])
+
+  const handleBarcodeDetected = useCallback((rawBarcode) => {
+    const barcode = normalizeBarcodeValue(rawBarcode)
+    const product = barcodeIndex.get(barcode)
+    if (!product) {
+      showToast(`找不到條碼：${barcode}`)
+      return false
+    }
+    showToast(`已找到：${product.name}`)
+    closeBarcodeScanner()
+    window.setTimeout(() => {
+      handleOpenFromGlobal(product.code)
+    }, 260)
+    return true
+  }, [barcodeIndex, closeBarcodeScanner, handleOpenFromGlobal, showToast])
 
   // 🚀 觸發列印功能：寫入時間戳並呼叫 print
   const handlePrintClick = useCallback(() => {
@@ -2527,7 +2915,9 @@ export default function App() {
           onNavigateToProduct={navigateToProductFromPromo}
           scale={scale}
         />
-        <FabMenu onScrollTop={() => window.scrollTo({ top: 0, behavior: SCROLL_BEHAVIOR })} onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} />
+        <FloatingScrollTopButton show={showGlobalScrollTop && !promoCenterOpen} onClick={() => window.scrollTo({ top: 0, behavior: SCROLL_BEHAVIOR })} className="fixed bottom-[calc(142px+env(safe-area-inset-bottom))] right-4 z-[72]" />
+        <FabMenu onGotoPromo={() => { setPromoCenterOpen(true); window.history.pushState({ ui: 'promo-center' }, '') }} onToggleSettings={() => { setSettingsOpen(true); window.history.pushState({ ui: 'settings' }, '') }} onGotoSection={scrollToId} onOpenScanner={openBarcodeScanner} />
+        <BarcodeScannerModal open={barcodeScannerOpen} onClose={closeBarcodeScanner} onDetected={handleBarcodeDetected} scale={scale} />
         <DataHealthPanel open={dataHealthOpen} report={dataHealthReport} onClose={() => setDataHealthOpen(false)} scale={scale} />
         <ToastMessage />
       </div>
