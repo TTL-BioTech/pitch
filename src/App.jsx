@@ -1911,39 +1911,59 @@ function BarcodeScannerModal({ open, onClose, onDetected, scale }) {
     window.setTimeout(() => { lastDetectedRef.current = '' }, 900)
   }, [onDetected, stopScanner])
 
-  const updateTorchCapability = useCallback(() => {
-    const controls = controlsRef.current
-    if (typeof controls?.switchTorch === 'function') {
-      setTorchAvailable(true)
-      return
-    }
+  const getActiveVideoTrack = useCallback(() => {
     const stream = videoRef.current?.srcObject
-    const track = stream?.getVideoTracks?.()[0]
-    const capabilities = track?.getCapabilities?.()
-    setTorchAvailable(Boolean(capabilities?.torch))
+    if (!stream || typeof stream.getVideoTracks !== 'function') return null
+    const tracks = stream.getVideoTracks()
+    return tracks.find((track) => track.readyState === 'live') || tracks[0] || null
   }, [])
 
+  const updateTorchCapability = useCallback(() => {
+    const track = getActiveVideoTrack()
+    const capabilities = track?.getCapabilities?.() || {}
+    const hasNativeTorch = Boolean(capabilities?.torch)
+    const hasZxingTorch = typeof controlsRef.current?.switchTorch === 'function'
+    setTorchAvailable(hasNativeTorch || hasZxingTorch)
+    const settings = track?.getSettings?.() || {}
+    if (typeof settings.torch === 'boolean') setTorchOn(settings.torch)
+    return hasNativeTorch || hasZxingTorch
+  }, [getActiveVideoTrack])
+
   const toggleTorch = useCallback(async () => {
+    const nextTorchState = !torchOn
     try {
+      setError('')
+      const track = getActiveVideoTrack()
+      const capabilities = track?.getCapabilities?.() || {}
+
+      // Android Chrome 等瀏覽器最穩定的補光方式：直接對目前 video track 套用 torch constraint。
+      // 優先使用這條路，避免 ZXing controls.switchTorch 在部分裝置上存在但切換失敗。
+      if (track && capabilities?.torch && typeof track.applyConstraints === 'function') {
+        await track.applyConstraints({ advanced: [{ torch: nextTorchState }] })
+        const settings = track.getSettings?.() || {}
+        setTorchAvailable(true)
+        setTorchOn(typeof settings.torch === 'boolean' ? settings.torch : nextTorchState)
+        return
+      }
+
       const controls = controlsRef.current
       if (typeof controls?.switchTorch === 'function') {
-        await controls.switchTorch()
-        setTorchOn((value) => !value)
+        const switched = await controls.switchTorch()
+        setTorchAvailable(true)
+        setTorchOn(typeof switched === 'boolean' ? switched : nextTorchState)
+        window.setTimeout(updateTorchCapability, 250)
         return
       }
-      const stream = videoRef.current?.srcObject
-      const track = stream?.getVideoTracks?.()[0]
-      const capabilities = track?.getCapabilities?.()
-      if (capabilities?.torch) {
-        await track.applyConstraints({ advanced: [{ torch: !torchOn }] })
-        setTorchOn((value) => !value)
-        return
-      }
-      setError('目前裝置或瀏覽器不支援補光控制。')
+
+      setTorchAvailable(false)
+      setTorchOn(false)
+      setError('此裝置或瀏覽器未開放補光控制，請改用現場光源或稍微調整角度。')
     } catch (err) {
-      setError('補光切換失敗，請改用現場光源或稍微調整角度。')
+      setTorchOn(false)
+      updateTorchCapability()
+      setError('補光切換失敗；此手機瀏覽器可能不支援網頁控制補光，請改用現場光源或重啟鏡頭。')
     }
-  }, [torchOn])
+  }, [getActiveVideoTrack, torchOn, updateTorchCapability])
 
   const restartScanner = useCallback(() => {
     stopScanner()
@@ -2027,6 +2047,8 @@ function BarcodeScannerModal({ open, onClose, onDetected, scale }) {
         controlsRef.current = controls
         setStatus('scanning')
         updateTorchCapability()
+        window.setTimeout(updateTorchCapability, 450)
+        window.setTimeout(updateTorchCapability, 1200)
         startNativeBarcodeDetector()
         slowHintTimerRef.current = window.setTimeout(() => {
           if (!cancelled) setError('掃描不順時，請讓條碼完整落在框線內、保持水平，距離約 10～20 公分；也可點「重啟鏡頭」。')
@@ -2104,7 +2126,7 @@ function BarcodeScannerModal({ open, onClose, onDetected, scale }) {
               </button>
               <button onClick={toggleTorch} type="button" disabled={!torchAvailable} className={`flex items-center justify-center gap-2 rounded-2xl border px-3 py-2.5 text-[12px] font-black shadow-sm active:scale-95 ${torchAvailable ? 'border-slate-200 bg-white text-slate-700' : 'border-slate-100 bg-slate-50 text-slate-300'}`}>
                 <Sparkles className="h-4 w-4" />
-                {torchOn ? '關閉補光' : '開啟補光'}
+                {torchOn ? '關閉補光' : torchAvailable ? '開啟補光' : '補光不可用'}
               </button>
             </div>
 
