@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260512034303",
-  "generatedAt": "2026-05-12T03:43:03.729Z",
-  "fingerprint": "df8bd48e823da187",
+  "buildId": "20260513090302",
+  "generatedAt": "2026-05-13T09:03:02.466Z",
+  "fingerprint": "f304a259df4991a4",
   "status": "warning",
-  "score": 72,
+  "score": 48,
   "summary": {
     "products": 92,
     "visibleProducts": 61,
@@ -13,12 +13,12 @@
     "rankings": 85,
     "severityCounts": {
       "error": 0,
-      "warning": 44,
+      "warning": 56,
       "info": 10
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 3,
+      "warning": 6,
       "info": 2
     }
   },
@@ -37,6 +37,42 @@
         "37370011-12 ×2",
         "37170008-12 ×2",
         "37370012-12 ×2"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "可見商品缺少主訴求。",
+      "count": 4,
+      "samples": [
+        "37370014-12 易洗樂香氛洗衣球-5入",
+        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
+        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "可見商品缺少商品文案。",
+      "count": 4,
+      "samples": [
+        "37370014-12 易洗樂香氛洗衣球-5入",
+        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
+        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "可見商品缺少標籤。",
+      "count": 4,
+      "samples": [
+        "37370014-12 易洗樂香氛洗衣球-5入",
+        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
+        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
       ]
     },
     {
