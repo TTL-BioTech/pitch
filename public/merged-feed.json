@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260513165800",
-  "generatedAt": "2026-05-13T16:58:00.044Z",
+  "buildId": "20260513170808",
+  "generatedAt": "2026-05-13T17:08:08.949Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1590,7 +1590,7 @@
       "pitch": {
         "title": "雙專利護髮配方，修護毛躁更有感",
         "content": "結合超臨界米植醇、Sapitide®與多重植物果油，針對毛躁與乾燥髮絲提供滋養修護。適合燙染後髮質、長髮族或在意光澤柔順度的人使用。",
-        "tags": "VINATA,護髮,米植醇,Sapitide,修護,柔順,洗沐（＂洗沐＂統括個人清潔系列，為抽象概念應用於關鍵字搜尋，與家用清潔區別）",
+        "tags": "VINATA,護髮,米植醇,Sapitide,修護,柔順,洗沐",
         "isNew": true,
         "name": "VINATA米植醇賦活護髮素 HAIR TREATMENT",
         "barcodeRaw": "4711588007638",
@@ -1914,7 +1914,7 @@
       "pitch": {
         "title": "雙專利護髮配方，修護毛躁更有感",
         "content": "結合超臨界米植醇、Sapitide®與多重植物果油，針對毛躁與乾燥髮絲提供滋養修護。適合燙染後髮質、長髮族或在意光澤柔順度的人使用。",
-        "tags": "VINATA,護髮,米植醇,Sapitide,修護,柔順,洗沐（＂洗沐＂統括個人清潔系列，為抽象概念應用於關鍵字搜尋，與家用清潔區別）",
+        "tags": "VINATA,護髮,米植醇,Sapitide,修護,柔順,洗沐",
         "isNew": true,
         "name": "VINATA米植醇賦活護髮素 HAIR TREATMENT",
         "barcodeRaw": "4711588007638",
