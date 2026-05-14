@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-08T00:03:08.455Z",
-  "count": 65,
+  "generatedAt": "2026-05-14T05:53:06.626Z",
+  "count": 66,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1698,6 +1698,32 @@
         "展售中心",
         "便利店",
         "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mp52h7fj",
+      "title": "禮盒內容物",
+      "shortTitle": "禮盒內容物",
+      "content": "酒好皂系列簡介",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1GyjS31VLlppONLkJ9R7tDj8Bdh9XbVvS",
+      "relatedCodes": [
+        "36170002-12"
+      ],
+      "startDate": "2026/5/14",
+      "endDate": "2110/12/31",
+      "status": "active",
+      "bgColor": "#d8f3dc",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
       ]
     }
   ]
