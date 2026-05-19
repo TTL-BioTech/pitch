@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T08:17:56.391Z",
+  "generatedAt": "2026-05-19T08:22:57.984Z",
   "count": 67,
   "items": [
     {
@@ -1731,21 +1731,25 @@
       "title": "台啤酵母錠經典配方感恩回饋促銷活動",
       "shortTitle": "台啤酵母錠經典配方感恩回饋促銷活動",
       "content": "「台啤酵母錠(新包裝)」（效期至116年5月18日），同品項買2送1，建議售價1,800元，優惠價1,200元（約67折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1i4twF_Mq_8ThaijYFrOqdJ6bDbRXp2bk",
       "relatedCodes": [
         "375176-12"
       ],
       "startDate": "2026/5/22",
       "endDate": "2026/6/30",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#e3f2fd",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     }
   ]
 }
