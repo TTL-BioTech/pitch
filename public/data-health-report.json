@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260514055306",
-  "generatedAt": "2026-05-14T05:53:06.626Z",
-  "fingerprint": "36ebb900d6eed62c",
+  "buildId": "20260519081756",
+  "generatedAt": "2026-05-19T08:17:56.391Z",
+  "fingerprint": "8f37a8fedc6dc582",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 92,
     "visibleProducts": 61,
     "hiddenProducts": 31,
-    "promotions": 66,
+    "promotions": 67,
     "rankings": 85,
     "severityCounts": {
       "error": 0,
-      "warning": 56,
+      "warning": 57,
       "info": 10
     },
     "issueTypeCounts": {
@@ -79,9 +79,10 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 1,
+      "count": 2,
       "samples": [
-        "纖麥汁即期去化"
+        "纖麥汁即期去化",
+        "台啤酵母錠經典配方感恩回饋促銷活動"
       ]
     },
     {
