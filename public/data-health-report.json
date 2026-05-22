@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260519082257",
-  "generatedAt": "2026-05-19T08:22:57.984Z",
-  "fingerprint": "6f9108d36875ec65",
+  "buildId": "20260522074256",
+  "generatedAt": "2026-05-22T07:42:56.371Z",
+  "fingerprint": "b434381307fed9fb",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -10,10 +10,10 @@
     "visibleProducts": 61,
     "hiddenProducts": 31,
     "promotions": 67,
-    "rankings": 85,
+    "rankings": 86,
     "severityCounts": {
       "error": 0,
-      "warning": 56,
+      "warning": 57,
       "info": 10
     },
     "issueTypeCounts": {
@@ -111,7 +111,7 @@
       "severity": "warning",
       "area": "rankings",
       "message": "排行資料品號不存在於商品主檔。",
-      "count": 28,
+      "count": 29,
       "samples": [
         "34020019-12 台酒花雕雞酒粕乾麵-酒香炸醬風味(單包)(自售)",
         "351646-12 清酒粕潤膚皂",
@@ -122,6 +122,7 @@
         "361004-12 埔里清酒粕(250g/瓶)",
         "37530003-12 VINATA密集美白精華液體驗包",
         "37530002-12 VINATA密集美白乳液體驗包",
+        "37500011-12 台酒生技鹼性離子水",
         "37320001-12 HIMO酒粕植粹精力湯EX(台酒)",
         "37530011-12 VINATA飄帶麻布包",
         "38500001-12 花仙子克潮靈環保除濕桶350g",
@@ -131,8 +132,7 @@
         "3753AF-12 VINATA酒粕維他命亮白面膜(單片)",
         "375168-12 S11益生菌(三入裝)",
         "3753BD-12 紅酒精華多重修護面膜(單片)",
-        "3753AG-12 VINATA酒粕水嫩保濕面膜(單片)",
-        "37530006-12 VINATA緊緻活膚膠囊(3顆)"
+        "3753AG-12 VINATA酒粕水嫩保濕面膜(單片)"
       ]
     },
     {
