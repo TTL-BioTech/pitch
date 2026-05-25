@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260525084756",
-  "generatedAt": "2026-05-25T08:47:56.874Z",
+  "buildId": "20260525085257",
+  "generatedAt": "2026-05-25T08:52:57.744Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -404,7 +404,7 @@
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "免疫調節健康食品，日常防護補給更有憑據",
+        "title": "免疫調節健康食品｜日常調整體質",
         "content": "採台酒專利啤酒酵母破壁技術提萃β-聚葡萄糖，並具免疫調節健康食品許可，產品識別度高。對重視日常防護、滋補強身與健康管理的人，是很有說服力的補給選項。",
         "tags": "健康食品,β-聚葡萄糖,啤酒酵母,膠囊,全素,免疫調節,小綠人",
         "isNew": false,
@@ -513,7 +513,7 @@
       "is_hidden": false,
       "pitch": {
         "title": "胃腸功能改善健康食品，輕甜，單吃、搭飲品、搭益生菌都好用。",
-        "content": "以高純度異麥芽寡醣為主軸，獲得胃腸功能改善健康食品許可，經動物實驗結果，有助於增加腸內益生菌、減少腸內害菌。可作為養益生菌的食物，更單純好理解。可搭配益生菌產品一起推薦，輕甜口味也可單搭飲品使用，適合想從基礎順暢保養開始的人。",
+        "content": "以高純度異麥芽寡醣為主軸，獲得胃腸功能改善健康食品許可，經動物實驗結果，有助於增加腸內益生菌、減少腸內害菌。\n\n可作為養益生菌的食物，更單純好理解。可搭配益生菌產品一起推薦，輕甜口味也可單搭飲品使用，適合想從基礎順暢保養開始的人。",
         "tags": "健康食品,異麥芽寡醣,益生元,順暢保養,代糖應用,胃腸功能改善,小綠人",
         "isNew": false,
         "name": "HIMO異麥芽寡醣",
