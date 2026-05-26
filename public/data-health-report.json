@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260525035753",
-  "generatedAt": "2026-05-25T03:57:53.449Z",
-  "fingerprint": "ad2715f91e7690a5",
+  "buildId": "20260526032755",
+  "generatedAt": "2026-05-26T03:27:55.986Z",
+  "fingerprint": "fb6c1ac5862e169d",
   "status": "warning",
   "score": 48,
   "summary": {
-    "products": 92,
+    "products": 93,
     "visibleProducts": 61,
-    "hiddenProducts": 31,
+    "hiddenProducts": 32,
     "promotions": 67,
     "rankings": 86,
     "severityCounts": {
       "error": 0,
       "warning": 57,
-      "info": 10
+      "info": 11
     },
     "issueTypeCounts": {
       "error": 0,
@@ -27,7 +27,7 @@
       "severity": "info",
       "area": "products",
       "message": "商品主檔存在重複品號，請確認是否為組合或隱藏品項造成。",
-      "count": 8,
+      "count": 9,
       "samples": [
         "37510003-12 ×2",
         "37510002-12 ×2",
@@ -36,7 +36,8 @@
         "3753C6-12 ×2",
         "37370011-12 ×2",
         "37170008-12 ×2",
-        "37370012-12 ×2"
+        "37370012-12 ×2",
+        "37130028-12 ×2"
       ]
     },
     {
