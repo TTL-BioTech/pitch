@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526032755",
-  "generatedAt": "2026-05-26T03:27:55.986Z",
-  "fingerprint": "fb6c1ac5862e169d",
+  "buildId": "20260526033756",
+  "generatedAt": "2026-05-26T03:37:56.912Z",
+  "fingerprint": "533f6004b808a577",
   "status": "warning",
   "score": 48,
   "summary": {
-    "products": 93,
+    "products": 94,
     "visibleProducts": 61,
-    "hiddenProducts": 32,
+    "hiddenProducts": 33,
     "promotions": 67,
     "rankings": 86,
     "severityCounts": {

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526033256",
-  "generatedAt": "2026-05-26T03:32:56.556Z",
+  "buildId": "20260526033756",
+  "generatedAt": "2026-05-26T03:37:56.912Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 93,
+  "count": 94,
   "items": [
     {
       "code": "341371-12",
@@ -2025,75 +2025,6 @@
     },
     {
       "code": "Set-03",
-      "name": "早米晚心組",
-      "category": "美容超值組",
-      "price": 4120,
-      "spec": "375358-12 VINATA緊緻活膚膠囊",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%97%A9%E7%B1%B3%E6%99%9A%E5%BF%83%E7%B5%84.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
-      "is_hidden_pp": true,
-      "is_hidden": true,
-      "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
-        "name": "",
-        "barcodeRaw": "",
-        "barcodeAliases": []
-      }
-    },
-    {
-      "code": "Set-04",
-      "name": "面膜任選買一送一",
-      "category": "美容超值組",
-      "price": 798,
-      "spec": "3753AD-12 酒粕維他命亮白面膜",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%9D%A2%E8%86%9C%E4%BB%BB%E9%81%B8%E8%B2%B7%E4%B8%80%E9%80%81%E4%B8%80.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
-      "is_hidden_pp": true,
-      "is_hidden": false,
-      "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
-        "name": "",
-        "barcodeRaw": "",
-        "barcodeAliases": []
-      }
-    },
-    {
-      "code": "Set-05",
-      "name": "洗卸潔顏露3入組",
-      "category": "美容超值組",
-      "price": 1050,
-      "spec": "375367-12 VINATA洗卸潔顏露",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%B4%97%E5%8D%B8%E6%BD%94%E9%A1%8F%E9%9C%B23%E5%85%A5%E7%B5%84.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
-      "is_hidden_pp": true,
-      "is_hidden": false,
-      "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
-        "name": "",
-        "barcodeRaw": "",
-        "barcodeAliases": []
-      }
-    },
-    {
-      "code": "Set-06",
       "name": "極致保養組",
       "category": "美容超值組",
       "price": 3710,
@@ -2116,12 +2047,81 @@
       }
     },
     {
-      "code": "Set-07",
+      "code": "Set-04",
+      "name": "早米晚心組",
+      "category": "美容超值組",
+      "price": 4120,
+      "spec": "375358-12 VINATA緊緻活膚膠囊",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%97%A9%E7%B1%B3%E6%99%9A%E5%BF%83%E7%B5%84.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": true,
+      "is_hidden": true,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
+      "code": "Set-05",
+      "name": "面膜任選買一送一",
+      "category": "美容超值組",
+      "price": 798,
+      "spec": "3753AD-12 酒粕維他命亮白面膜",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%9D%A2%E8%86%9C%E4%BB%BB%E9%81%B8%E8%B2%B7%E4%B8%80%E9%80%81%E4%B8%80.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": true,
+      "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
+      "code": "Set-06",
       "name": "啤酒花洗沐保養組",
       "category": "美容超值組",
-      "price": 1138,
+      "price": 888,
       "spec": "37370011-12 啤酒花洗面乳",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%B2%90%E7%B5%84.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": true,
+      "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
+      "code": "Set-07",
+      "name": "洗卸潔顏露3入組",
+      "category": "美容超值組",
+      "price": 1050,
+      "spec": "375367-12 VINATA洗卸潔顏露",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%B4%97%E5%8D%B8%E6%BD%94%E9%A1%8F%E9%9C%B23%E5%85%A5%E7%B5%84.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "barcode": "",
@@ -2185,8 +2185,31 @@
       }
     },
     {
-      "code": "GIFT_LAUNDRYPODS",
-      "name": "贈品｜洗衣用品1件贈送易洗樂洗衣球五入組1個(累贈，限量送完為止)",
+      "code": "GIFT_LAUNDRYPODS1",
+      "name": "贈品｜洗衣精系列2件贈送易洗樂洗衣球五入組1個(累贈，限量送完為止)",
+      "category": "贈品",
+      "price": 0,
+      "spec": "gift-2 易洗樂洗衣球（5入）",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E9%A6%99%E6%B0%9B%E6%B4%97%E8%A1%A3%E7%90%83_5%E5%85%A5.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": true,
+      "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
+      "code": "GIFT_LAUNDRYPODS2",
+      "name": "贈品｜洗衣球1件贈送易洗樂洗衣球五入組1個(累贈，限量送完為止)",
       "category": "贈品",
       "price": 0,
       "spec": "gift-2 易洗樂洗衣球（5入）",
@@ -2370,6 +2393,29 @@
     },
     {
       "code": "GIFT_BEAUTY_2600",
+      "name": "贈品｜VINATA密集美白乳液",
+      "category": "贈品",
+      "price": 0,
+      "spec": "37530001-12 VINATA密集美白乳液",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/VINATA%20%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E4%B9%B3%E6%B6%B2.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": true,
+      "is_hidden": false,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
+      "code": "GIFT_BEAUTY_4500",
       "name": "贈品｜酒粕精粹逆齡活膚青春露 金裝版",
       "category": "贈品",
       "price": 0,
@@ -2392,30 +2438,7 @@
       }
     },
     {
-      "code": "GIFT_BEAUTY_4500",
-      "name": "贈品｜VINATA 洗卸潔顏露",
-      "category": "贈品",
-      "price": 0,
-      "spec": "375367-12 VINATA洗卸潔顏露",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/VINATA%20%E6%B4%97%E5%8D%B8%E6%BD%94%E9%A1%8F%E9%9C%B2.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
-      "is_hidden_pp": true,
-      "is_hidden": false,
-      "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
-        "name": "",
-        "barcodeRaw": "",
-        "barcodeAliases": []
-      }
-    },
-    {
-      "code": "GIFT_BEAUTY_6000",
+      "code": "GIFT_BEAUTY_5700",
       "name": "贈品｜VINATA 品牌托特包",
       "category": "贈品",
       "price": 0,
