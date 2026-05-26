@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526063255",
-  "generatedAt": "2026-05-26T06:32:55.751Z",
+  "buildId": "20260526064302",
+  "generatedAt": "2026-05-26T06:43:02.561Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -610,7 +610,7 @@
       "category": "保健食品-買一送一",
       "price": 1200,
       "spec": "37510003-12 風淨益生菌",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%9D%A2%E8%86%9C%E4%BB%BB%E9%81%B8%E8%B2%B7%E4%B8%80%E9%80%81%E4%B8%80.png",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E6%AF%8F%E6%97%A5%E7%9B%8A%E5%88%BB%E7%B3%BB%E5%88%97.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "barcode": "",
