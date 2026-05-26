@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526041254",
-  "generatedAt": "2026-05-26T04:12:54.957Z",
+  "buildId": "20260526054254",
+  "generatedAt": "2026-05-26T05:42:54.440Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -2094,11 +2094,11 @@
     },
     {
       "code": "Set-06",
-      "name": "啤酒花洗沐保養組",
+      "name": "啤酒花洗沐護髮組",
       "category": "美容超值組",
       "price": 888,
       "spec": "37370011-12 啤酒花洗面乳",
-      "photo": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%95%A4%E9%85%92%E8%8A%B1%E6%B4%97%E6%B2%90%E8%AD%B7%E9%AB%AE%E7%B5%84.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "barcode": "",
