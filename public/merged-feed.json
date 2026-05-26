@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260525085257",
-  "generatedAt": "2026-05-25T08:52:57.744Z",
+  "buildId": "20260526031254",
+  "generatedAt": "2026-05-26T03:12:54.813Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -78,7 +78,7 @@
         "4711588938598"
       ],
       "is_hidden_pp": false,
-      "is_hidden": false,
+      "is_hidden": true,
       "pitch": {
         "title": "桂圓甘潤清甜，暖心順口的黑麥氣泡飲",
         "content": "台灣在地新鮮生產，結合桂圓、紅棗與機能性異麥芽寡醣，口感甘潤清甜，喝起來溫和順口。適合喜歡帶點暖感風味的人，日常補給也能多一分柔和層次，日常滋補、養顏美容最推薦。",
