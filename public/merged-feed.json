@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526031254",
-  "generatedAt": "2026-05-26T03:12:54.813Z",
+  "buildId": "20260526031758",
+  "generatedAt": "2026-05-26T03:17:58.176Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -711,7 +711,7 @@
     {
       "code": "36370004-12",
       "name": "易洗樂洗潔精720ml",
-      "category": "清潔用品 單件85折、2件(含)以上8折-正品",
+      "category": "清潔用品 單件85折、2件(含)以上8折",
       "price": 85,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%98%93%E6%B4%97%E6%A8%82%E6%B4%97%E6%BD%94%E7%B2%BE.png",
@@ -738,7 +738,7 @@
     {
       "code": "36370003-12",
       "name": "易洗樂洗潔精補充包600ml",
-      "category": "清潔用品 單件85折、2件(含)以上8折-補充包",
+      "category": "清潔用品 單件85折、2件(含)以上8折",
       "price": 65,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%98%93%E6%B4%97%E6%A8%82%E6%B4%97%E6%BD%94%E7%B2%BE%E8%A3%9C%E5%85%85%E5%8C%85.png",
@@ -776,7 +776,7 @@
         "4711588937133"
       ],
       "is_hidden_pp": false,
-      "is_hidden": false,
+      "is_hidden": true,
       "pitch": {
         "title": "環保低敏、好沖好洗不咬手\n家用補貨一次到位的組合",
         "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n將易洗樂洗潔精以組合方式一次備齊，兼顧使用便利與採購效率。很適合家庭補貨、節慶促銷或做為實用型組合銷售。",
@@ -819,7 +819,7 @@
     {
       "code": "363741-12",
       "name": "2公升易洗樂抗菌防蟎洗衣精",
-      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣系列",
+      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣精系列",
       "price": 240,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%98%93%E6%B4%97%E6%A8%82%E6%8A%97%E8%8F%8C%E9%98%B2%E8%9F%8E%E6%B4%97%E8%A1%A3%E7%B2%BE.png",
@@ -846,7 +846,7 @@
     {
       "code": "363740-12",
       "name": "1.6公升易洗樂抗菌防蟎洗衣精補充包",
-      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣系列",
+      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣精系列",
       "price": 180,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%98%93%E6%B4%97%E6%A8%82%E6%8A%97%E8%8F%8C%E9%98%B2%E8%9F%8E%E6%B4%97%E8%A1%A3%E7%B2%BE%E8%A3%9C%E5%85%85%E5%8C%85.png",
@@ -873,7 +873,7 @@
     {
       "code": "37370013-12",
       "name": "易洗樂香氛洗衣球",
-      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣系列",
+      "category": "清潔用品 單件85折、2件(含)以上8折-洗衣球",
       "price": 268,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E6%98%93%E6%B4%97%E6%A8%82%E9%A6%99%E6%B0%9B%E6%B4%97%E8%A1%A3%E7%90%83.png",
