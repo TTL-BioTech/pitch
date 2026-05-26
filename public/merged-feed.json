@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526055253",
-  "generatedAt": "2026-05-26T05:52:53.868Z",
+  "buildId": "20260526060753",
+  "generatedAt": "2026-05-26T06:07:53.200Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -687,7 +687,7 @@
     },
     {
       "code": "Set-08",
-      "name": "魚油 S11 雙效膠囊 益立捷",
+      "name": "保健超值組",
       "category": "保健超值組",
       "price": 3990,
       "spec": "37110007-12 深海魚油軟膠囊",
