@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260526060753",
-  "generatedAt": "2026-05-26T06:07:53.200Z",
+  "buildId": "20260526061756",
+  "generatedAt": "2026-05-26T06:17:56.225Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 94,
+  "count": 92,
   "items": [
     {
       "code": "341371-12",
@@ -605,84 +605,26 @@
       }
     },
     {
-      "code": "37510003-12",
-      "name": "風淨益生菌 1200/2盒(買一送一)",
+      "code": "Set-09",
+      "name": "每日益刻 任選買一送一",
       "category": "保健食品-買一送一",
-      "price": 1200,
-      "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%A2%A8%E6%B7%A8%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
+      "price": 798,
+      "spec": "3753AD-12 酒粕維他命亮白面膜",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E9%9D%A2%E8%86%9C%E4%BB%BB%E9%81%B8%E8%B2%B7%E4%B8%80%E9%80%81%E4%B8%80.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "4711588911591",
-      "barcodeAliases": [
-        "4711588911591"
-      ],
+      "barcode": "",
+      "barcodeAliases": [],
       "is_hidden_pp": true,
-      "is_hidden": true,
+      "is_hidden": false,
       "pitch": {
-        "title": "結合「海洋雙胜肽」、「薑黃萃取物」、「維生素B群」｜促進新陳代謝",
-        "content": "專利乳酸菌搭配木寡醣等益生元，搭配海洋雙胜肽、維生素B1.B2.B6，入口清爽，作為日常補給較容易持續。\n促進新陳代謝，在意清新感、好狀態，適合喜好海味、經常應酬的族群。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
-        "tags": "每日益刻,益生菌,薑黃,維生素B群,益生元,專利菌株,順暢保養,維持代謝,應酬補給,專利包覆技術",
+        "title": "",
+        "content": "",
+        "tags": "",
         "isNew": false,
-        "name": "風淨益生菌",
-        "barcodeRaw": "4711588911591",
-        "barcodeAliases": [
-          "4711588911591"
-        ]
-      }
-    },
-    {
-      "code": "37510002-12",
-      "name": "保蜜益生菌 1200/2盒(買一送一)",
-      "category": "保健食品-買一送一",
-      "price": 1200,
-      "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E8%9C%9C%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "4711588911614",
-      "barcodeAliases": [
-        "4711588911614"
-      ],
-      "is_hidden_pp": true,
-      "is_hidden": true,
-      "pitch": {
-        "title": "女性日常保養的益生菌好物，添加蔓越莓及D-甘露糖",
-        "content": "以女性日常保養需求為出發的益生菌配方，補給方向更聚焦，每包含美國專利「蔓越莓萃取 Cran-Max®」 250毫克及「D-甘露糖 」500毫克。\n適合想做基礎保養、偏好溫和補給路線的女性族群日常搭配。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
-        "tags": "每日益刻,益生菌,蔓越莓,D-甘露糖,專利菌株,維生素C,女性保養,專利包覆技術",
-        "isNew": false,
-        "name": "保蜜益生菌",
-        "barcodeRaw": "4711588911614",
-        "barcodeAliases": [
-          "4711588911614"
-        ]
-      }
-    },
-    {
-      "code": "37110002-12",
-      "name": "保暢益生菌 1200/2盒(買一送一)",
-      "category": "保健食品-買一送一",
-      "price": 1200,
-      "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E4%BF%9D%E6%9A%A2%E7%9B%8A%E7%94%9F%E8%8F%8C.png",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "4711588911638",
-      "barcodeAliases": [
-        "4711588911638"
-      ],
-      "is_hidden_pp": true,
-      "is_hidden": true,
-      "pitch": {
-        "title": "7株乳酸菌×19種酵素｜消化順暢一次到位",
-        "content": "「保暢益生菌」不是單純補菌，而是把順暢感做成一套完整配方：先用 7 大益生菌打底，再用 19 種消化酵素去承接吃進去之後的負擔，接著加入「日本專利益生元」去養好菌，最後再用後生元把整體菌相照顧得更完整。\n所以它不只是「有益生菌」，而是把日常順暢保養需要的幾個關鍵環節，一次整理進同一套配方裡。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
-        "tags": "每日益刻,益生菌,消化酵素,益生元,後生元,專利菌株,膳食纖維,順暢保養,專利包覆技術",
-        "isNew": false,
-        "name": "保暢益生菌",
-        "barcodeRaw": "4711588911638",
-        "barcodeAliases": [
-          "4711588911638"
-        ]
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
       }
     },
     {
