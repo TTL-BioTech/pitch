@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260601050753",
-  "generatedAt": "2026-06-01T05:07:53.126Z",
-  "fingerprint": "f3dd213afb7af116",
+  "buildId": "20260601071756",
+  "generatedAt": "2026-06-01T07:17:56.681Z",
+  "fingerprint": "f856403f9cbc4240",
   "status": "warning",
-  "score": 48,
+  "score": 38,
   "summary": {
-    "products": 92,
-    "visibleProducts": 61,
+    "products": 93,
+    "visibleProducts": 62,
     "hiddenProducts": 31,
     "promotions": 67,
     "rankings": 86,
     "severityCounts": {
       "error": 0,
-      "warning": 57,
-      "info": 8
+      "warning": 61,
+      "info": 9
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 6,
-      "info": 2
+      "warning": 7,
+      "info": 3
     }
   },
   "issues": [
@@ -38,39 +38,60 @@
       ]
     },
     {
+      "severity": "info",
+      "area": "products",
+      "message": "可見商品尚未建立條碼資料，掃碼功能將無法直接對應。",
+      "count": 1,
+      "samples": [
+        "36330002-12 VINATA米植醇滋潤護手霜"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "可見商品缺少圖片。",
+      "count": 1,
+      "samples": [
+        "36330002-12 VINATA米植醇滋潤護手霜"
+      ]
+    },
+    {
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少主訴求。",
-      "count": 4,
+      "count": 5,
       "samples": [
         "37370014-12 易洗樂香氛洗衣球-5入",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
+        "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
     {
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少商品文案。",
-      "count": 4,
+      "count": 5,
       "samples": [
         "37370014-12 易洗樂香氛洗衣球-5入",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
+        "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
     {
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少標籤。",
-      "count": 4,
+      "count": 5,
       "samples": [
         "37370014-12 易洗樂香氛洗衣球-5入",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香"
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
+        "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
     {
