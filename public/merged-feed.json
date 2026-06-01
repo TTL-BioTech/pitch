@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260529134754",
-  "generatedAt": "2026-05-29T13:47:54.719Z",
+  "buildId": "20260601071258",
+  "generatedAt": "2026-06-01T07:12:58.241Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1061,7 +1061,7 @@
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
       "price": 1200,
       "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/VINATA%20%E7%B7%8A%E7%B7%BB%E6%BF%80%E6%B4%BB%E8%86%A0%E5%9B%8A.png",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%E7%B7%8A%E7%B7%BB%E6%B4%BB%E8%86%9A%E8%86%A0%E5%9B%8A.png",
       "videoUrl": "https://www.youtube.com/watch?v=lrZVlle3y8I",
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
       "barcode": "4711588913380",
