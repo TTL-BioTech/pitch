@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260601072257",
-  "generatedAt": "2026-06-01T07:22:57.200Z",
+  "buildId": "20260601084758",
+  "generatedAt": "2026-06-01T08:47:58.689Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -286,7 +286,7 @@
       "category": "保健食品\n單件9折、3件(含)以上7折",
       "price": 500,
       "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%B7%B1%E6%B5%B7%E9%AD%9A%E6%B2%B9%E8%BB%9F%E8%86%A0%E5%9B%8A.png",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E6%B7%B1%E6%B5%B7%E9%AD%9A%E6%B2%B9.png",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E6%AF%8F%E5%88%86%E9%8C%A2%E9%83%BD%E4%B8%8D%E6%B5%AA%E8%B2%BB%E6%B7%B1%E6%B5%B7%E9%AD%9A%E6%B2%B9%E8%BB%9F%E8%86%A0%E5%9B%8A-httpseshop-ttlcomyzv0k-5%E5%A4%A7%E5%A5%BD%E8%99%95%E8%B2%BC%E5%BF%83%E5%AE%88%E8%AD%B7-%E5%90%AB%E9%87%8F%E6%8E%8C%E6%8E%A7-epadha-%E6%AF%8F%E4%BB%BD%E5%90%AB%E9%87%8F574-mg%E5%89%9B%E5%89%9B%E5%A5%BD%E5%A4%AA%E5%A4%9A%E4%B9%9F%E4%B8%8D%E5%A5%BD-%E6%8C%AA%E5%A8%81/1417774013301535/",
       "moreLinksRaw": "",
       "barcode": "4711588008192",
