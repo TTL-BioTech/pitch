@@ -89,9 +89,55 @@ const CENTER_MODAL_MAX_HEIGHT_STYLE = {
   maxHeight: 'calc(var(--app-height, 100vh) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px)',
 }
 
-const LIGHTBOX_IMAGE_MAX_STYLE = {
-  maxHeight: 'calc(var(--app-height, 100vh) - 40px)',
-  maxWidth: '95vw',
+const LIGHTBOX_VIEWPORT_STYLE = {
+  maxHeight: 'calc(var(--app-height, 100vh) - 72px)',
+  maxWidth: '94vw',
+}
+
+function getViewportSize() {
+  if (typeof window === 'undefined') return { width: 390, height: 760 }
+  return {
+    width: Math.round(window.visualViewport?.width || window.innerWidth || 390),
+    height: Math.round(window.visualViewport?.height || window.innerHeight || 760),
+  }
+}
+
+function getLightboxSmartStyle(naturalSize, viewport) {
+  if (!naturalSize?.width || !naturalSize?.height) {
+    return {
+      ...LIGHTBOX_VIEWPORT_STYLE,
+      width: 'auto',
+      height: 'auto',
+      objectFit: 'contain',
+    }
+  }
+
+  const naturalWidth = Math.max(1, naturalSize.width)
+  const naturalHeight = Math.max(1, naturalSize.height)
+  const maxWidth = Math.max(260, Math.round((viewport?.width || 390) * 0.94))
+  const maxHeight = Math.max(280, Math.round((viewport?.height || 760) * 0.86))
+  const shortSide = Math.min(naturalWidth, naturalHeight)
+  const longSide = Math.max(naturalWidth, naturalHeight)
+  const pixels = naturalWidth * naturalHeight
+
+  const allowedUpscale = shortSide < 700 || pixels < 600000
+    ? 1.15
+    : longSide < 1400 || pixels < 1500000
+      ? 1.35
+      : 2
+
+  const fitScale = Math.min(maxWidth / naturalWidth, maxHeight / naturalHeight)
+  const finalScale = Math.min(fitScale, allowedUpscale)
+  const width = Math.max(1, Math.round(naturalWidth * finalScale))
+  const height = Math.max(1, Math.round(naturalHeight * finalScale))
+
+  return {
+    width: `${width}px`,
+    height: `${height}px`,
+    maxWidth: '94vw',
+    maxHeight: 'calc(var(--app-height, 100vh) - 72px)',
+    objectFit: 'contain',
+  }
 }
 
 const MEDIA_SHEET_BODY_MAX_HEIGHT_STYLE = {
@@ -1196,6 +1242,22 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
 
   const hasSeenVideo = Boolean(seenVideos[product.code])
 
+  const openProductLightbox = (event) => {
+    if (!isExpanded) return
+    event.stopPropagation()
+    const scrollY = typeof window !== 'undefined' ? window.scrollY : 0
+    openLightbox({
+      src: product.photo || placeholderSvg(product.name),
+      title: product.name,
+      context: 'product',
+      code: product.code,
+      scrollY,
+    })
+    if (typeof window !== 'undefined') {
+      window.history.pushState({ ui: 'lightbox', context: 'product', code: product.code }, '')
+    }
+  }
+
   return (
     <div ref={cardRef} className={`relative overflow-hidden rounded-xl border bg-[var(--surface)] transition-all ${isExpanded ? 'border-[var(--primary)] shadow-lg shadow-[var(--primary)]/10' : 'border-[var(--border)] shadow-sm'}`}>
       {product.isNew && (
@@ -1205,7 +1267,7 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
       )}
       
       <div onClick={toggle} className="relative flex w-full cursor-pointer items-center gap-3 p-3 text-left">
-        <div className="relative shrink-0 overflow-hidden rounded-lg border border-slate-100 bg-[#fcfcfc]" style={{ width: scalePreset.rowImage, height: scalePreset.rowImage }} onClick={(event) => { if (isExpanded) { event.stopPropagation(); openLightbox({ src: product.photo || placeholderSvg(product.name), title: product.name }) } }}>
+        <div className="relative shrink-0 overflow-hidden rounded-lg border border-slate-100 bg-[#fcfcfc]" style={{ width: scalePreset.rowImage, height: scalePreset.rowImage }} onClick={openProductLightbox}>
           <SafeImage src={product.photo} alt={product.name} fallbackLabel={product.name} contain className="h-full w-full p-1" blend priority={priority} />
           {product.videoUrl && (
             <div className={`absolute bottom-1 right-1 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 text-white backdrop-blur-sm shadow-sm ${hasSeenVideo ? 'bg-black/40' : 'bg-[var(--promo)] ring-2 ring-[var(--promo)]/35'}`}>
@@ -1300,6 +1362,7 @@ function ProductRow({ product, scale, keyword, onOpenProductByCode, onApplyTagFi
 
 function MediaSheet() {
   const activeModal = useAppStore((state) => state.activeModal)
+  const lightbox = useAppStore((state) => state.lightbox)
   const mediaSheetProduct = useAppStore((state) => state.mediaSheetProduct)
   const closeModal = useAppStore((state) => state.closeModal)
   if (activeModal !== 'sheet' || !mediaSheetProduct) return null
@@ -1392,16 +1455,106 @@ function VideoModal() {
   )
 }
 
+function SmartLightboxImage({ src, title }) {
+  const fallbackSrc = placeholderSvg(title || '圖片')
+  const normalizedSrc = useMemo(() => normalizeAssetUrl(src) || fallbackSrc, [src, fallbackSrc])
+  const [currentSrc, setCurrentSrc] = useState(normalizedSrc)
+  const [naturalSize, setNaturalSize] = useState(null)
+  const [viewport, setViewport] = useState(() => getViewportSize())
+
+  useEffect(() => {
+    setCurrentSrc(normalizedSrc)
+    setNaturalSize(null)
+  }, [normalizedSrc])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+    const updateViewport = () => setViewport(getViewportSize())
+    window.addEventListener('resize', updateViewport, { passive: true })
+    window.addEventListener('orientationchange', updateViewport)
+    window.visualViewport?.addEventListener('resize', updateViewport)
+    return () => {
+      window.removeEventListener('resize', updateViewport)
+      window.removeEventListener('orientationchange', updateViewport)
+      window.visualViewport?.removeEventListener('resize', updateViewport)
+    }
+  }, [])
+
+  const smartStyle = useMemo(() => getLightboxSmartStyle(naturalSize, viewport), [naturalSize, viewport])
+  const qualityNote = useMemo(() => {
+    if (!naturalSize?.width || !naturalSize?.height) return ''
+    const shortSide = Math.min(naturalSize.width, naturalSize.height)
+    const pixels = naturalSize.width * naturalSize.height
+    return shortSide < 700 || pixels < 600000 ? '已依原圖解析度限制放大，避免畫質過度模糊' : ''
+  }, [naturalSize])
+
+  return (
+    <div className="flex max-w-[94vw] flex-col items-center gap-3">
+      <img
+        src={currentSrc}
+        alt={title || '圖片'}
+        onLoad={(event) => {
+          setNaturalSize({
+            width: event.currentTarget.naturalWidth || 1,
+            height: event.currentTarget.naturalHeight || 1,
+          })
+        }}
+        onError={() => {
+          if (currentSrc !== fallbackSrc) setCurrentSrc(fallbackSrc)
+        }}
+        style={smartStyle}
+        className="block rounded-2xl bg-white/5 object-contain shadow-2xl ring-1 ring-white/10"
+        loading="eager"
+        decoding="async"
+      />
+      <div className="max-w-[90vw] text-center">
+        {title ? <p className="line-clamp-2 text-[13px] font-bold text-white/90">{title}</p> : null}
+        {qualityNote ? <p className="mt-1 text-[11px] font-bold text-white/55">{qualityNote}</p> : null}
+      </div>
+    </div>
+  )
+}
+
 function LightboxModal() {
   const activeModal = useAppStore((state) => state.activeModal)
   const lightbox = useAppStore((state) => state.lightbox)
   const closeModal = useAppStore((state) => state.closeModal)
   if (activeModal !== 'lightbox' || !lightbox) return null
+
+  const requestClose = () => {
+    if (typeof window !== 'undefined' && window.history.state?.ui === 'lightbox') {
+      window.history.back()
+    } else {
+      closeModal()
+      if (typeof lightbox.scrollY === 'number') {
+        window.requestAnimationFrame(() => window.scrollTo({ top: lightbox.scrollY, behavior: 'auto' }))
+      }
+    }
+  }
+
   return (
     <AnimatePresence>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[77] flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeModal}>
-        <button onClick={closeModal} className="absolute right-4 top-4 rounded-full bg-white/20 p-2 text-white backdrop-blur-md"><X className="h-6 w-6" /></button>
-        <motion.div initial={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.9 }} animate={needsConservativeMode ? { opacity: 1, y: 0 } : { scale: 1 }} exit={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.9 }} transition={MODAL_TRANSITION} onClick={(e) => e.stopPropagation()} style={LIGHTBOX_IMAGE_MAX_STYLE} className="w-full"><SafeImage src={lightbox.src} alt={lightbox.title} fallbackLabel={lightbox.title} contain className="h-full w-full" /></motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[77] flex items-center justify-center bg-black/90 px-3 py-[calc(20px+env(safe-area-inset-top))] backdrop-blur-sm"
+        onClick={requestClose}
+      >
+        <button onClick={requestClose} className="absolute right-4 top-[calc(14px+env(safe-area-inset-top))] z-10 rounded-full bg-white/20 p-2 text-white backdrop-blur-md active:scale-95">
+          <X className="h-6 w-6" />
+        </button>
+        <motion.div
+          initial={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.94, opacity: 0 }}
+          animate={needsConservativeMode ? { opacity: 1, y: 0 } : { scale: 1, opacity: 1 }}
+          exit={needsConservativeMode ? { opacity: 0, y: 12 } : { scale: 0.94, opacity: 0 }}
+          transition={MODAL_TRANSITION}
+          onClick={(event) => event.stopPropagation()}
+          style={LIGHTBOX_VIEWPORT_STYLE}
+          className="flex w-full items-center justify-center"
+        >
+          <SmartLightboxImage src={lightbox.src} title={lightbox.title} />
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   )
@@ -1499,8 +1652,24 @@ function FabMenu({ onGotoPromo, onToggleSettings, onGotoSection, onOpenScanner }
 }
 
 function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
+  const openLightbox = useAppStore((state) => state.openLightbox)
   if (!promo) return null
   const preset = SCALE_PRESETS[scale]
+  const promoImage = getPromoImage(promo)
+
+  const openPromoLightbox = (event) => {
+    event.stopPropagation()
+    if (!promoImage) return
+    openLightbox({
+      src: promoImage,
+      title: promo.title,
+      context: 'promo',
+      promoId: promo.promoId,
+    })
+    if (typeof window !== 'undefined') {
+      window.history.pushState({ ui: 'lightbox', context: 'promo', promoId: promo.promoId }, '')
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -1521,7 +1690,19 @@ function PromoDrawer({ promo, onClose, onNavigateToProduct, scale }) {
             <button onClick={onClose} className="rounded-full bg-slate-100 p-2 text-slate-500 shrink-0"><X className="h-5 w-5" /></button>
           </div>
           <div className="flex-1 overflow-y-auto p-4 pb-[calc(20px+env(safe-area-inset-bottom))]">
-            {getPromoImage(promo) && <div className="mb-4 overflow-hidden rounded-xl bg-slate-100"><SafeImage src={getPromoImage(promo)} alt="活動" fallbackLabel={promo.title} contain className="w-full max-h-[40vh]" retryProfile="promo" /></div>}
+            {promoImage && (
+              <button
+                type="button"
+                onClick={openPromoLightbox}
+                className="group relative mb-4 block w-full overflow-hidden rounded-xl bg-slate-100 text-left active:scale-[0.995]"
+                aria-label="放大檢視促銷活動圖片"
+              >
+                <SafeImage src={promoImage} alt="活動" fallbackLabel={promo.title} contain className="w-full max-h-[42vh]" retryProfile="promo" />
+                <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-black text-white shadow-sm backdrop-blur-sm">
+                  <ImageIcon className="h-3.5 w-3.5" /> 放大檢視
+                </div>
+              </button>
+            )}
             <p className={`whitespace-pre-line leading-relaxed text-[var(--text)] ${preset.drawerBody}`}>{promo.content}</p>
             
             {promo.relatedProducts && promo.relatedProducts.length > 0 && (
@@ -2384,6 +2565,7 @@ export default function App() {
   const activeSection = useAppStore((state) => state.activeSection)
   const setActiveSection = useAppStore((state) => state.setActiveSection)
   const activeModal = useAppStore((state) => state.activeModal)
+  const lightbox = useAppStore((state) => state.lightbox)
   const mediaSheetProduct = useAppStore((state) => state.mediaSheetProduct)
   const hydrateSeenVideos = useAppStore((state) => state.hydrateSeenVideos)
   const closeModal = useAppStore((state) => state.closeModal)
@@ -2648,7 +2830,14 @@ export default function App() {
     const handlePopState = (event) => {
       const nextUi = event.state?.ui
       if (barcodeScannerOpen) { setBarcodeScannerOpen(false); return }
-      if (activeModal || mediaSheetProduct) { closeModal(); return }
+      if (activeModal || mediaSheetProduct) {
+        const restoreY = activeModal === 'lightbox' && typeof lightbox?.scrollY === 'number' ? lightbox.scrollY : null
+        closeModal()
+        if (restoreY !== null) {
+          window.requestAnimationFrame(() => window.scrollTo({ top: restoreY, behavior: 'auto' }))
+        }
+        return
+      }
       if (promoDrawer) { setPromoDrawer(null); return }
       if (promoCenterOpen) {
         if (nextUi === 'promo-center') return
@@ -2680,7 +2869,7 @@ export default function App() {
     }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [barcodeScannerOpen, activeModal, mediaSheetProduct, promoDrawer, promoCenterOpen, settingsOpen, expandedCardId, activeTag, keyword, tagReturnCode, closeExpandedCard, closeFab, closeModal, setExpandedCardId])
+  }, [barcodeScannerOpen, activeModal, lightbox, mediaSheetProduct, promoDrawer, promoCenterOpen, settingsOpen, expandedCardId, activeTag, keyword, tagReturnCode, closeExpandedCard, closeFab, closeModal, setExpandedCardId])
 
   const scrollToId = useCallback((id) => {
     const el = document.getElementById(id)
