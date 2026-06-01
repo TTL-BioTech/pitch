@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260601071756",
-  "generatedAt": "2026-06-01T07:17:56.681Z",
-  "fingerprint": "f856403f9cbc4240",
+  "buildId": "20260601072257",
+  "generatedAt": "2026-06-01T07:22:57.200Z",
+  "fingerprint": "6cdff5cc079c134e",
   "status": "warning",
-  "score": 38,
+  "score": 46,
   "summary": {
     "products": 93,
     "visibleProducts": 62,
@@ -13,12 +13,12 @@
     "rankings": 86,
     "severityCounts": {
       "error": 0,
-      "warning": 61,
+      "warning": 60,
       "info": 9
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 7,
+      "warning": 6,
       "info": 3
     }
   },
@@ -41,15 +41,6 @@
       "severity": "info",
       "area": "products",
       "message": "可見商品尚未建立條碼資料，掃碼功能將無法直接對應。",
-      "count": 1,
-      "samples": [
-        "36330002-12 VINATA米植醇滋潤護手霜"
-      ]
-    },
-    {
-      "severity": "warning",
-      "area": "products",
-      "message": "可見商品缺少圖片。",
       "count": 1,
       "samples": [
         "36330002-12 VINATA米植醇滋潤護手霜"

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260601071756",
-  "generatedAt": "2026-06-01T07:17:56.681Z",
+  "buildId": "20260601072257",
+  "generatedAt": "2026-06-01T07:22:57.200Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1758,6 +1758,29 @@
       }
     },
     {
+      "code": "36330002-12",
+      "name": "VINATA米植醇滋潤護手霜",
+      "category": "",
+      "price": 190,
+      "spec": "",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%E7%B1%B3%E6%A4%8D%E9%86%87%E6%BB%8B%E6%BD%A4%E8%AD%B7%E6%89%8B%E9%9C%9C.png",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": true,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
       "code": "3753C6-12",
       "name": "VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ml)",
       "category": "美容加價購",
@@ -1917,29 +1940,6 @@
         "barcodeAliases": [
           "4711588953805"
         ]
-      }
-    },
-    {
-      "code": "36330002-12",
-      "name": "VINATA米植醇滋潤護手霜",
-      "category": "",
-      "price": 0,
-      "spec": "",
-      "photo": "",
-      "videoUrl": "",
-      "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
-      "is_hidden_pp": false,
-      "is_hidden": true,
-      "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
-        "name": "VINATA米植醇滋潤護手霜",
-        "barcodeRaw": "",
-        "barcodeAliases": []
       }
     },
     {
