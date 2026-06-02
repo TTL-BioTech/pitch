@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260602074254",
-  "generatedAt": "2026-06-02T07:42:54.775Z",
-  "fingerprint": "fedbfde60ef8a685",
+  "buildId": "20260602075300",
+  "generatedAt": "2026-06-02T07:53:00.829Z",
+  "fingerprint": "c22a39857d5925c9",
   "status": "warning",
-  "score": 40,
+  "score": 48,
   "summary": {
     "products": 95,
     "visibleProducts": 64,
@@ -13,12 +13,12 @@
     "rankings": 86,
     "severityCounts": {
       "error": 0,
-      "warning": 61,
+      "warning": 59,
       "info": 8
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 7,
+      "warning": 6,
       "info": 2
     }
   },
@@ -35,16 +35,6 @@
         "37170008-12 ×2",
         "37370012-12 ×2",
         "37130028-12 ×2"
-      ]
-    },
-    {
-      "severity": "warning",
-      "area": "products",
-      "message": "可見商品缺少圖片。",
-      "count": 2,
-      "samples": [
-        "37500011-12 台酒生技鹼性離子水",
-        "351646-12 清酒粕潤膚皂"
       ]
     },
     {
