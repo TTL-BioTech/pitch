@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260602073254",
-  "generatedAt": "2026-06-02T07:32:54.072Z",
-  "fingerprint": "a908674c7c32d259",
+  "buildId": "20260602073757",
+  "generatedAt": "2026-06-02T07:37:57.018Z",
+  "fingerprint": "82c4bda70a43a135",
   "status": "warning",
-  "score": 38,
+  "score": 40,
   "summary": {
     "products": 95,
     "visibleProducts": 64,
@@ -14,12 +14,12 @@
     "severityCounts": {
       "error": 0,
       "warning": 64,
-      "info": 11
+      "info": 8
     },
     "issueTypeCounts": {
       "error": 0,
       "warning": 7,
-      "info": 3
+      "info": 2
     }
   },
   "issues": [
@@ -35,17 +35,6 @@
         "37170008-12 ×2",
         "37370012-12 ×2",
         "37130028-12 ×2"
-      ]
-    },
-    {
-      "severity": "info",
-      "area": "products",
-      "message": "可見商品尚未建立條碼資料，掃碼功能將無法直接對應。",
-      "count": 3,
-      "samples": [
-        "37500011-12 台酒生技鹼性離子水",
-        "351646-12 清酒粕潤膚皂",
-        "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
     {
