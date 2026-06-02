@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260602072755",
-  "generatedAt": "2026-06-02T07:27:55.790Z",
+  "buildId": "20260602073254",
+  "generatedAt": "2026-06-02T07:32:54.072Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
     "promotions": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT3hvcNJNEfLugUcwQdHTTu0NZcy2QHyMPvMaPpfU6g_p0MTrw3muXIGn3SPkISSPnbW9ou1GlHzRc6/pub?gid=74407584&single=true&output=csv",
     "rank": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj5QLrtaWikGcLNwMawbjiN8ZQDgFzW1RV7UECFgLzECWj16I2ugE_B6tzzLICCynsk1L6lAuJfccS/pub?gid=93142219&single=true&output=csv"
   },
-  "count": 94,
+  "count": 95,
   "items": [
     {
       "code": "341371-12",
@@ -890,6 +890,29 @@
       }
     },
     {
+      "code": "351646-12",
+      "name": "清酒粕潤膚皂",
+      "category": "",
+      "price": 0,
+      "spec": "",
+      "photo": "",
+      "videoUrl": "",
+      "moreLinksRaw": "",
+      "barcode": "",
+      "barcodeAliases": [],
+      "is_hidden_pp": false,
+      "is_hidden": true,
+      "pitch": {
+        "title": "",
+        "content": "",
+        "tags": "",
+        "isNew": false,
+        "name": "",
+        "barcodeRaw": "",
+        "barcodeAliases": []
+      }
+    },
+    {
       "code": "37170002-12",
       "name": "酒好皂(松炭)",
       "category": "清潔用品-皂類任選買2送1",
@@ -1149,7 +1172,7 @@
       "is_hidden": false,
       "pitch": {
         "title": "夜間修護膠囊，滋養修護更集中，大容量更適合長期保養",
-        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△美國FDA認證實驗室低敏驗證",
+        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△ADVANCED SCIENCE實驗室低敏驗證",
         "tags": "VINATA,夜間膠囊,米植醇,超臨界,多重發酵精華,修護,低敏,小金心,早米晚心",
         "isNew": false,
         "name": "VINATA激透光米植醇特潤膠囊(40顆)(自製)",
@@ -1176,7 +1199,7 @@
       "is_hidden": true,
       "pitch": {
         "title": "夜間修護膠囊，滋養修護更集中，大容量更適合長期保養",
-        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△美國FDA認證實驗室低敏驗證",
+        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△ADVANCED SCIENCE實驗室低敏驗證",
         "tags": "VINATA,夜間膠囊,米植醇,超臨界,多重發酵精華,修護,低敏,小金心,早米晚心",
         "isNew": false,
         "name": "激透光米植醇特潤膠囊(40顆)",
