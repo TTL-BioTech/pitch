@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260602073757",
-  "generatedAt": "2026-06-02T07:37:57.018Z",
+  "buildId": "20260602074254",
+  "generatedAt": "2026-06-02T07:42:54.775Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -882,9 +882,9 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "啤酒花植萃洗衣球，潔淨、便利與香氛體驗｜一顆搞定",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n抗菌、防蟎、防霉功效\n採用啤酒花萃取物植萃配方，搭配再生界面活性劑與單顆定量設計，使用時不沾手、洗衣更俐落方便；再結合前中後調香氛層次，讓日常洗衣不只是清潔，更是更輕鬆、更有質感的洗衣體驗。",
+        "tags": "易洗樂,洗衣,啤酒花萃取,香氛洗衣,單顆定量,不沾手,抗菌,防蟎,防霉,低敏,輕巧包",
         "isNew": true,
         "name": "易洗樂香氛洗衣球-5入",
         "barcodeRaw": "4711588013622",

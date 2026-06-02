@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260602073757",
-  "generatedAt": "2026-06-02T07:37:57.018Z",
-  "fingerprint": "82c4bda70a43a135",
+  "buildId": "20260602074254",
+  "generatedAt": "2026-06-02T07:42:54.775Z",
+  "fingerprint": "fedbfde60ef8a685",
   "status": "warning",
   "score": 40,
   "summary": {
@@ -13,7 +13,7 @@
     "rankings": 86,
     "severityCounts": {
       "error": 0,
-      "warning": 64,
+      "warning": 61,
       "info": 8
     },
     "issueTypeCounts": {
@@ -51,10 +51,9 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少主訴求。",
-      "count": 7,
+      "count": 6,
       "samples": [
         "37500011-12 台酒生技鹼性離子水",
-        "37370014-12 易洗樂香氛洗衣球-5入",
         "351646-12 清酒粕潤膚皂",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
@@ -66,10 +65,9 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少商品文案。",
-      "count": 7,
+      "count": 6,
       "samples": [
         "37500011-12 台酒生技鹼性離子水",
-        "37370014-12 易洗樂香氛洗衣球-5入",
         "351646-12 清酒粕潤膚皂",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
@@ -81,10 +79,9 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少標籤。",
-      "count": 7,
+      "count": 6,
       "samples": [
         "37500011-12 台酒生技鹼性離子水",
-        "37370014-12 易洗樂香氛洗衣球-5入",
         "351646-12 清酒粕潤膚皂",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
