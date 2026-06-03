@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-31T00:02:56.462Z",
-  "count": 67,
+  "generatedAt": "2026-06-03T02:42:53.504Z",
+  "count": 69,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1750,6 +1750,48 @@
         "便利店",
         "購物網"
       ]
+    },
+    {
+      "promoId": "P_mpxgoj8l",
+      "title": "台酒生技鹼性離子水上市優惠",
+      "shortTitle": "台酒生技鹼性離子水上市優惠",
+      "content": "兩瓶29元，箱購320元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37500011-12"
+      ],
+      "startDate": "2026/5/14",
+      "endDate": "2026/6/28",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mpxgoj8l",
+      "title": "花雕酒粕雞乾麵",
+      "shortTitle": "花雕酒粕雞乾麵",
+      "content": "箱購優惠699元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34020019-12"
+      ],
+      "startDate": "2026/5/18",
+      "endDate": "2110/12/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
