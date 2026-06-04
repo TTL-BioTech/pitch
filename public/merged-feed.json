@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260604012254",
-  "generatedAt": "2026-06-04T01:22:54.017Z",
+  "buildId": "20260604143301",
+  "generatedAt": "2026-06-04T14:33:01.998Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -13,7 +13,7 @@
     {
       "code": "341371-12",
       "name": "●烏梅黑麥汁(六入) x4",
-      "category": "保健飲品（箱購｜配送）",
+      "category": "保健飲品　（箱購｜配送）",
       "price": 672,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E7%83%8F%E6%A2%85%E9%BB%91%E9%BA%A5%E6%B1%816%E5%85%A5.jpeg",
@@ -40,7 +40,7 @@
     {
       "code": "341368-12",
       "name": "●紅麴黑麥汁(六入) x4",
-      "category": "保健飲品（箱購｜配送）",
+      "category": "保健飲品　（箱購｜配送）",
       "price": 672,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E7%B4%85%E9%BA%B4%E9%BB%91%E9%BA%A5%E6%B1%816%E5%85%A5.jpeg",
@@ -67,7 +67,7 @@
     {
       "code": "341369-12",
       "name": "●桂圓黑麥汁(六入) x4",
-      "category": "保健飲品（箱購｜配送）",
+      "category": "保健飲品　（箱購｜配送）",
       "price": 672,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E6%A1%82%E5%9C%93%E9%BB%91%E9%BA%A5%E6%B1%816%E5%85%A5.jpeg",
@@ -94,7 +94,7 @@
     {
       "code": "341372-12",
       "name": "●原味黑麥汁(六入) x4",
-      "category": "保健飲品（箱購｜配送）",
+      "category": "保健飲品　（箱購｜配送）",
       "price": 672,
       "spec": "",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/refs/heads/main/%E5%8E%9F%E5%91%B3%E9%BB%91%E9%BA%A5%E6%B1%816%E5%85%A5.jpeg",
