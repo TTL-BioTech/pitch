@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260604145759",
-  "generatedAt": "2026-06-04T14:57:59.382Z",
+  "buildId": "20260605070755",
+  "generatedAt": "2026-06-05T07:07:55.952Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -178,7 +178,7 @@
       "category": "保健食品\n單件9折、3件(含)以上7折",
       "price": 1200,
       "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/9252229dd4c45dc2f475b07dffe32591b5fb1af0/%E5%AE%89%E5%8F%AF%E5%81%A5%E7%B4%8D%E8%B1%86%E7%B4%85%E9%BA%B4%2B%E9%89%BB%E9%9B%99%E6%95%88%E8%86%A0%E5%9B%8A.png",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/%E5%AE%89%E5%8F%AF%E5%81%A5%E7%B4%8D%E8%B1%86%E7%B4%85%E9%BA%B4+%E9%89%BB%E9%9B%99%E6%95%88%E8%86%A0%E5%9B%8A.png",
       "videoUrl": "https://www.facebook.com/share/r/1D8ouLLYPY/",
       "moreLinksRaw": "",
       "barcode": "4711588011697",
