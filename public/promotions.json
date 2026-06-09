@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-09T01:47:54.569Z",
-  "count": 72,
+  "generatedAt": "2026-06-09T01:57:53.900Z",
+  "count": 74,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1852,6 +1852,49 @@
         "36530000-12",
         "36530001-12",
         "36130001-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5zok0h",
+      "title": "美白一夏．夏日清爽修護組",
+      "shortTitle": "美白一夏．夏日清爽修護組",
+      "content": "青春露金裝版 x2 保濕面膜 x1 活動限定1,100元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "3753AE-12",
+        "37130028-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5zppwz",
+      "title": "美白一夏．透亮回購NO.1組",
+      "shortTitle": "美白一夏．透亮回購NO.1組",
+      "content": "密集美白精華液 x3 活動限定1,440元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37530001-12"
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
