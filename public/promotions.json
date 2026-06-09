@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-09T01:42:55.469Z",
-  "count": 71,
+  "generatedAt": "2026-06-09T01:47:54.569Z",
+  "count": 72,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1826,6 +1826,32 @@
         "37530001-12",
         "37530000-12",
         "3753AD-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5za1xa",
+      "title": "美白一夏．夏日清爽修護組",
+      "shortTitle": "美白一夏．夏日清爽修護組",
+      "content": "面膜/洗沐/洗髮 任3件 75折",
+      "imgUrl": "",
+      "relatedCodes": [
+        "3753AD-12",
+        "3753AE-12",
+        "3753BM-12",
+        "36530000-12",
+        "36530001-12",
+        "36130001-12"
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
