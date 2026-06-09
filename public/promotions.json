@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-09T02:32:54.179Z",
+  "generatedAt": "2026-06-09T05:13:00.093Z",
   "count": 75,
   "items": [
     {
@@ -1798,7 +1798,7 @@
       "title": "美白一夏．極效特潤修護組",
       "shortTitle": "美白一夏．極效特潤修護組",
       "content": "小米粒 x2 紅酒面膜 x1 活動限定2,750元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1olyRaYH089_AAwmvmy71YdB0xM78gn1o",
       "relatedCodes": [
         "37530007-12",
         "36130006-12",
@@ -1807,14 +1807,19 @@
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fbe1e7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_mq5z2ite",
