@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-03T02:42:53.504Z",
-  "count": 69,
+  "generatedAt": "2026-06-09T01:42:55.469Z",
+  "count": 71,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1783,6 +1783,52 @@
       ],
       "startDate": "2026/5/18",
       "endDate": "2110/12/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5yxd7u",
+      "title": "美白一夏．即效特潤修護組",
+      "shortTitle": "美白一夏．即效特潤修護組",
+      "content": "小米粒 x2 紅酒面膜 x1 活動限定2,750元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37530007-12",
+        "36130006-12",
+        "3753BM-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5z2ite",
+      "title": "美白一夏．亮白全方位保養組",
+      "shortTitle": "美白一夏．亮白全方位保養組",
+      "content": "密集美白精華液 x1 密集美白乳液 x1 亮白面膜 x1 活動限定1,350元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37530001-12",
+        "37530000-12",
+        "3753AD-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
       "status": "active",
       "bgColor": "#FFFFFF",
       "ch": {
