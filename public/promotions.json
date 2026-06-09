@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-09T01:57:53.900Z",
-  "count": 74,
+  "generatedAt": "2026-06-09T02:02:58.975Z",
+  "count": 75,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1895,6 +1895,28 @@
       "imgUrl": "",
       "relatedCodes": [
         "37530001-12"
+      ],
+      "startDate": "2026/6/1",
+      "endDate": "2026/6/21",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_mq5zuk3d",
+      "title": "美白一夏．潔顏修護超值組",
+      "shortTitle": "美白一夏．潔顏修護超值組",
+      "content": "洗卸潔顏露 x3 身體乳-輕巧瓶 x1 活動限定799元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375367-12",
+        "3753C6-12"
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
