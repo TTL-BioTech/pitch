@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260612135258",
-  "generatedAt": "2026-06-12T13:52:58.875Z",
+  "buildId": "20260612135754",
+  "generatedAt": "2026-06-12T13:57:54.672Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -2163,7 +2163,7 @@
     },
     {
       "code": "GIFT_BAG",
-      "name": "贈品｜麥汁全系列 搭贈提袋（限量送完為止）",
+      "name": "贈品｜黑麥汁提袋（麥汁全系列搭贈，限量送完為止）",
       "category": "贈品",
       "price": 0,
       "spec": "37500002-12 台酒生技黑麥汁提袋",
@@ -2232,7 +2232,7 @@
     },
     {
       "code": "GIFT_LAUNDRYPODS2",
-      "name": "贈品｜洗衣球 搭贈洗衣球五入組（限量送完為止）",
+      "name": "贈品｜洗衣球五入組（限量送完為止）",
       "category": "贈品",
       "price": 0,
       "spec": "gift-2 易洗樂洗衣球（5入）",
