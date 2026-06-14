@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260612135754",
-  "generatedAt": "2026-06-12T13:57:54.672Z",
+  "buildId": "20260614084301",
+  "generatedAt": "2026-06-14T08:43:01.236Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -30,7 +30,7 @@
         "content": "台灣在地新鮮生產，精選麥芽結合機能性異麥芽寡醣，並加入烏梅與山楂風味，入口酸甜開胃、清爽解膩。適合餐後、聚餐後或想來點有層次氣泡飲時作為日常補給選擇。",
         "tags": "麥汁,烏梅,異麥芽寡醣,無添加,解膩,飲料,全素",
         "isNew": false,
-        "name": "烏梅黑麥汁(六入)*4",
+        "name": "烏梅黑麥汁(六入)",
         "barcodeRaw": "4711588938550",
         "barcodeAliases": [
           "4711588938550"
@@ -57,7 +57,7 @@
         "content": "台灣在地新鮮生產，以精選麥芽搭配紅麴與機能性異麥芽寡醣，風味溫潤順口、層次更豐富。適合偏好帶點養生成熟感口味的人，作為日常補給補給健康養生。",
         "tags": "麥汁,紅麴,異麥芽寡醣,無添加,營養補給,飲料,全素,健康養生",
         "isNew": false,
-        "name": "紅麴黑麥汁(六入) *4",
+        "name": "紅麴黑麥汁(六入)",
         "barcodeRaw": "4711588443016",
         "barcodeAliases": [
           "4711588443016"
@@ -84,7 +84,7 @@
         "content": "台灣在地新鮮生產，結合桂圓、紅棗與機能性異麥芽寡醣，口感甘潤清甜，喝起來溫和順口。適合喜歡帶點暖感風味的人，日常補給也能多一分柔和層次，日常滋補、養顏美容最推薦。",
         "tags": "麥汁,桂圓,異麥芽寡醣,甘潤順口,飲料,養生風味,全素,滋補養顏",
         "isNew": false,
-        "name": "桂圓黑麥汁(六入)*4",
+        "name": "桂圓黑麥汁(六入)",
         "barcodeRaw": "4711588938598",
         "barcodeAliases": [
           "4711588938598"
@@ -111,7 +111,7 @@
         "content": "台灣在地生產新鮮麥汁，以德式工藝發酵麥芽，搭配機能性異麥芽寡醣與減糖25%配方(與紅麴黑麥汁相比)，喝起來清爽不膩。適合想找經典原味、又希望入口更輕盈的人作為日常補給，是無負擔的日常營養補給好選擇。",
         "tags": "麥汁,原味,減糖,異麥芽寡醣,無添加,飲料,全素",
         "isNew": false,
-        "name": "原味黑麥汁(六入)*4",
+        "name": "原味黑麥汁(六入)",
         "barcodeRaw": "4711588938468",
         "barcodeAliases": [
           "4711588938468"
@@ -138,7 +138,7 @@
         "content": "以台灣啤酒原料配方為基底，添加專利膳食纖維Fibersol®-2、大麥苗粉、大豆胜肽與異麥芽寡醣，順口好喝能幫助消化。對外食族、蔬果攝取不足或想補充纖維的人尤其好切入。",
         "tags": "麥汁,膳食纖維,異麥芽寡醣,大麥苗,大豆胜肽,飲料,全素",
         "isNew": false,
-        "name": "纖麥汁(六入)*4",
+        "name": "纖麥汁(六入)",
         "barcodeRaw": "4711588938734",
         "barcodeAliases": [
           "4711588938734"
