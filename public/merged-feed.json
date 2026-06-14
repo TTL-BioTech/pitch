@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260614133256",
-  "generatedAt": "2026-06-14T13:32:56.385Z",
+  "buildId": "20260614133801",
+  "generatedAt": "2026-06-14T13:38:01.054Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -2186,17 +2186,17 @@
     },
     {
       "code": "GIFT_BEAUTY",
-      "name": "贈品｜清潔用品滿3件贈送杯刷1個（限量送完為止）",
+      "name": "贈品｜滿3件贈送護手霜1個（限量送完為止）",
       "category": "贈品",
       "price": 0,
-      "spec": "gift-1 杯刷",
+      "spec": "gift-1 護手霜",
       "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%E7%B1%B3%E6%A4%8D%E9%86%87%E6%BB%8B%E6%BD%A4%E8%AD%B7%E6%89%8B%E9%9C%9C.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "barcode": "",
       "barcodeAliases": [],
       "is_hidden_pp": true,
-      "is_hidden": true,
+      "is_hidden": false,
       "pitch": {
         "title": "",
         "content": "",
