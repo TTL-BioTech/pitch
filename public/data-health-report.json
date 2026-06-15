@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260609051300",
-  "generatedAt": "2026-06-09T05:13:00.093Z",
-  "fingerprint": "c17dc9744b0b7bd5",
+  "buildId": "20260615054253",
+  "generatedAt": "2026-06-15T05:42:53.049Z",
+  "fingerprint": "a7dac6880be2381f",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -10,10 +10,10 @@
     "visibleProducts": 64,
     "hiddenProducts": 31,
     "promotions": 75,
-    "rankings": 86,
+    "rankings": 87,
     "severityCounts": {
       "error": 0,
-      "warning": 62,
+      "warning": 63,
       "info": 8
     },
     "issueTypeCounts": {
@@ -116,7 +116,7 @@
       "severity": "warning",
       "area": "rankings",
       "message": "排行資料品號不存在於商品主檔。",
-      "count": 27,
+      "count": 28,
       "samples": [
         "34020019-12 台酒花雕雞酒粕乾麵-酒香炸醬風味(單包)(自售)",
         "37100000-12 吃得比你好腸胃保健(犬用)",
@@ -130,13 +130,13 @@
         "37530011-12 VINATA飄帶麻布包",
         "38500001-12 花仙子克潮靈環保除濕桶350g",
         "37500010-12 麥汁-環保小麥杯",
+        "37500013-12 麥汁-涼感運動巾",
         "37300002-12 VINATA啤酒花禮盒外盒",
         "37110003-12 安可健納豆紅麴膠囊體驗盒（10顆裝）",
         "3753AF-12 VINATA酒粕維他命亮白面膜(單片)",
         "375168-12 S11益生菌(三入裝)",
         "3753BD-12 紅酒精華多重修護面膜(單片)",
         "3753AG-12 VINATA酒粕水嫩保濕面膜(單片)",
-        "37530006-12 VINATA緊緻活膚膠囊(3顆)",
         "37500007-12 易洗樂三合一杯蓋清潔刷"
       ]
     },
