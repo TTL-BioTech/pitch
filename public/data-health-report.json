@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260615054253",
-  "generatedAt": "2026-06-15T05:42:53.049Z",
-  "fingerprint": "a7dac6880be2381f",
+  "buildId": "20260618004753",
+  "generatedAt": "2026-06-18T00:47:53.153Z",
+  "fingerprint": "8e95ce5467687923",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -13,7 +13,7 @@
     "rankings": 87,
     "severityCounts": {
       "error": 0,
-      "warning": 63,
+      "warning": 61,
       "info": 8
     },
     "issueTypeCounts": {
@@ -41,9 +41,8 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少主訴求。",
-      "count": 6,
+      "count": 5,
       "samples": [
-        "37500011-12 台酒生技鹼性離子水",
         "351646-12 清酒粕潤膚皂",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
@@ -55,9 +54,8 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少商品文案。",
-      "count": 6,
+      "count": 5,
       "samples": [
-        "37500011-12 台酒生技鹼性離子水",
         "351646-12 清酒粕潤膚皂",
         "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
         "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
