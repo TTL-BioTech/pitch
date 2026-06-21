@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T00:02:58.024Z",
+  "generatedAt": "2026-06-21T00:02:57.196Z",
   "count": 75,
   "items": [
     {
@@ -1164,7 +1164,7 @@
       ],
       "startDate": "2026/3/17",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#d8f3dc",
       "ch": {
         "show": true,
@@ -1806,7 +1806,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
@@ -1834,7 +1834,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
@@ -1865,7 +1865,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
@@ -1892,7 +1892,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
@@ -1918,7 +1918,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
@@ -1945,7 +1945,7 @@
       ],
       "startDate": "2026/6/1",
       "endDate": "2026/6/21",
-      "status": "active",
+      "status": "ended",
       "bgColor": "#fbe1e7",
       "ch": {
         "show": true,
