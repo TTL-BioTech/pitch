@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260618011258",
-  "generatedAt": "2026-06-18T01:12:58.416Z",
+  "buildId": "20260624052253",
+  "generatedAt": "2026-06-24T05:22:53.811Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1608,7 +1608,7 @@
       "barcodeAliases": [
         "4711588002978"
       ],
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
         "title": "",
@@ -1635,7 +1635,7 @@
       "barcodeAliases": [
         "4711588002992"
       ],
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
         "title": "",
@@ -1662,7 +1662,7 @@
       "barcodeAliases": [
         "4711588002985"
       ],
-      "is_hidden_pp": false,
+      "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
         "title": "",

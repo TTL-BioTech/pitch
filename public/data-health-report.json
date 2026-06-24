@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260622030754",
-  "generatedAt": "2026-06-22T03:07:54.233Z",
-  "fingerprint": "6a16f4e5321bbdf3",
+  "buildId": "20260624052253",
+  "generatedAt": "2026-06-24T05:22:53.811Z",
+  "fingerprint": "25c275a8d8049427",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 95,
-    "visibleProducts": 64,
-    "hiddenProducts": 31,
+    "visibleProducts": 61,
+    "hiddenProducts": 34,
     "promotions": 75,
     "rankings": 87,
     "severityCounts": {
       "error": 0,
-      "warning": 61,
-      "info": 8
+      "warning": 52,
+      "info": 11
     },
     "issueTypeCounts": {
       "error": 0,
@@ -41,12 +41,9 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少主訴求。",
-      "count": 5,
+      "count": 2,
       "samples": [
         "351646-12 清酒粕潤膚皂",
-        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
-        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
         "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
@@ -54,12 +51,9 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少商品文案。",
-      "count": 5,
+      "count": 2,
       "samples": [
         "351646-12 清酒粕潤膚皂",
-        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
-        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
         "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
@@ -67,13 +61,10 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少標籤。",
-      "count": 6,
+      "count": 3,
       "samples": [
         "37500011-12 台酒生技鹼性離子水",
         "351646-12 清酒粕潤膚皂",
-        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
-        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
         "36330002-12 VINATA米植醇滋潤護手霜"
       ]
     },
@@ -142,10 +133,13 @@
       "severity": "info",
       "area": "rankings",
       "message": "排行資料對應到目前前台隱藏商品。",
-      "count": 2,
+      "count": 5,
       "samples": [
         "36370010-12 VINATA啤酒花洗手露",
-        "37530007-12 激透光米植醇特潤膠囊(40顆)"
+        "37530007-12 激透光米植醇特潤膠囊(40顆)",
+        "37170006-12 VINATA啤酒花舒活香氛皂-蓮香",
+        "37170007-12 VINATA啤酒花舒活香氛皂-薰衣草",
+        "37170005-12 VINATA啤酒花舒活香氛皂-小蒼蘭"
       ]
     }
   ]
