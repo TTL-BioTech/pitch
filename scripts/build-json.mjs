@@ -475,8 +475,20 @@ function getProductVisibleFlag(item) {
   return !(item?.is_hidden_pp === true)
 }
 
+function isCloudflareRelativeImagePath(value) {
+  const raw = String(value || '')
+    .trim()
+    .replace(/\\/g, '/')
+    .replace(/^\.\/+/, '')
+    .replace(/^\/+/, '')
+    .replace(/^product-images\/+/i, '')
+    .toLowerCase()
+  return ['products/', 'gifts/', 'promotions/'].some((prefix) => raw.startsWith(prefix))
+}
+
 function isUrlLike(value) {
-  return /^https?:\/\//i.test(String(value || '').trim())
+  const raw = String(value || '').trim()
+  return /^https?:\/\//i.test(raw) || isCloudflareRelativeImagePath(raw)
 }
 
 function parseMoreLinkRows(raw) {
