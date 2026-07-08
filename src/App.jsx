@@ -145,6 +145,24 @@ const MEDIA_SHEET_BODY_MAX_HEIGHT_STYLE = {
 }
 
 const BASE_URL = import.meta.env.BASE_URL || '/'
+const IMG_BASE = 'https://ttl-biotech-images.pages.dev/product-images/'
+const IMG_BASE_RELATIVE_PREFIXES = ['products/', 'gifts/', 'promotions/']
+
+function toCloudflareImageUrl(pathValue) {
+  const path = String(pathValue || '')
+    .trim()
+    .replace(/\\/g, '/')
+    .replace(/^\.\/+/, '')
+    .replace(/^\/+/, '')
+    .replace(/^product-images\/+/i, '')
+
+  if (!path || !IMG_BASE_RELATIVE_PREFIXES.some((prefix) => path.toLowerCase().startsWith(prefix))) {
+    return ''
+  }
+
+  return `${IMG_BASE}${encodeURI(path)}`
+}
+
 const STORAGE_KEYS = {
   theme: 'ttl-react-theme-v8',
   scale: 'ttl-react-scale-v8',
@@ -613,6 +631,11 @@ function CarouselCard({ children }) {
 function normalizeAssetUrl(url) {
   const raw = String(url || '').trim()
   if (!raw || raw.startsWith('data:')) return raw
+
+  // 與銷售系統共用商品 CSV：允許 O 欄只填 Cloudflare 圖床下的相對路徑。
+  // 例如 products/xxx.png、gifts/xxx.png，前台統一補成 https://ttl-biotech-images.pages.dev/product-images/...
+  const cloudflareUrl = toCloudflareImageUrl(raw)
+  if (cloudflareUrl) return cloudflareUrl
 
   try {
     const parsed = new URL(raw, typeof window !== 'undefined' ? window.location.href : 'https://example.com')
