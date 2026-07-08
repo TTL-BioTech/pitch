@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260624052253",
-  "generatedAt": "2026-06-24T05:22:53.811Z",
+  "buildId": "20260708082300",
+  "generatedAt": "2026-07-08T08:23:00.268Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1736,7 +1736,7 @@
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
       "price": 399,
       "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%20%E9%85%92%E7%B2%95%E7%B6%AD%E4%BB%96%E5%91%BD%E4%BA%AE%E7%99%BD%E9%9D%A2%E8%86%9C.png",
+      "photo": "https://github.com/cloud4ttlcvs-spec/product-images/blob/main/VINATA%20%E9%85%92%E7%B2%95%E7%B6%AD%E4%BB%96%E5%91%BD%E4%BA%AE%E7%99%BD%E9%9D%A2%E8%86%9C2.png?raw=true",
       "videoUrl": "https://www.youtube.com/watch?v=4qbOqSwfllI",
       "moreLinksRaw": "",
       "barcode": "4711588953201",
@@ -1763,7 +1763,7 @@
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
       "price": 399,
       "spec": "",
-      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%20%E9%85%92%E7%B2%95%E6%B0%B4%E5%AB%A9%E4%BF%9D%E6%BF%95%E9%9D%A2%E8%86%9C.png",
+      "photo": "https://raw.githubusercontent.com/cloud4ttlcvs-spec/product-images/main/VINATA%20%E9%85%92%E7%B2%95%E7%B6%AD%E4%BB%96%E5%91%BD%E4%BA%AE%E7%99%BD%E9%9D%A2%E8%86%9C.png",
       "videoUrl": "https://www.youtube.com/watch?v=BPuUesSl6Jw",
       "moreLinksRaw": "",
       "barcode": "4711588953218",
