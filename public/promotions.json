@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-30T00:02:59.847Z",
-  "count": 75,
+  "generatedAt": "2026-07-14T08:22:58.444Z",
+  "count": 76,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -1959,6 +1959,29 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_mrkdtzlr",
+      "title": "草本植萃 x 潔淨呵護-洗衣系列",
+      "shortTitle": "草本植萃 x 潔淨呵護-洗衣系列",
+      "content": "指定品項任選兩件8折。滿兩件以上，加贈一件「易洗樂香氛洗衣球-5入」。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370013-12",
+        "363741-12",
+        "363740-12"
+      ],
+      "startDate": "2026/7/14",
+      "endDate": "2026/8/9",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
