@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260719191256",
-  "generatedAt": "2026-07-19T19:12:56.925Z",
+  "buildId": "20260719191757",
+  "generatedAt": "2026-07-19T19:17:57.430Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -19,18 +19,22 @@
       "photo": "products/341371-12-x4-ume-plum-black-malt-drink-malt-drink-6pack.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=mhA9rstibRA",
       "moreLinksRaw": "YT|氣泡調飲篇|https://www.youtube.com/watch?v=KZ7uELxCmjc\nYT|健康科學篇|https://www.youtube.com/watch?v=yjt6RsndLmk\nYT|純淨標章篇|https://www.youtube.com/watch?v=jR62F1Bbosg\nYT|健康蔬食篇|https://www.youtube.com/watch?v=1aWb-17lmi4",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588938550",
+      "barcodeAliases": [
+        "4711588938550"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "烏梅酸甜解膩，順口耐喝的黑麥氣泡飲",
+        "content": "台灣在地新鮮生產，精選麥芽結合機能性異麥芽寡醣，並加入烏梅與山楂風味，入口酸甜開胃、清爽解膩。適合餐後、聚餐後或想來點有層次氣泡飲時作為日常補給選擇。",
+        "tags": "麥汁,烏梅,異麥芽寡醣,無添加,解膩,飲料,全素",
         "isNew": false,
-        "name": "●烏梅黑麥汁(六入) x4",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "name": "烏梅黑麥汁(六入)",
+        "barcodeRaw": "4711588938550",
+        "barcodeAliases": [
+          "4711588938550"
+        ]
       }
     },
     {
@@ -42,18 +46,22 @@
       "photo": "products/341368-12-x4-red-koji-black-malt-drink-malt-drink-6pack.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=mhA9rstibRA",
       "moreLinksRaw": "YT|氣泡調飲篇|https://www.youtube.com/watch?v=KZ7uELxCmjc\nYT|健康科學篇|https://www.youtube.com/watch?v=yjt6RsndLmk\nYT|純淨標章篇|https://www.youtube.com/watch?v=jR62F1Bbosg\nYT|健康蔬食篇|https://www.youtube.com/watch?v=1aWb-17lmi4",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588443016",
+      "barcodeAliases": [
+        "4711588443016"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "紅麴溫潤順口，日常補給、養生健康黑麥汁",
+        "content": "台灣在地新鮮生產，以精選麥芽搭配紅麴與機能性異麥芽寡醣，風味溫潤順口、層次更豐富。適合偏好帶點養生成熟感口味的人，作為日常補給補給健康養生。",
+        "tags": "麥汁,紅麴,異麥芽寡醣,無添加,營養補給,飲料,全素,健康養生",
         "isNew": false,
-        "name": "●紅麴黑麥汁(六入) x4",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "name": "紅麴黑麥汁(六入)",
+        "barcodeRaw": "4711588443016",
+        "barcodeAliases": [
+          "4711588443016"
+        ]
       }
     },
     {
@@ -65,18 +73,22 @@
       "photo": "products/341369-12-x4-longan-black-malt-drink-malt-drink-6pack.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=1aWb-17lmi4",
       "moreLinksRaw": "YT|氣泡調飲篇|https://www.youtube.com/watch?v=KZ7uELxCmjc\nYT|健康科學篇|https://www.youtube.com/watch?v=yjt6RsndLmk\nYT|純淨標章篇|https://www.youtube.com/watch?v=jR62F1Bbosg\nYT|健康蔬食篇|https://www.youtube.com/watch?v=1aWb-17lmi4",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588938598",
+      "barcodeAliases": [
+        "4711588938598"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "桂圓甘潤清甜，暖心順口的黑麥氣泡飲",
+        "content": "台灣在地新鮮生產，結合桂圓、紅棗與機能性異麥芽寡醣，口感甘潤清甜，喝起來溫和順口。適合喜歡帶點暖感風味的人，日常補給也能多一分柔和層次，日常滋補、養顏美容最推薦。",
+        "tags": "麥汁,桂圓,異麥芽寡醣,甘潤順口,飲料,養生風味,全素,滋補養顏",
         "isNew": false,
-        "name": "●桂圓黑麥汁(六入) x4",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "name": "桂圓黑麥汁(六入)",
+        "barcodeRaw": "4711588938598",
+        "barcodeAliases": [
+          "4711588938598"
+        ]
       }
     },
     {
@@ -88,18 +100,22 @@
       "photo": "products/341372-12-x4-original-black-malt-drink-malt-drink-6pack.jpg",
       "videoUrl": "https://www.youtube.com/watch?v=mhA9rstibRA",
       "moreLinksRaw": "YT|氣泡調飲篇|https://www.youtube.com/watch?v=KZ7uELxCmjc\nYT|健康科學篇|https://www.youtube.com/watch?v=yjt6RsndLmk\nYT|純淨標章篇|https://www.youtube.com/watch?v=jR62F1Bbosg\nYT|健康蔬食篇|https://www.youtube.com/watch?v=1aWb-17lmi4",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588938468",
+      "barcodeAliases": [
+        "4711588938468"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "減糖25%｜清爽好喝不死甜，黑麥氣泡飲的經典款",
+        "content": "台灣在地生產新鮮麥汁，以德式工藝發酵麥芽，搭配機能性異麥芽寡醣與減糖25%配方(與紅麴黑麥汁相比)，喝起來清爽不膩。適合想找經典原味、又希望入口更輕盈的人作為日常補給，是無負擔的日常營養補給好選擇。",
+        "tags": "麥汁,原味,減糖,異麥芽寡醣,無添加,飲料,全素",
         "isNew": false,
-        "name": "●原味黑麥汁(六入) x4",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "name": "原味黑麥汁(六入)",
+        "barcodeRaw": "4711588938468",
+        "barcodeAliases": [
+          "4711588938468"
+        ]
       }
     },
     {
@@ -111,18 +127,22 @@
       "photo": "products/34130014-12-x4-fiber-malt-drink-malt-drink-6pack.webp",
       "videoUrl": "https://www.youtube.com/watch?v=0gosGCK6im8",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588938734",
+      "barcodeAliases": [
+        "4711588938734"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "專利膳食纖維，順口好喝、幫助消化的機能麥汁",
+        "content": "以台灣啤酒原料配方為基底，添加專利膳食纖維Fibersol®-2、大麥苗粉、大豆胜肽與異麥芽寡醣，順口好喝能幫助消化。對外食族、蔬果攝取不足或想補充纖維的人尤其好切入。",
+        "tags": "麥汁,膳食纖維,異麥芽寡醣,大麥苗,大豆胜肽,飲料,全素",
         "isNew": false,
-        "name": "●纖麥汁(六入) x4",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "name": "纖麥汁(六入)",
+        "barcodeRaw": "4711588938734",
+        "barcodeAliases": [
+          "4711588938734"
+        ]
       }
     },
     {
@@ -134,18 +154,22 @@
       "photo": "products/37500011-12-alkaline-ion-water.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588015756",
+      "barcodeAliases": [
+        "4711588015756"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
+        "title": "『非臭氧製程』 +『超潔淨無菌產線』｜ 保留鈣、鎂、鈉、鉀等天然礦物質",
+        "content": "台酒 生技 鹼性離子水使用 水源 為 承接中央山脈的自流泉水 ，山間的青翠孕育了山脈泉水，經電解水製程專利處理，以特定電解技術進行鹼性離子反應，形成可還原成小分子結構水，保留天然微礦物質更易於吸收，口感更佳且細緻綿密 。",
         "tags": "",
-        "isNew": false,
+        "isNew": true,
         "name": "台酒生技鹼性離子水",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588015756",
+        "barcodeAliases": [
+          "4711588015756"
+        ]
       }
     },
     {
@@ -157,18 +181,22 @@
       "photo": "products/37110009-12-red-koji-ankojian-natto-chromium-dual.png",
       "videoUrl": "https://www.facebook.com/share/r/1D8ouLLYPY/",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588011697",
+      "barcodeAliases": [
+        "4711588011697"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "納豆×紅麴×鉻｜一次到位的日常補給配方",
+        "content": "集結MIT紅麴、納豆激酶、天然來源Q10與鉻的複方設計，成分完整、日常食用方便，菸鹼酸鉻有助於維持醣類正常代謝，很適合用在重口味、外食頻率高或在意代謝管理族群的補給推薦。",
+        "tags": "紅麴,納豆,Q10,鉻,膠囊,全素",
+        "isNew": true,
         "name": "安可健納豆紅麴+鉻雙效膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588011697",
+        "barcodeAliases": [
+          "4711588011697"
+        ]
       }
     },
     {
@@ -180,18 +208,22 @@
       "photo": "products/37110011-12-red-koji-ankojian-natto-chromium-dual-trial-box.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "471158801178",
+      "barcodeAliases": [
+        "471158801178"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "納豆×紅麴×鉻｜一次到位的日常補給配方",
+        "content": "集結MIT紅麴、納豆激酶、天然來源Q10與鉻的複方設計，成分完整、日常食用方便，菸鹼酸鉻有助於維持醣類正常代謝，很適合用在重口味、外食頻率高或在意代謝管理族群的補給推薦。",
+        "tags": "紅麴,納豆,Q10,鉻,膠囊,全素,體驗",
+        "isNew": true,
         "name": "安可健納豆紅麴+鉻雙效膠囊體驗盒",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "471158801178",
+        "barcodeAliases": [
+          "471158801178"
+        ]
       }
     },
     {
@@ -203,18 +235,22 @@
       "photo": "products/37110010-12-yilijie.png",
       "videoUrl": "https://www.facebook.com/share/r/1CdVqkkZRS/",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588011680",
+      "barcodeAliases": [
+        "4711588011680"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "UC-II®三效配方｜一天一錠的行動保養",
+        "content": "添加40mg專利UC-II®、橄欖多酚與啤酒花萃取，一天一錠就能完成日常關鍵保養。對忙碌上班族、熟齡族或重視行動舒適度的人來說，溝通上很好理解。",
+        "tags": "UC-II,橄欖多酚,啤酒花,關鍵保養,錠劑",
+        "isNew": true,
         "name": "益立捷",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588011680",
+        "barcodeAliases": [
+          "4711588011680"
+        ]
       }
     },
     {
@@ -226,18 +262,22 @@
       "photo": "products/375156-12-red-koji.png",
       "videoUrl": "https://www.youtube.com/watch?v=TmDK2hf3PQE",
       "moreLinksRaw": "YT|台酒生技嚴謹檢驗為食安把關|https://www.youtube.com/watch?v=ow5rQU67kXQ",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588931179",
+      "barcodeAliases": [
+        "4711588931179"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "調節血脂健康食品，日常保養更安心",
+        "content": "嚴選紅麴菌種製成，每份含Monacolin K 10.5±1.5毫克，並具調節血脂類健康食品許可，品質控管更有依據。適合飲食不規律或偏重口味族群，作為日常保養補給更安心。",
+        "tags": "健康食品,紅麴,Monacolin K,膠囊,小綠人",
         "isNew": false,
         "name": "紅麴膠囊(健康食品認證)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588931179",
+        "barcodeAliases": [
+          "4711588931179"
+        ]
       }
     },
     {
@@ -249,18 +289,22 @@
       "photo": "products/375132-12-red-koji-natto.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911164",
+      "barcodeAliases": [
+        "4711588911164"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "紅麴搭配納豆菌孢子，重口族的代謝及消化道機能日常保養",
+        "content": "結合紅麴菌種與高安定性納豆菌孢子，配方單純明確，採全素植物膠囊設計。適合偏好紅麴配方、又希望補給成分更完整，維持代謝及消化道機能的日常保養族群。",
+        "tags": "紅麴,納豆,膠囊,全素,日常保養",
         "isNew": false,
         "name": "納豆紅麴膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911164",
+        "barcodeAliases": [
+          "4711588911164"
+        ]
       }
     },
     {
@@ -272,18 +316,22 @@
       "photo": "products/37110007-12-deep-sea-fish-oil-fish-oil.png",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E6%AF%8F%E5%88%86%E9%8C%A2%E9%83%BD%E4%B8%8D%E6%B5%AA%E8%B2%BB%E6%B7%B1%E6%B5%B7%E9%AD%9A%E6%B2%B9%E8%BB%9F%E8%86%A0%E5%9B%8A-httpseshop-ttlcomyzv0k-5%E5%A4%A7%E5%A5%BD%E8%99%95%E8%B2%BC%E5%BF%83%E5%AE%88%E8%AD%B7-%E5%90%AB%E9%87%8F%E6%8E%8C%E6%8E%A7-epadha-%E6%AF%8F%E4%BB%BD%E5%90%AB%E9%87%8F574-mg%E5%89%9B%E5%89%9B%E5%A5%BD%E5%A4%AA%E5%A4%9A%E4%B9%9F%E4%B8%8D%E5%A5%BD-%E6%8C%AA%E5%A8%81/1417774013301535/",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588008192",
+      "barcodeAliases": [
+        "4711588008192"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "挪威EPAX，IFOS五星rTG型魚油，日常補給更安心",
+        "content": "選用挪威EPAX頂級魚油，rTG型態，小顆好吞，並符合IFOS五星標準。對經常外食、少吃魚或想補充基礎油脂營養的人，攝取每毫克EPA+DHA的價格在市場上很有競爭力，溝通上相當直覺。",
+        "tags": "魚油,Omega-3,EPA,DHA,挪威EPAX,rTG,IFOS五星",
         "isNew": false,
         "name": "深海魚油軟膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588008192",
+        "barcodeAliases": [
+          "4711588008192"
+        ]
       }
     },
     {
@@ -295,18 +343,22 @@
       "photo": "products/385104-12-glucosamine.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4712847546424",
+      "barcodeAliases": [
+        "4712847546424"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "葡萄糖胺複方搭配CPP酪蛋白磷酸胜肽，關鍵保養更完整",
+        "content": "以葡萄糖胺、軟骨素、紅藻粉與薑黃為基底，並加入CPP酪蛋白磷酸胜肽，讓整體補給更完整。適合熟齡族、運動族或平常就有關鍵保養習慣的人持續搭配。",
+        "tags": "葡萄糖胺,軟骨素,CPP,酪蛋白磷酸胜肽,錠劑,關鍵保養",
         "isNew": false,
         "name": "葡萄糖胺複方錠",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4712847546424",
+        "barcodeAliases": [
+          "4712847546424"
+        ]
       }
     },
     {
@@ -318,18 +370,22 @@
       "photo": "products/375165-12-lutein.webp",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E8%91%89%E9%BB%83%E7%B4%A0%E8%BB%9F%E8%86%A0%E5%9B%8A-%E5%B8%B6%E6%82%A8%E8%B5%B0%E9%80%B2%E7%99%82%E7%99%92%E7%9A%84%E5%A4%A7%E8%87%AA%E7%84%B6/858779522437881/",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911317",
+      "barcodeAliases": [
+        "4711588911317"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "10:2黃金比例葉黃素：玉米黃素，3C族日常晶亮補給",
+        "content": "採用游離型FloraGLO®葉黃素，搭配玉米黃素、花青素、魚油與蝦紅素，形成多元晶亮補給組合。對長時間使用3C的學生、上班族與熟齡族來說，訴求明確又好理解。",
+        "tags": "葉黃素,玉米黃素,魚油,花青素,軟膠囊,FloraGLO,游離型",
         "isNew": false,
         "name": "葉黃素軟膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911317",
+        "barcodeAliases": [
+          "4711588911317"
+        ]
       }
     },
     {
@@ -341,18 +397,22 @@
       "photo": "products/385102-12-lycopene-pumpkin-seed-oil.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4710768650466",
+      "barcodeAliases": [
+        "4710768650466"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "南瓜子油結合茄紅素，男性日常補給更完整",
+        "content": "以南瓜子油搭配美國專利番茄萃取物（茄紅素），並加入酵母鋅、硒與維生素E、C，補給面向更完整。很適合男性保養、工作壓力大或想加強日常補給者切入。",
+        "tags": "南瓜子油,茄紅素,鋅,硒,軟膠囊,男性保養",
         "isNew": false,
         "name": "茄紅南瓜子油軟膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4710768650466",
+        "barcodeAliases": [
+          "4710768650466"
+        ]
       }
     },
     {
@@ -364,18 +424,22 @@
       "photo": "products/375175-12-beta-beta-glucan.png",
       "videoUrl": "https://www.youtube.com/watch?v=2otb_-ExFH4",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588931490",
+      "barcodeAliases": [
+        "4711588931490"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "免疫調節健康食品｜日常調整體質",
+        "content": "採台酒專利啤酒酵母破壁技術提萃β-聚葡萄糖，並具免疫調節健康食品許可，產品識別度高。對重視日常防護、滋補強身與健康管理的人，是很有說服力的補給選項。",
+        "tags": "健康食品,β-聚葡萄糖,啤酒酵母,膠囊,全素,免疫調節,小綠人",
         "isNew": false,
         "name": "β-聚葡萄糖膠囊(健康食品認證)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588931490",
+        "barcodeAliases": [
+          "4711588931490"
+        ]
       }
     },
     {
@@ -387,18 +451,22 @@
       "photo": "products/37510000-12-beer-yeast-powder.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588931513",
+      "barcodeAliases": [
+        "4711588931513"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "台酒啤酒酵母粉，營養與膳食纖維一次補給",
+        "content": "台酒專業生產的純啤酒酵母粉，保留天然營養與膳食纖維，沖泡方式也很方便，可加在豆漿、牛奶，甚至添加到雞湯熬煮更提鮮味。適合全家日常營養補充、銀髮族補給，或作為素食者的日常備品。",
+        "tags": "啤酒酵母,膳食纖維,酵母粉,素食可食,日常補給",
         "isNew": false,
         "name": "金牌啤酒酵母粉",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588931513",
+        "barcodeAliases": [
+          "4711588931513"
+        ]
       }
     },
     {
@@ -410,18 +478,22 @@
       "photo": "products/37110005-12-s11-probiotics.png",
       "videoUrl": "https://www.facebook.com/Dr.KatrinaC/videos/%E4%BD%A0%E7%9F%A5%E9%81%93%E7%9B%8A%E7%94%9F%E8%8F%8C%E6%80%8E%E9%BA%BC%E6%8C%91%E6%89%8D%E7%9C%9F%E6%AD%A3%E5%B0%8D%E6%88%91%E5%80%91%E6%9C%89%E5%B9%AB%E5%8A%A9%E5%97%8E%E7%9B%8A%E7%94%9F%E8%8F%8C%E5%B0%8D%E6%88%91%E5%80%91%E5%8F%88%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E8%99%95%E5%91%A2%E8%AE%93%E6%BD%94%E9%9B%AF%E9%86%AB%E5%B8%AB%E6%8F%90%E9%86%92%E4%B8%89%E5%A4%A7%E9%97%9C%E9%8D%B5-httpseshop-ttlcoms11-shopee-%E8%8F%8C%E7%A8%AE%E8%A6%81%E5%A4%A0%E5%A4%9A%E5%85%83%E6%89%8D%E8%83%BD/2015684955838615/",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588003005",
+      "barcodeAliases": [
+        "4711588003005"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "11株乳酸菌搭配寡醣，順暢保養更有感",
+        "content": "嚴選11種乳酸菌搭配台酒專利異麥芽寡醣，並採三層包覆技術維持菌種活性。對外食族、久坐族或在意順暢感的人來說，訴求直接又好帶入，小朋友也喜愛的微酸甜口感。",
+        "tags": "益生菌,異麥芽寡醣,益生元,奶素,順暢保養,專利包覆技術",
         "isNew": false,
         "name": "S11益生菌",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588003005",
+        "barcodeAliases": [
+          "4711588003005"
+        ]
       }
     },
     {
@@ -433,18 +505,22 @@
       "photo": "products/375176-12-yeast-complex-tablet.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588931483",
+      "barcodeAliases": [
+        "4711588931483"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "啤酒酵母結合乳酸菌，日常營養補給更方便",
+        "content": "結合台啤酵母、麥麴與專利凝乳芽孢桿菌，將酵母營養與乳酸菌補給一次整合。很適合學生、上班族或想找日常基礎型補給的人長期搭配。",
+        "tags": "啤酒酵母,乳酸菌,複方錠,全素,營養補給",
         "isNew": false,
         "name": "台啤酵母複方錠",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588931483",
+        "barcodeAliases": [
+          "4711588931483"
+        ]
       }
     },
     {
@@ -456,18 +532,22 @@
       "photo": "products/365230-12-himo-isomalto-oligosaccharide.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911263",
+      "barcodeAliases": [
+        "4711588911263"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "胃腸功能改善健康食品，輕甜，單吃、搭飲品、搭益生菌都好用。",
+        "content": "以高純度異麥芽寡醣為主軸，獲得胃腸功能改善健康食品許可，經動物實驗結果，有助於增加腸內益生菌、減少腸內害菌。\n\n可作為養益生菌的食物，更單純好理解。可搭配益生菌產品一起推薦，輕甜口味也可單搭飲品使用，適合想從基礎順暢保養開始的人。",
+        "tags": "健康食品,異麥芽寡醣,益生元,順暢保養,代糖應用,胃腸功能改善,小綠人",
         "isNew": false,
         "name": "HIMO異麥芽寡醣",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911263",
+        "barcodeAliases": [
+          "4711588911263"
+        ]
       }
     },
     {
@@ -479,18 +559,22 @@
       "photo": "products/37510003-12-probiotics.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911591",
+      "barcodeAliases": [
+        "4711588911591"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "結合「海洋雙胜肽」、「薑黃萃取物」、「維生素B群」｜促進新陳代謝",
+        "content": "專利乳酸菌搭配木寡醣等益生元，搭配海洋雙胜肽、維生素B1.B2.B6，入口清爽，作為日常補給較容易持續。\n促進新陳代謝，在意清新感、好狀態，適合喜好海味、經常應酬的族群。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
+        "tags": "每日益刻,益生菌,薑黃,維生素B群,益生元,專利菌株,順暢保養,維持代謝,應酬補給,專利包覆技術",
         "isNew": false,
         "name": "風淨益生菌",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911591",
+        "barcodeAliases": [
+          "4711588911591"
+        ]
       }
     },
     {
@@ -502,18 +586,22 @@
       "photo": "products/37510002-12-probiotics.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911614",
+      "barcodeAliases": [
+        "4711588911614"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "女性日常保養的益生菌好物，添加蔓越莓及D-甘露糖",
+        "content": "以女性日常保養需求為出發的益生菌配方，補給方向更聚焦，每包含美國專利「蔓越莓萃取 Cran-Max®」 250毫克及「D-甘露糖 」500毫克。\n適合想做基礎保養、偏好溫和補給路線的女性族群日常搭配。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
+        "tags": "每日益刻,益生菌,蔓越莓,D-甘露糖,專利菌株,維生素C,女性保養,專利包覆技術",
         "isNew": false,
         "name": "保蜜益生菌",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911614",
+        "barcodeAliases": [
+          "4711588911614"
+        ]
       }
     },
     {
@@ -525,18 +613,22 @@
       "photo": "products/37110002-12-probiotics.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588911638",
+      "barcodeAliases": [
+        "4711588911638"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "7株乳酸菌×19種酵素｜消化順暢一次到位",
+        "content": "「保暢益生菌」不是單純補菌，而是把順暢感做成一套完整配方：先用 7 大益生菌打底，再用 19 種消化酵素去承接吃進去之後的負擔，接著加入「日本專利益生元」去養好菌，最後再用後生元把整體菌相照顧得更完整。\n所以它不只是「有益生菌」，而是把日常順暢保養需要的幾個關鍵環節，一次整理進同一套配方裡。\n\n△日本&德國專利顆粒劑型：好入口不殘留、比膠囊更易吸收、顆粒狀不易受潮\n△五層凍晶結構：提供活菌完整防護",
+        "tags": "每日益刻,益生菌,消化酵素,益生元,後生元,專利菌株,膳食纖維,順暢保養,專利包覆技術",
         "isNew": false,
         "name": "保暢益生菌",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588911638",
+        "barcodeAliases": [
+          "4711588911638"
+        ]
       }
     },
     {
@@ -557,7 +649,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "每日益刻 任選買一送一",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -580,7 +672,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "保健激安最強組合",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -594,18 +686,22 @@
       "photo": "products/36370004-12-720ml-easy-clean-dish-detergent.png",
       "videoUrl": "https://drive.google.com/file/d/1f1AKm4rRjS-UPX-SPfYq_VF3Wm24wT07/view?usp=drive_link",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937331",
+      "barcodeAliases": [
+        "4711588937331"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "啤酒花植萃洗潔精，環保低敏、好沖好洗不咬手",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n結合「啤酒花植萃」與植物性界面活性劑，強調抗油去汙、好沖洗、不易殘留。很適合拿來主打環保、低敏與不咬手訴求，家庭主婦接受度高。",
+        "tags": "易洗樂,啤酒花,洗潔精,植萃,好沖洗,低敏,環保,洗碗",
         "isNew": false,
         "name": "易洗樂洗潔精720ml",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937331",
+        "barcodeAliases": [
+          "4711588937331"
+        ]
       }
     },
     {
@@ -617,18 +713,22 @@
       "photo": "products/36370003-12-600ml-easy-clean-dish-detergent-refill.png",
       "videoUrl": "https://drive.google.com/file/d/1f1AKm4rRjS-UPX-SPfYq_VF3Wm24wT07/view?usp=drive_link",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937034",
+      "barcodeAliases": [
+        "4711588937034"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "環保低敏、好沖好洗不咬手\n補充更划算的啤酒花植萃洗潔精",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n結合「啤酒花植萃」與植物性界面活性劑，強調抗油去汙、好沖洗、不易殘留。很適合拿來主打環保、低敏與不咬手訴求，家庭主婦接受度高。\n\n補充包延續啤酒花植萃洗潔精的潔淨與好沖洗特色，日常補充更省更方便。適合已使用正裝的家庭客群，或想兼顧環保與使用成本的人。",
+        "tags": "易洗樂,啤酒花,洗潔精,補充包,植萃,好沖洗,低敏,環保,洗碗",
         "isNew": false,
         "name": "易洗樂洗潔精補充包600ml",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937034",
+        "barcodeAliases": [
+          "4711588937034"
+        ]
       }
     },
     {
@@ -640,18 +740,22 @@
       "photo": "products/36370001-12-easy-clean.png",
       "videoUrl": "https://drive.google.com/file/d/1f1AKm4rRjS-UPX-SPfYq_VF3Wm24wT07/view?usp=drive_link",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937133",
+      "barcodeAliases": [
+        "4711588937133"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "環保低敏、好沖好洗不咬手\n家用補貨一次到位的組合",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n將易洗樂洗潔精以組合方式一次備齊，兼顧使用便利與採購效率。很適合家庭補貨、節慶促銷或做為實用型組合銷售。",
+        "tags": "易洗樂,啤酒花,洗潔精,補充包,組合,植萃,好沖洗,環保,低敏,洗碗",
         "isNew": false,
         "name": "易洗樂洗潔組合",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937133",
+        "barcodeAliases": [
+          "4711588937133"
+        ]
       }
     },
     {
@@ -663,18 +767,22 @@
       "photo": "products/36370002-12-5-easy-clean-dish-detergent-value-pack-5l.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937089",
+      "barcodeAliases": [
+        "4711588937089"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "環保低敏、好沖好洗不咬手\n超值划算的大容量包裝",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n結合「啤酒花植萃」與植物性界面活性劑，強調抗油去汙、好沖洗、不易殘留。很適合拿來主打環保、低敏與不咬手訴求，家庭主婦接受度高。\n\n大容量一次備足，常態補充最划算\n適合已使用正裝的家庭客群、餐飲店家等長期使用與定期補貨，大容量設定有最超值的價格感受，符合兼顧環保與使用成本。",
+        "tags": "易洗樂,啤酒花,洗潔精,補充包,組合,植萃,好沖洗,環保,低敏,洗碗",
         "isNew": false,
         "name": "易洗樂洗潔精超值大包裝5公升(升級版)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937089",
+        "barcodeAliases": [
+          "4711588937089"
+        ]
       }
     },
     {
@@ -686,18 +794,22 @@
       "photo": "products/363741-12-2-easy-clean-anti-mite-laundry-detergent-2l.png",
       "videoUrl": "https://drive.google.com/file/d/12Z_2uNx1BuK-Y_gJzEOXZYtlmIGKJkkX/view?usp=drive_link",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937393",
+      "barcodeAliases": [
+        "4711588937393"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "雙植萃抗菌防蟎，環保低敏、低泡省水的洗衣精",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n以「橘子精油」與「啤酒花萃取物」打造雙植萃配方，主打抗菌防蟎、低泡省水與柑橘香氣。對家中有幼兒、敏感膚質衣物或重視洗後安心感的客群特別適合。",
+        "tags": "易洗樂,啤酒花,橘子精油,洗衣,抗菌,防蟎,低泡,低敏,環保",
         "isNew": false,
         "name": "2公升易洗樂抗菌防蟎洗衣精",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937393",
+        "barcodeAliases": [
+          "4711588937393"
+        ]
       }
     },
     {
@@ -709,18 +821,22 @@
       "photo": "products/363740-12-1-6-easy-clean-refill-anti-mite-laundry-detergent-1-6l.webp",
       "videoUrl": "https://drive.google.com/file/d/12Z_2uNx1BuK-Y_gJzEOXZYtlmIGKJkkX/view?usp=drive_link",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588937416",
+      "barcodeAliases": [
+        "4711588937416"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "大容量補充包，抗菌防蟎更省更實用",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n△A.A. Clean Label 無添加一星驗證。\n△台灣環保標章。\n\n以「橘子精油」與「啤酒花萃取物」打造雙植萃配方，主打抗菌防蟎、低泡省水與柑橘香氣。對家中有幼兒、敏感膚質衣物或重視洗後安心感的客群特別適合。\n\n延續雙植萃抗菌防蟎配方，1.6公升補充包更適合家庭長期使用與定期補貨。大容量設定讓價格感受更好，也很適合通路推組合或囤貨提案。",
+        "tags": "易洗樂,啤酒花,橘子精油,洗衣,補充包,抗菌,防蟎,低泡,低敏,環保",
         "isNew": false,
         "name": "1.6公升易洗樂抗菌防蟎洗衣精補充包",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588937416",
+        "barcodeAliases": [
+          "4711588937416"
+        ]
       }
     },
     {
@@ -732,18 +848,22 @@
       "photo": "products/37370013-12-easy-clean-laundry-pods.webp",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588013615",
+      "barcodeAliases": [
+        "4711588013615"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花植萃洗衣球，潔淨、便利與香氛體驗｜一顆搞定",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n抗菌、防蟎、防霉功效\n採用啤酒花萃取物植萃配方，搭配再生界面活性劑與單顆定量設計，使用時不沾手、洗衣更俐落方便；再結合前中後調香氛層次，讓日常洗衣不只是清潔，更是更輕鬆、更有質感的洗衣體驗。",
+        "tags": "易洗樂,洗衣,啤酒花萃取,香氛洗衣,單顆定量,不沾手,抗菌,防蟎,防霉,低敏",
+        "isNew": true,
         "name": "易洗樂香氛洗衣球",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588013615",
+        "barcodeAliases": [
+          "4711588013615"
+        ]
       }
     },
     {
@@ -755,18 +875,22 @@
       "photo": "products/37370014-12-5-easy-clean-laundry-pods-5pack.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588013622",
+      "barcodeAliases": [
+        "4711588013622"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花植萃洗衣球，潔淨、便利與香氛體驗｜一顆搞定",
+        "content": "△美國USDA綠色產品；\n△FDA認證實驗室低敏驗證；\n抗菌、防蟎、防霉功效\n採用啤酒花萃取物植萃配方，搭配再生界面活性劑與單顆定量設計，使用時不沾手、洗衣更俐落方便；再結合前中後調香氛層次，讓日常洗衣不只是清潔，更是更輕鬆、更有質感的洗衣體驗。",
+        "tags": "易洗樂,洗衣,啤酒花萃取,香氛洗衣,單顆定量,不沾手,抗菌,防蟎,防霉,低敏,輕巧包",
+        "isNew": true,
         "name": "易洗樂香氛洗衣球-5入",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588013622",
+        "barcodeAliases": [
+          "4711588013622"
+        ]
       }
     },
     {
@@ -778,8 +902,10 @@
       "photo": "products/351646-12-sake-lees-moisturizing-soap.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913144",
+      "barcodeAliases": [
+        "4711588913144"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
@@ -788,8 +914,10 @@
         "tags": "",
         "isNew": false,
         "name": "清酒粕潤膚皂",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913144",
+        "barcodeAliases": [
+          "4711588913144"
+        ]
       }
     },
     {
@@ -801,18 +929,22 @@
       "photo": "products/37170002-12-wine-soap-pine-charcoal.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913748",
+      "barcodeAliases": [
+        "4711588913748"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "松炭清潔力，洗後清爽不厚重",
+        "content": "添加松炭成分，泡沫細緻、洗感清爽，適合偏好潔淨感與清新香氣的人。可主打日常清潔、去除悶膩感與夏季使用情境。",
+        "tags": "酒好皂,松炭,香皂,清爽潔淨,深層清潔",
         "isNew": false,
         "name": "酒好皂(松炭)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913748",
+        "barcodeAliases": [
+          "4711588913748"
+        ]
       }
     },
     {
@@ -824,18 +956,22 @@
       "photo": "products/37170003-12-sake-lees-wine-soap.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913731",
+      "barcodeAliases": [
+        "4711588913731"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "清酒粕柔嫩洗感，洗後細緻不乾澀",
+        "content": "以清酒粕精華帶出柔嫩洗感，洗後肌膚細緻不乾澀，整體感受溫和舒適。很適合拿來溝通送禮、自用兩相宜的日常香皂路線。",
+        "tags": "酒好皂,清酒粕,香皂,柔嫩膚觸,細緻光澤",
         "isNew": false,
         "name": "酒好皂(清酒粕)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913731",
+        "barcodeAliases": [
+          "4711588913731"
+        ]
       }
     },
     {
@@ -847,18 +983,22 @@
       "photo": "products/37170004-12-wine-soap-red-wine-clay.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913755",
+      "barcodeAliases": [
+        "4711588913755"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "紅酒泥潤澤洗感，清潔同時保有柔嫩膚觸",
+        "content": "添加紅酒泥精華，洗感細緻並保有潤澤膚觸，整體更偏向質感型香皂。適合推薦給喜歡帶點保養感、又重視香皂儀式感的客群。",
+        "tags": "酒好皂,紅酒泥,香皂,潤澤洗感,美白肌膚",
         "isNew": false,
         "name": "酒好皂(紅酒泥)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913755",
+        "barcodeAliases": [
+          "4711588913755"
+        ]
       }
     },
     {
@@ -870,18 +1010,22 @@
       "photo": "products/36170002-12-wine-soap-gift-box.webp",
       "videoUrl": "https://youtube.com/shorts/uIYQsUnT2fs?si=ed2Y22xNfqQ8jRT5",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588001834",
+      "barcodeAliases": [
+        "4711588001834"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "三款酒好皂一次入手的送禮首選",
+        "content": "內含松炭皂、清酒粕皂與紅酒泥皂，並附沐浴手皂套，起泡更快更細緻。作為送禮、自用分裝或初次體驗酒好皂系列都很適合。",
+        "tags": "酒好皂,禮盒,松炭皂,清酒粕皂,紅酒泥皂",
         "isNew": false,
         "name": "酒好皂禮盒",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588001834",
+        "barcodeAliases": [
+          "4711588001834"
+        ]
       }
     },
     {
@@ -893,18 +1037,22 @@
       "photo": "products/36130004-12-vinata-moisturizing-anti-wrinkle-serum.png",
       "videoUrl": "https://www.youtube.com/watch?v=J84DC9k6rPE",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588005108",
+      "barcodeAliases": [
+        "4711588005108"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "雙發酵精萃加持，保濕潤澤更有感",
+        "content": "結合紅酒多酚、酵母賦活精華與南極海醣蛋白等保濕成分，為肌膚補充水分與潤澤感。適合想從精華液開始建立基礎保養、在意乾燥與細紋的人使用。\n能深層撫紋並高效保濕，使肌膚重拾緊實光澤。\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,精華液,紅酒多酚,Sapitide,保濕,潤澤,抗皺",
         "isNew": false,
         "name": "VINATA保濕抗皺精華液",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588005108",
+        "barcodeAliases": [
+          "4711588005108"
+        ]
       }
     },
     {
@@ -916,18 +1064,22 @@
       "photo": "products/375337-12-vinata-firming-eye-cream.png",
       "videoUrl": "https://www.youtube.com/watch?v=iC6u7lQPvD0",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913274",
+      "barcodeAliases": [
+        "4711588913274"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "眼周細緻保養，滋潤緊緻更顯精神",
+        "content": "以乳油木果油為基底，搭配紅酒多酚、Sapitide®、海茴香與多重保濕修護成分，為眼周帶來滋潤與柔嫩感。適合在意乾燥、細紋與眼周暗沉的人做日常保養。",
+        "tags": "VINATA,眼霜,紅酒多酚,Sapitide,滋潤,緊緻,抗皺",
         "isNew": false,
         "name": "VINATA緊緻抗皺眼霜",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913274",
+        "barcodeAliases": [
+          "4711588913274"
+        ]
       }
     },
     {
@@ -939,18 +1091,22 @@
       "photo": "products/36330000-12-vinata-anti-wrinkle-cream.png",
       "videoUrl": "https://www.youtube.com/watch?v=O-d1-rEV2Tk",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588000141",
+      "barcodeAliases": [
+        "4711588000141"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "精華後鎖水滋養，彈潤保養更完整",
+        "content": "添加紅酒多酚、酵母賦活精華與植物果油，適合在精華液後加強鎖水與滋潤。很適合拿來主打熟齡保養、乾燥肌夜間保養或秋冬加強型需求。\n有助延緩肌膚老化，深層滋潤緊實。\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,活膚霜,紅酒多酚,Sapitide,鎖水,彈潤,抗皺",
         "isNew": false,
         "name": "VINATA抗皺活膚霜",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588000141",
+        "barcodeAliases": [
+          "4711588000141"
+        ]
       }
     },
     {
@@ -962,18 +1118,22 @@
       "photo": "products/375358-12-vinata-firming-capsule.webp",
       "videoUrl": "https://www.youtube.com/watch?v=lrZVlle3y8I",
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913380",
+      "barcodeAliases": [
+        "4711588913380"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "小米粒日間膠囊保養，妝前也能透亮服貼",
+        "content": "日間膠囊封存米植醇、類深海鮫鯊烯、海茴香萃取與維他命C，妝前使用也能幫助後續更服貼。適合喜歡單次用量明確、追求透亮妝感的人。\n有助改善肌膚暗沉，同時緊緻透亮。\n\n△米植醇純淨米油精華：源自花蓮酒廠米糠油，含植物固醇，能增加肌膚水嫩透亮感，撫平細紋，使肌膚散發光采。\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,日間膠囊,米植醇,維他命C,妝前保養,透亮,小米粒,早米晚心,低敏",
         "isNew": false,
         "name": "VINATA緊緻活膚膠囊",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913380",
+        "barcodeAliases": [
+          "4711588913380"
+        ]
       }
     },
     {
@@ -985,18 +1145,22 @@
       "photo": "products/37130000-12-15-rice-phytosterol-capsule-rice-phytosterol-15caps.webp",
       "videoUrl": "https://youtu.be/6UM71EybWbw?si=CHWw-JT25vSQITe5&t=31",
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953720",
+      "barcodeAliases": [
+        "4711588953720"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "夜間修護膠囊，滋養修護更集中，小容量方便攜帶使用",
+        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,夜間膠囊,米植醇,超臨界,多重發酵精華,修護,滋潤,低敏,小金心,早米晚心",
         "isNew": false,
         "name": "激透光米植醇特潤膠囊(15顆)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953720",
+        "barcodeAliases": [
+          "4711588953720"
+        ]
       }
     },
     {
@@ -1008,18 +1172,22 @@
       "photo": "products/36130006-12-vinata-40-rice-phytosterol-capsule-rice-phytosterol-40caps.webp",
       "videoUrl": "https://youtu.be/6UM71EybWbw?si=CHWw-JT25vSQITe5&t=31",
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953683",
+      "barcodeAliases": [
+        "4711588953683"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "夜間修護膠囊，滋養修護更集中，大容量更適合長期保養",
+        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,夜間膠囊,米植醇,超臨界,多重發酵精華,修護,低敏,小金心,早米晚心",
         "isNew": false,
         "name": "VINATA激透光米植醇特潤膠囊(40顆)(自製)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953683",
+        "barcodeAliases": [
+          "4711588953683"
+        ]
       }
     },
     {
@@ -1031,18 +1199,22 @@
       "photo": "products/37530007-12-40-rice-phytosterol-capsule-rice-phytosterol-40caps.webp",
       "videoUrl": "https://youtu.be/6UM71EybWbw?si=CHWw-JT25vSQITe5&t=31",
       "moreLinksRaw": "YT|藝人子玄推薦|https://www.youtube.com/watch?v=lrZVlle3y8I\nIG|@hui0908推薦|https://www.instagram.com/reel/DTxFWTaDw3q/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953683",
+      "barcodeAliases": [
+        "4711588953683"
+      ],
       "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "夜間修護膠囊，滋養修護更集中，大容量更適合長期保養",
+        "content": "集結專利原料超臨界米植醇與多重發酵精華，主打集中滋養與修護感。可作為晚間保養加強步驟，特別適合乾燥、暗沉與熟齡保養需求。\n提供全方位的抗老修護，同時深層滋養肌膚。\n\n大容量更適合長期保養與回購客群。主打固定使用更方便，也有利於高單價保養的延伸銷售。\n\n△超臨界米植醇：精選台灣在地稻米，使用超臨界二氧化碳作為萃取溶劑，以純淨製程萃取保留穀維素、植物固醇等成分，可調理肌膚，潤澤保濕、修護肌膚。*專利成分\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,夜間膠囊,米植醇,超臨界,多重發酵精華,修護,低敏,小金心,早米晚心",
         "isNew": false,
         "name": "激透光米植醇特潤膠囊(40顆)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953683",
+        "barcodeAliases": [
+          "4711588953683"
+        ]
       }
     },
     {
@@ -1054,18 +1226,22 @@
       "photo": "products/37530000-12-vinata-brightening-serum.png",
       "videoUrl": "https://www.youtube.com/watch?v=rId8e18a-80",
       "moreLinksRaw": "FB|夏日輕爽保養術|https://www.facebook.com/vinatalady/videos/%E5%A4%8F%E6%97%A5%E8%BC%95%E7%88%BD%E4%BF%9D%E9%A4%8A%E8%A1%93v%E7%B7%A8pick-vinata%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E7%B3%BB%E5%88%97%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E7%B2%BE%E8%8F%AF%E6%B6%B2%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E4%B9%B3%E6%B6%B2-%E9%85%92%E8%90%83%E9%9B%99%E5%9B%A0%E5%AD%90%E4%BA%AE%E7%99%BD%E5%B0%88%E5%88%A9melaclear2%E5%9C%8B%E9%9A%9B%E5%93%81%E8%B3%AA%E9%8A%85%E7%8D%8E%E8%82%AF%E5%AE%9A%E9%80%9F%E9%85%B5%E4%BA%AE%E7%99%BDa-v%E7%B7%A8%E6%9C%80%E6%84%9B%E7%94%A8%E6%B3%95%E5%85%A9/590499906586005/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953652",
+      "barcodeAliases": [
+        "4711588953652"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "雙發酵亮白精華，透亮保濕同步到位",
+        "content": "融合酵母賦活精華、紅酒多酚與複合亮白成分，保濕與透亮感同步兼顧。適合在意暗沉、膚色不均與希望保養步驟有效率的人日常使用。\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,精華液,紅酒多酚,Sapitide,亮白,保濕",
         "isNew": false,
         "name": "VINATA密集美白精華液",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953652",
+        "barcodeAliases": [
+          "4711588953652"
+        ]
       }
     },
     {
@@ -1077,18 +1253,22 @@
       "photo": "products/37530001-12-vinata-brightening-lotion.png",
       "videoUrl": "https://www.youtube.com/watch?v=LsntC4sgBJU",
       "moreLinksRaw": "FB|夏日輕爽保養術|https://www.facebook.com/vinatalady/videos/%E5%A4%8F%E6%97%A5%E8%BC%95%E7%88%BD%E4%BF%9D%E9%A4%8A%E8%A1%93v%E7%B7%A8pick-vinata%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E7%B3%BB%E5%88%97%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E7%B2%BE%E8%8F%AF%E6%B6%B2%E5%AF%86%E9%9B%86%E7%BE%8E%E7%99%BD%E4%B9%B3%E6%B6%B2-%E9%85%92%E8%90%83%E9%9B%99%E5%9B%A0%E5%AD%90%E4%BA%AE%E7%99%BD%E5%B0%88%E5%88%A9melaclear2%E5%9C%8B%E9%9A%9B%E5%93%81%E8%B3%AA%E9%8A%85%E7%8D%8E%E8%82%AF%E5%AE%9A%E9%80%9F%E9%85%B5%E4%BA%AE%E7%99%BDa-v%E7%B7%A8%E6%9C%80%E6%84%9B%E7%94%A8%E6%B3%95%E5%85%A9/590499906586005/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953669",
+      "barcodeAliases": [
+        "4711588953669"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "雙發酵亮白乳液，鎖水潤澤更持續",
+        "content": "延續雙發酵亮白路線，乳液質地更適合在精華後鎖水，讓膚觸更柔嫩細滑。可搭配同系列精華液一起推薦，完整度更高。\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,乳液,紅酒多酚,Sapitide,亮白,鎖水",
         "isNew": false,
         "name": "VINATA密集美白乳液",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953669",
+        "barcodeAliases": [
+          "4711588953669"
+        ]
       }
     },
     {
@@ -1100,18 +1280,22 @@
       "photo": "products/375367-12-vinata-cleansing-remover.png",
       "videoUrl": "https://www.youtube.com/watch?v=pyoZy-YglqE",
       "moreLinksRaw": "IG|17秒介紹|https://www.instagram.com/reel/C-HPWFpRHvx/\nIG|Reels|https://www.instagram.com/reel/DQWI0XZEkr7/\nFB|短片|https://www.facebook.com/vinatalady/videos/%E6%B4%97%E8%87%89x%E5%8D%B8%E5%A6%9Dx%E4%BF%9D%E9%A4%8A-%E4%B8%80%E7%93%B6%E6%90%9E%E5%AE%9A/1011053397217108/\nIG|美好研究院|https://www.instagram.com/reel/DUR4hc0iUx6/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913427",
+      "barcodeAliases": [
+        "4711588913427"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "洗卸保養三效合一｜清爽潔顏不緊繃",
+        "content": "露狀劑型可乾濕兩用，洗卸與清潔保養一次完成，洗後清爽不緊繃。很適合淡妝、防曬族、運動後快速清潔，或喜歡簡化步驟的人。\n\n▲接睫毛可用。\n▲清爽露狀劑型，油膩感out！\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,潔顏露,清爽,淡妝適用,紅酒多酚,Sapitide",
         "isNew": false,
         "name": "VINATA洗卸潔顏露",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913427",
+        "barcodeAliases": [
+          "4711588913427"
+        ]
       }
     },
     {
@@ -1123,18 +1307,22 @@
       "photo": "products/3753c6-12-vinata-50ml-yeast-body-lotion-travel-size.png",
       "videoUrl": "https://www.youtube.com/watch?v=PljwofWsd6Y",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953591",
+      "barcodeAliases": [
+        "4711588953591"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "輕巧瓶身隨身帶著走的酵母賦活身體乳",
+        "content": "以酵母賦活精華搭配蜂蜜萃取、鎖水磁石與植萃保濕成分，輕巧瓶身方便隨身補擦。很適合旅行、試用推廣或作為身體乳入門款。\n\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,身體乳,Sapitide,輕巧瓶,保濕,輕潤,香氛",
         "isNew": false,
         "name": "VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ml)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953591",
+        "barcodeAliases": [
+          "4711588953591"
+        ]
       }
     },
     {
@@ -1146,18 +1334,22 @@
       "photo": "products/3753bx-12-vinata-yeast-body-lotion.png",
       "videoUrl": "https://www.youtube.com/watch?v=PljwofWsd6Y",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953546",
+      "barcodeAliases": [
+        "4711588953546"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "酵母賦活身體乳，輕潤保濕好吸收",
+        "content": "結合酵母賦活精華與多重保濕修護成分，質地輕潤好吸收，擦後不厚重。適合日常沐浴後全身使用，也很適合拿來溝通乾燥肌保養需求。\n\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,身體乳,Sapitide,保濕,輕潤,香氛",
         "isNew": false,
         "name": "VINATA酵母賦活精華輕潤身體乳",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953546",
+        "barcodeAliases": [
+          "4711588953546"
+        ]
       }
     },
     {
@@ -1169,18 +1361,22 @@
       "photo": "products/37370011-12-beer-hop-cleanser.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588008147",
+      "barcodeAliases": [
+        "4711588008147"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花洗面乳，洗後清爽又保有水潤感",
+        "content": "「啤酒花植萃」精華、甘油與長效保濕成分，泡沫細緻、洗後清爽仍保有水潤感。適合偏油肌、混合肌或想找不緊繃洗面乳的人。\n\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "啤酒花,低敏,洗面乳,清爽,保濕,細緻泡沫,洗沐",
+        "isNew": true,
         "name": "啤酒花洗面乳",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588008147",
+        "barcodeAliases": [
+          "4711588008147"
+        ]
       }
     },
     {
@@ -1192,18 +1388,22 @@
       "photo": "products/36530000-12-vinata-beer-hop-body-wash.png",
       "videoUrl": "https://www.instagram.com/reel/DT2LFrljwky/",
       "moreLinksRaw": "IG|有限的預算洗出無限的質感|https://www.instagram.com/reel/DUUdfxKjw8t/\nFB|植萃洗淨 專業守護|https://www.facebook.com/TTL.BIOTECH/videos/%E6%A4%8D%E8%90%83%E6%B4%97%E6%B7%A8-%E5%B0%88%E6%A5%AD%E5%AE%88%E8%AD%B7/1498515948077947/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588933289",
+      "barcodeAliases": [
+        "4711588933289"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "木質香調沐浴露，低敏、洗後舒服不乾澀",
+        "content": "△專櫃精品系香氛，馥郁的溫暖木質森林香調。\n△ 低敏驗證 \n△ 美國農業部USDA綠色產品\n\n「啤酒花植萃」搭配白樺木、薰衣草香調，洗後帶有舒服木質氣息。適合喜歡偏中性香氛型沐浴露、又在意低敏與洗感舒適度的客群。",
+        "tags": "VINATA,洗沐,啤酒花,木質香調,低敏,嫩白,細緻肌膚",
         "isNew": false,
         "name": "VINATA啤酒花沐浴露",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588933289",
+        "barcodeAliases": [
+          "4711588933289"
+        ]
       }
     },
     {
@@ -1215,18 +1415,22 @@
       "photo": "products/36530001-12-vinata-beer-hop-shampoo.png",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E5%95%A4%E9%85%92%E8%8A%B1%E6%A4%8D%E8%90%83%E6%BD%94%E6%B7%A8%E6%B8%85%E6%96%B0/2306420706463892/",
       "moreLinksRaw": "FB|植萃洗淨 專業守護|https://www.facebook.com/TTL.BIOTECH/videos/%E6%A4%8D%E8%90%83%E6%B4%97%E6%B7%A8-%E5%B0%88%E6%A5%AD%E5%AE%88%E8%AD%B7/1498515948077947/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588933296",
+      "barcodeAliases": [
+        "4711588933296"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "晚夏茉莉香洗髮精，低敏、清爽蓬鬆不扁塌",
+        "content": "△專櫃精品系茉莉花香氛\n△ 低敏驗證 \n△ 美國農業部USDA綠色產品\n\n「無矽靈」配方搭配「啤酒花植萃」與晚夏茉莉香，洗後頭皮清爽、髮絲蓬鬆柔順。很適合夏季、細軟髮或偏好花香型洗髮精的人。",
+        "tags": "VINATA,洗沐,啤酒花,無矽靈,茉莉香,蓬鬆,低敏",
         "isNew": false,
         "name": "VINATA啤酒花洗髮精 (晚夏茉莉香)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588933296",
+        "barcodeAliases": [
+          "4711588933296"
+        ]
       }
     },
     {
@@ -1238,18 +1442,22 @@
       "photo": "products/36130001-12-vinata-beer-hop-shampoo.png",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E5%95%A4%E9%85%92%E8%8A%B1%E6%A4%8D%E8%90%83%E6%BD%94%E6%B7%A8%E6%B8%85%E6%96%B0/2306420706463892/",
       "moreLinksRaw": "FB|植萃洗淨 專業守護|https://www.facebook.com/TTL.BIOTECH/videos/%E6%A4%8D%E8%90%83%E6%B4%97%E6%B7%A8-%E5%B0%88%E6%A5%AD%E5%AE%88%E8%AD%B7/1498515948077947/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588001759",
+      "barcodeAliases": [
+        "4711588001759"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "夏薰花果香洗髮精，清新柔順男女皆宜",
+        "content": "△夏日海島風清新香氣，男女皆宜\n△ 低敏驗證 \n△ 美國農業部USDA綠色產品\n\n「無矽靈」配方搭配「啤酒花植萃」與草木花果香調，清新不膩、男女皆宜，洗後髮絲柔順有彈性。很適合喜歡中性香氣與清爽洗感的日常洗髮需求。",
+        "tags": "VINATA,洗沐,啤酒花,無矽靈,花果香,柔順,低敏",
         "isNew": false,
         "name": "VINATA啤酒花洗髮精(夏薰花果香)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588001759",
+        "barcodeAliases": [
+          "4711588001759"
+        ]
       }
     },
     {
@@ -1261,18 +1469,22 @@
       "photo": "products/36370010-12-vinata-beer-hop-hand-wash.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588007508",
+      "barcodeAliases": [
+        "4711588007508"
+      ],
       "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花洗手露，清潔同時兼顧潤澤感",
+        "content": "啤酒花植萃搭配維他命原B5與柑橘花香，清潔雙手同時兼顧潤澤膚觸。適合辦公室、居家與餐前洗手等高頻使用情境。",
+        "tags": "VINATA,洗手,啤酒花,維他命B5,柑橘花香,低敏,洗沐",
+        "isNew": true,
         "name": "VINATA啤酒花洗手露",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588007508",
+        "barcodeAliases": [
+          "4711588007508"
+        ]
       }
     },
     {
@@ -1284,18 +1496,22 @@
       "photo": "products/37170008-12-vinata-beer-hop-hand-wash.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588013271",
+      "barcodeAliases": [
+        "4711588013271"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花洗手露，清潔同時兼顧潤澤感",
+        "content": "啤酒花植萃搭配維他命原B5與柑橘花香，清潔雙手同時兼顧潤澤膚觸。適合辦公室、居家與餐前洗手等高頻使用情境。",
+        "tags": "VINATA,洗手,啤酒花,維他命B5,柑橘花香,低敏,洗沐",
+        "isNew": true,
         "name": "VINATA啤酒花洗手露(委製)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588013271",
+        "barcodeAliases": [
+          "4711588013271"
+        ]
       }
     },
     {
@@ -1307,18 +1523,22 @@
       "photo": "products/37370004-12-vinata-beer-hop-travel-set.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588005993",
+      "barcodeAliases": [
+        "4711588005993"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "舒適洗感不乾澀、清爽蓬鬆不扁塌",
+        "content": "品牌束口袋*1\nVINATA 啤酒花洗髮精50g*1\nVINATA 啤酒花沐浴露50g*1\n\n包裝形式：附說明紙卡＋透明opp外袋\n經典暢銷洗沐用品，外出旅行方便攜帶",
+        "tags": "VINATA,洗沐,啤酒花,木質香調,茉莉香,低敏,輕巧",
         "isNew": false,
         "name": "VINATA啤酒花洗沐旅行組(新版)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588005993",
+        "barcodeAliases": [
+          "4711588005993"
+        ]
       }
     },
     {
@@ -1330,18 +1550,22 @@
       "photo": "products/37370005-12-vinata-gift-box-beer-hop-gift-box.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588006006",
+      "barcodeAliases": [
+        "4711588006006"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "舒適洗感不乾澀、清爽蓬鬆不扁塌",
+        "content": "VINATA 啤酒花洗髮精500g*1\nVINATA 啤酒花沐浴露500g*1\nVINATA 啤酒花洗沐旅行組50g*1\n不織布束口袋*1\n\n經典暢銷洗沐用品，適合送禮、團體採購",
+        "tags": "VINATA,洗沐,啤酒花,木質香調,茉莉香,低敏,組合",
         "isNew": false,
         "name": "VINATA啤酒花洗沐禮盒(新版)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588006006",
+        "barcodeAliases": [
+          "4711588006006"
+        ]
       }
     },
     {
@@ -1353,18 +1577,22 @@
       "photo": "products/37370012-12-vinata-hair-treatment-rice-phytosterol-rice-phytosterol-hair-treatment-hair-treatment.png",
       "videoUrl": "https://www.facebook.com/TTL.BIOTECH/videos/%E7%9B%A1%E6%83%85%E7%94%A9%E9%AB%AE%E4%B8%8D%E7%B3%BE%E7%B5%90%E6%89%93%E9%80%A0%E8%BC%95%E7%9B%88%E5%A5%B3%E7%A5%9E%E5%85%89/1659477201527796/",
       "moreLinksRaw": "FB|玫瑰香氛輕盈修護，打造自帶光圈女神髮！|https://www.facebook.com/TTL.BIOTECH/videos/%E7%8E%AB%E7%91%B0%E9%A6%99%E6%B0%9B%E8%BC%95%E7%9B%88%E4%BF%AE%E8%AD%B7%E6%89%93%E9%80%A0%E8%87%AA%E5%B8%B6%E5%85%89%E5%9C%88%E5%A5%B3%E7%A5%9E%E9%AB%AE/2980975455439341/",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588007638",
+      "barcodeAliases": [
+        "4711588007638"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "雙專利護髮配方，修護毛躁更有感",
+        "content": "結合超臨界米植醇、Sapitide®與多重植物果油，針對毛躁與乾燥髮絲提供滋養修護。適合燙染後髮質、長髮族或在意光澤柔順度的人使用。\n\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,護髮,低敏,米植醇,Sapitide,修護,柔順,洗沐",
+        "isNew": true,
         "name": "VINATA米植醇賦活護髮素 HAIR TREATMENT",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588007638",
+        "barcodeAliases": [
+          "4711588007638"
+        ]
       }
     },
     {
@@ -1376,8 +1604,10 @@
       "photo": "products/37170007-12-vinata-beer-hop-aroma-soap-lavender.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588002978",
+      "barcodeAliases": [
+        "4711588002978"
+      ],
       "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
@@ -1386,8 +1616,10 @@
         "tags": "",
         "isNew": false,
         "name": "VINATA啤酒花舒活香氛皂-薰衣草",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588002978",
+        "barcodeAliases": [
+          "4711588002978"
+        ]
       }
     },
     {
@@ -1399,8 +1631,10 @@
       "photo": "products/37170005-12-vinata-beer-hop-aroma-soap-freesia.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588002992",
+      "barcodeAliases": [
+        "4711588002992"
+      ],
       "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
@@ -1409,8 +1643,10 @@
         "tags": "",
         "isNew": false,
         "name": "VINATA啤酒花舒活香氛皂-小蒼蘭",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588002992",
+        "barcodeAliases": [
+          "4711588002992"
+        ]
       }
     },
     {
@@ -1422,8 +1658,10 @@
       "photo": "products/37170006-12-vinata-beer-hop-aroma-soap-lotus.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588002985",
+      "barcodeAliases": [
+        "4711588002985"
+      ],
       "is_hidden_pp": true,
       "is_hidden": true,
       "pitch": {
@@ -1432,8 +1670,10 @@
         "tags": "",
         "isNew": false,
         "name": "VINATA啤酒花舒活香氛皂-蓮香",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588002985",
+        "barcodeAliases": [
+          "4711588002985"
+        ]
       }
     },
     {
@@ -1445,18 +1685,22 @@
       "photo": "products/37130047-12-spf50-sake-lees-foundation.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953713",
+      "barcodeAliases": [
+        "4711588953713"
+      ],
       "is_hidden_pp": false,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "遮瑕、防曬、服貼妝感｜一次完成",
+        "content": "添加Sapitide®、神經醯胺與植萃修護成分，兼顧遮瑕、防曬與服貼妝感。適合想簡化底妝步驟、又重視日常防曬與輕透妝效的人。",
+        "tags": "VINATA,水粉底,SPF50,Sapitide,神經醯胺,遮瑕",
+        "isNew": true,
         "name": "高機能酒粕無瑕水粉底SPF50★★★(自售)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953713",
+        "barcodeAliases": [
+          "4711588953713"
+        ]
       }
     },
     {
@@ -1468,18 +1712,22 @@
       "photo": "products/37130028-12-sake-lees-youth-essence-gold-sake-lees-youth-essence.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953805",
+      "barcodeAliases": [
+        "4711588953805"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "酒粕發酵精華，保濕潤澤與透亮膚感｜一次到位",
+        "content": "結合酒粕發酵精華、玻尿酸、胜肽與多重海洋植萃保養成分，質地清爽好吸收，作為洗臉後第一道保養能先為肌膚補充水分、提升後續保養的服貼度；很適合在意乾燥、暗沉與膚觸粗糙感的人作為日常保養打底。",
+        "tags": "VINATA,青春露,酒粕精華,玻尿酸,胜肽,保濕",
         "isNew": false,
         "name": "酒粕精粹逆齡活膚青春露金裝版(自)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953805",
+        "barcodeAliases": [
+          "4711588953805"
+        ]
       }
     },
     {
@@ -1491,18 +1739,22 @@
       "photo": "products/3753ad-12-vinata-8-sake-lees-brightening-mask-mask-8pcs.png",
       "videoUrl": "https://www.youtube.com/watch?v=4qbOqSwfllI",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953201",
+      "barcodeAliases": [
+        "4711588953201"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "酒粕亮白面膜，保濕同時提亮膚況",
+        "content": "以酒粕酵母賦活精華搭配維他命B3與熊果素，主打保濕同時提亮膚況。對暗沉、膚色不均或想快速補充面膜保養的人特別有吸引力。",
+        "tags": "VINATA,面膜,Sapitide,維他命B3,熊果素,透亮",
         "isNew": false,
         "name": "VINATA酒粕維他命亮白面膜(8片/盒)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953201",
+        "barcodeAliases": [
+          "4711588953201"
+        ]
       }
     },
     {
@@ -1514,18 +1766,22 @@
       "photo": "products/3753ae-12-vinata-8-sake-lees-hydrating-mask-hydrating-mask-8pcs.png",
       "videoUrl": "https://www.youtube.com/watch?v=BPuUesSl6Jw",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953218",
+      "barcodeAliases": [
+        "4711588953218"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "酒粕保濕面膜，乾燥肌也能快速補水",
+        "content": "以酒粕酵母賦活精華搭配雙重玻尿酸與植萃保濕成分，敷後水潤感明顯。很適合乾燥缺水、妝前急救或日常加強保濕使用。",
+        "tags": "VINATA,面膜,Sapitide,雙重玻尿酸,保濕,水嫩",
         "isNew": false,
         "name": "VINATA酒粕水嫩保濕面膜(8片/盒)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953218",
+        "barcodeAliases": [
+          "4711588953218"
+        ]
       }
     },
     {
@@ -1537,18 +1793,22 @@
       "photo": "products/3753bm-12-vinata-8-red-wine-repair-mask-mask-8pcs.png",
       "videoUrl": "https://www.youtube.com/watch?v=g9Z2VoqBjSI",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953485",
+      "barcodeAliases": [
+        "4711588953485"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "紅酒修護面膜，彈潤保濕一次敷到位",
+        "content": "紅酒多酚搭配玻尿酸、維他命B5與多重植萃保濕成分，訴求彈潤與修護感。適合乾燥疲憊膚況、想透過面膜快速補回光澤的人。",
+        "tags": "VINATA,面膜,紅酒多酚,保濕,彈潤,修護",
         "isNew": false,
         "name": "VINATA紅酒精華多重修護面膜(8片/盒)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953485",
+        "barcodeAliases": [
+          "4711588953485"
+        ]
       }
     },
     {
@@ -1560,18 +1820,22 @@
       "photo": "products/36330002-12-vinata-rice-phytosterol-rice-phytosterol-hand-cream-hand-cream.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588008154",
+      "barcodeAliases": [
+        "4711588008154"
+      ],
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
         "title": "",
         "content": "",
         "tags": "",
-        "isNew": false,
+        "isNew": true,
         "name": "VINATA米植醇滋潤護手霜",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588008154",
+        "barcodeAliases": [
+          "4711588008154"
+        ]
       }
     },
     {
@@ -1583,18 +1847,22 @@
       "photo": "products/3753c6-12-vinata-50ml-yeast-body-lotion-travel-size.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953591",
+      "barcodeAliases": [
+        "4711588953591"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "輕巧瓶身隨身帶著走的酵母賦活身體乳",
+        "content": "以酵母賦活精華搭配蜂蜜萃取、鎖水磁石與植萃保濕成分，輕巧瓶身方便隨身補擦。很適合旅行、試用推廣或作為身體乳入門款。\n\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,身體乳,Sapitide,輕巧瓶,保濕,輕潤,香氛",
         "isNew": false,
         "name": "VINATA酵母賦活精華輕潤身體乳-輕巧瓶(50ml)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953591",
+        "barcodeAliases": [
+          "4711588953591"
+        ]
       }
     },
     {
@@ -1606,18 +1874,22 @@
       "photo": "products/37370011-12-beer-hop-cleanser.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588008147",
+      "barcodeAliases": [
+        "4711588008147"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花洗面乳，洗後清爽又保有水潤感",
+        "content": "「啤酒花植萃」精華、甘油與長效保濕成分，泡沫細緻、洗後清爽仍保有水潤感。適合偏油肌、混合肌或想找不緊繃洗面乳的人。\n\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "啤酒花,低敏,洗面乳,清爽,保濕,細緻泡沫,洗沐",
+        "isNew": true,
         "name": "啤酒花洗面乳",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588008147",
+        "barcodeAliases": [
+          "4711588008147"
+        ]
       }
     },
     {
@@ -1629,18 +1901,22 @@
       "photo": "products/37170008-12-vinata-beer-hop-hand-wash.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588013271",
+      "barcodeAliases": [
+        "4711588013271"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "啤酒花洗手露，清潔同時兼顧潤澤感",
+        "content": "啤酒花植萃搭配維他命原B5與柑橘花香，清潔雙手同時兼顧潤澤膚觸。適合辦公室、居家與餐前洗手等高頻使用情境。",
+        "tags": "VINATA,洗手,啤酒花,維他命B5,柑橘花香,低敏,洗沐",
+        "isNew": true,
         "name": "VINATA啤酒花洗手露(委製)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588013271",
+        "barcodeAliases": [
+          "4711588013271"
+        ]
       }
     },
     {
@@ -1652,18 +1928,22 @@
       "photo": "products/37370012-12-vinata-hair-treatment-rice-phytosterol-rice-phytosterol-hair-treatment-hair-treatment.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588007638",
+      "barcodeAliases": [
+        "4711588007638"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
-        "isNew": false,
+        "title": "雙專利護髮配方，修護毛躁更有感",
+        "content": "結合超臨界米植醇、Sapitide®與多重植物果油，針對毛躁與乾燥髮絲提供滋養修護。適合燙染後髮質、長髮族或在意光澤柔順度的人使用。\n\n△ADVANCED SCIENCE實驗室低敏驗證",
+        "tags": "VINATA,護髮,低敏,米植醇,Sapitide,修護,柔順,洗沐",
+        "isNew": true,
         "name": "VINATA米植醇賦活護髮素 HAIR TREATMENT",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588007638",
+        "barcodeAliases": [
+          "4711588007638"
+        ]
       }
     },
     {
@@ -1675,18 +1955,22 @@
       "photo": "products/375367-12-vinata-cleansing-remover.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588913427",
+      "barcodeAliases": [
+        "4711588913427"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "洗卸保養三效合一｜清爽潔顏不緊繃",
+        "content": "露狀劑型可乾濕兩用，洗卸與清潔保養一次完成，洗後清爽不緊繃。很適合淡妝、防曬族、運動後快速清潔，或喜歡簡化步驟的人。\n\n▲接睫毛可用。\n▲清爽露狀劑型，油膩感out！\n\n△紅酒多酚精華（WINPHENOL™）：精選葡萄經獨家菌種發酵，富含多酚、有機酸等活性成分。\n△酵母賦活精華 Sapitide®：含胜肽、胺基酸、有機酸及微量元素，使肌膚水嫩、亮麗光澤。",
+        "tags": "VINATA,潔顏露,清爽,淡妝適用,紅酒多酚,Sapitide",
         "isNew": false,
         "name": "VINATA洗卸潔顏露",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588913427",
+        "barcodeAliases": [
+          "4711588913427"
+        ]
       }
     },
     {
@@ -1698,18 +1982,22 @@
       "photo": "products/37130028-12-sake-lees-youth-essence-gold-sake-lees-youth-essence.png",
       "videoUrl": "",
       "moreLinksRaw": "",
-      "barcode": "",
-      "barcodeAliases": [],
+      "barcode": "4711588953805",
+      "barcodeAliases": [
+        "4711588953805"
+      ],
       "is_hidden_pp": true,
       "is_hidden": false,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "酒粕發酵精華，保濕潤澤與透亮膚感｜一次到位",
+        "content": "結合酒粕發酵精華、玻尿酸、胜肽與多重海洋植萃保養成分，質地清爽好吸收，作為洗臉後第一道保養能先為肌膚補充水分、提升後續保養的服貼度；很適合在意乾燥、暗沉與膚觸粗糙感的人作為日常保養打底。",
+        "tags": "VINATA,青春露,酒粕精華,玻尿酸,胜肽,保濕",
         "isNew": false,
         "name": "酒粕精粹逆齡活膚青春露金裝版(自)",
-        "barcodeRaw": "",
-        "barcodeAliases": []
+        "barcodeRaw": "4711588953805",
+        "barcodeAliases": [
+          "4711588953805"
+        ]
       }
     },
     {
@@ -1730,7 +2018,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "小米粒2入組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1753,7 +2041,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "小金心2入組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1776,7 +2064,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "極致保養組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1799,7 +2087,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "早米晚心組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1822,7 +2110,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "面膜任選買一送一",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1845,7 +2133,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "啤酒花洗沐組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1868,7 +2156,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "洗卸潔顏露3入組",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1891,7 +2179,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜黑麥汁提袋（麥汁全系列搭贈，限量送完為止）",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1914,7 +2202,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜滿3件贈送護手霜1個（限量送完為止）",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1937,7 +2225,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜洗衣球五入組（限量送完為止）",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1960,7 +2248,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜洗衣球五入組（限量送完為止）",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -1983,7 +2271,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜互動遊戲",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2006,7 +2294,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜酵母賦活精華輕潤身體乳-輕巧瓶",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2029,7 +2317,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜山形玻璃杯",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2052,7 +2340,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜深海魚油軟膠囊",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2075,7 +2363,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜β-聚葡萄糖膠囊",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2098,7 +2386,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜UC2 益立捷",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2121,7 +2409,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜密集美白體驗組(乳液/精華液)",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2144,7 +2432,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜密集美白乳液",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2167,7 +2455,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜酒粕精粹逆齡活膚青春露 金裝版",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
@@ -2190,7 +2478,7 @@
         "content": "",
         "tags": "",
         "isNew": false,
-        "name": "贈品｜VINATA 品牌托特包",
+        "name": "",
         "barcodeRaw": "",
         "barcodeAliases": []
       }
