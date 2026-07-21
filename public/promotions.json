@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T07:53:02.348Z",
-  "count": 80,
+  "generatedAt": "2026-07-21T08:02:54.911Z",
+  "count": 81,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2073,7 +2073,7 @@
       "title": "鄉民Q3-Jul 夏日健康氣泡飲優惠組",
       "shortTitle": "鄉民Q3-Jul 夏日健康氣泡飲優惠組",
       "content": "黑(纖)麥汁全系列飲品任選4手88折，贈送易洗樂香氛洗衣球-5入1袋及環保小麥杯1只。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/104PEuRbT7H8L9Om6juV36E_SJnZR8Wqu",
       "relatedCodes": [
         "341368-12",
         "341372-12",
@@ -2085,14 +2085,40 @@
       "startDate": "2026/7/17",
       "endDate": "2026/7/27",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#fff6d5",
       "ch": {
-        "show": false,
+        "show": true,
         "mart": false,
         "eshop": false,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "P_mrud0m2z",
+      "title": "鄉民Q3-Jul 父親節愛爸回饋-爸氣暢快組",
+      "shortTitle": "鄉民Q3-Jul 父親節愛爸回饋-爸氣暢快組",
+      "content": "茄紅南瓜子油軟膠囊3件搭配深海魚油軟膠囊1件，優惠價1,790元（約56折）。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1a6qq9485_-QM6Jh4vq3bcj7PaCSU-weH",
+      "relatedCodes": [
+        "385102-12",
+        "37110007-12"
+      ],
+      "startDate": "2026/7/17",
+      "endDate": "2026/7/27",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
     }
   ]
 }
