@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-14T08:27:54.660Z",
-  "count": 77,
+  "generatedAt": "2026-07-21T07:17:56.067Z",
+  "count": 78,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2015,6 +2015,28 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_mrubmll4",
+      "title": "素食者健康應援-循環營養組",
+      "shortTitle": "素食者健康應援-循環營養組",
+      "content": "安可健納豆紅麴膠囊2件搭配台啤酵母錠(新包裝)2件，優惠價2,350元（約56折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375132-12",
+        "375176-12"
+      ],
+      "startDate": "2026/7/8",
+      "endDate": "2026/8/5",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
