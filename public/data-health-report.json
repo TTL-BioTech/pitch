@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260721084756",
-  "generatedAt": "2026-07-21T08:47:56.180Z",
-  "fingerprint": "a7638b5aafd56da8",
+  "buildId": "20260721132759",
+  "generatedAt": "2026-07-21T13:27:59.038Z",
+  "fingerprint": "aabd5142b508cb8f",
   "status": "warning",
-  "score": 48,
+  "score": 40,
   "summary": {
     "products": 95,
     "visibleProducts": 61,
@@ -13,12 +13,12 @@
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 55,
+      "warning": 58,
       "info": 11
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 6,
+      "warning": 7,
       "info": 2
     }
   },
@@ -66,6 +66,17 @@
         "37500011-12 台酒生技鹼性離子水",
         "351646-12 清酒粕潤膚皂",
         "36330002-12 VINATA米植醇滋潤護手霜"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "商品影片連結格式不像 URL。",
+      "count": 3,
+      "samples": [
+        "375358-12 VINATA緊緻活膚膠囊: IG|營養師 張語希|https://www.instagram.com/reel/DawksRMBfPI/",
+        "37130000-12 激透光米植醇特潤膠囊(15顆): IG|營養師 張語希|https://www.instagram.com/reel/DawksRMBfPI/",
+        "36130006-12 VINATA激透光米植醇特潤膠囊(40顆)(自製): IG|營養師 張語希|https://www.instagram.com/reel/DawksRMBfPI/"
       ]
     },
     {
