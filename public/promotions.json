@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T08:37:55.811Z",
-  "count": 82,
+  "generatedAt": "2026-07-21T08:42:57.109Z",
+  "count": 83,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2134,6 +2134,30 @@
       "endDate": "2026/8/31",
       "status": "upcoming",
       "bgColor": "#fff6d5",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "P_mrueik97",
+      "title": "鄉民Q3-Sep 中秋節經典特惠-雙效代謝組",
+      "shortTitle": "鄉民Q3-Sep 中秋節經典特惠-雙效代謝組",
+      "content": "安可健紅麴膠囊(健康食品認證)3件特價2,550元，再送風淨益生菌1件（約5折）。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1zT2Z57GuCAbhcenrzc-_qGPgnJSkPO7E",
+      "relatedCodes": [
+        "375156-12",
+        "37510003-12"
+      ],
+      "startDate": "2026/9/18",
+      "endDate": "2026/9/28",
+      "status": "upcoming",
+      "bgColor": "#e3f2fd",
       "ch": {
         "show": true,
         "mart": false,
