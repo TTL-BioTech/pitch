@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T08:42:57.109Z",
-  "count": 83,
+  "generatedAt": "2026-07-21T08:47:56.180Z",
+  "count": 84,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2153,6 +2153,30 @@
       "relatedCodes": [
         "375156-12",
         "37510003-12"
+      ],
+      "startDate": "2026/9/18",
+      "endDate": "2026/9/28",
+      "status": "upcoming",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心"
+      ]
+    },
+    {
+      "promoId": "P_mruepk7g",
+      "title": "鄉民Q3-Sep 教師節感恩回饋-晶亮防護組",
+      "shortTitle": "鄉民Q3-Sep 教師節感恩回饋-晶亮防護組",
+      "content": "葉黃素軟膠囊3件特價2,550元，再送β-聚葡萄糖膠囊1件（約52折）。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/11YZsUu6F92z8t2m0CM6aqGEBtZRTYHPT",
+      "relatedCodes": [
+        "375165-12",
+        "375175-12"
       ],
       "startDate": "2026/9/18",
       "endDate": "2026/9/28",
