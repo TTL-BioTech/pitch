@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T07:17:56.067Z",
-  "count": 78,
+  "generatedAt": "2026-07-21T07:27:55.909Z",
+  "count": 79,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2021,9 +2021,35 @@
       "title": "素食者健康應援-循環營養組",
       "shortTitle": "素食者健康應援-循環營養組",
       "content": "安可健納豆紅麴膠囊2件搭配台啤酵母錠(新包裝)2件，優惠價2,350元（約56折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1OfkSC3j7Yal2Yi8JX9-ZHBC-Fcb3T5jH",
       "relatedCodes": [
         "375132-12",
+        "375176-12"
+      ],
+      "startDate": "2026/7/8",
+      "endDate": "2026/8/5",
+      "status": "active",
+      "bgColor": "#e3f2fd",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_mrubzq1i",
+      "title": "素食者健康應援-免疫營養組",
+      "shortTitle": "素食者健康應援-免疫營養組",
+      "content": "β-聚葡萄糖膠囊(健康食品認證)2件搭配台啤酵母錠(新包裝)2件，優惠價1,650元（約59折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375175-12",
         "375176-12"
       ],
       "startDate": "2026/7/8",
