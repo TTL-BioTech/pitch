@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260721080254",
-  "generatedAt": "2026-07-21T08:02:54.911Z",
-  "fingerprint": "1093ec626cf00234",
+  "buildId": "20260721081306",
+  "generatedAt": "2026-07-21T08:13:06.690Z",
+  "fingerprint": "9142d4e522d74843",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 95,
     "visibleProducts": 61,
     "hiddenProducts": 34,
-    "promotions": 81,
+    "promotions": 82,
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 54,
+      "warning": 56,
       "info": 11
     },
     "issueTypeCounts": {
@@ -72,18 +72,19 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 3,
+      "count": 4,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
-        "花雕酒粕雞乾麵"
+        "花雕酒粕雞乾麵",
+        "鄉民Q3-Aug 中元普渡祈福組"
       ]
     },
     {
       "severity": "warning",
       "area": "promotions",
       "message": "促銷關聯條件目前找不到對應商品。",
-      "count": 14,
+      "count": 15,
       "samples": [
         "纖麥汁員購活動: 34130013-12",
         "纖麥汁滿額贈: 34130013-12",
@@ -98,7 +99,8 @@
         "母親節 滿額贈活動: 37530003-12",
         "纖麥汁即期去化: 34130013-12",
         "精力湯即期惜福優惠: 37320001-12",
-        "花雕酒粕雞乾麵: 34020019-12"
+        "花雕酒粕雞乾麵: 34020019-12",
+        "鄉民Q3-Aug 中元普渡祈福組: 34020019-12"
       ]
     },
     {

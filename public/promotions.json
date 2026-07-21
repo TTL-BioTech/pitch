@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T08:02:54.911Z",
-  "count": 81,
+  "generatedAt": "2026-07-21T08:13:06.690Z",
+  "count": 82,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2119,6 +2119,28 @@
       "channelLabels": [
         "展售中心"
       ]
+    },
+    {
+      "promoId": "P_mrudiks5",
+      "title": "鄉民Q3-Aug 中元普渡祈福組",
+      "shortTitle": "鄉民Q3-Aug 中元普渡祈福組",
+      "content": "花雕雞酒粕乾麵(4包/袋)1袋搭配TTL纖麥汁1手，組合優惠價299元（約77折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34020019-12",
+        "34130014-12"
+      ],
+      "startDate": "2026/8/21",
+      "endDate": "2026/8/31",
+      "status": "upcoming",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
