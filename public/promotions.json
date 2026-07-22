@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T12:27:59.859Z",
+  "generatedAt": "2026-07-22T12:32:58.737Z",
   "count": 84,
   "items": [
     {
@@ -2112,13 +2112,12 @@
       "bgColor": "#e3f2fd",
       "ch": {
         "show": true,
-        "mart": true,
+        "mart": false,
         "eshop": false,
         "office": false
       },
       "channelLabels": [
-        "展售中心",
-        "便利店"
+        "展售中心"
       ]
     },
     {
