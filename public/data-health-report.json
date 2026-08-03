@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260721133758",
-  "generatedAt": "2026-07-21T13:37:58.679Z",
-  "fingerprint": "a7638b5aafd56da8",
+  "buildId": "20260803051759",
+  "generatedAt": "2026-08-03T05:17:59.834Z",
+  "fingerprint": "6131d771a84b3514",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -13,7 +13,7 @@
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 55,
+      "warning": 54,
       "info": 11
     },
     "issueTypeCounts": {
@@ -61,9 +61,8 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少標籤。",
-      "count": 3,
+      "count": 2,
       "samples": [
-        "37500011-12 台酒生技鹼性離子水",
         "351646-12 清酒粕潤膚皂",
         "36330002-12 VINATA米植醇滋潤護手霜"
       ]
