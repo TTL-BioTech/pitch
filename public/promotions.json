@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T08:22:54.179Z",
+  "generatedAt": "2026-08-05T08:27:53.647Z",
   "count": 86,
   "items": [
     {
@@ -2224,21 +2224,26 @@
       "title": "護手霜新品上市活動",
       "shortTitle": "護手霜新品上市活動",
       "content": "單件優惠159元（約83折），2件優惠259元（約68折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1-3INIt_alX-D4skfmGFxL56C1RN0ItZj",
       "relatedCodes": [
         "36330002-12"
       ],
       "startDate": "2026/8/5",
       "endDate": "2027/10/31",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#FBE1E7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     }
   ]
 }
