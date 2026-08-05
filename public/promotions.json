@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-05T00:02:58.982Z",
-  "count": 84,
+  "generatedAt": "2026-08-05T08:22:54.179Z",
+  "count": 86,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2191,6 +2191,54 @@
       "channelLabels": [
         "展售中心"
       ]
+    },
+    {
+      "promoId": "P_4c49f70e7621472fa8c1",
+      "title": "密集美白精華液惜福優惠促銷",
+      "shortTitle": "密集美白精華液惜福優惠促銷",
+      "content": "單件59折：37530000-12 VINATA密集美白精華液(新)\n（活動批次：有效期限116年5月7日(含)以前）\n滿額搭贈（累贈，依倍數類推）：\n1.買就送「密集美白系列體驗組」（乳液/精華液體驗包各一），搭贈至115年12月5日。\n2.滿2件加贈一瓶「緊緻抗皺眼霜」。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1VvtNkUx1i2ctF5AZhXoZLZbRhaJ0bDcC",
+      "relatedCodes": [
+        "37530000-12",
+        "375337-12"
+      ],
+      "startDate": "2026/8/5",
+      "endDate": "2027/5/7",
+      "status": "active",
+      "bgColor": "#FBE1E7",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "P_2be972d852c74a82b408",
+      "title": "護手霜新品上市活動",
+      "shortTitle": "護手霜新品上市活動",
+      "content": "單件優惠159元（約83折），2件優惠259元（約68折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36330002-12"
+      ],
+      "startDate": "2026/8/5",
+      "endDate": "2027/10/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
