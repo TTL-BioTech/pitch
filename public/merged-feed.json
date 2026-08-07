@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260807074755",
-  "generatedAt": "2026-08-07T07:47:55.058Z",
+  "buildId": "20260807075305",
+  "generatedAt": "2026-08-07T07:53:05.180Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -529,7 +529,7 @@
       "category": "保健食品\n單件9折、3件(含)以上7折",
       "price": 600,
       "spec": "",
-      "photo": "",
+      "photo": "products/37310001-12-taiwan-beer-yeast-b-complex-plus.png",
       "videoUrl": "",
       "moreLinksRaw": "",
       "barcode": "4711588015817",
