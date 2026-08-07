@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260807073758",
-  "generatedAt": "2026-08-07T07:37:58.258Z",
-  "fingerprint": "7c67e84952bfb13d",
+  "buildId": "20260807074319",
+  "generatedAt": "2026-08-07T07:43:19.479Z",
+  "fingerprint": "53b1eeabeb63d758",
   "status": "warning",
-  "score": 48,
+  "score": 40,
   "summary": {
-    "products": 95,
-    "visibleProducts": 61,
+    "products": 96,
+    "visibleProducts": 62,
     "hiddenProducts": 34,
     "promotions": 86,
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 51,
+      "warning": 52,
       "info": 11
     },
     "issueTypeCounts": {
       "error": 0,
-      "warning": 6,
+      "warning": 7,
       "info": 2
     }
   },
@@ -35,6 +35,15 @@
         "37170008-12 ×2",
         "37370012-12 ×2",
         "37130028-12 ×2"
+      ]
+    },
+    {
+      "severity": "warning",
+      "area": "products",
+      "message": "可見商品缺少圖片。",
+      "count": 1,
+      "samples": [
+        "37310001-12 台啤酵母B群 Plus"
       ]
     },
     {
