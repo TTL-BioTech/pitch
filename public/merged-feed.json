@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260803051759",
-  "generatedAt": "2026-08-03T05:17:59.834Z",
+  "buildId": "20260807073758",
+  "generatedAt": "2026-08-07T07:37:58.258Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1827,9 +1827,9 @@
       "is_hidden_pp": false,
       "is_hidden": true,
       "pitch": {
-        "title": "",
-        "content": "",
-        "tags": "",
+        "title": "雙手也值得被溫柔對待｜輕盈質地、快速吸收、不黏膩",
+        "content": "結合專利超臨界米植醇與專利酵母賦活精華，修護乾燥、調理肌膚紋路，搭配維他命原B5、乳木果油與有機金盞花萃取，鎖水保濕、溫和調理舒緩，維持手部水潤柔嫩。輕盈質地、快速吸收、不黏膩，散發玫瑰香氣，隨時呵護雙手。\n\n△ 不含酒精、Paraben防腐劑、色素及礦物油。",
+        "tags": "VINATA、護手霜、米植醇、超臨界米植醇、酵母賦活精華、Sapitide、維他命原B5、乳木果油、金盞花萃取、保濕、玫瑰香氣",
         "isNew": true,
         "name": "VINATA米植醇滋潤護手霜",
         "barcodeRaw": "4711588008154",

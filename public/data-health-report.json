@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260805082753",
-  "generatedAt": "2026-08-05T08:27:53.647Z",
-  "fingerprint": "62be83a0b1572533",
+  "buildId": "20260807073758",
+  "generatedAt": "2026-08-07T07:37:58.258Z",
+  "fingerprint": "7c67e84952bfb13d",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -13,7 +13,7 @@
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 54,
+      "warning": 51,
       "info": 11
     },
     "issueTypeCounts": {
@@ -41,30 +41,27 @@
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少主訴求。",
-      "count": 2,
+      "count": 1,
       "samples": [
-        "351646-12 清酒粕潤膚皂",
-        "36330002-12 VINATA米植醇滋潤護手霜"
+        "351646-12 清酒粕潤膚皂"
       ]
     },
     {
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少商品文案。",
-      "count": 2,
+      "count": 1,
       "samples": [
-        "351646-12 清酒粕潤膚皂",
-        "36330002-12 VINATA米植醇滋潤護手霜"
+        "351646-12 清酒粕潤膚皂"
       ]
     },
     {
       "severity": "warning",
       "area": "products",
       "message": "可見商品缺少標籤。",
-      "count": 2,
+      "count": 1,
       "samples": [
-        "351646-12 清酒粕潤膚皂",
-        "36330002-12 VINATA米植醇滋潤護手霜"
+        "351646-12 清酒粕潤膚皂"
       ]
     },
     {
