@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T03:47:58.802Z",
-  "count": 93,
+  "generatedAt": "2026-08-10T05:23:02.408Z",
+  "count": 95,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2439,6 +2439,48 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_250cbeb12ec749268eb2",
+      "title": "青春露常態優惠價",
+      "shortTitle": "青春露常態優惠價",
+      "content": "單件700元；五件1,980元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37130028-12"
+      ],
+      "startDate": "2026/1/1",
+      "endDate": "2110/12/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_67071143141f4880b49f",
+      "title": "水粉底常態優惠價",
+      "shortTitle": "水粉底常態優惠價",
+      "content": "單件799元；五件2,970元。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37130047-12"
+      ],
+      "startDate": "2025/10/21",
+      "endDate": "2110/12/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }

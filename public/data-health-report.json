@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260810034758",
-  "generatedAt": "2026-08-10T03:47:58.802Z",
-  "fingerprint": "9d094f0cd92f3a5a",
+  "buildId": "20260810052302",
+  "generatedAt": "2026-08-10T05:23:02.408Z",
+  "fingerprint": "66deff6cab43ac8e",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 96,
     "visibleProducts": 62,
     "hiddenProducts": 34,
-    "promotions": 93,
+    "promotions": 95,
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 51,
+      "warning": 53,
       "info": 11
     },
     "issueTypeCounts": {
@@ -68,11 +68,13 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 3,
+      "count": 5,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
-        "花雕酒粕雞乾麵"
+        "花雕酒粕雞乾麵",
+        "青春露常態優惠價",
+        "水粉底常態優惠價"
       ]
     },
     {
