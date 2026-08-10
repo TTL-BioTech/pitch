@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T08:52:58.399Z",
-  "count": 100,
+  "generatedAt": "2026-08-10T08:57:57.124Z",
+  "count": 103,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2563,9 +2563,9 @@
       "channelLabels": []
     },
     {
-      "promoId": "P_94fea76e69b549e6ab2c",
-      "title": "秋節全員行銷 洗潔精(5000ml)3件優惠價",
-      "shortTitle": "秋節全員行銷 洗潔精(5000ml)3件優惠價",
+      "promoId": "P_a140c29ee3af4039a944",
+      "title": "秋節全員行銷 洗潔精(5000ml)3件優惠",
+      "shortTitle": "秋節全員行銷 洗潔精(5000ml)3件優惠",
       "content": "易洗樂洗潔精超值大包裝(5000ml)3瓶優惠價1088元",
       "imgUrl": "",
       "relatedCodes": [
@@ -2584,13 +2584,80 @@
       "channelLabels": []
     },
     {
-      "promoId": "P_6ad7852c724549478823",
-      "title": "秋節全員行銷 補充包12包優惠價600元",
-      "shortTitle": "秋節全員行銷 補充包12包優惠價600元",
+      "promoId": "P_19140268c0c04ec38cfc",
+      "title": "秋節全員行銷 補充包12包優惠",
+      "shortTitle": "秋節全員行銷 補充包12包優惠",
       "content": "易洗樂洗潔精600ml補充包12包優惠價600元",
       "imgUrl": "",
       "relatedCodes": [
         "36370003-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_f6c0152c4cae404ba402",
+      "title": "秋節全員行銷 洗潔精12瓶優惠",
+      "shortTitle": "秋節全員行銷 洗潔精12瓶優惠",
+      "content": "易洗樂洗潔精720ml12瓶優惠價800元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36370004-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_e9d52f73dc12408f8452",
+      "title": "秋節全員行銷 洗衣系列任兩件優惠",
+      "shortTitle": "秋節全員行銷 洗衣系列任兩件優惠",
+      "content": "洗衣系列指定產品 任2件400元\n(易洗樂香氛洗衣球30入、易洗樂抗菌防蟎洗衣精2L)",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370013-12",
+        "363741-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_c5023aee498242a59ccc",
+      "title": "秋節全員行銷 洗沐任兩件優惠",
+      "shortTitle": "秋節全員行銷 洗沐任兩件優惠",
+      "content": "指定個人洗沐品任2件360元\n(VINATA啤酒花洗髮精(500ml)、VINATA啤酒花沐浴露(500ml)、VINATA啤酒花洗手露(500ml))",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36530000-12",
+        "36530001-12",
+        "36370010-12",
+        "37170008-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
