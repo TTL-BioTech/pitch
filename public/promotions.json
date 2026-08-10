@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T05:37:54.171Z",
+  "generatedAt": "2026-08-10T06:07:59.883Z",
   "count": 95,
   "items": [
     {
@@ -2471,21 +2471,26 @@
       "title": "水粉底常態優惠價",
       "shortTitle": "水粉底常態優惠價",
       "content": "單件799元；五件2,970元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1_X0gwxUDgSAWCbpSZJfDp9YnvURd2I4E",
       "relatedCodes": [
         "37130047-12"
       ],
       "startDate": "2025/10/21",
       "endDate": "2110/12/31",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#FBE1E7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     }
   ]
 }
