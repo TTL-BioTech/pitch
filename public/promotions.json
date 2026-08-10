@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T09:08:01.265Z",
+  "generatedAt": "2026-08-10T09:13:03.584Z",
   "count": 108,
   "items": [
     {
@@ -2716,28 +2716,33 @@
       "title": "秋節全員行銷 酒好皂禮盒",
       "shortTitle": "秋節全員行銷 酒好皂禮盒",
       "content": "酒好皂禮盒(新版-內附沐浴手皂套)特價280元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/16PYuCqvndeldyadg6dAni4XhD1o4l7x9",
       "relatedCodes": [
         "36170002-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#D8F3DC",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_b71f3991539147689175",
       "title": "秋節全員行銷 酒好皂任兩件優惠",
       "shortTitle": "秋節全員行銷 酒好皂任兩件優惠",
       "content": "酒好皂任2件150元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1Au8xGLqMpJ1YE1xH_AY1vPzVIKu0E_HC",
       "relatedCodes": [
         "37170002-12",
         "37170003-12",
@@ -2746,77 +2751,97 @@
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#D8F3DC",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_6c033b1aeb2a491e8ab0",
       "title": "秋節全員行銷 洗沐禮盒",
       "shortTitle": "秋節全員行銷 洗沐禮盒",
       "content": "VINATA啤酒花洗沐禮盒特價456元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1vJZgnYczw0ed9oAp0Lvb6-z-Yck4ZhlH",
       "relatedCodes": [
         "37370005-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#D8F3DC",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_e410addbebe148afad62",
       "title": "秋節全員行銷 護髮素",
       "shortTitle": "秋節全員行銷 護髮素",
       "content": "VINATA米植醇賦活護髮素 HAIR TREATMENT特價199元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1Q9U8kO1NRHLk9Tp5jpBHolE2htv_bOXY",
       "relatedCodes": [
         "37370012-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#FBE1E7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_184426acb08c485c9e4b",
       "title": "秋節全員行銷 啤酒花洗面乳",
       "shortTitle": "秋節全員行銷 啤酒花洗面乳",
       "content": "啤酒花洗面乳特價129元",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/14Zb4ULAZ7hvgMLivjfGiNnM1ED1e8v2a",
       "relatedCodes": [
         "37370011-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#D8F3DC",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     }
   ]
 }

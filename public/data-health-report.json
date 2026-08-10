@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260810090801",
-  "generatedAt": "2026-08-10T09:08:01.265Z",
-  "fingerprint": "e4c190a35afdf10a",
+  "buildId": "20260810091303",
+  "generatedAt": "2026-08-10T09:13:03.584Z",
+  "fingerprint": "1773b38f825e14db",
   "status": "warning",
   "score": 48,
   "summary": {
@@ -13,7 +13,7 @@
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 56,
+      "warning": 51,
       "info": 11
     },
     "issueTypeCounts": {
@@ -68,16 +68,11 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 8,
+      "count": 3,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
-        "花雕酒粕雞乾麵",
-        "秋節全員行銷 酒好皂禮盒",
-        "秋節全員行銷 酒好皂任兩件優惠",
-        "秋節全員行銷 洗沐禮盒",
-        "秋節全員行銷 護髮素",
-        "秋節全員行銷 啤酒花洗面乳"
+        "花雕酒粕雞乾麵"
       ]
     },
     {
