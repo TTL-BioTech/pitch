@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260810090310",
-  "generatedAt": "2026-08-10T09:03:10.688Z",
-  "fingerprint": "647d09354998b6e9",
+  "buildId": "20260810090801",
+  "generatedAt": "2026-08-10T09:08:01.265Z",
+  "fingerprint": "e4c190a35afdf10a",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 96,
     "visibleProducts": 62,
     "hiddenProducts": 34,
-    "promotions": 107,
+    "promotions": 108,
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 63,
+      "warning": 56,
       "info": 11
     },
     "issueTypeCounts": {
@@ -68,23 +68,16 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 15,
+      "count": 8,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
         "花雕酒粕雞乾麵",
-        "秋節全員行銷 爆水面膜補貨組",
-        "秋節全員行銷 高效精萃精選膠囊",
-        "秋節全員行銷 私房美肌自由配",
-        "秋節全員行銷 洗潔精(5000ml)3件優惠",
-        "秋節全員行銷 補充包12包優惠",
-        "秋節全員行銷 洗潔精12瓶優惠",
-        "秋節全員行銷 洗衣系列任兩件優惠",
-        "秋節全員行銷 洗沐任兩件優惠",
         "秋節全員行銷 酒好皂禮盒",
         "秋節全員行銷 酒好皂任兩件優惠",
         "秋節全員行銷 洗沐禮盒",
-        "秋節全員行銷 護髮素"
+        "秋節全員行銷 護髮素",
+        "秋節全員行銷 啤酒花洗面乳"
       ]
     },
     {
