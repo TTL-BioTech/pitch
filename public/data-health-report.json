@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260810085757",
-  "generatedAt": "2026-08-10T08:57:57.124Z",
-  "fingerprint": "af561422026c6b79",
+  "buildId": "20260810090310",
+  "generatedAt": "2026-08-10T09:03:10.688Z",
+  "fingerprint": "647d09354998b6e9",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 96,
     "visibleProducts": 62,
     "hiddenProducts": 34,
-    "promotions": 103,
+    "promotions": 107,
     "rankings": 89,
     "severityCounts": {
       "error": 0,
-      "warning": 59,
+      "warning": 63,
       "info": 11
     },
     "issueTypeCounts": {
@@ -68,7 +68,7 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 11,
+      "count": 15,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
@@ -80,7 +80,11 @@
         "秋節全員行銷 補充包12包優惠",
         "秋節全員行銷 洗潔精12瓶優惠",
         "秋節全員行銷 洗衣系列任兩件優惠",
-        "秋節全員行銷 洗沐任兩件優惠"
+        "秋節全員行銷 洗沐任兩件優惠",
+        "秋節全員行銷 酒好皂禮盒",
+        "秋節全員行銷 酒好皂任兩件優惠",
+        "秋節全員行銷 洗沐禮盒",
+        "秋節全員行銷 護髮素"
       ]
     },
     {

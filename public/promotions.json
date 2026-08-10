@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T08:57:57.124Z",
-  "count": 103,
+  "generatedAt": "2026-08-10T09:03:10.688Z",
+  "count": 107,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2658,6 +2658,92 @@
         "36530001-12",
         "36370010-12",
         "37170008-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_e0d8b69471194c53b7f9",
+      "title": "秋節全員行銷 酒好皂禮盒",
+      "shortTitle": "秋節全員行銷 酒好皂禮盒",
+      "content": "酒好皂禮盒(新版-內附沐浴手皂套)特價280元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36170002-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_b71f3991539147689175",
+      "title": "秋節全員行銷 酒好皂任兩件優惠",
+      "shortTitle": "秋節全員行銷 酒好皂任兩件優惠",
+      "content": "酒好皂任2件150元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37170002-12",
+        "37170003-12",
+        "37170004-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_6c033b1aeb2a491e8ab0",
+      "title": "秋節全員行銷 洗沐禮盒",
+      "shortTitle": "秋節全員行銷 洗沐禮盒",
+      "content": "VINATA啤酒花洗沐禮盒特價456元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370005-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_e410addbebe148afad62",
+      "title": "秋節全員行銷 護髮素",
+      "shortTitle": "秋節全員行銷 護髮素",
+      "content": "VINATA米植醇賦活護髮素 HAIR TREATMENT特價199元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37370012-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
