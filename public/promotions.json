@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T03:17:57.246Z",
-  "count": 89,
+  "generatedAt": "2026-08-10T03:22:59.022Z",
+  "count": 90,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2250,7 +2250,7 @@
       "title": "*產品升級介紹",
       "shortTitle": "*產品升級介紹",
       "content": "新舊款產品比較",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1_ersGYtGCeGqwCf37B1LOnv-ag1l1gFH",
       "relatedCodes": [
         "375176-12",
         "37310001-12"
@@ -2258,14 +2258,19 @@
       "startDate": "2026/8/10",
       "endDate": "2027/12/31",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#E3F2FD",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_2cd4ae3e4133401cafd6",
@@ -2320,6 +2325,28 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_0cacfc54afe54c8fabaa",
+      "title": "秋節全員行銷 風淨送S11",
+      "shortTitle": "秋節全員行銷 風淨送S11",
+      "content": "買每日益刻風淨益生菌1件送S11益生菌1件。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "37510003-12",
+        "37110005-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
