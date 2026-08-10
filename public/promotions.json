@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T05:33:02.756Z",
+  "generatedAt": "2026-08-10T05:37:54.171Z",
   "count": 95,
   "items": [
     {
@@ -2445,21 +2445,26 @@
       "title": "青春露常態優惠價",
       "shortTitle": "青春露常態優惠價",
       "content": "單件700元；五件1,980元。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1A4JPwr8C39lW-4phXXMZQgM3qUt9EAJe",
       "relatedCodes": [
         "37130028-12"
       ],
       "startDate": "2026/1/1",
       "endDate": "2110/12/31",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#FBE1E7",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     },
     {
       "promoId": "P_67071143141f4880b49f",
