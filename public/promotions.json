@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T05:23:02.408Z",
+  "generatedAt": "2026-08-10T05:33:02.756Z",
   "count": 95,
   "items": [
     {
@@ -60,9 +60,9 @@
       "relatedCodes": [
         "37130047-12"
       ],
-      "startDate": "2025/10/21",
-      "endDate": "2110/12/31",
-      "status": "active",
+      "startDate": "2025/9/21",
+      "endDate": "2025/10/27",
+      "status": "ended",
       "bgColor": "#FBE1E7",
       "ch": {
         "show": true,
