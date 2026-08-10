@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-09T00:02:58.986Z",
-  "count": 86,
+  "generatedAt": "2026-08-10T02:57:57.597Z",
+  "count": 87,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2244,6 +2244,28 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_707cd6a203224ebc80ef",
+      "title": "*產品升級介紹",
+      "shortTitle": "*產品升級介紹",
+      "content": "新舊款產品比較",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375176-12",
+        "37310001-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2027/12/31",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
