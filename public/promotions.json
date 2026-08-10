@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T03:22:59.022Z",
+  "generatedAt": "2026-08-10T03:27:53.273Z",
   "count": 90,
   "items": [
     {
@@ -2331,7 +2331,7 @@
       "title": "秋節全員行銷 風淨送S11",
       "shortTitle": "秋節全員行銷 風淨送S11",
       "content": "買每日益刻風淨益生菌1件送S11益生菌1件。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1wJrjvQKTXDPAvrEnlOyr1IrRAiOQBp5E",
       "relatedCodes": [
         "37510003-12",
         "37110005-12"
@@ -2339,14 +2339,19 @@
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
       "status": "active",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#E3F2FD",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
-        "office": false
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
     }
   ]
 }
