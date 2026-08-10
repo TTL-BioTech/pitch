@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T03:27:53.273Z",
-  "count": 90,
+  "generatedAt": "2026-08-10T03:32:59.283Z",
+  "count": 91,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2335,6 +2335,33 @@
       "relatedCodes": [
         "37510003-12",
         "37110005-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": true
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網",
+        "營業所"
+      ]
+    },
+    {
+      "promoId": "P_3e3c0537d69645f6934a",
+      "title": "秋節全員行銷 指定保健品任2件7折",
+      "shortTitle": "秋節全員行銷 指定保健品任2件7折",
+      "content": "益立捷、安可健納豆紅麴+鉻雙效膠囊任2件7折。",
+      "imgUrl": "https://lh3.googleusercontent.com/d/10mlYsT9rC9QXXbi7XMqxAL4WKqsAbva9",
+      "relatedCodes": [
+        "37110009-12",
+        "37110010-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
