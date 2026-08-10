@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T08:48:00.148Z",
-  "count": 99,
+  "generatedAt": "2026-08-10T08:52:58.399Z",
+  "count": 100,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2563,13 +2563,34 @@
       "channelLabels": []
     },
     {
-      "promoId": "P_fe9ec669fdba48a5aee6",
-      "title": "秋節全員行銷 易洗樂洗潔精(5000ml)3件優惠價",
-      "shortTitle": "秋節全員行銷 易洗樂洗潔精(5000ml)3件優惠價",
+      "promoId": "P_94fea76e69b549e6ab2c",
+      "title": "秋節全員行銷 洗潔精(5000ml)3件優惠價",
+      "shortTitle": "秋節全員行銷 洗潔精(5000ml)3件優惠價",
       "content": "易洗樂洗潔精超值大包裝(5000ml)3瓶優惠價1088元",
       "imgUrl": "",
       "relatedCodes": [
         "36370002-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_6ad7852c724549478823",
+      "title": "秋節全員行銷 補充包12包優惠價600元",
+      "shortTitle": "秋節全員行銷 補充包12包優惠價600元",
+      "content": "易洗樂洗潔精600ml補充包12包優惠價600元",
+      "imgUrl": "",
+      "relatedCodes": [
+        "36370003-12"
       ],
       "startDate": "2026/8/10",
       "endDate": "2026/10/2",
