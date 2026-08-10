@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260809080759",
-  "generatedAt": "2026-08-09T08:07:59.886Z",
+  "buildId": "20260810040754",
+  "generatedAt": "2026-08-10T04:07:54.878Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -1734,7 +1734,7 @@
       "code": "37130028-12",
       "name": "酒粕精粹逆齡活膚青春露金裝版(自)",
       "category": "美容自由配_單件9折_2件85折_3件以上79折",
-      "price": 699,
+      "price": 700,
       "spec": "",
       "photo": "products/37130028-12-sake-lees-youth-essence-gold-sake-lees-youth-essence.png",
       "videoUrl": "",
@@ -2004,7 +2004,7 @@
       "code": "37130028-12",
       "name": "酒粕精粹逆齡活膚青春露金裝版(自)",
       "category": "美容加價購",
-      "price": 699,
+      "price": 700,
       "spec": "",
       "photo": "products/37130028-12-sake-lees-youth-essence-gold-sake-lees-youth-essence.png",
       "videoUrl": "",
