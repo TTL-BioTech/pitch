@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-12T00:48:04.576Z",
-  "count": 108,
+  "generatedAt": "2026-08-12T02:43:04.477Z",
+  "count": 110,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2842,6 +2842,51 @@
         "購物網",
         "營業所"
       ]
+    },
+    {
+      "promoId": "P_553520368e68430d8948",
+      "title": "秋節全員行銷 啤酒花洗面乳",
+      "shortTitle": "秋節全員行銷 啤酒花洗面乳",
+      "content": "黑麥汁系列160元/組",
+      "imgUrl": "",
+      "relatedCodes": [
+        "341368-12",
+        "341372-12",
+        "341369-12",
+        "341371-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
+    },
+    {
+      "promoId": "P_d1e5b797f9cb41d49800",
+      "title": "秋節全員行銷 啤酒花洗面乳",
+      "shortTitle": "秋節全員行銷 啤酒花洗面乳",
+      "content": "纖麥汁系列170元/組",
+      "imgUrl": "",
+      "relatedCodes": [
+        "34130014-12"
+      ],
+      "startDate": "2026/8/10",
+      "endDate": "2026/10/2",
+      "status": "active",
+      "bgColor": "#FFFFFF",
+      "ch": {
+        "show": false,
+        "mart": false,
+        "eshop": false,
+        "office": false
+      },
+      "channelLabels": []
     }
   ]
 }
