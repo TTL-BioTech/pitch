@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-19T03:13:01.073Z",
-  "count": 111,
+  "generatedAt": "2026-08-19T03:22:57.749Z",
+  "count": 112,
   "items": [
     {
       "promoId": "2025_Q4_01",
@@ -2893,9 +2893,35 @@
       "title": "台啤酵母錠經典款最終回饋-順暢循環雙效益",
       "shortTitle": "台啤酵母錠經典款最終回饋-順暢循環雙效益",
       "content": "安可健紅麴膠囊3件搭贈台啤酵母錠(新包裝)3件，優惠價2,850元（約5折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/11r_dWwp45UJWpKJPiuZolOuhPf5vGhEE",
       "relatedCodes": [
         "375156-12",
+        "375176-12"
+      ],
+      "startDate": "2026/8/20",
+      "endDate": "2026/9/17",
+      "status": "upcoming",
+      "bgColor": "#E3F2FD",
+      "ch": {
+        "show": true,
+        "mart": true,
+        "eshop": true,
+        "office": false
+      },
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
+    },
+    {
+      "promoId": "P_45e6a5b8eeba475280da",
+      "title": "台啤酵母錠經典款最終回饋-晶亮活力雙應援",
+      "shortTitle": "台啤酵母錠經典款最終回饋-晶亮活力雙應援",
+      "content": "葉黃素軟膠囊3件搭贈台啤酵母錠(新包裝)3件，優惠價2,950元（約5折）。",
+      "imgUrl": "",
+      "relatedCodes": [
+        "375165-12",
         "375176-12"
       ],
       "startDate": "2026/8/20",
