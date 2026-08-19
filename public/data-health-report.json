@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260817034758",
-  "generatedAt": "2026-08-17T03:47:58.241Z",
-  "fingerprint": "d5e7c6077001109b",
+  "buildId": "20260819031301",
+  "generatedAt": "2026-08-19T03:13:01.073Z",
+  "fingerprint": "06d637c127190b92",
   "status": "warning",
   "score": 48,
   "summary": {
     "products": 96,
     "visibleProducts": 62,
     "hiddenProducts": 34,
-    "promotions": 110,
+    "promotions": 111,
     "rankings": 91,
     "severityCounts": {
       "error": 0,
-      "warning": 53,
+      "warning": 54,
       "info": 11
     },
     "issueTypeCounts": {
@@ -68,13 +68,14 @@
       "severity": "warning",
       "area": "promotions",
       "message": "促銷活動未設定通路。",
-      "count": 5,
+      "count": 6,
       "samples": [
         "纖麥汁即期去化",
         "台酒生技鹼性離子水上市優惠",
         "花雕酒粕雞乾麵",
         "秋節全員行銷 啤酒花洗面乳",
-        "秋節全員行銷 啤酒花洗面乳"
+        "秋節全員行銷 啤酒花洗面乳",
+        "台啤酵母錠經典款最終回饋-順暢循環雙效益"
       ]
     },
     {
