@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T03:22:57.749Z",
+  "generatedAt": "2026-08-19T03:28:02.213Z",
   "count": 112,
   "items": [
     {
@@ -2919,7 +2919,7 @@
       "title": "台啤酵母錠經典款最終回饋-晶亮活力雙應援",
       "shortTitle": "台啤酵母錠經典款最終回饋-晶亮活力雙應援",
       "content": "葉黃素軟膠囊3件搭贈台啤酵母錠(新包裝)3件，優惠價2,950元（約5折）。",
-      "imgUrl": "",
+      "imgUrl": "https://lh3.googleusercontent.com/d/1kmFp8BX_4OwOzt9OspUb3DrC2qSwL4S8",
       "relatedCodes": [
         "375165-12",
         "375176-12"
@@ -2927,14 +2927,18 @@
       "startDate": "2026/8/20",
       "endDate": "2026/9/17",
       "status": "upcoming",
-      "bgColor": "#FFFFFF",
+      "bgColor": "#E3F2FD",
       "ch": {
-        "show": false,
-        "mart": false,
-        "eshop": false,
+        "show": true,
+        "mart": true,
+        "eshop": true,
         "office": false
       },
-      "channelLabels": []
+      "channelLabels": [
+        "展售中心",
+        "便利店",
+        "購物網"
+      ]
     }
   ]
 }
