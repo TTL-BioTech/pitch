@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260815110254",
-  "generatedAt": "2026-08-15T11:02:54.576Z",
+  "buildId": "20260821080758",
+  "generatedAt": "2026-08-21T08:07:58.154Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -163,7 +163,7 @@
       "pitch": {
         "title": "中央山脈自流泉水｜非臭氧製程、超潔淨無菌產線",
         "content": "使用承接中央山脈的自流泉水，採非臭氧製程與超潔淨無菌產線製造，並保留鈣、鎂、鈉、鉀等天然礦物質。經特定電解技術處理，口感細緻順口，400毫升輕巧瓶裝，適合日常與外出補充水分。",
-        "tags": "鹼性離子水、中央山脈自流泉水、非臭氧製程、超潔淨無菌產線、天然礦物質",
+        "tags": "鹼性離子水,中央山脈自流泉水,非臭氧製程,超潔淨無菌產線,天然礦物質",
         "isNew": true,
         "name": "台酒生技鹼性離子水",
         "barcodeRaw": "4711588015756",
@@ -1856,7 +1856,7 @@
       "pitch": {
         "title": "雙手也值得被溫柔對待｜輕盈質地、快速吸收、不黏膩",
         "content": "結合專利超臨界米植醇與專利酵母賦活精華，修護乾燥、調理肌膚紋路，搭配維他命原B5、乳木果油與有機金盞花萃取，鎖水保濕、溫和調理舒緩，維持手部水潤柔嫩。輕盈質地、快速吸收、不黏膩，散發玫瑰香氣，隨時呵護雙手。\n\n△ 不含酒精、Paraben防腐劑、色素及礦物油。",
-        "tags": "VINATA、護手霜、米植醇、超臨界米植醇、酵母賦活精華、Sapitide、維他命原B5、乳木果油、金盞花萃取、保濕、玫瑰香氣",
+        "tags": "VINATA,護手霜,米植醇,超臨界米植醇,酵母賦活精華,Sapitide,維他命原B5,乳木果油,金盞花萃取,保濕,玫瑰香氣",
         "isNew": true,
         "name": "VINATA米植醇滋潤護手霜",
         "barcodeRaw": "4711588008154",
