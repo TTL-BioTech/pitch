@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "buildId": "20260821171801",
-  "generatedAt": "2026-08-21T17:18:01.904Z",
+  "buildId": "20260821172757",
+  "generatedAt": "2026-08-21T17:27:57.636Z",
   "source": {
     "products": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBtV8q3Ank7Bnhs83IbOb97U46juV-RKeL3NpdFiNcSu-ifI21fQYo1-io62S3JIrXEO5MiDArc1Lr/pub?gid=1623055155&single=true&output=csv",
     "pitch": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJaiIUkmBPfRcFADAoW4-_zbWB78gZb1yR_2gM9oORqRwCx8vb844cP-KcE58FgTVynptYk6L6o9pm/pub?gid=0&single=true&output=csv",
@@ -339,7 +339,7 @@
       "name": "葡萄糖胺複方錠",
       "category": "保健食品\n單件9折、3件(含)以上7折",
       "price": 990,
-      "spec": "1060mg/錠，90 錠/盒",
+      "spec": "1060 mg/錠，90 錠/盒",
       "photo": "products/385104-12-glucosamine.png",
       "videoUrl": "",
       "moreLinksRaw": "",
@@ -447,7 +447,7 @@
       "name": "金牌啤酒酵母粉",
       "category": "保健食品\n單件9折、3件(含)以上7折",
       "price": 420,
-      "spec": "450 公克/罐",
+      "spec": "450公克/罐",
       "photo": "products/37510000-12-beer-yeast-powder.png",
       "videoUrl": "",
       "moreLinksRaw": "",
