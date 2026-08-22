@@ -3,19 +3,235 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>TTL Bio-Tech 商品銷售支援</title>
-    <meta name="description" content="TTL Bio-Tech 商品資訊與促銷內容查閱平台。" />
+    <title>台酒生技銷售支援系統已升級</title>
+    <meta name="description" content="舊版銷售支援系統已移轉，正在前往新版。" />
     <meta name="robots" content="noindex,nofollow" />
     <meta name="theme-color" content="#00897b" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./icon-192.png" />
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://ttlbio.pages.dev/" />
+    </noscript>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family:
+          Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
+          -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #f3faf8;
+        color: #173f39;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: max(24px, env(safe-area-inset-top)) 20px
+          max(24px, env(safe-area-inset-bottom));
+        background:
+          radial-gradient(circle at 15% 12%, rgb(0 137 123 / 12%), transparent 34%),
+          radial-gradient(circle at 86% 88%, rgb(69 179 157 / 14%), transparent 36%),
+          linear-gradient(145deg, #f8fcfb 0%, #edf8f5 100%);
+      }
+
+      main {
+        width: min(100%, 430px);
+        padding: 34px 28px 28px;
+        text-align: center;
+        border: 1px solid rgb(0 137 123 / 13%);
+        border-radius: 26px;
+        background: rgb(255 255 255 / 92%);
+        box-shadow: 0 22px 58px rgb(23 63 57 / 13%);
+        backdrop-filter: blur(14px);
+      }
+
+      .logo-wrap {
+        width: 72px;
+        height: 72px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 18px;
+        overflow: hidden;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 10px 28px rgb(0 137 123 / 16%);
+      }
+
+      .logo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #00897b;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+      }
+
+      h1 {
+        margin: 0;
+        color: #163f39;
+        font-size: clamp(25px, 7vw, 31px);
+        line-height: 1.25;
+        letter-spacing: -0.03em;
+      }
+
+      #status {
+        min-height: 48px;
+        margin: 14px 0 22px;
+        color: #54716c;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .progress {
+        width: 100%;
+        height: 5px;
+        margin: 0 0 24px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #dcefeb;
+      }
+
+      .progress::after {
+        content: "";
+        display: block;
+        width: 42%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #00897b, #56c6af);
+        animation: loading 1.05s ease-in-out infinite;
+      }
+
+      .button {
+        width: 100%;
+        min-height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 20px;
+        border-radius: 15px;
+        color: #ffffff;
+        background: #00897b;
+        box-shadow: 0 10px 24px rgb(0 137 123 / 22%);
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          background 160ms ease;
+      }
+
+      .button:hover {
+        background: #00796b;
+        transform: translateY(-1px);
+      }
+
+      .button:focus-visible {
+        outline: 3px solid rgb(0 137 123 / 28%);
+        outline-offset: 3px;
+      }
+
+      .note {
+        margin: 14px 0 0;
+        color: #829792;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      @keyframes loading {
+        from {
+          transform: translateX(-110%);
+        }
+        to {
+          transform: translateX(245%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .progress::after {
+          width: 100%;
+          animation: none;
+        }
+
+        .button {
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <main aria-labelledby="page-title">
+      <div class="logo-wrap" aria-hidden="true">
+        <img src="./LOGO.png" alt="" />
+      </div>
+      <p class="eyebrow">SYSTEM UPDATED</p>
+      <h1 id="page-title">銷售支援系統已升級</h1>
+      <p id="status" role="status" aria-live="polite">
+        正在為你開啟新版系統，請稍候⋯
+      </p>
+      <div class="progress" aria-hidden="true"></div>
+      <a class="button" id="continue-link" href="https://ttlbio.pages.dev/">
+        立即前往新版
+      </a>
+      <p class="note">若未自動開啟，請點擊上方按鈕。</p>
+    </main>
+
+    <script>
+      (() => {
+        const targetUrl = 'https://ttlbio.pages.dev/'
+        const status = document.getElementById('status')
+        const continueLink = document.getElementById('continue-link')
+        let redirectStarted = false
+
+        const redirect = () => {
+          if (redirectStarted || !navigator.onLine) return
+          redirectStarted = true
+          window.location.replace(targetUrl)
+        }
+
+        continueLink.addEventListener('click', (event) => {
+          event.preventDefault()
+          if (!navigator.onLine) {
+            status.textContent = '目前沒有網路連線；恢復連線後將自動前往新版。'
+            return
+          }
+          redirect()
+        })
+
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker
+            .register('./sw.js', { scope: './', updateViaCache: 'none' })
+            .then((registration) => registration.update())
+            .catch(() => {})
+        }
+
+        if (navigator.onLine) {
+          window.setTimeout(redirect, 900)
+        } else {
+          status.textContent = '目前沒有網路連線；恢復連線後將自動前往新版。'
+        }
+
+        window.addEventListener('online', () => {
+          status.textContent = '網路已恢復，正在開啟新版系統⋯'
+          window.setTimeout(redirect, 250)
+        })
+      })()
+    </script>
   </body>
 </html>
